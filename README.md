@@ -1,96 +1,87 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# Geovany LAGUERRE — Personal Academic Website
 
-![Academic Pages template example](images/themes/homepage-light.png "Academic Pages template example")
+[![Website](https://img.shields.io/badge/Website-geobatpo.github.io-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://geobatpo.github.io)
+[![GitHub Pages](https://img.shields.io/github/actions/workflow/status/Geobatpo07/geobatpo.github.io/jekyll.yml?branch=main&style=for-the-badge&label=GitHub%20Pages)](https://github.com/Geobatpo07/geobatpo.github.io/actions/workflows/jekyll.yml)
+[![Scrape Talks](https://img.shields.io/github/actions/workflow/status/Geobatpo07/geobatpo.github.io/scrape_talks.yml?branch=main&style=for-the-badge&label=Scrape%20Talks)](https://github.com/Geobatpo07/geobatpo.github.io/actions/workflows/scrape_talks.yml)
+[![Jekyll](https://img.shields.io/badge/Jekyll-Static%20Site-CC0000?style=for-the-badge&logo=jekyll&logoColor=white)](https://jekyllrb.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
+[![Repo Size](https://img.shields.io/github/repo-size/Geobatpo07/geobatpo.github.io?style=for-the-badge)](https://github.com/Geobatpo07/geobatpo.github.io)
+[![License](https://img.shields.io/github/license/Geobatpo07/geobatpo.github.io?style=for-the-badge)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/Geobatpo07/geobatpo.github.io?style=for-the-badge)](https://github.com/Geobatpo07/geobatpo.github.io/commits/main)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-@Geobatpo07-181717?style=for-the-badge&logo=github)](https://github.com/Geobatpo07)
 
-# Getting Started
+This repository contains my personal academic and professional website, published at:
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your public repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+**https://geobatpo.github.io**
 
-See more info at https://academicpages.github.io/
+Built with Jekyll (Academic Pages / Minimal Mistakes), the site presents my work in data science, applied mathematics, teaching, and research projects.
 
-## Running locally
+## Main Sections
 
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+- Home / About
+- Publications
+- Teaching
+- Supervisors
+- Portfolio
+- CV
 
-1. Clone the repository and made updates as detailed above.
+## Tech Stack
 
-### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
+- Jekyll + Academic Pages
+- Ruby + Bundler
+- Docker / Docker Compose (recommended for local development)
+- SCSS for theme customization
 
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
+## Run Locally (Recommended)
 
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change to Markdown (*.md) and HTML files, while changes to the core template and configuration (i.e., `_config.yml`) will require stoping and restarting Jekyll.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
+From the project root:
 
 ```bash
-chmod -R 777 .
-docker compose up
+docker compose up --build
 ```
 
-You should now be able to access the website from `localhost:4000`.
+Then open:
 
-### Using the DevContainer in VS Code
+```text
+http://localhost:4000
+```
 
-If you are using [Visual Studio Code](https://code.visualstudio.com/) you can use the [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) that comes with this Repository. Normally VS Code detects that a development container configuration is available and asks you if you want to use the container. If this doesn't happen you can manually start the container by **F1->DevContainer: Reopen in Container**. This restarts your VS Code in the container and automatically hosts your academic page locally on http://localhost:4000. All changes will be updated live to that page after a few seconds.
+To stop:
 
-# Maintenance
+```bash
+docker compose down
+```
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+## Quick Content Editing Guide
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+- Site-wide settings: `_config.yml`
+- Top navigation: `_data/navigation.yml`
+- About page: `_pages/about.md`
+- CV page: `_pages/cv.md`
+- Supervisors page data: `_data/supervisors.yml`
+- Publications entries: `_publications/`
+- Teaching entries: `_teaching/`
+- Portfolio entries: `_portfolio/`
 
-## Bugfixes and enhancements
+## Project Structure (Key Paths)
 
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
+```text
+_pages/           Static pages (about, cv, supervisors, etc.)
+_data/            YAML data files (navigation, supervisors, ui labels)
+_publications/    Publication records
+_teaching/        Teaching records
+_portfolio/       Portfolio project records
+_sass/            Theme and layout styling
+assets/           Front-end assets (css/js/fonts)
+files/            Downloadable files (papers/slides/etc.)
+```
 
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+## Notes
 
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+- The repository started from the Academic Pages template and is now customized for my own content.
+- Local testing is validated with Docker and HTTP checks on key routes.
+- The `supervisors` section is data-driven from `_data/supervisors.yml`.
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+## License
+
+This project follows the original template license terms (see `LICENSE`) plus my own content ownership for added materials.
