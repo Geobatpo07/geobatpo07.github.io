@@ -1,20 +1,15 @@
 ---
-title: "Teaching experience 1"
+title: "Lecturer in Mathematics for Computer Science"
 collection: teaching
-type: "Undergraduate course"
-permalink: /teaching/2014-spring-teaching-1
-venue: "University 1, Department"
-date: 2014-01-01
-location: "City, Country"
+type: "University Teaching"
+permalink: /teaching/lecturer-mathematics-uniq
+venue: "Université Quisqueya (UniQ)"
+date: 2025-09-01
+location: "Port-au-Prince, Haiti"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
+As a Lecturer in Mathematics for Computer Science, I teach core mathematical foundations required for computing-oriented programs.
 
-Heading 1
-======
+I cover logic, algebra, calculus, and discrete structures with a practical focus on data science, software engineering, and web technologies.
 
-Heading 2
-======
-
-Heading 3
-======
+I also mentor students to strengthen their academic profile and prepare for both research and industry pathways.

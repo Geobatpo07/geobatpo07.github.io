@@ -1,0 +1,66 @@
+---
+layout: archive
+title: "Supervisors & Academic Collaborators"
+permalink: /supervisors/
+author_profile: true
+---
+
+{% include base_path %}
+
+This page lists professors and academic mentors who supervised my work or collaborated with me.
+
+{% assign supervisors_count = site.data.supervisors | size %}
+
+{% if supervisors_count > 0 %}
+  <h2>Current Supervisor</h2>
+  {% assign current_found = false %}
+  {% for person in site.data.supervisors %}
+    {% if person.role and person.role contains "Current" %}
+      {% assign current_found = true %}
+      <h3>{{ person.name }}</h3>
+      <ul>
+        {% if person.role %}<li><strong>Role:</strong> {{ person.role }}</li>{% endif %}
+        {% if person.institution %}<li><strong>Institution:</strong> {{ person.institution }}</li>{% endif %}
+        {% if person.period %}<li><strong>Period:</strong> {{ person.period }}</li>{% endif %}
+        {% if person.collaboration %}<li><strong>Collaboration:</strong> {{ person.collaboration }}</li>{% endif %}
+        {% if person.profile_url %}<li><strong>Profile:</strong> <a href="{{ person.profile_url }}">{{ person.profile_url }}</a></li>{% endif %}
+      </ul>
+      {% if person.notes %}
+      <p>{{ person.notes }}</p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% unless current_found %}
+    <p>No current supervisor explicitly marked yet.</p>
+  {% endunless %}
+
+  <hr />
+  <h2>Academic Collaborators</h2>
+
+  {% assign collaborators_found = false %}
+  {% for person in site.data.supervisors %}
+  {% unless person.role and person.role contains "Current" %}
+  {% assign collaborators_found = true %}
+  <h2>{{ person.name }}</h2>
+  <ul>
+    {% if person.role %}<li><strong>Role:</strong> {{ person.role }}</li>{% endif %}
+    {% if person.institution %}<li><strong>Institution:</strong> {{ person.institution }}</li>{% endif %}
+    {% if person.period %}<li><strong>Period:</strong> {{ person.period }}</li>{% endif %}
+    {% if person.collaboration %}<li><strong>Collaboration:</strong> {{ person.collaboration }}</li>{% endif %}
+    {% if person.profile_url %}<li><strong>Profile:</strong> <a href="{{ person.profile_url }}">{{ person.profile_url }}</a></li>{% endif %}
+  </ul>
+  {% if person.notes %}
+  <p>{{ person.notes }}</p>
+  {% endif %}
+  <hr />
+  {% endunless %}
+  {% endfor %}
+
+  {% unless collaborators_found %}
+    <p>No additional collaborators added yet.</p>
+  {% endunless %}
+{% else %}
+  <p>No supervisor profiles added yet.</p>
+  <p>Add your records in <code>_data/supervisors.yml</code> and they will automatically appear here.</p>
+{% endif %}

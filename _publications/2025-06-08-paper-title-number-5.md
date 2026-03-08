@@ -1,13 +1,17 @@
 ---
-title: "Paper Title Number 5, with math $$E=mc^2$$"
+title: "Modeling Human Exposure to Chlordecone"
 collection: publications
-category: conferences
-permalink: /publication/2024-02-17-paper-title-number-4
-excerpt: 'This paper is about a famous math equation, $$E=mc^2$$'
-date: 2024-02-17
-venue: 'GitHub Journal of Bugs'
-paperurl: 'https://academicpages.github.io/files/paper3.pdf'
-citation: 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
+category: manuscripts
+permalink: /publication/2026-02-01-modelisation-exposition-chlordecone
+excerpt: "Preprint on compartmental modeling of human exposure to chlordecone in tropical environments."
+date: 2026-02-01
+venue: 'ResearchGate (Preprint)'
+paperurl: 'https://www.researchgate.net/publication/400336573_Modelisation_de_l''exposition_humaine_au_chlordecone'
+citation: "Batista Polo Laguerre, G. (2026). &quot;Modeling Human Exposure to Chlordecone.&quot; <i>ResearchGate Preprint</i>."
 ---
 
-Using [MathJax](https://www.mathjax.org/) in the description is supported - $$E=mc^2$$ - however, the use must be mindful that the default delimiters are `$$...$$` and `\\[...\\]` which differs from the `$...$` that is typically expected.
+This work proposes a continuous-time compartmental model to study environmental transfer and human exposure pathways for chlordecone.
+
+The model includes seasonal effects (rainfall variation) to better represent contamination dynamics in tropical environments.
+
+This publication is currently available as a preprint.

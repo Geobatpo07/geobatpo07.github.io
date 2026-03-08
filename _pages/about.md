@@ -1,56 +1,77 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Data Scientist | Master's in Mathematics & Applications"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+Welcome! I'm Geovany Batista Polo Laguerre, a passionate Data Scientist and Master's student in Mathematics and Applications at the University of the French Antilles. My work focuses on mathematical modeling, data science, machine learning, and decision support tools, with a particular emphasis on applying rigorous mathematical approaches to real-world problems.
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
-
-A data-driven personal website
+Research Interests
 ======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+My research interests span across multiple domains where mathematics meets practical applications:
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+- **Mathematical Modeling**: Development of compartmental models and differential equations for environmental and public health applications
+- **Data Engineering**: Building scalable, modern data platforms using technologies like DuckDB, Apache Iceberg, and Trino
+- **Machine Learning & Deep Learning**: Applying advanced ML techniques to scientific and business problems
+- **Statistical Analysis**: Statistical modeling, mathematical statistics, and data analysis
+- **Scientific Computing**: Developing research-grade tools for numerical methods and symbolic mathematics
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
-
-Getting started
+Current Research
 ======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](https://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
+I am currently involved in research on differential equations for mathematical modeling, with a particular focus on environmental contamination models. My recent work includes:
 
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
+My current Master's research is supervised by **Prof. Pascal Poullet** (University of the French Antilles).
 
-Create content & metadata
-------
-For site content, there is one Markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a Markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each Markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
+- **Chlordecone Contamination Modeling**: Developing continuous-time compartmental models to understand the environmental transfer and human exposure to chronic chlordecone contamination in tropical environments
+- **Character Theory in Finite Fields**: Exploring fundamental concepts of finite fields and their character theory, including additive characters and orthogonality relations
 
-**Markdown generator**
+Academic Background
+======
+- **Master's Student** in Mathematics and Applications, University of the French Antilles (Current)
+  - Department of Mathematics and IT, Pointe-à-Pitre, Guadeloupe
+- **Bachelor of Science**, University of the French Antilles
+- **Research Affiliate**, University of Haiti
+  - Laboratoire de Mathématiques et Applications (October 2017 - Present)
 
-The repository includes [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual Markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the Markdown files, then commit and push them to the GitHub repository.
+Technical Expertise
+======
+My technical skills encompass a broad range of mathematical and computational tools:
 
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and Markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
+**Mathematics**: Pure Mathematics, Mathematical Analysis, Group Theory, Statistical Modeling
 
-Example: editing a Markdown file for a talk
-![Editing a Markdown file for a talk](/images/editing-talk.png)
+**Data Science & ML**: Machine Learning, Deep Learning, Statistical Analysis, Data Analysis
 
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+**Programming & Tools**: Python, R, C++, SQL, TypeScript
+
+**Data Engineering**: DuckDB, Apache Iceberg, Arrow Flight, dbt, Trino
+
+**Scientific Computing**: Mathematical modeling, numerical methods, symbolic computation
+
+Featured Projects
+======
+I maintain several open-source projects that demonstrate my interdisciplinary approach:
+
+- **[simulation-chlordecone](https://github.com/Geobatpo07/simulation-chlordecone)**: Mathematical modeling and simulation of seasonal chlordecone contamination using non-autonomous compartmental ODE systems with Shiny visualization
+- **[datahut-duckhouse](https://github.com/Geobatpo07/datahut-duckhouse)**: A modern, modular, multi-tenant analytics platform combining DuckDB, Apache Iceberg, and other modern data stack technologies
+- **[scientific-assistant](https://github.com/Geobatpo07/scientific-assistant)**: A research-grade, local-first multi-agent AI framework for rigorous scientific analysis
+- **[MedicalTriageSystem](https://github.com/Geobatpo07/MedicalTriageSystem)**: C++ application for intelligent patient triage using machine learning (Random Forest)
+
+Publications
+======
+My research has been published on academic platforms including ResearchGate:
+
+1. **Modeling Human Exposure to Chlordecone** (February 2026)
+   - Compartmental modeling of chlordecone exposure pathways
+2. **Exploring Finite Fields and Their Character Theory** (April 2025)
+   - Theoretical exploration of finite field structures and character theory
+
+Contact & Collaboration
+======
+I am always eager to contribute to collaborative projects and deepen my expertise in applied mathematics and scientific computing. Feel free to reach out through any of the platforms linked in my profile.
+
+**Location**: Pointe-à-Pitre, Guadeloupe
+
+**Profiles**: [GitHub](https://github.com/Geobatpo07) | [LinkedIn](https://www.linkedin.com/in/geobatpo07) | [ResearchGate](https://www.researchgate.net/profile/Geovany-Batista-Polo-Laguerre) | [ORCID](https://orcid.org/0009-0008-8722-6411)

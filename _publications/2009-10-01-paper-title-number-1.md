@@ -1,14 +1,14 @@
 ---
-title: "Paper Title Number 1"
+title: "Modern Analytics Engineering for Scientific Workflows (In Preparation)"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-slidesurl: 'https://academicpages.github.io/files/slides1.pdf'
-paperurl: 'https://academicpages.github.io/files/paper1.pdf'
-bibtexurl: 'https://academicpages.github.io/files/bibtex1.bib'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+permalink: /publication/in-preparation-analytics-engineering-science
+excerpt: 'Work in preparation on a modern analytics architecture for reproducible scientific workflows.'
+date: 2026-01-20
+venue: 'Manuscript in preparation'
+citation: 'Batista Polo Laguerre, G. (in preparation). &quot;Modern Analytics Engineering for Scientific Workflows.&quot;'
 ---
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+
+This manuscript presents an analytics engineering framework focused on reproducibility, combining data modeling, compute, and observability.
+
+It is aligned with my practical work on modern stacks (DuckDB, Iceberg, dbt, Trino) for research and advanced analytics.

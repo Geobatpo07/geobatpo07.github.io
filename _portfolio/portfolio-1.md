@@ -1,7 +1,15 @@
 ---
-title: "Portfolio item number 1"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+title: "Chlordecone Simulation"
+excerpt: "Mathematical modeling and simulation of seasonal chlordecone contamination with interactive visualization."
 collection: portfolio
+permalink: /portfolio/simulation-chlordecone/
+date: 2026-03-06
 ---
 
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+Environmental modeling project based on non-autonomous differential equation systems.
+
+- **Objective:** analyze human exposure and environmental transfer pathways of chlordecone.
+- **Approach:** compartmental modeling, numerical simulation, seasonal scenarios.
+- **Stack:** R, Shiny, mathematical modeling.
+
+Link: [github.com/Geobatpo07/simulation-chlordecone](https://github.com/Geobatpo07/simulation-chlordecone)

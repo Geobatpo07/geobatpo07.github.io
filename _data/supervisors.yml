@@ -1,0 +1,18 @@
+# Add one item per person.
+# Fields: name, role, institution, period, collaboration, profile_url, notes
+
+# - name: "Prof. Firstname Lastname"
+#   role: "Master's Thesis Supervisor"
+#   institution: "University Name"
+#   period: "2024-Present"
+#   collaboration: "Supervision in mathematical modeling and applied analysis"
+#   profile_url: "https://example.org/profile"
+#   notes: "Optional extra context"
+
+- name: "Prof. Pascal Poullet"
+  role: "Current Master's Supervisor"
+  institution: "University of the French Antilles, Department of Mathematics and IT"
+  period: "2024-Present"
+  collaboration: "Supervision in mathematical modeling and applied mathematics"
+  profile_url: "https://www.researchgate.net/profile/Pascal-Poullet-2"
+  notes: "ResearchGate profile found via researcher search results."

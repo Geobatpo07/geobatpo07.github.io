@@ -1,20 +1,15 @@
 ---
-title: "Teaching experience 2"
+title: "Teaching Assistant in Data Science & AI"
 collection: teaching
-type: "Workshop"
-permalink: /teaching/2015-spring-teaching-1
-venue: "University 1, Department"
-date: 2015-01-01
-location: "City, Country"
+type: "Teaching Assistant"
+permalink: /teaching/ta-data-science-ai-uniq
+venue: "Université Quisqueya (UniQ)"
+date: 2025-05-01
+location: "Haiti"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
+As a Teaching Assistant in Data Science & AI, I support a hands-on curriculum delivered in partnership with Akademi and aligned with the Flatiron School immersive track.
 
-Heading 1
-======
+I help students master data wrangling, exploratory analysis, model building, and deployment workflows.
 
-Heading 2
-======
-
-Heading 3
-======
+My teaching stack includes Python, Pandas, NumPy, Scikit-learn, Matplotlib, and Jupyter Notebooks. I also contribute to curriculum refinement, code reviews, and Q&A sessions.
