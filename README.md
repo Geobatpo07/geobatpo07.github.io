@@ -12,7 +12,7 @@
 
 This repository contains my personal academic and professional website, published at:
 
-**https://geobatpo.github.io**
+**https://geovanylaguerre.net**
 
 Built with Jekyll (Academic Pages / Minimal Mistakes), the site presents my work in data science, applied mathematics, teaching, and research projects.
 
