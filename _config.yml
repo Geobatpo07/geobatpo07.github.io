@@ -13,7 +13,7 @@ title                    : "Geovany Batista Polo LAGUERRE"
 title_separator          : "-"
 name                     : &name "Geovany Batista Polo LAGUERRE"
 description              : &description "Data Scientist & Master's Student in Mathematics and Applications"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://geobatpo07.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
+url                      : https://geovanylaguerre.net # Canonical base URL used for sitemaps, canonical links, and structured data
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Geobatpo07/geobatpo07.github.io"
@@ -143,14 +143,18 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Social media default site image
-og_description           :  # Social media default site image description
+og_image                 : "profile.png" # Social media default site image (stored in /images)
+og_description           : "Academic and professional portfolio in data science, applied mathematics, and research."
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : Person
+  name                   : "Geovany Batista Polo LAGUERRE"
+  links:
+    - "https://github.com/Geobatpo07"
+    - "https://www.linkedin.com/in/geobatpo07"
+    - "https://www.researchgate.net/profile/Geovany-Batista-Polo-Laguerre"
+    - "https://orcid.org/0009-0008-8722-6411"
 
 
 # Analytics
