@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I'm Geovany Batista Polo Laguerre, a passionate Data Scientist and Master's student in Mathematics and Applications at the University of the French Antilles. My work focuses on mathematical modeling, data science, machine learning, and decision support tools, with a particular emphasis on applying rigorous mathematical approaches to real-world problems.
+Welcome! I'm Geovany Batista Polo LAGUERRE, a passionate Data Scientist and Master's student in Mathematics and Applications at the University of the French Antilles. My work focuses on mathematical modeling, data science, machine learning, and decision support tools, with a particular emphasis on applying rigorous mathematical approaches to real-world problems.
 
 Research Interests
 ======

@@ -1,4 +1,4 @@
-# Geovany LAGUERRE — Personal Academic Website
+# Geovany Batista Polo LAGUERRE — Personal Academic Website
 
 [![Website](https://img.shields.io/badge/Website-geobatpo.github.io-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://geobatpo.github.io)
 [![GitHub Pages](https://img.shields.io/github/actions/workflow/status/Geobatpo07/geobatpo.github.io/jekyll.yml?branch=main&style=for-the-badge&label=GitHub%20Pages)](https://github.com/Geobatpo07/geobatpo.github.io/actions/workflows/jekyll.yml)

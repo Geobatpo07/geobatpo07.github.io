@@ -7,7 +7,7 @@ excerpt: "Preprint on compartmental modeling of human exposure to chlordecone in
 date: 2026-02-01
 venue: 'ResearchGate (Preprint)'
 paperurl: 'https://www.researchgate.net/publication/400336573_Modelisation_de_l''exposition_humaine_au_chlordecone'
-citation: "Batista Polo Laguerre, G. (2026). &quot;Modeling Human Exposure to Chlordecone.&quot; <i>ResearchGate Preprint</i>."
+citation: "Geovany B. P., Laguerre (2026). &quot;Modeling Human Exposure to Chlordecone.&quot; <i>ResearchGate Preprint</i>."
 ---
 
 This work proposes a continuous-time compartmental model to study environmental transfer and human exposure pathways for chlordecone.

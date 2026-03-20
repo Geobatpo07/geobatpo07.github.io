@@ -6,7 +6,7 @@ permalink: /publication/in-preparation-analytics-engineering-science
 excerpt: 'Work in preparation on a modern analytics architecture for reproducible scientific workflows.'
 date: 2026-01-20
 venue: 'Manuscript in preparation'
-citation: 'Batista Polo Laguerre, G. (in preparation). &quot;Modern Analytics Engineering for Scientific Workflows.&quot;'
+citation: 'Geovany B. P., Laguerre (in preparation). &quot;Modern Analytics Engineering for Scientific Workflows.&quot;'
 ---
 
 This manuscript presents an analytics engineering framework focused on reproducibility, combining data modeling, compute, and observability.
