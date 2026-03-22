@@ -7,71 +7,122 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I'm Geovany Batista Polo LAGUERRE, a passionate Data Scientist and Master's student in Mathematics and Applications at the University of the French Antilles. My work focuses on mathematical modeling, data science, machine learning, and decision support tools, with a particular emphasis on applying rigorous mathematical approaches to real-world problems.
+## Welcome
 
-Research Interests
-======
-My research interests span across multiple domains where mathematics meets practical applications:
+I'm **Geovany Batista Polo LAGUERRE**, a Data Scientist and Master's student in Mathematics and Applications at the Université des Antilles. I combine rigorous mathematical foundations with modern data engineering practices to solve real-world problems in environmental modeling, public health, data science, and scientific computing.
 
-- **Mathematical Modeling**: Development of compartmental models and differential equations for environmental and public health applications
-- **Data Engineering**: Building scalable, modern data platforms using technologies like DuckDB, Apache Iceberg, and Trino
-- **Machine Learning & Deep Learning**: Applying advanced ML techniques to scientific and business problems
-- **Statistical Analysis**: Statistical modeling, mathematical statistics, and data analysis
-- **Scientific Computing**: Developing research-grade tools for numerical methods and symbolic mathematics
+---
 
-Current Research
-======
-I am currently involved in research on differential equations for mathematical modeling, with a particular focus on environmental contamination models. My recent work includes:
+## Core Strengths
 
-My current Master's research is supervised by **Prof. Pascal Poullet** (University of the French Antilles).
+<svg width="100%" viewBox="0 0 600 280" style="max-width: 100%; height: auto; margin: 20px 0;">
+  <!-- Mathematical Modeling -->
+  <text x="10" y="25" font-size="14" font-weight="bold" fill="#333">Mathematical Modeling</text>
+  <rect x="10" y="35" width="180" height="20" fill="#e8f4f8" stroke="#0066cc" stroke-width="1" rx="3"/>
+  <rect x="10" y="35" width="162" height="20" fill="#0066cc" rx="3"/>
+  <text x="200" y="50" font-size="12" fill="#666">Expert</text>
 
-- **Chlordecone Contamination Modeling**: Developing continuous-time compartmental models to understand the environmental transfer and human exposure to chronic chlordecone contamination in tropical environments
-- **Character Theory in Finite Fields**: Exploring fundamental concepts of finite fields and their character theory, including additive characters and orthogonality relations
+  <!-- Data Engineering -->
+  <text x="10" y="85" font-size="14" font-weight="bold" fill="#333">Data Engineering</text>
+  <rect x="10" y="95" width="180" height="20" fill="#e8f4f8" stroke="#009900" stroke-width="1" rx="3"/>
+  <rect x="10" y="95" width="162" height="20" fill="#009900" rx="3"/>
+  <text x="200" y="110" font-size="12" fill="#666">Advanced</text>
 
-Academic Background
-======
-- **Master's Student** in Mathematics and Applications, University of the French Antilles (Current)
-  - Department of Mathematics and IT, Pointe-à-Pitre, Guadeloupe
-- **Bachelor of Science**, University of the French Antilles
-- **Research Affiliate**, University of Haiti
-  - Laboratoire de Mathématiques et Applications (October 2017 - Present)
+  <!-- Scientific Computing -->
+  <text x="10" y="145" font-size="14" font-weight="bold" fill="#333">Scientific Computing</text>
+  <rect x="10" y="155" width="180" height="20" fill="#e8f4f8" stroke="#ff6600" stroke-width="1" rx="3"/>
+  <rect x="10" y="155" width="162" height="20" fill="#ff6600" rx="3"/>
+  <text x="200" y="170" font-size="12" fill="#666">Expert</text>
 
-Technical Expertise
-======
-My technical skills encompass a broad range of mathematical and computational tools:
+  <!-- Machine Learning -->
+  <text x="10" y="205" font-size="14" font-weight="bold" fill="#333">Machine Learning & AI</text>
+  <rect x="10" y="215" width="180" height="20" fill="#e8f4f8" stroke="#cc0099" stroke-width="1" rx="3"/>
+  <rect x="10" y="215" width="144" height="20" fill="#cc0099" rx="3"/>
+  <text x="200" y="230" font-size="12" fill="#666">Advanced</text>
 
-**Mathematics**: Pure Mathematics, Mathematical Analysis, Group Theory, Statistical Modeling
+  <!-- Statistical Analysis -->
+  <text x="10" y="265" font-size="14" font-weight="bold" fill="#333">Statistical Analysis</text>
+  <rect x="10" y="275" width="180" height="20" fill="#e8f4f8" stroke="#339933" stroke-width="1" rx="3"/>
+  <rect x="10" y="275" width="162" height="20" fill="#339933" rx="3"/>
+  <text x="200" y="290" font-size="12" fill="#666">Expert</text>
+</svg>
 
-**Data Science & ML**: Machine Learning, Deep Learning, Statistical Analysis, Data Analysis
+---
 
-**Programming & Tools**: Python, R, C++, SQL, TypeScript
+**Technical Stack**: Python · R · SQL · C++ · TypeScript | DuckDB · Apache Iceberg · Trino · dbt · Shiny | TensorFlow · Scikit-learn · PyTorch
 
-**Data Engineering**: DuckDB, Apache Iceberg, Arrow Flight, dbt, Trino
+---
 
-**Scientific Computing**: Mathematical modeling, numerical methods, symbolic computation
+## Research Interests
 
-Featured Projects
-======
-I maintain several open-source projects that demonstrate my interdisciplinary approach:
+I am passionate about bridging mathematics and practical application across several interconnected domains:
 
-- **[simulation-chlordecone](https://github.com/Geobatpo07/simulation-chlordecone)**: Mathematical modeling and simulation of seasonal chlordecone contamination using non-autonomous compartmental ODE systems with Shiny visualization
-- **[datahut-duckhouse](https://github.com/Geobatpo07/datahut-duckhouse)**: A modern, modular, multi-tenant analytics platform combining DuckDB, Apache Iceberg, and other modern data stack technologies
-- **[scientific-assistant](https://github.com/Geobatpo07/scientific-assistant)**: A research-grade, local-first multi-agent AI framework for rigorous scientific analysis
-- **[MedicalTriageSystem](https://github.com/Geobatpo07/MedicalTriageSystem)**: C++ application for intelligent patient triage using machine learning (Random Forest)
+<svg width="100%" viewBox="0 0 620 220" style="max-width: 100%; height: auto; margin: 20px 0; overflow: hidden;" preserveAspectRatio="xMidYMid meet">
+  <!-- Domain boxes with text wrapping -->
+  <rect x="10" y="10" width="135" height="90" fill="#e8f4f8" stroke="#0066cc" stroke-width="2" rx="5"/>
+  <text x="20" y="32" font-size="12" font-weight="bold" fill="#0066cc">Mathematical</text>
+  <text x="20" y="46" font-size="12" font-weight="bold" fill="#0066cc">Modeling</text>
+  <text x="20" y="62" font-size="10" fill="#333" font-family="monospace">• Compartmental</text>
+  <text x="20" y="75" font-size="10" fill="#333" font-family="monospace">• Environmental</text>
+  <text x="20" y="88" font-size="10" fill="#333" font-family="monospace">• Health systems</text>
 
-Publications
-======
-My research has been published on academic platforms including ResearchGate:
+  <rect x="160" y="10" width="135" height="90" fill="#f0f8e8" stroke="#009900" stroke-width="2" rx="5"/>
+  <text x="170" y="32" font-size="12" font-weight="bold" fill="#009900">Data</text>
+  <text x="170" y="46" font-size="12" font-weight="bold" fill="#009900">Engineering</text>
+  <text x="170" y="62" font-size="10" fill="#333" font-family="monospace">• Scalable</text>
+  <text x="170" y="75" font-size="10" fill="#333" font-family="monospace">• Modern stacks</text>
+  <text x="170" y="88" font-size="10" fill="#333" font-family="monospace">• ETL automation</text>
 
-1. **Modeling Human Exposure to Chlordecone** (February 2026)
-   - Compartmental modeling of chlordecone exposure pathways
-2. **Exploring Finite Fields and Their Character Theory** (April 2025)
-   - Theoretical exploration of finite field structures and character theory
+  <rect x="310" y="10" width="135" height="90" fill="#fff4e8" stroke="#ff6600" stroke-width="2" rx="5"/>
+  <text x="320" y="32" font-size="12" font-weight="bold" fill="#ff6600">Scientific</text>
+  <text x="320" y="46" font-size="12" font-weight="bold" fill="#ff6600">Computing</text>
+  <text x="320" y="62" font-size="10" fill="#333" font-family="monospace">• Numerical</text>
+  <text x="320" y="75" font-size="10" fill="#333" font-family="monospace">• Symbolic</text>
+  <text x="320" y="88" font-size="10" fill="#333" font-family="monospace">• Reproducible</text>
 
-Contact & Collaboration
-======
-I am always eager to contribute to collaborative projects and deepen my expertise in applied mathematics and scientific computing. Feel free to reach out through any of the platforms linked in my profile.
+  <rect x="460" y="10" width="135" height="90" fill="#f8e8f8" stroke="#cc0099" stroke-width="2" rx="5"/>
+  <text x="470" y="32" font-size="12" font-weight="bold" fill="#cc0099">ML &amp;</text>
+  <text x="470" y="46" font-size="12" font-weight="bold" fill="#cc0099">Statistics</text>
+  <text x="470" y="62" font-size="10" fill="#333" font-family="monospace">• Deep learning</text>
+  <text x="470" y="75" font-size="10" fill="#333" font-family="monospace">• Inference</text>
+  <text x="470" y="88" font-size="10" fill="#333" font-family="monospace">• Predictive</text>
+</svg>
 
-**Location**: Pointe-à-Pitre, Guadeloupe
+For detailed background, education, and professional experience, see my [CV](/cv/).
 
+---
+
+## What I Bring
+
+## What I Bring
+
+✦ **Rigorous Mathematical Foundation** — Pure mathematics, functional analysis, and differential equations as a solid base for modeling and analysis
+
+✦ **Practical Data Science** — From data pipeline architecture to model deployment; experience with Python, R, SQL, and modern tooling
+
+✦ **Interdisciplinary Perspective** — Civil engineering degree + mathematics specialization + hands-on industry experience in data and BI
+
+✦ **Research-Driven Mindset** — Active contribution to environmental modeling, finite field theory, and scientific computing frameworks
+
+✦ **Proven Delivery** — Published research, open-source contributions, and real-world data projects in healthcare and environmental sectors
+
+---
+
+I am focused on **mathematical modeling of complex environmental and ecological systems** under the supervision of **Prof. Pascal Poullet** (Université des Antilles).
+
+### Active Projects
+
+**Chlordecone Contamination Modeling**
+: Developing continuous-time compartmental ODE systems to understand environmental transfer pathways and human exposure dynamics to chronic chlordecone contamination in tropical ecosystems.
+
+**Character Theory in Finite Fields**
+: Exploring additive characters, orthogonality relations, and fundamental structures in finite field theory with applications to theoretical mathematics.
+
+---
+
+## Collaboration & Contact
+
+I welcome opportunities to contribute to collaborative research and projects at the intersection of applied mathematics, data science, and scientific computing.
+
+**Location**: Pointe-à-Pitre, Guadeloupe  
 **Profiles**: [GitHub](https://github.com/Geobatpo07) | [LinkedIn](https://www.linkedin.com/in/geobatpo07) | [ResearchGate](https://www.researchgate.net/profile/Geovany-Batista-Polo-Laguerre) | [ORCID](https://orcid.org/0009-0008-8722-6411)

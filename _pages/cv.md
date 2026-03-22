@@ -11,27 +11,49 @@ redirect_from:
 
 Education
 ======
-* **M.S. in Mathematics and Applications**, University of the French Antilles, 2024-Present
+* **M.S. in Mathematics and Applications**, Université des Antilles, September 2024 - June 2026
   * Department of Mathematics and IT, Pointe-à-Pitre, Guadeloupe
-  * Focus: Mathematical Modeling, Data Science, Decision Support Tools
+  * Track: Modeling and Decision Support Tools
   * Research: Differential Equations for Mathematical Modeling
-  
-* **B.S. in Mathematics**, École Normale Supérieure de l'Université d'État d'Haïti, 2021-2022
 
-* **Engineering Degree (Civil Engineering)**, Faculté des Sciences de l'Université d'État d'Haïti, 2017-2022
+* **B.S. in Mathematics**, École Normale Supérieure de l'Université d'État d'Haïti, November 2021 - July 2022
+
+* **Engineer's Degree (Civil Engineering)**, Faculté des Sciences de l'Université d'État d'Haïti, October 2017 - July 2022
+
+* **MicroMasters®** in Statistics and Data Science – Methods Track, MITx, January 2024
 
 Research Experience
 ======
 * **October 2017 - Present: Student Researcher**
-  * University of Haiti - Laboratoire de Mathématiques et Applications
+  * Université d'État d'Haïti - Laboratoire de Mathématiques et Applications
   * Port-au-Prince, Haiti
   * Research focus: Applied mathematics and mathematical modeling
   
 * **2024-Present: Master's Research**
-  * University of the French Antilles
+  * Université des Antilles
   * Department of Mathematics and IT
   * Current research on differential equations and compartmental modeling
   * Supervisor: Prof. Pascal Poullet
+
+Internships
+======
+* **Stage de recherche - Analyse mathematique et simulation d'un modele de propagation des ultrasons**, Universite des Antilles, Jan 2026-Présent
+  * Pointe-a-Pitre, Guadeloupe
+  * Studied the Westervelt equation and quasilinear strongly damped wave models
+  * Implemented Python numerical simulations (operator splitting and finite differences)
+  * Supervisors: Prof. Pascal Poullet, Ms. Lea Batteux
+
+* **Stage de recherche - Modelisation mathematique appliquée aux cyclones**, Universite des Antilles, Apr 2025-Jun 2025
+  * MEMIAD laboratory, Martinique
+  * Developed ODE/PDE-based atmospheric flow models and asymptotic analysis around the cyclone eye
+  * Implemented numerical simulations in Python (Lax-Friedrichs scheme)
+  * Supervisor: Prof. Maximilian F. Hasler
+
+* **Data Analyst Intern**, Solutions S.A., Jul 2023-Nov 2023
+  * Port-au-Prince, Ouest Department, Haiti
+  * Contributed to ETL process design/testing and reporting automation (.NET, Python)
+  * Supported Power BI dashboard/report maintenance and RADAR BI application reporting
+  * Applied mathematical/statistical analysis for business and operational insights
 
 Teaching Experience
 ======
