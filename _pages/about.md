@@ -15,37 +15,65 @@ I'm **Geovany Batista Polo LAGUERRE**, a Data Scientist and Master's student in 
 
 ## Core Strengths
 
-<svg width="100%" viewBox="0 0 600 280" style="max-width: 100%; height: auto; margin: 20px 0;">
-  <!-- Mathematical Modeling -->
-  <text x="10" y="25" font-size="14" font-weight="bold" fill="#333">Mathematical Modeling</text>
-  <rect x="10" y="35" width="180" height="20" fill="#e8f4f8" stroke="#0066cc" stroke-width="1" rx="3"/>
-  <rect x="10" y="35" width="162" height="20" fill="#0066cc" rx="3"/>
-  <text x="200" y="50" font-size="12" fill="#666">Expert</text>
+```plotly
+{
+  "data": [
+    {
+      "type": "scatterpolar",
+      "r": [95, 92, 89, 88, 90, 87, 85, 91],
+      "theta": [
+        "Mathematical Modeling",
+        "Statistical Inference",
+        "Machine Learning",
+        "Scientific Computing",
+        "Data Engineering",
+        "Optimization & Numerical Methods",
+        "Experimental Design",
+        "Research Communication"
+      ],
+      "fill": "toself",
+      "name": "Applied Mathematics Data Scientist",
+      "line": {
+        "color": "#0B7285",
+        "width": 3
+      },
+      "fillcolor": "rgba(11, 114, 133, 0.28)",
+      "marker": {
+        "size": 6,
+        "color": "#0B7285"
+      },
+      "hovertemplate": "%{theta}: %{r}/100<extra></extra>"
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Competency Radar - Data Scientist in Applied Mathematics Research"
+    },
+    "polar": {
+      "radialaxis": {
+        "visible": true,
+        "range": [0, 100],
+        "tickvals": [20, 40, 60, 80, 100],
+        "ticksuffix": "%",
+        "gridcolor": "rgba(90, 90, 90, 0.20)"
+      },
+      "angularaxis": {
+        "direction": "clockwise"
+      }
+    },
+    "showlegend": false,
+    "height": 560,
+    "margin": {
+      "l": 40,
+      "r": 40,
+      "t": 70,
+      "b": 40
+    }
+  }
+}
+```
 
-  <!-- Data Engineering -->
-  <text x="10" y="85" font-size="14" font-weight="bold" fill="#333">Data Engineering</text>
-  <rect x="10" y="95" width="180" height="20" fill="#e8f4f8" stroke="#009900" stroke-width="1" rx="3"/>
-  <rect x="10" y="95" width="162" height="20" fill="#009900" rx="3"/>
-  <text x="200" y="110" font-size="12" fill="#666">Advanced</text>
-
-  <!-- Scientific Computing -->
-  <text x="10" y="145" font-size="14" font-weight="bold" fill="#333">Scientific Computing</text>
-  <rect x="10" y="155" width="180" height="20" fill="#e8f4f8" stroke="#ff6600" stroke-width="1" rx="3"/>
-  <rect x="10" y="155" width="162" height="20" fill="#ff6600" rx="3"/>
-  <text x="200" y="170" font-size="12" fill="#666">Expert</text>
-
-  <!-- Machine Learning -->
-  <text x="10" y="205" font-size="14" font-weight="bold" fill="#333">Machine Learning & AI</text>
-  <rect x="10" y="215" width="180" height="20" fill="#e8f4f8" stroke="#cc0099" stroke-width="1" rx="3"/>
-  <rect x="10" y="215" width="144" height="20" fill="#cc0099" rx="3"/>
-  <text x="200" y="230" font-size="12" fill="#666">Advanced</text>
-
-  <!-- Statistical Analysis -->
-  <text x="10" y="265" font-size="14" font-weight="bold" fill="#333">Statistical Analysis</text>
-  <rect x="10" y="275" width="180" height="20" fill="#e8f4f8" stroke="#339933" stroke-width="1" rx="3"/>
-  <rect x="10" y="275" width="162" height="20" fill="#339933" rx="3"/>
-  <text x="200" y="290" font-size="12" fill="#666">Expert</text>
-</svg>
+This radar chart provides a holistic view of the competencies required for data science research in applied mathematics.
 
 ---
 
