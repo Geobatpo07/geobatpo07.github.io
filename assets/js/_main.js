@@ -48,35 +48,86 @@ var toggleTheme = () => {
 };
 
 /* ==========================================================================
-   Plotly integration script so that Markdown codeblocks will be rendered
+   Chart.js integration for Markdown codeblocks
    ========================================================================== */
 
-// Read the Plotly data from the code block, hide it, and render the chart as new node. This allows for the 
-// JSON data to be retrieve when the theme is switched. The listener should only be added if the data is 
-// actually present on the page.
-import { plotlyDarkLayout, plotlyLightLayout } from './theme.js';
-let plotlyElements = document.querySelectorAll("pre>code.language-plotly");
-if (plotlyElements.length > 0) {
-  document.addEventListener("readystatechange", () => {
-    if (document.readyState === "complete") {
-      plotlyElements.forEach((elem) => {
-        // Parse the Plotly JSON data and hide it
-        var jsonData = JSON.parse(elem.textContent);
-        elem.parentElement.classList.add("hidden");
+let chartCodeElements = document.querySelectorAll("pre>code.language-chartjs");
 
-        // Add the Plotly node
-        let chartElement = document.createElement("div");
-        elem.parentElement.after(chartElement);
+const chartScriptId = '__chartjs-markdown-script';
 
-        // Set the theme for the plot and render it
-        const theme = (determineComputedTheme() === "dark") ? plotlyDarkLayout : plotlyLightLayout;
-        if (jsonData.layout) {
-          jsonData.layout.template = (jsonData.layout.template) ? { ...theme, ...jsonData.layout.template } : theme;
-        } else {
-          jsonData.layout = { template: theme };
-        }
-        Plotly.react(chartElement, jsonData.data, jsonData.layout);
-      });
+function ensureChartJsLoaded(onReady) {
+  if (typeof Chart !== 'undefined') {
+    onReady();
+    return;
+  }
+
+  let existing = document.getElementById(chartScriptId);
+  if (!existing) {
+    let script = document.createElement('script');
+    script.id = chartScriptId;
+    script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js';
+    script.async = true;
+    script.onload = onReady;
+    document.head.appendChild(script);
+  } else {
+    existing.addEventListener('load', onReady, { once: true });
+  }
+}
+
+function toChartConfigFromCodePayload(payload) {
+  if (payload && payload.type && payload.data) {
+    return payload;
+  }
+
+  return {
+    type: 'radar',
+    data: {
+      labels: [],
+      datasets: []
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  };
+}
+
+function renderMarkdownCharts() {
+  if (chartCodeElements.length === 0) {
+    return;
+  }
+
+  ensureChartJsLoaded(() => {
+    chartCodeElements.forEach((elem, index) => {
+      let payload;
+      try {
+        payload = JSON.parse(elem.textContent);
+      } catch (error) {
+        return;
+      }
+
+      elem.parentElement.classList.add('hidden');
+
+      const chartContainer = document.createElement('div');
+      chartContainer.style.width = '100%';
+      chartContainer.style.height = '460px';
+
+      const chartCanvas = document.createElement('canvas');
+      chartCanvas.id = 'md-chart-' + index;
+      chartContainer.appendChild(chartCanvas);
+
+      elem.parentElement.after(chartContainer);
+
+      const chartConfig = toChartConfigFromCodePayload(payload);
+      new Chart(chartCanvas, chartConfig);
+    });
+  });
+}
+
+if (chartCodeElements.length > 0) {
+  document.addEventListener('readystatechange', () => {
+    if (document.readyState === 'complete') {
+      renderMarkdownCharts();
     }
   });
 }

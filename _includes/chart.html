@@ -1,0 +1,116 @@
+<div style="width: 100%; height: {{ include.height | default: '500px' }};">
+  <canvas id="{{ include.id | default: 'chartjs-chart' }}"></canvas>
+</div>
+
+<script>
+  (function () {
+    {% assign __chart_empty_json = '{}' %}
+
+    var rawData = {{ include.data | jsonify }};
+    var rawOptions = {{ include.options | default: __chart_empty_json | jsonify }};
+    var chartId = "{{ include.id | default: 'chartjs-chart' | escape }}";
+    var chartJsFallbackScriptId = '__chartjs-fallback-script';
+
+    function parseMaybeString(value) {
+      try {
+        if (typeof value === 'string') {
+          var first = JSON.parse(value);
+          if (typeof first === 'string') {
+            return JSON.parse(first);
+          }
+          return first;
+        }
+        return value;
+      } catch (e) {
+        return value;
+      }
+    }
+
+    function toChartJsConfig(data, extraOptions) {
+      if (data && typeof data === 'object' && data.type && data.data) {
+        return {
+          type: data.type,
+          data: data.data,
+          options: Object.assign({}, data.options || {}, extraOptions || {})
+        };
+      }
+
+      return {
+        type: 'radar',
+        data: {
+          labels: [],
+          datasets: []
+        },
+        options: Object.assign({ responsive: true, maintainAspectRatio: false }, extraOptions || {})
+      };
+    }
+
+    function getOrCreateRegistry() {
+      if (!window.__chartJsRegistry) {
+        window.__chartJsRegistry = {};
+      }
+      return window.__chartJsRegistry;
+    }
+
+    function renderChart(config) {
+      var canvas = document.getElementById(chartId);
+      if (!canvas || typeof Chart === 'undefined') {
+        return false;
+      }
+
+      var registry = getOrCreateRegistry();
+      if (registry[chartId] && typeof registry[chartId].destroy === 'function') {
+        registry[chartId].destroy();
+      }
+
+      registry[chartId] = new Chart(canvas, config);
+      return true;
+    }
+
+    function ensureChartJsLoaded(onReady) {
+      if (typeof Chart !== 'undefined') {
+        onReady();
+        return;
+      }
+
+      var existing = document.getElementById(chartJsFallbackScriptId);
+      if (!existing) {
+        var script = document.createElement('script');
+        script.id = chartJsFallbackScriptId;
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js';
+        script.async = true;
+        script.onload = onReady;
+        document.head.appendChild(script);
+      } else {
+        existing.addEventListener('load', onReady, { once: true });
+      }
+    }
+
+    function init() {
+      var parsedData = parseMaybeString(rawData);
+      var parsedOptions = parseMaybeString(rawOptions) || {};
+      var chartConfig = toChartJsConfig(parsedData, parsedOptions);
+
+      if (renderChart(chartConfig)) {
+        return;
+      }
+
+      ensureChartJsLoaded(function () {
+        var retries = 0;
+        var maxRetries = 300;
+        var interval = setInterval(function () {
+          retries += 1;
+          if (renderChart(chartConfig) || retries >= maxRetries) {
+            clearInterval(interval);
+          }
+        }, 50);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>

@@ -1,35 +1,53 @@
 {
-  "data": [
-    {
-      "type": "scatterpolar",
-      "r": [95, 92, 89, 88, 90, 87, 85, 91],
-      "theta": [
-        "Mathematical Modeling",
-        "Statistical Inference",
-        "Machine Learning",
-        "Scientific Computing",
-        "Data Engineering",
-        "Optimization & Numerical Methods",
-        "Experimental Design",
-        "Research Communication"
-      ],
-      "fill": "toself",
-      "line": { "color": "#0B7285", "width": 3 },
-      "fillcolor": "rgba(11,114,133,0.28)"
-    }
-  ],
-  "layout": {
-    "title": "Competency Radar - Data Scientist",
-    "polar": {
-      "radialaxis": {
-        "visible": true,
-        "range": [0, 100]
+  "type": "radar",
+  "data": {
+    "labels": [
+      "Mathematical Modeling",
+      "Statistical Inference",
+      "Machine Learning",
+      "Scientific Computing",
+      "Data Engineering",
+      "Optimization & Numerical Methods",
+      "Experimental Design",
+      "Research Communication"
+    ],
+    "datasets": [
+      {
+        "label": "Competency Profile",
+        "data": [95, 92, 89, 88, 90, 87, 85, 91],
+        "fill": true,
+        "borderColor": "#0B7285",
+        "backgroundColor": "rgba(11,114,133,0.28)",
+        "borderWidth": 3,
+        "pointRadius": 3
+      }
+    ]
+  },
+  "options": {
+    "responsive": true,
+    "maintainAspectRatio": false,
+    "plugins": {
+      "title": {
+        "display": true,
+        "text": "Competency Radar - Data Scientist"
+      },
+      "legend": {
+        "display": false
       }
     },
-    "showlegend": false
-  },
-  "config": {
-    "responsive": true,
-    "displayModeBar": false
+    "scales": {
+      "r": {
+        "beginAtZero": true,
+        "max": 100,
+        "ticks": {
+          "showLabelBackdrop": false
+        }
+      }
+    },
+    "elements": {
+      "line": {
+        "tension": 0.15
+      }
+    }
   }
 }

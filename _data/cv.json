@@ -1,152 +1,250 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
-    "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "name": "Geovany Batista PoloLAGUERRE",
+    "label": "Data Scientist | Applied Mathematics",
+    "email": "lgeovanybatistapolo98@gmail.com",
+    "phone": "+590 690 06 49 54",
+    "website": "https://geobatpo07.github.io",
+    "summary": "Data Scientist with a strong foundation in applied mathematics, focused on transforming complex data into actionable insights for strategic and operational decision-making.",
     "location": {
       "address": "",
-      "postalCode": "",
-      "city": "Earth",
-      "countryCode": "US",
-      "region": ""
+      "postalCode": "97139",
+      "city": "Les Abymes",
+      "countryCode": "GP",
+      "region": "Pointe-a-Pitre"
     },
     "profiles": [
       {
-        "network": "Google Scholar",
-        "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-      },
-      {
-        "network": "ORCID",
-        "username": "",
-        "url": "https://orcid.org/yourorcidurl"
+        "network": "LinkedIn",
+        "username": "geobatpo07",
+        "url": "https://www.linkedin.com/in/geobatpo07"
       },
       {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "Geobatpo07",
+        "url": "https://github.com/Geobatpo07"
+      },
+      {
+        "network": "ResearchGate",
+        "username": "Geovany-Batista-Polo-Laguerre",
+        "url": "https://www.researchgate.net/profile/Geovany-Batista-Polo-Laguerre"
+      },
+      {
+        "network": "ORCID",
+        "username": "0009-0008-8722-6411",
+        "url": "https://orcid.org/0009-0008-8722-6411"
       }
     ]
   },
-  "work": [],
+  "work": [
+    {
+      "name": "Universite des Antilles",
+      "position": "Research Intern - Mathematical Analysis and Simulation of an Ultrasound Propagation Model",
+      "location": "Pointe-a-Pitre, Guadeloupe",
+      "startDate": "2026-01",
+      "endDate": "Present",
+      "summary": "Research internship in applied mathematics focused on mathematical analysis and numerical simulation of nonlinear acoustic wave propagation.",
+      "highlights": [
+        "Studied the Westervelt equation and its quasilinear strongly damped wave structure",
+        "Analyzed the PDE with energy methods and well-posedness considerations",
+        "Developed operator splitting methods (including Strang splitting)",
+        "Implemented a Python finite-difference solver and conducted stability and convergence experiments"
+      ]
+    },
+    {
+      "name": "Universite Quisqueya",
+      "position": "Lecturer in Mathematics",
+      "location": "Port-au-Prince, Departement de l'Ouest, Haiti",
+      "startDate": "2025-09",
+      "endDate": "Present",
+      "summary": "Teaching mathematical foundations for computer science students with applications in computing and technology.",
+      "highlights": [
+        "Teach logic, algebra, calculus, and discrete structures",
+        "Develop analytical thinking, rigorous reasoning, and problem-solving skills",
+        "Connect abstract mathematics to data science and software engineering use cases"
+      ]
+    },
+    {
+      "name": "Universite Quisqueya",
+      "position": "Teaching Assistant in Data Science & AI",
+      "location": "Haiti",
+      "startDate": "2025-05",
+      "endDate": "Present",
+      "summary": "Support students in immersive data science training aligned with industry-oriented curriculum.",
+      "highlights": [
+        "Mentor students in Python, SQL, statistics, machine learning, and data visualization",
+        "Support capstone projects from data wrangling through model deployment",
+        "Run Q&A sessions and code reviews with personalized feedback"
+      ]
+    },
+    {
+      "name": "Solutions S.A.",
+      "position": "Data Analyst (formerly Data Analyst Intern)",
+      "location": "Port-au-Prince, Departement de l'Ouest, Haiti",
+      "startDate": "2023-07",
+      "endDate": "Present",
+      "summary": "Transform data into actionable insights for strategic and operational decision-making.",
+      "highlights": [
+        "Design and maintain ETL pipelines with SQL Server and Microsoft Fabric",
+        "Build and optimize interactive Power BI dashboards and reporting",
+        "Contribute to RADAR BI application reporting and reliability",
+        "Apply statistical analysis and machine learning methods for insights",
+        "Progressed from internship to full Data Analyst role in November 2023"
+      ]
+    },
+    {
+      "name": "Self-Employed",
+      "position": "Mathematics Tutor",
+      "location": "Port-au-Prince, Departement de l'Ouest, Haiti",
+      "startDate": "2015-01",
+      "endDate": "2026-01",
+      "summary": "Private mathematics tutoring focused on problem solving and exam preparation.",
+      "highlights": [
+        "Clarified complex mathematical concepts with tailored pedagogy",
+        "Supported students for exams and structured problem-solving methods",
+        "Helped students improve confidence and academic performance"
+      ]
+    }
+  ],
   "education": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
+      "institution": "Universite des Antilles",
+      "area": "M.S. in Mathematics and Applications (Modeling and Decision-making Tools)",
+      "studyType": "Master of Science",
+      "startDate": "2024-09",
+      "endDate": "2026-06",
       "gpa": null,
       "courses": []
     },
     {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2014",
+      "institution": "Ecole Normale Superieure de l'Universite d'Etat d'Haiti",
+      "area": "B.S. in Mathematics",
+      "studyType": "Bachelor of Science",
+      "startDate": "2021-11",
+      "endDate": "2022-07",
       "gpa": null,
       "courses": []
     },
     {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
-      "studyType": "",
+      "institution": "Faculte des Sciences de l'Universite d'Etat d'Haiti",
+      "area": "Engineer's Degree in Civil Engineering",
+      "studyType": "Engineer's Degree",
+      "startDate": "2017-10",
+      "endDate": "2022-07",
+      "gpa": null,
+      "courses": []
+    },
+    {
+      "institution": "MITx",
+      "area": "MicroMasters in Statistics and Data Science - Methods Track",
+      "studyType": "MicroMasters",
       "startDate": "",
-      "endDate": "2012",
+      "endDate": "2024-01",
       "gpa": null,
       "courses": []
     }
   ],
-  "skills": [],
-  "languages": [],
-  "interests": [],
-  "references": [],
-  "publications": [
+  "certifications": [
     {
-      "name": "Paper Title Number 1",
-      "publisher": "Journal 1",
-      "releaseDate": "2009-10-01",
-      "website": "https://academicpages.github.io/files/paper1.pdf",
-      "summary": "This paper is about the number 1. The number 2 is left for future work."
-    },
-    {
-      "name": "Paper Title Number 2",
-      "publisher": "Journal 1",
-      "releaseDate": "2010-10-01",
-      "website": "https://academicpages.github.io/files/paper2.pdf",
-      "summary": "This paper is about the number 2. The number 3 is left for future work."
-    },
-    {
-      "name": "Paper Title Number 3",
-      "publisher": "Journal 1",
-      "releaseDate": "2015-10-01",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about the number 3. The number 4 is left for future work."
-    },
-    {
-      "name": "Paper Title Number 4",
-      "publisher": "GitHub Journal of Bugs",
-      "releaseDate": "2024-02-17",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about fixing template issue #693."
-    }
-  ],
-  "presentations": [
-    {
-      "name": "Talk 1 on Relevant Topic in Your Field",
-      "event": "UC San Francisco, Department of Testing",
-      "date": "2012-03-01",
-      "location": "San Francisco, CA, USA",
-      "description": ""
-    },
-    {
-      "name": "Tutorial 1 on Relevant Topic in Your Field",
-      "event": "UC-Berkeley Institute for Testing Science",
-      "date": "2013-03-01",
-      "location": "Berkeley, CA, USA",
-      "description": ""
-    },
-    {
-      "name": "Talk 2 on Relevant Topic in Your Field",
-      "event": "London School of Testing",
-      "date": "2014-02-01",
-      "location": "London, UK",
-      "description": ""
-    },
-    {
-      "name": "Conference Proceeding talk 3 on Relevant Topic in Your Field",
-      "event": "Testing Institute of America 2014 Annual Conference",
-      "date": "2014-03-01",
-      "location": "Los Angeles, CA, USA",
-      "description": ""
-    }
-  ],
-  "teaching": [
-    {
-      "course": "Teaching experience 1",
-      "institution": "University 1, Department",
-      "date": "2014-01-01",
-      "role": "Undergraduate course",
-      "description": ""
-    },
-    {
-      "course": "Teaching experience 2",
-      "institution": "University 1, Department",
-      "date": "2015-01-01",
-      "role": "Workshop",
-      "description": ""
-    }
-  ],
-  "portfolio": [
-    {
-      "name": "Portfolio item number 1",
-      "category": "portfolio",
+      "name": "Google Data Analytics Professional Certificate",
+      "issuer": "Google",
       "date": "",
       "url": "",
-      "description": "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+      "credentialId": ""
+    },
+    {
+      "name": "Microsoft Power BI DAX from Scratch",
+      "issuer": "Microsoft",
+      "date": "",
+      "url": "",
+      "credentialId": ""
+    },
+    {
+      "name": "Microsoft Certified: Fabric Data Engineer Associate",
+      "issuer": "Microsoft",
+      "date": "",
+      "url": "",
+      "credentialId": ""
+    },
+    {
+      "name": "Apache Spark SQL for Data Analysts",
+      "issuer": "Databricks",
+      "date": "",
+      "url": "",
+      "credentialId": ""
+    },
+    {
+      "name": "Complete Microsoft SQL Server Database Design Masterclass",
+      "issuer": "Microsoft",
+      "date": "",
+      "url": "",
+      "credentialId": ""
     }
-  ]
+  ],
+  "skills": [
+    {
+      "name": "Mathematics",
+      "keywords": [
+        "Mathematical Modeling",
+        "Differential Equations",
+        "Statistical Modeling",
+        "Numerical Methods"
+      ]
+    },
+    {
+      "name": "Data Science",
+      "keywords": [
+        "Python",
+        "R",
+        "SQL",
+        "Machine Learning",
+        "Power BI"
+      ]
+    },
+    {
+      "name": "Data Engineering",
+      "keywords": [
+        "Microsoft Fabric",
+        "SQL Server",
+        "DuckDB",
+        "Apache Iceberg",
+        "dbt",
+        "Trino"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Haitian Creole",
+      "fluency": "Native or Bilingual"
+    },
+    {
+      "language": "French",
+      "fluency": "Professional Working"
+    },
+    {
+      "language": "English",
+      "fluency": "Professional Working"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Limited Working"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Research Interests",
+      "keywords": [
+        "Environmental and ecological modeling",
+        "Compartmental ODE systems",
+        "Data science for public health",
+        "Scientific computing"
+      ]
+    }
+  ],
+  "references": [],
+  "publications": [],
+  "presentations": [],
+  "teaching": [],
+  "portfolio": []
 }

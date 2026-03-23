@@ -135,6 +135,15 @@ Technical Skills
   * Mathematical Modeling
   * Simulation & Visualization
 
+Certifications
+======
+* Data or Specimen Only Research
+* Microsoft Certified: Fabric Data Engineer Associate
+* Microsoft Certified: Fabric Analytics Engineer Associate
+* Apache Spark SQL for Data Analysts
+* Google Data Analytics Professional Certificate
+* Google Business Intellignce Professional Certificate
+
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
@@ -144,13 +153,6 @@ Publications
 Talks
 ======
 * No conference presentations yet.
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-
 
 Open Source Contributions
 ======

@@ -108,7 +108,10 @@
           <div class="cv-item-date">{{ work.startDate }}{% if work.endDate %} - {{ work.endDate }}{% endif %}</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-item-subtitle">{{ work.company }}</div>
+          <div class="cv-item-subtitle">{{ work.company | default: work.name }}</div>
+          {% if work.location %}
+          <div class="cv-item-detail">{{ work.location }}</div>
+          {% endif %}
           {% if work.summary %}
           <div class="cv-item-detail">{{ work.summary }}</div>
           {% endif %}
@@ -118,6 +121,34 @@
             <li>{{ highlight }}</li>
             {% endfor %}
           </ul>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if cv.certifications.size > 0 %}
+  <!-- Certifications -->
+  <div class="cv-section">
+    <h2>Certifications</h2>
+    <ul class="cv-list">
+      {% for certification in cv.certifications %}
+      <li class="cv-item">
+        <div class="cv-item-header">
+          <div class="cv-item-title">{{ certification.name }}</div>
+          <div class="cv-item-date">{% if certification.date %}{{ certification.date | slice: 0, 4 }}{% endif %}</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-item-subtitle">{{ certification.issuer }}</div>
+          {% if certification.credentialId %}
+          <div class="cv-item-detail">Credential ID: {{ certification.credentialId }}</div>
+          {% endif %}
+          {% if certification.url %}
+          <div class="cv-item-detail">
+            <a href="{{ certification.url }}" target="_blank">View Credential</a>
+          </div>
           {% endif %}
         </div>
       </li>
