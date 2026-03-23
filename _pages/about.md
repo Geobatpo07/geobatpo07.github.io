@@ -136,7 +136,7 @@ For detailed background, education, and professional experience, see my [CV](/cv
 
 ---
 
-I am focused on **mathematical modeling of complex environmental and ecological systems** under the supervision of **Prof. Pascal Poullet** (Université des Antilles).
+I am focused on **mathematical modeling of complex environmental and ecological systems** under the supervision of some professors  at the Université des Antilles.
 
 ### Active Projects
 
