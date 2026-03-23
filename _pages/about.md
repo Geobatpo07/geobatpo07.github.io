@@ -15,43 +15,7 @@ I'm **Geovany Batista Polo LAGUERRE**, a Data Scientist and Master's student in 
 
 ## Core Strengths
 
-{% include plotly.html
-id="radarChart"
-height="560px"
-data='[
-  {
-    "type": "scatterpolar",
-    "r": [95, 92, 89, 88, 90, 87, 85, 91],
-    "theta": [
-      "Mathematical Modeling",
-      "Statistical Inference",
-      "Machine Learning",
-      "Scientific Computing",
-      "Data Engineering",
-      "Optimization & Numerical Methods",
-      "Experimental Design",
-      "Research Communication"
-    ],
-    "fill": "toself",
-    "line": {"color": "#0B7285", "width": 3},
-    "fillcolor": "rgba(11,114,133,0.28)"
-  }
-]'
-layout='{
-  "title": "Competency Radar - Data Scientist",
-  "polar": {
-    "radialaxis": {
-      "visible": true,
-      "range": [0, 100]
-    }
-  },
-  "showlegend": false
-}'
-config='{
-  "responsive": true,
-  "displayModeBar": false
-}'
-%}
+{% include plotly.html id="radarChart" height="560px" data=site.data.radarChart %}
 
 This radar chart provides a holistic view of the competencies required for data science research in applied mathematics.
 
@@ -99,8 +63,6 @@ I am passionate about bridging mathematics and practical application across seve
 For detailed background, education, and professional experience, see my [CV](/cv/).
 
 ---
-
-## What I Bring
 
 ## What I Bring
 
