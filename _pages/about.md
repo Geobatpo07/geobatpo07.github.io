@@ -15,63 +15,7 @@ I'm **Geovany Batista Polo LAGUERRE**, a Data Scientist and Master's student in 
 
 ## Core Strengths
 
-```plotly
-{
-  "data": [
-    {
-      "type": "scatterpolar",
-      "r": [95, 92, 89, 88, 90, 87, 85, 91],
-      "theta": [
-        "Mathematical Modeling",
-        "Statistical Inference",
-        "Machine Learning",
-        "Scientific Computing",
-        "Data Engineering",
-        "Optimization & Numerical Methods",
-        "Experimental Design",
-        "Research Communication"
-      ],
-      "fill": "toself",
-      "name": "Applied Mathematics Data Scientist",
-      "line": {
-        "color": "#0B7285",
-        "width": 3
-      },
-      "fillcolor": "rgba(11, 114, 133, 0.28)",
-      "marker": {
-        "size": 6,
-        "color": "#0B7285"
-      },
-      "hovertemplate": "%{theta}: %{r}/100<extra></extra>"
-    }
-  ],
-  "layout": {
-    "title": {
-      "text": "Competency Radar - Data Scientist in Applied Mathematics Research"
-    },
-    "polar": {
-      "radialaxis": {
-        "visible": true,
-        "range": [0, 100],
-        "tickvals": [20, 40, 60, 80, 100],
-        "ticksuffix": "%",
-        "gridcolor": "rgba(90, 90, 90, 0.20)"
-      },
-      "angularaxis": {
-        "direction": "clockwise"
-      }
-    },
-    "showlegend": false,
-    "height": 560,
-    "margin": {
-      "l": 40,
-      "r": 40,
-      "t": 70,
-      "b": 40
-    }
-  }
-}
-```
+{% include plotly.html id="radarChart" height="560px" data=site.data.radarChart %}
 
 This radar chart provides a holistic view of the competencies required for data science research in applied mathematics.
 
@@ -119,8 +63,6 @@ I am passionate about bridging mathematics and practical application across seve
 For detailed background, education, and professional experience, see my [CV](/cv/).
 
 ---
-
-## What I Bring
 
 ## What I Bring
 
