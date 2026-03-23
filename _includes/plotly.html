@@ -1,0 +1,11 @@
+<div id="{{ include.id }}" style="width: 100%; height: {{ include.height | default: '500px' }}"></div>
+
+<script>
+  (function() {
+    var data = {{ include.data }};
+    var layout = {{ include.layout }};
+    var config = {{ include.config | default: "{}" }};
+
+    Plotly.newPlot("{{ include.id }}", data, layout, config);
+  })();
+</script>
