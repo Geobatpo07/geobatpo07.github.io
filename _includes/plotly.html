@@ -2,12 +2,14 @@
 
 <script>
   (function() {
+    {% comment %} Provide a safe empty JSON default via a Liquid variable to avoid parser issues {% endcomment %}
+    {% assign __plotly_empty_json = '{}' %}
     // Serialize the incoming Liquid value safely into a JS value. `| jsonify` will
     // emit either a JS literal (object/array) or a JSON-encoded string depending
     // on how the include was called. We handle both cases.
     var data_serialized = {{ include.data | jsonify }};
-    var layout_serialized = {{ include.layout | default: '{}' | jsonify }};
-    var config_serialized = {{ include.config | default: '{}' | jsonify }};
+    var layout_serialized = {{ include.layout | default: __plotly_empty_json | jsonify }};
+    var config_serialized = {{ include.config | default: __plotly_empty_json | jsonify }};
 
     function parseMaybeString(s) {
       // If Liquid produced a JS literal (object/array), `typeof s` will be 'object'.
