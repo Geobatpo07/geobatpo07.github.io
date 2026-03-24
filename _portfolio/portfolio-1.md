@@ -12,4 +12,4 @@ Environmental modeling project based on non-autonomous differential equation sys
 - **Approach:** compartmental modeling, numerical simulation, seasonal scenarios.
 - **Stack:** R, Shiny, mathematical modeling.
 
-Link: [github.com/Geobatpo07/simulation-chlordecone](https://github.com/Geobatpo07/simulation-chlordecone)
+Link: [Launch the Shiny app](https://fsu5hs-geovany0batista0polo-laguerre.shinyapps.io/chlordecone-simulation-app/)
