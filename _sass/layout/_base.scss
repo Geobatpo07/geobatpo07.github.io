@@ -2,8 +2,6 @@
    BASE ELEMENTS
    ========================================================================== */
 html {
-  /* sticky footer fix */
-  position: relative;
   min-height: 100%;
 }
 
@@ -11,10 +9,15 @@ body {
   /* Set via _themes.scss */
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
+  --footer-fixed-height: 6.4rem;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
   margin: 0;
   padding: $masthead-height 0 0;
-  padding-bottom: 9em;
+  padding-bottom: calc(var(--footer-fixed-height) + env(safe-area-inset-bottom));
   font-family: $global-font-family;
   line-height: 1.5;
 

@@ -1,0 +1,130 @@
+.blog-shell {
+  --blog-accent: #1f5f9f;
+  --blog-accent-soft: #eaf3fb;
+  --blog-bg-soft: #f7fafc;
+  --blog-border: #e5e7eb;
+  --blog-text-soft: #4b5563;
+
+  margin-top: 0.5rem;
+}
+
+.blog-hero {
+  border: 1px solid var(--blog-border);
+  border-radius: 14px;
+  padding: 1.2rem 1.2rem 1rem;
+  background: linear-gradient(130deg, #f8fbff 0%, #f5fff9 100%);
+  margin-bottom: 1.35rem;
+}
+
+.blog-hero h2 {
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+}
+
+.blog-hero p {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+}
+
+.blog-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.blog-link-chip {
+  display: inline-block;
+  border: 1px solid var(--blog-border);
+  border-radius: 999px;
+  background: #fff;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.blog-link-chip:hover {
+  border-color: var(--blog-accent);
+  text-decoration: none;
+}
+
+.blog-section-title {
+  margin-top: 1.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.blog-note {
+  color: var(--blog-text-soft);
+  font-size: 0.94rem;
+  margin-bottom: 0.8rem;
+}
+
+.blog-feed {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+
+.blog-card {
+  background: #fff;
+  border: 1px solid var(--blog-border);
+  border-left: 4px solid var(--blog-accent);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.blog-card-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.blog-card-meta {
+  margin: 0 0 0.35rem;
+  color: var(--blog-text-soft);
+  font-size: 0.9rem;
+}
+
+.blog-card-excerpt {
+  margin: 0;
+}
+
+.blog-empty {
+  border: 1px dashed var(--blog-border);
+  border-radius: 10px;
+  background: var(--blog-bg-soft);
+  padding: 0.9rem 1rem;
+  color: var(--blog-text-soft);
+}
+
+.blog-pill-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.blog-pill-list li {
+  margin: 0;
+}
+
+.blog-pill {
+  display: inline-block;
+  border: 1px solid var(--blog-border);
+  border-radius: 999px;
+  background: var(--blog-accent-soft);
+  padding: 0.28rem 0.7rem;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.blog-pill:hover {
+  border-color: var(--blog-accent);
+  text-decoration: none;
+}
+
+.blog-year-title {
+  margin-top: 1rem;
+}

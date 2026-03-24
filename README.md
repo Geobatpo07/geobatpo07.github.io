@@ -63,6 +63,29 @@ docker compose down
 - Teaching entries: `_teaching/`
 - Portfolio entries: `_portfolio/`
 
+## Blog Publishing Workflow
+
+Use this workflow to publish articles regularly:
+
+1. Start from the draft template in `_drafts/post-draft.md`.
+2. Write your article and update `title`, `categories`, `tags`, `excerpt`, and content.
+3. Move it to `_posts/` with a date-based filename:
+	- `YYYY-MM-DD-your-article-slug.md`
+4. Keep permalink style consistent:
+	- `/posts/YYYY/MM/your-article-slug/`
+5. Run locally with Docker and review:
+	- `docker compose up --build`
+	- open `http://localhost:4000/year-archive/`
+6. Commit and push to publish on GitHub Pages.
+
+Suggested article themes for this site:
+
+- applied machine learning case studies
+- statistical modeling and validation
+- data engineering pipelines
+- dashboards and data storytelling
+- mathematics for data science practice
+
 ## Project Structure (Key Paths)
 
 ```text
