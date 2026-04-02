@@ -7,6 +7,7 @@ excerpt: "Preprint on compartmental modeling of human exposure to chlordecone in
 date: 2026-02-01
 venue: 'ResearchGate (Preprint)'
 paperurl: 'https://www.researchgate.net/publication/400336573_Modelisation_de_l''exposition_humaine_au_chlordecone'
+doi: '10.13140/RG.2.2.36238.01607'
 citation: "Geovany B. P., Laguerre (2026). &quot;Modélisation de l'exposition humaine au chlordécone.&quot; <i>ResearchGate Preprint</i>."
 ---
 

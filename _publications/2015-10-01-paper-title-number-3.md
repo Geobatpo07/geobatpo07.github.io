@@ -6,7 +6,6 @@ permalink: /publication/in-preparation-environmental-risk-models
 excerpt: 'Work in preparation on ODE-based modeling for environmental risk and decision support.'
 date: 2026-03-01
 venue: 'Manuscript in preparation'
-citation: 'Geovany B. P., Laguerre (in preparation). &quot;Differential Equation Models for Environmental Risk.&quot;'
 ---
 
 This in-preparation manuscript extends my work on non-autonomous dynamical systems applied to environmental challenges.

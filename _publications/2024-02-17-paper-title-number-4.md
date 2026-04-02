@@ -7,6 +7,7 @@ excerpt: 'Presentation of the fundamental concepts of finite fields and characte
 date: 2025-04-01
 venue: 'ResearchGate (Presentation)'
 paperurl: 'https://www.researchgate.net/publication/391127704_Exploring_Finite_Fields_and_Their_Character_Theory_Geovany_Batista_Polo_LAGUERRE_Master''s_Student_in_Mathematics_and_Applications_at_the_Universite_des_Antilles_de_la_Guadeloupe'
+doi: '10.13140/RG.2.2.13837.45285'
 citation: 'Geovany B. P., Laguerre (2025). &quot;Exploring Finite Fields and Their Character Theory.&quot; <i>ResearchGate Presentation</i>.'
 ---
 
