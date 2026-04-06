@@ -37,11 +37,11 @@ Research Experience
 
 Internships
 ======
-* **Stage de recherche - Analyse mathematique et simulation d'un modele de propagation des ultrasons**, Universite des Antilles, Jan 2026-Présent
+* **Stage de recherche - Analyse mathematique et simulation d'un modele de propagation des ultrasons**, Universite des Antilles, Jan 2026-Present
   * Pointe-a-Pitre, Guadeloupe
   * Studied the Westervelt equation and quasilinear strongly damped wave models
   * Implemented Python numerical simulations (operator splitting and finite differences)
-  * Supervisors: Prof. Pascal Poullet, Ms. Lea Batteux
+  * Supervisors: Prof. Pascal Poullet, Prof. Lea Batteux
 
 * **Stage de recherche - Modelisation mathematique appliquée aux cyclones**, Universite des Antilles, Apr 2025-Jun 2025
   * MEMIAD laboratory, Martinique
@@ -49,7 +49,9 @@ Internships
   * Implemented numerical simulations in Python (Lax-Friedrichs scheme)
   * Supervisor: Prof. Maximilian F. Hasler
 
-* **Data Analyst Intern**, Solutions S.A., Jul 2023-Nov 2023
+Work Experience
+======
+* **Data Analyst**, Solutions S.A., Jul 2023-Present
   * Port-au-Prince, Ouest Department, Haiti
   * Contributed to ETL process design/testing and reporting automation (.NET, Python)
   * Supported Power BI dashboard/report maintenance and RADAR BI application reporting
