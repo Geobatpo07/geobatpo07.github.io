@@ -1,5 +1,5 @@
 ---
-title: "Mathematics Tutor (Self-Employed)"
+title: "Mathematics Tutor"
 collection: teaching
 type: "Private Tutoring"
 permalink: /teaching/mathematics-tutor
