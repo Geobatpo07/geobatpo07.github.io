@@ -104,5 +104,18 @@ I am focused on **mathematical modeling of complex environmental and ecological 
 
 I welcome opportunities to contribute to collaborative research and projects at the intersection of applied mathematics, data science, and scientific computing.
 
+<section class="rdv-panel">
+  <h3 class="rdv-title">Book a 30-minute causerie</h3>
+  <p class="rdv-subtitle">
+    For research ideas, collaborations, mentoring, or a quick data conversation, you can book a slot directly below.
+  </p>
+  <p>
+    <a href="/causerie/">Open the scheduling page</a> or use the direct Calendly link:
+    <a href="https://calendly.com/geobatpo07/30-minutes-de-causerie" target="_blank" rel="noopener noreferrer">
+      calendly.com/geobatpo07/30-minutes-de-causerie
+    </a>
+  </p>
+</section>
+
 **Location**: Pointe-à-Pitre, Guadeloupe  
 **Profiles**: [GitHub](https://github.com/Geobatpo07) | [LinkedIn](https://www.linkedin.com/in/geobatpo07) | [ResearchGate](https://www.researchgate.net/profile/Geovany-Batista-Polo-Laguerre) | [ORCID](https://orcid.org/0009-0008-8722-6411)

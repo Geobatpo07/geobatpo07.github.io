@@ -25,6 +25,9 @@ main:
     
   - title: "CV"
     url: /cv/
+
+  - title: "Book a Call"
+    url: /causerie/
     
   # - title: "CV"
   #   url: /cv-json/

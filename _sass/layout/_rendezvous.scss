@@ -1,0 +1,68 @@
+.rdv-panel {
+  margin: 2rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  background-color: rgba(127, 127, 127, 0.04);
+}
+
+.rdv-title {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.rdv-subtitle {
+  margin-top: 0;
+}
+
+.rdv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.rdv-chip {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: var(--global-text-color);
+  background-color: rgba(127, 127, 127, 0.06);
+}
+
+.rdv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.rdv-note {
+  margin-top: 0.8rem;
+  font-size: 0.92rem;
+  opacity: 0.85;
+}
+
+.rdv-embed-shell {
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--global-bg-color);
+}
+
+.rdv-embed {
+  width: 100%;
+  min-height: 720px;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .rdv-panel {
+    padding: 1rem;
+  }
+
+  .rdv-embed {
+    min-height: 820px;
+  }
+}
