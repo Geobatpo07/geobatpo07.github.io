@@ -71,7 +71,7 @@ Teaching Experience
   * Tools: Pandas, NumPy, Scikit-learn, Matplotlib, Jupyter Notebooks
   * Contribute to curriculum refinement with the lead instructor; run Q&A and code reviews
 
-* **Mathematics Tutor (Self-Employed)**, Jan 2015-Jan 2026
+* **Mathematics Tutor**, Jan 2015-Jan 2026
   * Port-au-Prince, Ouest Department, Haiti
   * Explain complex concepts clearly; support exam preparation and problem-solving strategies
   * Adapt pedagogy to individual student needs and confidence building
