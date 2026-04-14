@@ -19,9 +19,6 @@ main:
 
   - title: "Supervisors"
     url: /supervisors/
-    
-  - title: "Portfolio"
-    url: /portfolio/
         
   # - title: "Blog Posts"
   #  url: /year-archive/

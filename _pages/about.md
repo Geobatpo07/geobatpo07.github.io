@@ -14,10 +14,10 @@ I'm **Geovany Batista Polo LAGUERRE**, a Data Scientist and Master's student in 
 <section>
   <h2>Scientific Storytelling</h2>
   <p>
-    I also explore scientific and environmental phenomena through narrative and data visualization on my platform Geo Stories.
+    I also explore scientific and environmental phenomena through narrative and data visualization on my platform Geo's Stories.
   </p>
   <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer">
-    Explore Geo Stories
+    Explore Geo's Stories
   </a>
 </section>
 
