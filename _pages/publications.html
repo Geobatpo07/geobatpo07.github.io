@@ -10,13 +10,25 @@ author_profile: true
 {% endif %}
 
 {% include base_path %}
+{% assign publications_sorted = site.publications | sort: 'date' | reverse %}
 
 <!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
     {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
+
+    <!-- Published first -->
+    {% for post in publications_sorted %}
       {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% assign venue_down = post.venue | default: '' | downcase %}
+      {% assign title_down = post.title | default: '' | downcase %}
+      {% assign is_preparation = false %}
+      {% if venue_down contains 'in preparation' or venue_down contains 'en preparation' or venue_down contains 'en préparation' or title_down contains 'in preparation' or title_down contains 'en preparation' or title_down contains 'en préparation' %}
+        {% assign is_preparation = true %}
+      {% endif %}
+      {% if is_preparation %}
         {% continue %}
       {% endif %}
       {% unless title_shown %}
@@ -25,9 +37,54 @@ author_profile: true
       {% endunless %}
       {% include archive-single.html %}
     {% endfor %}
+
+    <!-- Then manuscripts in preparation -->
+    {% for post in publications_sorted %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% assign venue_down = post.venue | default: '' | downcase %}
+      {% assign title_down = post.title | default: '' | downcase %}
+      {% assign is_preparation = false %}
+      {% if venue_down contains 'in preparation' or venue_down contains 'en preparation' or venue_down contains 'en préparation' or title_down contains 'in preparation' or title_down contains 'en preparation' or title_down contains 'en préparation' %}
+        {% assign is_preparation = true %}
+      {% endif %}
+      {% unless is_preparation %}
+        {% continue %}
+      {% endunless %}
+      {% unless title_shown %}
+        <h2>{{ category[1].title }}</h2><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
   {% endfor %}
 {% else %}
-  {% for post in site.publications reversed %}
+  <!-- Published first -->
+  {% for post in publications_sorted %}
+    {% assign venue_down = post.venue | default: '' | downcase %}
+    {% assign title_down = post.title | default: '' | downcase %}
+    {% assign is_preparation = false %}
+    {% if venue_down contains 'in preparation' or venue_down contains 'en preparation' or venue_down contains 'en préparation' or title_down contains 'in preparation' or title_down contains 'en preparation' or title_down contains 'en préparation' %}
+      {% assign is_preparation = true %}
+    {% endif %}
+    {% if is_preparation %}
+      {% continue %}
+    {% endif %}
+    {% include archive-single.html %}
+  {% endfor %}
+
+  <!-- Then manuscripts in preparation -->
+  {% for post in publications_sorted %}
+    {% assign venue_down = post.venue | default: '' | downcase %}
+    {% assign title_down = post.title | default: '' | downcase %}
+    {% assign is_preparation = false %}
+    {% if venue_down contains 'in preparation' or venue_down contains 'en preparation' or venue_down contains 'en préparation' or title_down contains 'in preparation' or title_down contains 'en preparation' or title_down contains 'en préparation' %}
+      {% assign is_preparation = true %}
+    {% endif %}
+    {% unless is_preparation %}
+      {% continue %}
+    {% endunless %}
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}

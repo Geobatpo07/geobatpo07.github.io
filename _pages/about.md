@@ -11,6 +11,16 @@ redirect_from:
 
 I'm **Geovany Batista Polo LAGUERRE**, a Data Scientist and Master's student in Mathematics and Applications at the Université des Antilles. I combine rigorous mathematical foundations with modern data engineering practices to solve real-world problems in environmental modeling, public health, data science, and scientific computing.
 
+<section>
+  <h2>Scientific Storytelling</h2>
+  <p>
+    I also explore scientific and environmental phenomena through narrative and data visualization on my platform Geo Stories.
+  </p>
+  <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer">
+    Explore Geo Stories
+  </a>
+</section>
+
 ---
 
 ## Core Strengths

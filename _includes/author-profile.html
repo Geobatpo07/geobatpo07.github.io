@@ -129,6 +129,9 @@
       {% if author.linkedin %}
         <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}"><i class="fab fa-fw fa-linkedin icon-pad-right" aria-hidden="true"></i>LinkedIn</a></li>
       {% endif %}      
+      {% if author.geo_stories %}
+        <li><a href="{{ author.geo_stories }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe icon-pad-right" aria-hidden="true"></i>Geo's Stories</a></li>
+      {% endif %}
       {% if author.mastodon %}
         <li><a href="{{ author.mastodon }}"><i class="fab fa-fw fa-mastodon icon-pad-right" aria-hidden="true"></i>Mastodon</a></li>
       {% endif %}
