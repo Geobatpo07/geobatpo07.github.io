@@ -38,13 +38,13 @@ Research Experience
 Internships
 ======
 * **Stage de recherche - Analyse mathematique et simulation d'un modele de propagation des ultrasons**, Universite des Antilles, Jan 2026-Present
-  * Pointe-a-Pitre, Guadeloupe
+  * Laboratoire de Mathématiques Informatiques et Applications (LAMIA), Guadeloupe
   * Studied the Westervelt equation and quasilinear strongly damped wave models
   * Implemented Python numerical simulations (operator splitting and finite differences)
   * Supervisors: Prof. Pascal Poullet, Prof. Lea Batteux
 
 * **Stage de recherche - Modelisation mathematique appliquée aux cyclones**, Universite des Antilles, Apr 2025-Jun 2025
-  * MEMIAD laboratory, Martinique
+  * Management, Économie, Modélisation, Informatique et Aide à la Décision (MEMIAD), Martinique
   * Developed ODE/PDE-based atmospheric flow models and asymptotic analysis around the cyclone eye
   * Implemented numerical simulations in Python (Lax-Friedrichs scheme)
   * Supervisor: Prof. Maximilian F. Hasler
