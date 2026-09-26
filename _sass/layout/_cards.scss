@@ -191,7 +191,8 @@ html[data-theme="dark"] .status-badge--featured {
   margin: 2rem 0 1.5rem;
 }
 
-.project-filters__search {
+.project-filters__search,
+input[type="search"].project-filters__search {
   display: block;
   box-sizing: border-box;
   width: 100%;
