@@ -1,0 +1,35 @@
+# ==========================================================================
+# EDUCATION — shown on every track page, in this order.
+# `tracks` is optional here: omit it to show an entry everywhere.
+# See docs/CONTENT.md.
+# ==========================================================================
+
+- degree:
+    fr: "Master Mathématiques et applications, parcours MOAD"
+    en: "Master's in Mathematics and Applications, MOAD track"
+  detail:
+    fr: "Modélisation et outils d'aide à la décision, orientation environnement et santé"
+    en: "Mathematical modelling and decision support tools, environment and health focus"
+  institution: "Université des Antilles"
+  start: "2024"
+  end: "2026"
+
+- degree:
+    fr: "MicroMasters Statistics and Data Science"
+    en: "MicroMasters in Statistics and Data Science"
+  institution: "MIT (MITx)"
+  end: "2024"
+
+- degree:
+    fr: "Licence de mathématiques"
+    en: "Bachelor's degree in Mathematics"
+  institution: "École Normale Supérieure, Université d'État d'Haïti"
+  start: "2021"
+  end: "2022"
+
+- degree:
+    fr: "Diplôme d'ingénieur civil"
+    en: "Civil Engineering degree"
+  institution: "Faculté des Sciences, Université d'État d'Haïti"
+  start: "2017"
+  end: "2022"

@@ -1,0 +1,68 @@
+# ==========================================================================
+# TRACKS — the three career tracks the site presents.
+#
+# Keys (software, data, research) are the identifiers used in the `tracks`
+# field of experience.yml, projects.yml, skills.yml, education.yml and
+# certifications.yml. Every displayed string is a {fr, en} pair.
+# See docs/CONTENT.md.
+# ==========================================================================
+
+software:
+  url: /software/
+  icon: "fa-solid fa-code"
+  cv: CV_Laguerre_Software.pdf
+  nav: { fr: "Software", en: "Software" }
+  card_title: { fr: "Software engineering", en: "Software engineering" }
+  card_text:
+    fr: "Applications C#/.NET et Java, API REST, microservices."
+    en: "C#/.NET and Java applications, REST APIs, microservices."
+  title: { fr: "Ingénierie logicielle", en: "Software Engineering" }
+  tagline:
+    fr: "Applications C#/.NET et Java, API REST et microservices, de la logique métier au déploiement conteneurisé."
+    en: "C#/.NET and Java applications, REST APIs and microservices, from business logic to containerized deployment."
+  seo_title:
+    fr: "Software Engineer C#/.NET, Java, TypeScript"
+    en: "Software Engineer: C#/.NET, Java, TypeScript"
+  seo_description:
+    fr: "Geovany Laguerre, développeur full-stack : C#/ASP.NET Core, Java/Spring Boot, TypeScript, microservices, API REST, Docker. Expérience, projets et CV."
+    en: "Geovany Laguerre, full-stack developer: C#/ASP.NET Core, Java/Spring Boot, TypeScript, microservices, REST APIs, Docker. Experience, projects and CV."
+
+data:
+  url: /data/
+  icon: "fa-solid fa-chart-column"
+  cv: CV_Laguerre_Data.pdf
+  nav: { fr: "Data", en: "Data" }
+  card_title: { fr: "Data et analytics", en: "Data & analytics" }
+  card_text:
+    fr: "Pipelines ETL, Microsoft Fabric, Power BI, qualité des données."
+    en: "ETL pipelines, Microsoft Fabric, Power BI, data quality."
+  title: { fr: "Data et analytics", en: "Data & Analytics" }
+  tagline:
+    fr: "Pipelines ETL, architectures Lakehouse et tableaux de bord, avec une attention constante à la qualité des données."
+    en: "ETL pipelines, lakehouse architectures and dashboards, with steady attention to data quality."
+  seo_title:
+    fr: "Data Engineer, Data Analyst : Fabric, Power BI, SQL, Python"
+    en: "Data Engineer, Data Analyst: Fabric, Power BI, SQL, Python"
+  seo_description:
+    fr: "Geovany Laguerre, data engineer et data analyst : Microsoft Fabric, Power BI, SQL, Python, dbt, DuckDB. Certifié DP-700 et DP-600. Expérience, projets et CV."
+    en: "Geovany Laguerre, data engineer and data analyst: Microsoft Fabric, Power BI, SQL, Python, dbt, DuckDB. DP-700 and DP-600 certified. Experience, projects and CV."
+
+research:
+  url: /research/
+  icon: "fa-solid fa-square-root-variable"
+  cv: CV_Laguerre_Research.pdf
+  nav: { fr: "Research", en: "Research" }
+  card_title: { fr: "Research et teaching", en: "Research & teaching" }
+  card_text:
+    fr: "Modélisation mathématique, calcul scientifique, enseignement."
+    en: "Mathematical modelling, scientific computing, teaching."
+  title: { fr: "Recherche et enseignement", en: "Research & Teaching" }
+  tagline:
+    fr: "Modélisation mathématique et calcul scientifique, et enseignement des mathématiques pour l'informatique."
+    en: "Mathematical modelling and scientific computing, and teaching mathematics for computer science."
+  seo_title:
+    fr: "Recherche en mathématiques appliquées et enseignement"
+    en: "Applied Mathematics Research and Teaching"
+  seo_description:
+    fr: "Geovany Laguerre : modélisation par EDO, analyse numérique, calcul scientifique, publications et enseignement des mathématiques pour l'informatique."
+    en: "Geovany Laguerre: ODE modelling, numerical analysis, scientific computing, publications, and teaching mathematics for computer science."
