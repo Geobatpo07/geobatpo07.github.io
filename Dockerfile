@@ -22,7 +22,7 @@ RUN chown -R vscode:vscode /usr/src/app
 USER vscode
 
 # Copy Gemfile into the container (necessary for `bundle install`)
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock* ./
 
 
 
