@@ -1,0 +1,33 @@
+{% comment %}
+  One project card. Params: project, research (true to show the research framing).
+{% endcomment %}
+{% assign p = include.project %}
+<li>
+  <article class="tracks-card">
+    <div class="tracks-card__head">
+      <h3>{{ p.name }}</h3>
+      {% if p.status %}<span class="tracks-status">{{ t.status[p.status] }}</span>{% endif %}
+    </div>
+    <p>{{ p.description[lang] }}</p>
+    <ul class="tracks-badges" aria-label="Stack">
+      {% for s in p.stack %}<li>{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}</li>{% endfor %}
+    </ul>
+    {% if include.research and p.research %}
+    <details class="tracks-research">
+      <summary>{{ t.research_details }}</summary>
+      <dl>
+        <dt>{{ t.question }}</dt><dd>{{ p.research.question[lang] }}</dd>
+        <dt>{{ t.motivation }}</dt><dd>{{ p.research.motivation[lang] }}</dd>
+        <dt>{{ t.methodology }}</dt><dd>{{ p.research.methodology[lang] }}</dd>
+        <dt>{{ t.contribution }}</dt><dd>{{ p.research.contribution[lang] }}</dd>
+      </dl>
+    </details>
+    {% endif %}
+    <ul class="tracks-card__links">
+      {% if p.github %}<li><a href="{{ p.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> {{ t.source }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
+      {% if p.private %}<li class="tracks-card__private">{{ t.private_repo }}</li>{% endif %}
+      {% if p.case_study %}<li><a href="{{ base_path }}{{ p.case_study }}"{% if lang != "en" %} hreflang="en"{% endif %}>{{ t.case_study }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
+      {% for link in p.links %}<li><a href="{{ link.url }}">{{ link.label[lang] }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endfor %}
+    </ul>
+  </article>
+</li>

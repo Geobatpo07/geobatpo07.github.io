@@ -1,0 +1,55 @@
+---
+layout: default
+---
+{% comment %}
+  Home page: umbrella identity, entry points to the three tracks, and the
+  projects flagged `featured: true` in _data/projects.yml. No profile sidebar.
+{% endcomment %}
+{% include base_path %}
+{% assign lang = page.lang | default: "en" %}
+{% assign t = site.data.i18n[lang] %}
+
+<main id="main" class="tracks-main">
+  <section class="home-hero" aria-labelledby="home-title">
+    <p class="home-hero__eyebrow">{{ t.eyebrow }}</p>
+    <h1 class="home-hero__title" id="home-title">{{ t.headline }}</h1>
+    <p class="home-hero__stack"><span class="visually-hidden">{{ t.stack_label }} </span>C#/.NET · Java · Python · TypeScript · SQL</p>
+    <div class="home-hero__actions">
+      <a class="btn btn--large" href="{{ base_path }}/files/CV_Laguerre.pdf" type="application/pdf">
+        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> {{ t.cv_general }}
+      </a>
+      <a class="btn btn--large btn--outline" href="{{ base_path }}/causerie/">{{ t.contact_me }}</a>
+    </div>
+  </section>
+
+  <section class="tracks-section" aria-labelledby="tracks-title">
+    <h2 id="tracks-title">{{ t.tracks_heading }}</h2>
+    <ul class="tracks-grid">
+      {% for entry in site.data.tracks %}
+        {% assign track = entry[1] %}
+        {% if lang == "fr" %}{% assign track_url = "/fr" | append: track.url %}{% else %}{% assign track_url = track.url %}{% endif %}
+      <li>
+        <a class="tracks-card" href="{{ base_path }}{{ track_url }}">
+          <i class="tracks-card__icon {{ track.icon }}" aria-hidden="true"></i>
+          <h3>{{ track.card_title[lang] }}</h3>
+          <p>{{ track.card_text[lang] }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% assign featured = site.data.projects | where: "featured", true %}
+  {% if featured.size > 0 %}
+  <section class="tracks-section" aria-labelledby="featured-title">
+    <h2 id="featured-title">{{ t.featured_heading }}</h2>
+    <ul class="tracks-grid">
+      {% for project in featured limit: 3 %}
+        {% include tracks/project-card.html project=project %}
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {{ content }}
+</main>

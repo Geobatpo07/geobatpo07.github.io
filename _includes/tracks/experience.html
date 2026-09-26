@@ -1,0 +1,25 @@
+{% assign sort_key = "tracks." | append: track_key %}
+{% assign positions = site.data.experience | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+{% if positions.size > 0 %}
+<section class="tracks-section" id="experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">{{ t.experience }}</h2>
+  <ol class="tracks-timeline">
+    {% for position in positions %}
+    <li>
+      <h3>{{ position.role[lang] }} · {{ position.org }}</h3>
+      <p class="tracks-meta">
+        {% include tracks/period.html start=position.start end=position.end %}
+        {%- if position.location %} · {{ position.location[lang] }}{% endif %}
+        {%- if position.sector %} · {{ position.sector[lang] }}{% endif %}
+      </p>
+      {% assign bullets = position.bullets[track_key] %}
+      {% if bullets %}
+      <ul>
+        {% for bullet in bullets %}<li>{{ bullet[lang] }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}

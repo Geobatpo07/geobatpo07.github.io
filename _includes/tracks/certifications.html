@@ -1,0 +1,18 @@
+{% assign sort_key = "tracks." | append: track_key %}
+{% assign certs = site.data.certifications | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+{% if certs.size > 0 %}
+<section class="tracks-section" id="certifications" aria-labelledby="certifications-title">
+  <h2 id="certifications-title">{{ t.certifications }}</h2>
+  <ul class="tracks-timeline">
+    {% for cert in certs %}
+    <li>
+      <h3>{{ cert.name }}</h3>
+      {% if cert.issuer or cert.detail %}
+      <p class="tracks-meta">{{ cert.issuer }}{% if cert.issuer and cert.detail %} · {% endif %}{% if cert.detail %}{{ cert.detail[lang] }}{% endif %}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% if site.author.credly %}<p><a href="{{ site.author.credly }}">{{ t.verify_credly }}</a></p>{% endif %}
+</section>
+{% endif %}

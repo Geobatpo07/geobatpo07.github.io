@@ -1,0 +1,21 @@
+{% assign sort_key = "tracks." | append: track_key %}
+{% assign categories = site.data.skills | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+{% if categories.size > 0 %}
+<section class="tracks-section" id="skills" aria-labelledby="skills-title">
+  <h2 id="skills-title">{{ t.skills }}</h2>
+  <div class="tracks-skills">
+    {% for category in categories %}
+    <div>
+      <h3>{{ category.category[lang] }}</h3>
+      <ul class="tracks-badges">
+        {% for item in category.items %}
+          {% if item.tracks %}{% unless item.tracks contains track_key %}{% continue %}{% endunless %}{% endif %}
+          {% if item.name %}{% assign item_name = item.name %}{% else %}{% assign item_name = item %}{% endif %}
+          <li>{% if item_name.fr %}{{ item_name[lang] }}{% else %}{{ item_name }}{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
