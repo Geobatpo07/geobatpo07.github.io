@@ -107,10 +107,11 @@ research_experience:
     related_link_label: "The full trajectory"
 
 experience:
-  - title: "Data Analyst"
-    venue: "Solutions S.A., Port-au-Prince, Haiti"
-    dates: "Jul 2023 – Present"
+  - title: "Full-Stack Developer & Data Analyst"
+    venue: "Solutions S.A., Remote"
+    dates: "Jul 2023 – Aug 2026"  # end date to be confirmed
     start_date: "2023-07"
+    end_date: "2026-08"
     responsibilities: "Contributed to ETL process design and testing, and reporting automation using .NET and Python."
     contributions: "Supported Power BI dashboard and report maintenance, and RADAR BI application reporting."
     impact: "Applied mathematical and statistical analysis to support business and operational decision making."
