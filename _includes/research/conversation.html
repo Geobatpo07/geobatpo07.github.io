@@ -1,0 +1,31 @@
+{% comment %}
+  "Research conversation" booking block, shown on /research/ only
+  (moved from the former home page).
+{% endcomment %}
+<section class="tracks-section" id="research-conversation" aria-labelledby="research-conversation-title">
+  {% if page.lang == "fr" %}
+  <h2 id="research-conversation-title">Échanger sur un projet de recherche</h2>
+  <div class="rdv-panel">
+    <p class="rdv-subtitle">
+      Je suis ouvert aux collaborations avec des laboratoires, des universités, des institutions de santé, des entreprises et des équipes pluridisciplinaires.
+      Trente minutes pour parler d'une idée de recherche, d'une collaboration ou d'un problème de données ou de modélisation précis.
+    </p>
+    <p>
+      <a href="https://calendly.com/geobatpo07/30-minutes-de-causerie">Réserver un créneau sur Calendly</a>
+      ou <a href="{{ base_path }}/causerie/" hreflang="en">passer par la page de contact</a>.
+    </p>
+  </div>
+  {% else %}
+  <h2 id="research-conversation-title">Research Conversation</h2>
+  <div class="rdv-panel">
+    <p class="rdv-subtitle">
+      I welcome collaboration with universities, research laboratories, healthcare institutions, industry, public organizations, and interdisciplinary teams.
+      A 30-minute conversation about research ideas, collaboration, or a specific data or modelling problem you're working through.
+    </p>
+    <p>
+      <a href="https://calendly.com/geobatpo07/30-minutes-de-causerie">Book a slot on Calendly</a>
+      or <a href="{{ base_path }}/causerie/">use the contact page</a>.
+    </p>
+  </div>
+  {% endif %}
+</section>
