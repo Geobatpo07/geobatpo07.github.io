@@ -19,8 +19,8 @@ $system-sans-serif           : -apple-system, ".SFNSText-Regular", "San Francisc
 $monospace                  : "SFMono-Regular", Consolas, Monaco, "Lucida Console", monospace;
 
 /* Academic luxury typefaces */
-$body-font                   : "Inter", #{$system-sans-serif};
-$display-font                : "Fraunces", #{$system-serif};
+$body-font                   : "Inter", $system-sans-serif;
+$display-font                : "Fraunces", $system-serif;
 
 /* Sans serif typefaces */
 $sans-serif                 : $body-font;
