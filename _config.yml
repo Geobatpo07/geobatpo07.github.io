@@ -12,7 +12,7 @@ site_theme               : "default" # The available themes options are "default
 title                    : "Geovany Batista Polo LAGUERRE"
 title_separator          : "-"
 name                     : &name "Geovany Batista Polo LAGUERRE"
-description              : &description "Applied Mathematics, Scientific Computing, Data Science & AI Researcher | Master's in Mathematics and Applications"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Software & Data Engineer: C#/.NET, Java, Python, TypeScript, SQL. From mathematical model to production system."
 url                      : https://geovanylaguerre.net # Canonical base URL used for sitemaps, canonical links, and structured data
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,7 +26,7 @@ author:
   avatar           : "Geo_04.png"
   name             : "Geovany Batista Polo LAGUERRE"
   pronouns         : "he/him"  
-  bio              : "Master's in Mathematics and Applications, Mathematical Modelling and Decision Support Tools (Environment & Health) | Applied Mathematics, Scientific Computing & AI"
+  bio              : "Software & Data Engineer | C#/.NET, Java, Python, TypeScript, SQL | Master's in Mathematics and Applications"
   location         : "Paris, France"
   employer         : "Université des Antilles"
   uri              : # URL
@@ -157,7 +157,7 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 : "Geo_04.png" # Social media default site image (stored in /images)
-og_description           : "Research and applied work in applied mathematics, scientific computing, data science, and artificial intelligence, in service of real-world decision support."
+og_description           : "Geovany Laguerre, software and data engineer: applications, data pipelines and mathematical modelling, from mathematical model to production system."
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
