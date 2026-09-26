@@ -193,6 +193,7 @@ html[data-theme="dark"] .status-badge--featured {
 
 .project-filters__search {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   max-width: 420px;
   margin: 0 0 1.25rem;
