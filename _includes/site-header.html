@@ -1,0 +1,54 @@
+{% comment %}
+  Site-wide header: name, main navigation, FR | EN switcher, theme toggle.
+  The language switcher links to the page sharing the same `ref` in the
+  other language, or to that language's home page when there is none.
+{% endcomment %}
+{% assign lang = page.lang | default: "en" %}
+{% assign t = site.data.i18n[lang] %}
+{% if lang == "fr" %}{% assign other_lang = "en" %}{% assign prefix = "/fr" %}{% else %}{% assign other_lang = "fr" %}{% assign prefix = "" %}{% endif %}
+
+{% assign alt_url = site.data.i18n[other_lang].home_url %}
+{% if page.ref %}
+  {% assign alt_pages = site.pages | where: "ref", page.ref | where: "lang", other_lang %}
+  {% if alt_pages.size > 0 %}{% assign alt_url = alt_pages.first.url %}{% endif %}
+{% endif %}
+{% if lang == "fr" %}{% assign fr_url = page.url %}{% assign en_url = alt_url %}{% else %}{% assign fr_url = alt_url %}{% assign en_url = page.url %}{% endif %}
+
+<a class="site-skip" href="#main">{{ t.skip }}</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__name" href="{{ base_path }}{{ t.home_url }}">{{ site.author.name | replace: "LAGUERRE", "Laguerre" }}</a>
+
+    <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="site-header__toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">{{ t.menu }}</span>
+    </button>
+
+    <div id="site-menu" class="site-header__menu">
+      <nav aria-label="{{ t.nav_label }}">
+        <ul class="site-header__links">
+          {% assign item_url = t.home_url %}
+          <li><a href="{{ base_path }}{{ item_url }}"{% if page.url == item_url %} aria-current="page"{% endif %}>{{ t.home }}</a></li>
+          {% for entry in site.data.tracks %}
+            {% assign track = entry[1] %}
+            {% assign item_url = prefix | append: track.url %}
+            <li><a href="{{ base_path }}{{ item_url }}"{% if page.url == item_url %} aria-current="page"{% endif %}>{{ track.nav[lang] }}</a></li>
+          {% endfor %}
+          <li><a href="{{ base_path }}/teaching/"{% if page.url == "/teaching/" %} aria-current="page"{% endif %}>{{ t.teaching }}</a></li>
+          <li><a href="{{ site.author.geo_stories }}">{{ t.blog }}</a></li>
+          <li><a href="{{ base_path }}/causerie/"{% if page.url == "/causerie/" %} aria-current="page"{% endif %}>{{ t.contact }}</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__tools">
+        <ul class="lang-switch" aria-label="{{ t.lang_label }}">
+          <li><a href="{{ base_path }}{{ fr_url }}" lang="fr" hreflang="fr"{% if lang == "fr" %} aria-current="true"{% endif %}>FR</a></li>
+          <li><a href="{{ base_path }}{{ en_url }}" lang="en" hreflang="en"{% if lang == "en" %} aria-current="true"{% endif %}>EN</a></li>
+        </ul>
+        <button id="theme-toggle" class="site-header__theme" type="button" aria-label="{{ t.theme_toggle }}">
+          <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
