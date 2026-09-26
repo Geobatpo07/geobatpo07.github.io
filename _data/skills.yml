@@ -21,7 +21,7 @@
 
 - category: { fr: "Back-end et API", en: "Back end & APIs" }
   tracks: { software: 2 }
-  items: ["ASP.NET Core", "Blazor", "Spring Boot", "API REST", "Microservices", "RabbitMQ", "SignalR", "Entity Framework Core"]
+  items: ["ASP.NET Core", "Blazor", "Spring Boot", { name: { fr: "API REST", en: "REST APIs" } }, "Microservices", "RabbitMQ", "SignalR", "Entity Framework Core"]
 
 - category: { fr: "Front-end", en: "Front end" }
   tracks: { software: 3 }
