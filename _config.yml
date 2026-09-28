@@ -274,25 +274,23 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
+  # _teaching and _publications: detail pages shared by the spaces, with the
+  # neutral chrome (no navigation, "Back" button)
   - scope:
       path: ""
       type: teaching
     values:
       layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
+      space: neutral
+      author_profile: false
   - scope:
       path: ""
       type: publications
     values:
       layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _projects
+      space: neutral
+      author_profile: false
+  # _projects: case studies, neutral chrome through the case-study layout
   - scope:
       path: ""
       type: projects

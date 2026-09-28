@@ -3,9 +3,17 @@ layout: compress
 ---
 
 {% include base_path %}
+{% comment %}
+  Page shell. `chrome` selects the header and footer: a space key
+  (software, data, research), "portal" or "neutral". It comes from
+  page.space, then page.track, then the `space` of the child layout;
+  anything unclassified gets the neutral chrome, which has no navigation.
+  data-space exposes it to scripts/check-isolation.rb.
+{% endcomment %}
+{% assign chrome = page.space | default: page.track | default: layout.space | default: "neutral" %}
 
 <!doctype html>
-<html lang="{{ page.lang | default: site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ page.lang | default: site.locale | slice: 0,2 }}" class="no-js" data-space="{{ chrome }}"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -13,15 +21,12 @@ layout: compress
   <body{% if page.full_width %} class="template--full"{% endif %}>
 
     {% include browser-upgrade.html %}
-    {% include masthead.html %}
+    {% include chrome/header.html %}
 
     {{ content }}
 
     <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
+      {% include chrome/footer.html %}
     </div>
 
     {% include scripts.html %}

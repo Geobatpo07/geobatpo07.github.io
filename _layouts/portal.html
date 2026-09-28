@@ -1,9 +1,11 @@
 ---
 layout: default
+space: portal
 ---
 {% comment %}
-  Home page: umbrella identity, entry points to the three tracks, and the
-  projects flagged `featured: true` in _data/projects.yml. No profile sidebar.
+  Portal (/ and /fr/): the only page listing the three spaces. Name,
+  tagline and one card per space; no global menu. The footer carries the
+  external contact links.
 {% endcomment %}
 {% include base_path %}
 {% assign lang = page.lang | default: "en" %}
@@ -14,12 +16,6 @@ layout: default
     <p class="home-hero__eyebrow">{{ t.eyebrow }}</p>
     <h1 class="home-hero__title" id="home-title">{{ t.headline }}</h1>
     <p class="home-hero__stack"><span class="visually-hidden">{{ t.stack_label }} </span>C#/.NET · Java · Python · TypeScript · SQL</p>
-    <div class="home-hero__actions">
-      <a class="btn btn--large" href="{{ base_path }}/files/CV_Laguerre.pdf" type="application/pdf">
-        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> {{ t.cv_general }}
-      </a>
-      <a class="btn btn--large btn--outline" href="{{ base_path }}/causerie/">{{ t.contact_me }}</a>
-    </div>
   </section>
 
   <section class="tracks-section" aria-labelledby="tracks-title">
@@ -38,18 +34,6 @@ layout: default
       {% endfor %}
     </ul>
   </section>
-
-  {% assign featured = site.data.projects | where: "featured", true %}
-  {% if featured.size > 0 %}
-  <section class="tracks-section" aria-labelledby="featured-title">
-    <h2 id="featured-title">{{ t.featured_heading }}</h2>
-    <ul class="tracks-grid">
-      {% for project in featured limit: 3 %}
-        {% include tracks/project-card.html project=project %}
-      {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
 
   {{ content }}
 </main>

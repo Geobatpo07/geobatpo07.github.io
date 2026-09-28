@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: neutral
 ---
 
 {% include base_path %}
@@ -36,7 +36,6 @@ layout: default
       <div class="rdv-panel" style="margin-top: 2.5rem;">
         <h3 class="rdv-title">Related Research Theme</h3>
         <p class="rdv-subtitle">This project is a concrete instance of the <strong>{{ page.research_theme }}</strong> research theme.</p>
-        <a href="/research/#research-themes" class="btn btn--outline">Explore Research &rarr;</a>
       </div>
       {% endif %}
 
@@ -57,8 +56,6 @@ layout: default
         </div>
       </div>
       {% endif %}
-
-      <p style="margin-top: 2rem;"><a href="{{ page.back_link | default: '/projects/' }}">&larr; {{ page.back_link_label | default: "Back to all projects" }}</a></p>
     </div>
   </article>
 </div>

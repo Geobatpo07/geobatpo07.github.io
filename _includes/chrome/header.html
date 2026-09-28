@@ -1,0 +1,89 @@
+{% comment %}
+  Page header. Its content depends on `chrome` (set by the default layout):
+  - a space key (software, data, research): name linking to the space root,
+    menu limited to the space, FR | EN switcher staying in the space, theme;
+  - "portal": name, FR | EN switcher between the two portal pages, theme;
+  - "neutral": name without link, "Back" button (assets/js/space-header.js),
+    theme. No other navigation.
+  A space header never links to the portal or to another space
+  (checked by scripts/check-isolation.rb).
+{% endcomment %}
+{% assign lang = page.lang | default: "en" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
+{% assign space = site.data.tracks[chrome] %}
+
+{% if space %}
+  {% if lang == "fr" %}{% assign space_root = "/fr" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
+  {% assign fr_root = "/fr" | append: space.url %}
+  {% assign en_root = space.url %}
+{% elsif chrome == "portal" %}
+  {% assign fr_root = site.data.i18n.fr.home_url %}
+  {% assign en_root = site.data.i18n.en.home_url %}
+{% endif %}
+
+{% if space or chrome == "portal" %}
+  {% comment %} The other-language link targets the page sharing the same `ref`, else the other-language root. {% endcomment %}
+  {% if lang == "fr" %}{% assign other_lang = "en" %}{% assign alt_url = en_root %}{% else %}{% assign other_lang = "fr" %}{% assign alt_url = fr_root %}{% endif %}
+  {% if page.ref %}
+    {% assign alt_pages = site.pages | where: "ref", page.ref | where: "lang", other_lang %}
+    {% if alt_pages.size > 0 %}{% assign alt_url = alt_pages.first.url %}{% endif %}
+  {% endif %}
+  {% if lang == "fr" %}{% assign fr_url = page.url %}{% assign en_url = alt_url %}{% else %}{% assign fr_url = alt_url %}{% assign en_url = page.url %}{% endif %}
+{% endif %}
+
+<a class="site-skip" href="#main">{{ t.skip }}</a>
+<header class="space-header{% unless space %} space-header--plain{% endunless %}">
+  <div class="space-header__inner">
+    {% if space %}
+    <a class="space-header__name" href="{{ base_path }}{{ space_root }}">{{ display_name }}</a>
+    {% else %}
+    <span class="space-header__name">{{ display_name }}</span>
+    {% endif %}
+
+    {% if space %}
+    <button class="space-header__toggle" type="button" aria-expanded="false" aria-controls="space-menu">
+      <span class="space-header__toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">{{ t.menu }}</span>
+    </button>
+    {% endif %}
+
+    <div{% if space %} id="space-menu"{% endif %} class="space-header__menu">
+      {% if space %}
+      {% if space.cv_url %}{% assign cv_url = space.cv_url %}{% else %}{% assign cv_url = "/files/" | append: space.cv %}{% endif %}
+      {% assign contact_url = space_root | append: "contact/" %}
+      <nav aria-label="{{ t.nav_label }}">
+        <ul class="space-header__links">
+          <li><a href="{{ base_path }}{{ space_root }}#experience">{{ t.experience }}</a></li>
+          <li><a href="{{ base_path }}{{ space_root }}#projects">{{ t.projects }}</a></li>
+          <li><a href="{{ base_path }}{{ space_root }}#skills">{{ t.skills }}</a></li>
+          {% for item in space.extra_nav %}
+          <li><a href="{{ base_path }}{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}{% if lang != "en" %} hreflang="en"{% endif %}>{{ item.label[lang] }}</a></li>
+          {% endfor %}
+          <li><a href="{{ base_path }}{{ cv_url }}"{% if page.url == cv_url %} aria-current="page"{% endif %}{% unless space.cv_url %} type="application/pdf"{% endunless %}{% if space.cv_url and lang != "en" %} hreflang="en"{% endif %}>{{ t.cv }}</a></li>
+          {% if space.stories %}
+          <li><a href="{{ site.author.geo_stories }}">{{ t.stories }}</a></li>
+          {% endif %}
+          <li><a href="{{ base_path }}{{ contact_url }}"{% if page.url == contact_url %} aria-current="page"{% endif %}>{{ t.contact }}</a></li>
+        </ul>
+      </nav>
+      {% elsif chrome == "neutral" %}
+      <button class="space-header__back btn btn--outline" type="button" data-back hidden>
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ t.back }}
+      </button>
+      {% endif %}
+
+      <div class="space-header__tools">
+        {% if space or chrome == "portal" %}
+        <ul class="lang-switch" aria-label="{{ t.lang_label }}">
+          <li><a href="{{ base_path }}{{ fr_url }}" lang="fr" hreflang="fr"{% if lang == "fr" %} aria-current="true"{% endif %}>FR</a></li>
+          <li><a href="{{ base_path }}{{ en_url }}" lang="en" hreflang="en"{% if lang == "en" %} aria-current="true"{% endif %}>EN</a></li>
+        </ul>
+        {% endif %}
+        <button id="theme-toggle" class="space-header__theme" type="button" aria-label="{{ t.theme_toggle }}">
+          <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

@@ -5,10 +5,13 @@
 
 {% assign seo_lang = page.lang | default: "en" %}
 {% assign seo_track = site.data.tracks[page.track] %}
+{% if page.layout == "contact" %}{% assign seo_contact = site.data.tracks[page.space].contact %}{% endif %}
 
 {% assign seo_title = site.title %}
 {% if seo_track %}
   {% assign seo_title = seo_track.seo_title[seo_lang] | append: " " | append: site.title_separator | append: " " | append: site.title %}
+{% elsif seo_contact %}
+  {% assign seo_title = seo_contact.title[seo_lang] | append: " " | append: site.title_separator | append: " " | append: site.title %}
 {% elsif page.title %}
   {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
 {% endif %}
@@ -16,6 +19,7 @@
 
 {% assign seo_description = page.description | default: page.excerpt | default: site.og_description | default: site.description %}
 {% if seo_track %}{% assign seo_description = seo_track.seo_description[seo_lang] %}{% endif %}
+{% if seo_contact %}{% assign seo_description = seo_contact.seo_description[seo_lang] %}{% endif %}
 {% assign seo_description = seo_description | markdownify | strip_html | strip_newlines | escape_once %}
 
 {% assign seo_image = page.header.image | default: page.header.overlay_image | default: page.image.path | default: page.image | default: site.og_image %}

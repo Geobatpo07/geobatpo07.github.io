@@ -1,7 +1,11 @@
 {% comment %}
   One project card. Params: project, research (true to show the research framing).
+  The case-study link carries ?from=<space> (and &lang=fr) so the neutral
+  page's "Back" button can fall back to this space's root.
 {% endcomment %}
 {% assign p = include.project %}
+{% assign from_query = "?from=" | append: track_key %}
+{% if lang == "fr" %}{% assign from_query = from_query | append: "&amp;lang=fr" %}{% endif %}
 <li>
   <article class="tracks-card">
     <div class="tracks-card__head">
@@ -26,7 +30,7 @@
     <ul class="tracks-card__links">
       {% if p.github %}<li><a href="{{ p.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> {{ t.source }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
       {% if p.private %}<li class="tracks-card__private">{{ t.private_repo }}</li>{% endif %}
-      {% if p.case_study %}<li><a href="{{ base_path }}{{ p.case_study }}"{% if lang != "en" %} hreflang="en"{% endif %}>{{ t.case_study }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
+      {% if p.case_study %}<li><a href="{{ base_path }}{{ p.case_study }}{{ from_query }}"{% if lang != "en" %} hreflang="en"{% endif %}>{{ t.case_study }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
       {% for link in p.links %}<li><a href="{{ link.url }}">{{ link.label[lang] }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endfor %}
     </ul>
   </article>

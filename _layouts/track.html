@@ -2,9 +2,10 @@
 layout: default
 ---
 {% comment %}
-  Track page (software, data, research). Everything is generated from
-  _data/*.yml filtered on `page.track`; the page body, if any, is appended
-  after the generated sections. No profile sidebar.
+  Root page of a space (software, data, research). Everything is generated
+  from _data/*.yml filtered on `page.track`; the page body, if any, is
+  appended after the generated sections. The space header and footer come
+  from the default layout (chrome = page.track).
 {% endcomment %}
 {% include base_path %}
 {% assign lang = page.lang | default: "en" %}
@@ -13,13 +14,6 @@ layout: default
 {% assign track = site.data.tracks[track_key] %}
 
 <main id="main" class="tracks-main">
-  <nav class="tracks-breadcrumb" aria-label="{{ t.breadcrumb }}">
-    <ol>
-      <li><a href="{{ base_path }}{{ t.home_url }}">{{ t.home }}</a></li>
-      <li aria-current="page">{{ track.nav[lang] }}</li>
-    </ol>
-  </nav>
-
   <header class="track-header">
     <div>
       <h1>{{ track.title[lang] }}</h1>

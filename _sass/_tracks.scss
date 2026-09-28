@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRACKS — site header, home page and track pages (software, data, research)
+   TRACKS — page header and footer, portal, space pages and contact pages
    Built on the theme's tokens (_sass/theme/*) so light and dark modes and
    the typography stay consistent with the rest of the site.
    ========================================================================== */
@@ -32,10 +32,10 @@ $tracks-max-width: 1100px;
   }
 }
 
-/* Site header
+/* Page header (_includes/chrome/header.html)
    ========================================================================== */
 
-.site-header {
+.space-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@ $tracks-max-width: 1100px;
   }
 }
 
-.site-header__inner {
+.space-header__inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -65,7 +65,7 @@ $tracks-max-width: 1100px;
   padding: 0 1rem;
 }
 
-.site-header__name {
+.space-header__name {
   color: var(--global-text-color) !important;
   font-family: $display-font;
   font-size: 1.05rem;
@@ -74,7 +74,7 @@ $tracks-max-width: 1100px;
   white-space: nowrap;
 }
 
-.site-header__toggle {
+.space-header__toggle {
   display: none;
   width: 44px;
   height: 44px;
@@ -85,9 +85,9 @@ $tracks-max-width: 1100px;
   cursor: pointer;
 }
 
-.site-header__toggle-bars,
-.site-header__toggle-bars::before,
-.site-header__toggle-bars::after {
+.space-header__toggle-bars,
+.space-header__toggle-bars::before,
+.space-header__toggle-bars::after {
   display: block;
   width: 20px;
   height: 2px;
@@ -96,7 +96,7 @@ $tracks-max-width: 1100px;
   content: "";
 }
 
-.site-header__toggle-bars {
+.space-header__toggle-bars {
   position: relative;
 
   &::before,
@@ -109,13 +109,13 @@ $tracks-max-width: 1100px;
   &::after { top: 6px; }
 }
 
-.site-header__menu {
+.space-header__menu {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
-.site-header__links,
+.space-header__links,
 .lang-switch {
   display: flex;
   flex-wrap: wrap;
@@ -125,7 +125,7 @@ $tracks-max-width: 1100px;
   list-style: none;
 }
 
-.site-header__links a,
+.space-header__links a,
 .lang-switch a {
   display: inline-block;
   padding: 0.35rem 0;
@@ -145,7 +145,7 @@ $tracks-max-width: 1100px;
   }
 }
 
-.site-header__tools {
+.space-header__tools {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -166,7 +166,7 @@ $tracks-max-width: 1100px;
   }
 }
 
-.site-header__theme {
+.space-header__theme {
   width: 36px;
   height: 36px;
   padding: 0;
@@ -179,13 +179,13 @@ $tracks-max-width: 1100px;
 
 /* Burger menu below 925px; without JavaScript the links stay visible. */
 @media (max-width: #{$large - 1px}) {
-  .js .site-header__toggle {
+  .js .space-header__toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  .site-header__menu {
+  .space-header__menu {
     flex-basis: 100%;
     flex-direction: column;
     align-items: flex-start;
@@ -193,7 +193,7 @@ $tracks-max-width: 1100px;
     padding: 0 0 1rem;
   }
 
-  .js .site-header__menu {
+  .js .space-header__menu {
     display: none;
 
     &.is-open {
@@ -201,7 +201,7 @@ $tracks-max-width: 1100px;
     }
   }
 
-  .site-header__links {
+  .space-header__links {
     flex-direction: column;
     width: 100%;
 
@@ -212,7 +212,88 @@ $tracks-max-width: 1100px;
   }
 }
 
-/* Page shell shared by the home and track layouts
+/* Portal and neutral headers have no menu to collapse: one line, the name
+   shrinks first. */
+.space-header--plain .space-header__inner {
+  flex-wrap: nowrap;
+}
+
+.space-header--plain .space-header__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.space-header--plain .space-header__menu {
+  display: flex !important;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+}
+
+.space-header__back {
+  margin: 0;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* Page footer (_includes/chrome/footer.html)
+   ========================================================================== */
+
+.page__footer .space-footer {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-family: $sans-serif;
+}
+
+.space-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: $tracks-max-width;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.space-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: var(--global-footer-link-color, var(--global-text-color));
+    font-size: 0.92rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @extend %tracks-focus;
+    }
+  }
+}
+
+.space-footer__copyright {
+  margin: 0;
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+}
+
+/* Page shell shared by the portal, space and contact layouts
    ========================================================================== */
 
 #main.tracks-main {
@@ -436,21 +517,6 @@ a.tracks-card {
 /* Track page header
    ========================================================================== */
 
-.tracks-breadcrumb ol {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 0 1.5rem;
-  padding: 0;
-  list-style: none;
-  font-size: 0.88rem;
-
-  li + li::before {
-    content: "/";
-    margin: 0 0.5rem;
-    color: var(--global-text-color-light);
-  }
-}
-
 .track-header {
   display: flex;
   flex-wrap: wrap;
@@ -506,4 +572,37 @@ a.tracks-card {
 .tracks-note {
   color: var(--global-text-color-light);
   font-style: italic;
+}
+
+/* Contact pages
+   ========================================================================== */
+
+.contact-intro {
+  max-width: 44rem;
+  margin: 1.5rem 0 0;
+  font-size: 1.05rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+
+  .btn {
+    margin: 0;
+  }
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
 }
