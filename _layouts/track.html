@@ -19,7 +19,8 @@ layout: default
       <h1>{{ track.title[lang] }}</h1>
       <p>{{ track.tagline[lang] }}</p>
     </div>
-    <a class="btn btn--large" href="{{ base_path }}/files/{{ track.cv }}" type="application/pdf">
+    {% include tracks/cv-pdf-url.html space=track lang=lang %}
+    <a class="btn btn--large" href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">
       <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> {{ t.cv_track }} {{ track.nav[lang] }}
     </a>
   </header>

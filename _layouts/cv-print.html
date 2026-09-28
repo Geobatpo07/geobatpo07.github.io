@@ -1,0 +1,163 @@
+---
+---
+{% comment %}
+  Printable CV of a space (/<space>/print/ and /en/<space>/print/), turned
+  into files/<cv_file>_<FR|EN>.pdf by scripts/generate-cv-pdf.mjs.
+  ATS layout: one column, real text, no icon font, A4.
+  Everything comes from _data (tracks.yml `cv` block, experience, projects,
+  skills, education, certifications, i18n labels) and, when
+  `cv.publications` is true, from the _publications collection. An id in
+  `cv.experience` or `cv.projects` that matches nothing renders a
+  data-cv-missing marker, which fails the PDF step.
+  The page belongs to its space (data-space) and links only outside the site.
+{% endcomment %}
+{% assign lang = page.lang | default: "fr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign track_key = page.space %}
+{% assign track = site.data.tracks[track_key] %}
+{% assign cv = track.cv %}
+{% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
+{% assign sort_key = "tracks." | append: track_key %}
+<!doctype html>
+<html lang="{{ lang }}" data-space="{{ track_key }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ display_name }} · {{ cv.headline[lang] }}</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="cv-file" content="{{ track.cv_file }}_{{ lang | upcase }}.pdf">
+  <meta name="cv-max-pages" content="{{ cv.max_pages }}">
+  <link rel="stylesheet" href="{{ '/assets/css/cv-print.css' | relative_url }}">
+</head>
+<body>
+<main class="cv">
+  <header class="cv-header">
+    <h1>{{ display_name }}</h1>
+    <p class="cv-headline">{{ cv.headline[lang] }}</p>
+    <p class="cv-contact">
+      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      <span class="cv-sep">·</span> <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">linkedin.com/in/{{ site.author.linkedin }}</a>
+      <span class="cv-sep">·</span> <a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a>
+      <span class="cv-sep">·</span> {{ t.cv_location }}
+    </p>
+  </header>
+
+  <section>
+    <h2>{{ t.cv_profile }}</h2>
+    <p>{{ cv.summary[lang] }}</p>
+  </section>
+
+  {% if cv.experience.size > 0 %}
+  <section>
+    <h2>{{ t.experience }}</h2>
+    {% for id in cv.experience %}
+      {% assign position = site.data.experience | where: "id", id | first %}
+      {% unless position %}<p data-cv-missing="experience:{{ id }}">experience: {{ id }}</p>{% continue %}{% endunless %}
+    <div class="cv-entry">
+      <h3>{{ position.role[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
+        <span class="cv-meta">— {% include tracks/period.html start=position.start end=position.end -%}
+        {%- if position.location %} · {{ position.location[lang] }}{% endif %}
+        {%- if position.sector %} · {{ position.sector[lang] }}{% endif -%}
+        </span></h3>
+      {% assign bullets = position.bullets[track_key] | where_exp: "b", "b.cv != false" %}
+      {% if bullets.size > 0 %}
+      <ul>
+        {% for bullet in bullets %}<li>{{ bullet[lang] }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if cv.projects.size > 0 %}
+  <section>
+    <h2>{{ t.projects }}</h2>
+    {% for id in cv.projects %}
+      {% assign p = site.data.projects | where: "id", id | first %}
+      {% unless p %}<p data-cv-missing="project:{{ id }}">project: {{ id }}</p>{% continue %}{% endunless %}
+    <div class="cv-entry">
+      <h3>{{ p.name }}{% if p.github %} <span class="cv-sep">·</span> <a class="cv-url" href="{{ p.github }}">{{ p.github | remove: "https://" }}</a>{% elsif p.private %} <span class="cv-sep">·</span> <span class="cv-note">{{ t.private_repo }}</span>{% endif %}</h3>
+      <p>{{ p.description[lang] }} <span class="cv-meta">{{ t.cv_stack }}{{ t.colon }}{% for s in p.stack %}{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}.</span></p>
+      {% if p.links.size > 0 %}
+      <p class="cv-meta">{% for link in p.links %}{{ link.label[lang] }}{{ t.colon }}<a class="cv-url" href="{{ link.url }}">{{ link.url | remove: "https://" }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% assign categories = site.data.skills | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+  {% if categories.size > 0 %}
+  <section>
+    <h2>{{ t.skills }}</h2>
+    <ul class="cv-lines">
+      {% for category in categories %}
+      <li><strong>{{ category.category[lang] }}</strong>{{ t.colon }}
+        {%- assign first_item = true -%}
+        {%- for item in category.items -%}
+          {%- if item.tracks -%}{%- unless item.tracks contains track_key -%}{%- continue -%}{%- endunless -%}{%- endif -%}
+          {%- if item.name -%}{%- assign item_name = item.name -%}{%- else -%}{%- assign item_name = item -%}{%- endif -%}
+          {%- unless first_item %}, {% endunless -%}
+          {%- if item_name.fr -%}{{ item_name[lang] }}{%- else -%}{{ item_name }}{%- endif -%}
+          {%- assign first_item = false -%}
+        {%- endfor -%}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section>
+    <h2>{{ t.education }}</h2>
+    {% for entry in site.data.education %}
+      {% if entry.tracks %}{% unless entry.tracks contains track_key %}{% continue %}{% endunless %}{% endif %}
+    <p class="cv-entry--compact"><strong>{{ entry.degree[lang] }}</strong> · {{ entry.institution }} · <span class="cv-meta">{% include tracks/period.html start=entry.start end=entry.end %}</span></p>
+    {% endfor %}
+  </section>
+
+  {% if cv.publications %}
+    {% assign pubs = site.publications | sort: "date" | reverse %}
+    {% assign published = "" | split: "" %}
+    {% assign preparing = "" | split: "" %}
+    {% for pub in pubs %}
+      {% assign venue_down = pub.venue | default: "" | downcase %}
+      {% if venue_down contains "preparation" or venue_down contains "préparation" %}
+        {% assign preparing = preparing | push: pub %}
+      {% else %}
+        {% assign published = published | push: pub %}
+      {% endif %}
+    {% endfor %}
+    {% if pubs.size > 0 %}
+  <section>
+    <h2>{{ t.publications }}</h2>
+    <ul class="cv-lines">
+      {% for pub in published %}
+      <li>{{ pub.title }}. {{ pub.venue }}, {{ pub.date | date: "%Y" }}.{% if pub.doi %} DOI{{ t.colon }}<a class="cv-url" href="https://doi.org/{{ pub.doi }}">{{ pub.doi }}</a>{% endif %}</li>
+      {% endfor %}
+      {% for pub in preparing %}
+      <li>{{ pub.title | remove: " (In Preparation)" }}. {{ t.in_preparation }}.</li>
+      {% endfor %}
+    </ul>
+  </section>
+    {% endif %}
+  {% endif %}
+
+  {% assign certs = site.data.certifications | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+  {% if certs.size > 0 %}
+    {% if cv.certifications == "line" %}
+  <p class="cv-certs-line"><strong>{{ t.certifications }}</strong>{{ t.colon }}{% for cert in certs %}{{ cert.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+    {% else %}
+  <section>
+    <h2>{{ t.certifications }}</h2>
+    <ul class="cv-lines">
+      {% for cert in certs %}
+      <li>{{ cert.name }}{% if cert.issuer %}{% unless cert.name contains cert.issuer %} · {{ cert.issuer }}{% endunless %}{% endif %}{% if cert.detail %} · {{ cert.detail[lang] }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+    {% endif %}
+  {% endif %}
+</main>
+</body>
+</html>

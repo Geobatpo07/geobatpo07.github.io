@@ -51,7 +51,7 @@
 
     <div{% if space %} id="space-menu"{% endif %} class="space-header__menu">
       {% if space %}
-      {% if space.cv_url %}{% assign cv_url = space.cv_url %}{% else %}{% assign cv_url = "/files/" | append: space.cv %}{% endif %}
+      {% include tracks/cv-pdf-url.html space=space lang=lang %}
       {% assign contact_url = space_root | append: "contact/" %}
       <nav aria-label="{{ t.nav_label }}">
         <ul class="space-header__links">
@@ -61,7 +61,7 @@
           {% for item in space.extra_nav %}
           <li><a href="{{ base_path }}{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}{% if lang != "en" %} hreflang="en"{% endif %}>{{ item.label[lang] }}</a></li>
           {% endfor %}
-          <li><a href="{{ base_path }}{{ cv_url }}"{% if page.url == cv_url %} aria-current="page"{% endif %}{% unless space.cv_url %} type="application/pdf"{% endunless %}{% if space.cv_url and lang != "en" %} hreflang="en"{% endif %}>{{ t.cv }}</a></li>
+          <li><a href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">{{ t.cv }}</a></li>
           {% if space.stories %}
           <li><a href="{{ site.author.geo_stories }}">{{ t.stories }}</a></li>
           {% endif %}

@@ -23,7 +23,8 @@ layout: default
         <a class="btn btn--large" href="mailto:{{ site.author.email }}?subject={{ c.subject | url_encode }}">
           <i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ t.send_email }}
         </a>
-        <a class="btn btn--large btn--outline" href="{{ base_path }}/files/{{ track.cv }}" type="application/pdf">
+        {% include tracks/cv-pdf-url.html space=track lang=lang %}
+        <a class="btn btn--large btn--outline" href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">
           <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> {{ t.cv_track }} {{ track.nav[lang] }}
         </a>
       </div>

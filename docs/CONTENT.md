@@ -75,7 +75,7 @@ Ajoutez une entrée à `_data/experience.yml`. Chaque parcours a sa propre liste
   role:
     fr: "Data Engineer"
     en: "Data Engineer"
-  org: "Acme"
+  org: "Acme"                         # ou { fr: "Indépendant", en: "Self-employed" }
   start: "2026-10"
   # end: "2027-06"                    # omis = poste en cours
   location: { fr: "Paris", en: "Paris" }   # facultatif
@@ -91,6 +91,14 @@ Ajoutez une entrée à `_data/experience.yml`. Chaque parcours a sa propre liste
 ```
 
 Un parcours listé dans `tracks` doit avoir ses puces dans `bullets`. Sinon, le poste s'affiche sans détail.
+
+Pour garder une puce sur le site mais l'écarter du CV généré, ajoutez-lui `cv: false` :
+
+```yaml
+      - fr: "…"
+        en: "…"
+        cv: false
+```
 
 ## Compétences, formation, certifications
 
@@ -128,7 +136,7 @@ permalink: /en/software/
 
 Le titre, la description SEO et le fichier CV viennent de `tracks.yml`. Le contenu écrit sous le front matter est ajouté après les sections générées (c'est le cas de `/research/`).
 
-Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, Compétences), le CV (`cv_url`, sinon le PDF `cv`), les entrées `extra_nav`, Stories si `stories: true`, et la page contact.
+Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, Compétences), le CV PDF de la langue affichée (voir « CV »), les entrées `extra_nav`, Stories si `stories: true`, et la page contact.
 
 **Pages contact.** `_pages/<espace>-contact.md` et `_pages/en/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml` : titre, introduction, objet du mail, `calendly` (réservation intégrée) et `profiles` (liens supplémentaires, clés de `site.author`).
 
@@ -138,15 +146,43 @@ Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, C
 
 ## CV
 
-Les boutons pointent vers `files/` :
+Les CV d'espace ne sont pas déposés à la main : la CI les génère à chaque déploiement, uniquement à partir de `_data/` (et de `_publications/` pour Research).
 
-| Fichier | Page |
-|---|---|
-| `files/CV_Laguerre_Software.pdf` | `/software/` et sa page contact |
-| `files/CV_Laguerre_Data.pdf` | `/data/` et sa page contact |
-| `files/CV_Laguerre_Research.pdf` | `/research/` et sa page contact |
+| Page d'impression | PDF généré | Limite |
+|---|---|---|
+| `/software/print/`, `/en/software/print/` | `files/CV_Laguerre_Software_FR.pdf`, `_EN.pdf` | 1 page |
+| `/data/print/`, `/en/data/print/` | `files/CV_Laguerre_Data_FR.pdf`, `_EN.pdf` | 1 page |
+| `/research/print/`, `/en/research/print/` | `files/CV_Laguerre_Research_FR.pdf`, `_EN.pdf` | 2 pages |
 
-`files/Profile.pdf` reste généré par la CI à partir de `/resume-print/` pour la page `/cv/`. Tant que les trois PDF d'espace ne sont pas déposés, `scripts/check-isolation.rb` ignore leurs liens (`IGNORED_URLS`).
+Le lien « CV » de l'en-tête, le bouton de la racine et celui de la page contact pointent vers le PDF de la langue affichée (une page anglaise hors `/en/`, comme `/cv/`, pointe vers le PDF anglais).
+
+**Contenu : bloc `cv` de `tracks.yml`.**
+
+```yaml
+data:
+  cv_file: CV_Laguerre_Data     # nom de base des PDF : <cv_file>_FR.pdf et <cv_file>_EN.pdf
+  cv:
+    max_pages: 1                # contrôlé en CI
+    headline: { fr: "…", en: "…" }
+    summary:  { fr: "…", en: "…" }
+    experience: [solutions-sa, ayitistats]    # id de experience.yml, dans cet ordre
+    projects: [datahut-duckhouse, nyansa]     # id de projects.yml, dans cet ordre
+    certifications: block       # block : section dédiée ; line : une ligne compacte en fin de page
+    publications: true          # facultatif : liste la collection _publications (Research)
+```
+
+- Puces : celles de l'espace dans `experience.yml`, sauf celles marquées `cv: false`.
+- Compétences, formation et certifications : toutes les entrées de l'espace (mêmes règles que le site).
+- Projets : description, technologies, lien GitHub (ou « Dépôt privé, démo sur demande ») et liens `links`.
+- Publications : les entrées publiées, puis celles « en préparation » (lieu contenant « preparation »).
+- En-tête : nom, `headline`, e-mail, LinkedIn, GitHub (`_config.yml`, `author`) et `cv_location` d'`i18n.yml` (« Île-de-France »). Ni téléphone ni adresse.
+- Libellés des sections : `i18n.yml`.
+
+Mise en page (`_layouts/cv-print.html`, `assets/css/cv-print.scss`) : lisible par les ATS, une colonne, texte réel, sans police d'icônes, A4, police Arial (Liberation Sans, métriquement identique, sur le runner Ubuntu).
+
+**Génération et contrôle.** `scripts/generate-cv-pdf.mjs` (Playwright) produit `Profile.pdf` depuis `/resume-print/`, puis un PDF par page d'impression, nommé par sa balise `<meta name="cv-file">`. L'étape échoue et bloque le déploiement si un CV dépasse `max_pages`, ou si un id du bloc `cv` ne correspond à rien dans `_data/`.
+
+`files/Profile.pdf` reste généré depuis `/resume-print/` (données de `resume.yml`) pour la page `/cv/`.
 
 ## Vérifier
 
@@ -156,7 +192,7 @@ docker compose up --build        # http://localhost:4001
 
 Contrôlez la page de l'espace concerné, en français et en anglais.
 
-La CI lance ensuite html-proofer avec le contrôle d'isolement ; un échec bloque le déploiement. En local, après `bundle exec jekyll build` puis `node scripts/generate-cv-pdf.mjs` :
+La CI génère les PDF puis lance html-proofer avec le contrôle d'isolement ; un échec bloque le déploiement. En local, après `bundle exec jekyll build` puis `node scripts/generate-cv-pdf.mjs` (qui affiche le nombre de pages de chaque CV) :
 
 ```bash
 bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts, isolement des espaces
