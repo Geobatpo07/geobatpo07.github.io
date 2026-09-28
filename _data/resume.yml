@@ -1,189 +1,449 @@
 # ==========================================================================
-# RESUME — single source of truth for all CV/resume content.
+# RESUME — single source of the experience, education, skills,
+# certifications and languages shown on the site and in every CV.
 #
-# Consumed by:
-#   - _pages/cv.md (renders every section below)
-#   - _plugins/resume_engine.rb (computes site.data.resume.timeline and
-#     site.data.resume.total_years_experience from the sections below,
-#     merged with the real site.publications collection)
-#   - scripts/generate-cv-pdf.mjs (renders /cv/ to files/Profile.pdf at
-#     CI build time — see .github/workflows/jekyll.yml)
+# Prepared by _plugins/resume_engine.rb (date labels, bullet references,
+# timeline, years of experience) and validated in CI by
+# scripts/validate_resume.rb. See docs/CONTENT.md.
 #
-# `dates` is the human-readable display string (unchanged from before).
-# `start_date` / `end_date` ("YYYY-MM", or omitted for ongoing) are added
-# purely so the Resume Engine can sort and compute chronology; they encode
-# the exact same dates already in `dates`, nothing new.
+# Prefixes, one per CV:
+#   profile_   the complete CV: /cv/, /en/cv/, files/Profile.pdf, Profile_EN.pdf
+#   software_, data_, research_   a space: its page (/<space>/) and its CV
+#                                 (files/CV_Laguerre_<Space>_<FR|EN>.pdf)
+# Language: every displayed text is a { fr, en } group.
+# Order: the order of this file is the display order everywhere.
 # ==========================================================================
+
 name: "Geovany Batista Polo Laguerre"
-title: "Applied Mathematician & Data Scientist"
 location: "Paris, France"
 email: "mailto:lgeobatpo98@gmail.com"
 linkedin: "https://www.linkedin.com/in/geobatpo07"
 github: "https://github.com/Geobatpo07"
 
-summary: |
-  I hold a Master's degree in Mathematics and Applications from the Université des Antilles, specializing in Mathematical Modelling and Decision Support Tools with a focus on Environment and Health. My work sits at the intersection of applied mathematics, mathematical modelling, and scientific computing, extending into data science and artificial intelligence in service of environmental and healthcare decision support. Alongside my research, I worked as a Data Analyst at Solutions S.A. from 2023 to August 2026, and I teach mathematics and data science at Université Quisqueya.
+# Headline and summary of each CV.
+profile_headline:
+  fr: "Mathématicien appliqué et data scientist"
+  en: "Applied Mathematician & Data Scientist"
+profile_summary:
+  fr: |
+    Titulaire d'un master Mathématiques et applications de l'Université des Antilles, spécialité Modélisation et outils d'aide à la décision, orientation environnement et santé. Mon travail se situe à la croisée des mathématiques appliquées, de la modélisation mathématique et du calcul scientifique, et s'étend à la data science et à l'intelligence artificielle au service de l'aide à la décision en environnement et en santé. En parallèle de mes recherches, j'ai travaillé comme data analyst chez Solutions S.A. de 2023 à août 2026, et j'enseigne les mathématiques et la data science à l'Université Quisqueya.
 
-  My research interests center on building mathematical models rigorous enough to understand complex systems and reliable enough to support real decisions: currently expressed through environmental contamination modelling, numerical methods for wave propagation, and a reproducible AI research framework. My long-term objective is doctoral research at the intersection of scientific computing and artificial intelligence, applied to real-world decision support.
+    Mes recherches visent à construire des modèles mathématiques assez rigoureux pour comprendre des systèmes complexes et assez fiables pour éclairer de vraies décisions : aujourd'hui la modélisation de contaminations environnementales, les méthodes numériques pour la propagation d'ondes et un cadre d'IA reproductible pour la recherche. Mon objectif à long terme est une thèse à la croisée du calcul scientifique et de l'intelligence artificielle, appliquée à l'aide à la décision.
 
-  My areas of expertise span pure and applied mathematics, numerical analysis, statistics and biostatistics, machine learning, and data engineering, grounded throughout in a commitment to reproducibility and interpretability over black-box results.
+    Mes domaines de compétence couvrent les mathématiques pures et appliquées, l'analyse numérique, la statistique et la biostatistique, l'apprentissage automatique et le data engineering, avec un attachement constant à la reproductibilité et à l'interprétabilité plutôt qu'aux boîtes noires.
+  en: |
+    I hold a Master's degree in Mathematics and Applications from the Université des Antilles, specializing in Mathematical Modelling and Decision Support Tools with a focus on Environment and Health. My work sits at the intersection of applied mathematics, mathematical modelling, and scientific computing, extending into data science and artificial intelligence in service of environmental and healthcare decision support. Alongside my research, I worked as a Data Analyst at Solutions S.A. from 2023 to August 2026, and I teach mathematics and data science at Université Quisqueya.
 
-education:
-  - degree: "M.S. in Mathematics and Applications"
-    institution: "Université des Antilles"
-    dates: "Sept 2024 – Jun 2026"
+    My research interests center on building mathematical models rigorous enough to understand complex systems and reliable enough to support real decisions: currently expressed through environmental contamination modelling, numerical methods for wave propagation, and a reproducible AI research framework. My long-term objective is doctoral research at the intersection of scientific computing and artificial intelligence, applied to real-world decision support.
+
+    My areas of expertise span pure and applied mathematics, numerical analysis, statistics and biostatistics, machine learning, and data engineering, grounded throughout in a commitment to reproducibility and interpretability over black-box results.
+
+software_headline:
+  fr: "Développeur Full-Stack C#/.NET · Java"
+  en: "Full-Stack Developer · C#/.NET · Java"
+software_summary:
+  fr: "Développeur full-stack : applications C#/ASP.NET Core et Java/Spring Boot, API REST et microservices conteneurisés avec Docker. De 2023 à 2026, en équipe Scrum dans le secteur de la santé, de la migration d'applications existantes au déploiement."
+  en: "Full-stack developer: C#/ASP.NET Core and Java/Spring Boot applications, REST APIs and microservices containerized with Docker. From 2023 to 2026, in a Scrum team in the healthcare sector, from legacy application migration to deployment."
+
+data_headline:
+  fr: "Data Engineer · Data Analyst"
+  en: "Data Engineer · Data Analyst"
+data_summary:
+  fr: "Data engineer et data analyst certifié Microsoft Fabric (DP-700, DP-600). De 2023 à 2026, pipelines ETL, architectures Lakehouse et tableaux de bord Power BI sur des données de santé, avec une attention constante à leur qualité. Master de mathématiques appliquées."
+  en: "Data engineer and data analyst, Microsoft Fabric certified (DP-700, DP-600). From 2023 to 2026, ETL pipelines, lakehouse architectures and Power BI dashboards on healthcare data, with steady attention to data quality. Master's degree in applied mathematics."
+
+research_headline:
+  fr: "Mathématiques appliquées · Modélisation et calcul scientifique"
+  en: "Applied Mathematics · Modelling and Scientific Computing"
+research_summary:
+  fr: "Master Mathématiques et applications (modélisation et aide à la décision). Modélisation par EDO et EDP, analyse numérique et simulation en Python et R, appliquées à l'environnement et à la santé ; enseignement des mathématiques pour l'informatique."
+  en: "Master's degree in Mathematics and Applications (modelling and decision support). ODE and PDE modelling, numerical analysis and simulation in Python and R, applied to environment and health; teaching mathematics for computer science."
+
+# --------------------------------------------------------------------------
+# EXPERIENCE — every position.
+#   category:   professional | research | teaching (timeline of the full CV)
+#   title, org, location, sector: { fr, en } (org may be a plain string)
+#   start_date / end_date: "YYYY-MM"; omit end_date for an ongoing position
+#   <prefix>_bullets: the position appears on that page / CV with these
+#       bullets: a list of { fr, en }, or the name of another prefix
+#       (e.g. `profile_bullets: research`) or a list of names, to reuse its
+#       bullets. `cv: false` on a bullet keeps it off the CVs.
+#   <space>_cv: false   on the space page but not on the space CV
+#   link / link_label:  optional link shown on the full CV (/cv/)
+#   include_in_timeline: false to leave it out of the timeline
+# --------------------------------------------------------------------------
+experience:
+  - id: solutions-sa
+    category: professional
+    title:
+      fr: "Développeur Full-Stack & Data Analyst"
+      en: "Full-Stack Developer & Data Analyst"
+    org: "Solutions S.A."
+    start_date: "2023-07"
+    end_date: "2026-08"
+    location: { fr: "À distance", en: "Remote" }
+    sector: { fr: "Secteur santé", en: "Healthcare sector" }
+    software_bullets:
+      - fr: "Migration d'une application PHP historique vers Java, avec reprise des données et maintien des interfaces existantes."
+        en: "Migrated a legacy PHP application to Java, including data migration and preservation of existing interfaces."
+      - fr: "Microservices et API REST (Spring Boot, ASP.NET Core), messagerie RabbitMQ, conteneurs Docker sous Linux, supervision avec Grafana."
+        en: "Microservices and REST APIs (Spring Boot, ASP.NET Core), RabbitMQ messaging, Docker containers on Linux, monitoring with Grafana."
+      - fr: "Développement d'applications C# / ASP.NET Core / Blazor : SALVH/OpenMRS Management et la plateforme de reporting RADAR."
+        en: "Built C# / ASP.NET Core / Blazor applications: SALVH/OpenMRS Management and the RADAR reporting platform."
+      - fr: "Travail en équipe Scrum sur Azure DevOps."
+        en: "Worked in a Scrum team on Azure DevOps."
+    data_bullets:
+      - fr: "Architecture analytique sur Microsoft Fabric (Lakehouse, Data Warehouse)."
+        en: "Analytics architecture on Microsoft Fabric (Lakehouse, Data Warehouse)."
+      - fr: "Tableaux de bord Power BI et suivi des indicateurs (KPI) ; contribution à la hausse de la part des sites clients au-dessus de 95 % de performance, d'environ 20 % à environ 60 %."
+        en: "Power BI dashboards and KPI tracking; helped raise the share of client sites above 95% performance from about 20% to about 60%."
+      - fr: "Pipelines ETL et qualité des données de santé, dont une déduplication par machine learning."
+        en: "ETL pipelines and healthcare data quality, including machine-learning-based deduplication."
+      - fr: "Cartographie avec QGIS et Power BI."
+        en: "Mapping with QGIS and Power BI."
+      - fr: "Bases de données SQL Server, MySQL et PostgreSQL."
+        en: "SQL Server, MySQL and PostgreSQL databases."
+    profile_bullets: [data, software]
+
+  - id: ayitistats
+    category: professional
+    title:
+      fr: "Data Engineer (bénévole)"
+      en: "Data Engineer (volunteer)"
+    org: "AYITISTATS"
+    start_date: "2026-08"
+    data_bullets:
+      - fr: "Unification de données statistiques pour une instance Google Data Commons sur Google Cloud (GCP)."
+        en: "Unifying statistical data for a Google Data Commons instance on Google Cloud (GCP)."
+    software_bullets: []   # software bullet to come; listed without detail meanwhile
+    profile_bullets: data
+
+  - id: lamia-internship
+    category: research
+    title:
+      fr: "Stage de recherche M2 : modélisation de la propagation ultrasonore"
+      en: "M2 research internship: ultrasound propagation modelling"
+    org: "LAMIA, Université des Antilles"
+    start_date: "2026-01"
+    end_date: "2026-05"
+    location: { fr: "Guadeloupe", en: "Guadeloupe" }
+    research_bullets:
+      - fr: "Analyse de l'équation de Westervelt et de modèles d'ondes quasi-linéaires fortement amortis."
+        en: "Analysis of the Westervelt equation and of quasilinear strongly damped wave models."
+      - fr: "Simulations numériques en Python par splitting d'opérateurs et différences finies."
+        en: "Numerical simulations in Python using operator splitting and finite differences."
+      - fr: "Encadrement : Pr Pascal Poullet et Pr Léa Batteux."
+        en: "Supervised by Prof. Pascal Poullet and Prof. Léa Batteux."
+    profile_bullets: research
+
+  - id: memiad-internship
+    category: research
+    title:
+      fr: "Stage de recherche : modélisation des écoulements cycloniques"
+      en: "Research internship: cyclone flow modelling"
+    org: "MEMIAD"
+    start_date: "2025-04"
+    end_date: "2025-06"
+    location: { fr: "Martinique", en: "Martinique" }
+    research_bullets:
+      - fr: "Modèles d'écoulement atmosphérique fondés sur des EDO/EDP, et analyse asymptotique au voisinage de l'œil du cyclone."
+        en: "ODE/PDE-based atmospheric flow models, with asymptotic analysis around the cyclone eye."
+      - fr: "Simulations numériques en Python avec un schéma de Lax-Friedrichs."
+        en: "Numerical simulations in Python with a Lax-Friedrichs scheme."
+      - fr: "Encadrement : Pr Maximilian F. Hasler."
+        en: "Supervised by Prof. Maximilian F. Hasler."
+    profile_bullets: research
+
+  - id: uniq-lecturer
+    category: teaching
+    title:
+      fr: "Chargé de cours, mathématiques pour informaticiens"
+      en: "Lecturer, Mathematics for Computer Science"
+    org: "Université Quisqueya"
+    start_date: "2025-09"
+    research_bullets:
+      - fr: "Enseignement des fondements mathématiques des filières informatiques : logique, algèbre, analyse et structures discrètes."
+        en: "Teaching the mathematical foundations of computing programs: logic, algebra, calculus and discrete structures."
+      - fr: "Notes de cours et exercices publiés sur GitHub (Maths-pour-l-Informatique)."
+        en: "Course notes and exercises published on GitHub (Maths-pour-l-Informatique)."
+    data_bullets:
+      - fr: "Cours de mathématiques pour informaticiens, orientés vers leurs usages en data science, en génie logiciel et en technologies web."
+        en: "Mathematics for computer science, taught with a focus on its uses in data science, software engineering and web technologies."
+    profile_bullets: research
+
+  - id: uniq-ta
+    category: teaching
+    title:
+      fr: "Assistant d'enseignement, Data Science & IA"
+      en: "Teaching Assistant, Data Science & AI"
+    org: "Université Quisqueya"
+    start_date: "2025-05"
+    data_bullets:
+      - fr: "Accompagnement d'un cursus pratique mené avec Akademi et aligné sur le programme intensif de la Flatiron School."
+        en: "Supporting a hands-on curriculum run with Akademi and aligned with the Flatiron School immersive program."
+      - fr: "Préparation des données, analyse exploratoire, construction et déploiement de modèles avec Python, Pandas, NumPy, Scikit-learn et Jupyter."
+        en: "Data wrangling, exploratory analysis, model building and deployment with Python, Pandas, NumPy, Scikit-learn and Jupyter."
+      - fr: "Revues de code, séances de questions-réponses et contribution à l'amélioration du programme."
+        en: "Code reviews, Q&A sessions and contributions to curriculum refinement."
+    data_cv: false   # on the data page, off the Data CV (one page)
+    research_bullets:
+      - fr: "Encadrement pratique d'étudiants en data science et IA, en partenariat avec Akademi et la Flatiron School."
+        en: "Hands-on support for Data Science & AI students, in partnership with Akademi and the Flatiron School."
+      - fr: "Revues de code, séances de questions-réponses et contribution à l'amélioration du programme."
+        en: "Code reviews, Q&A sessions and contributions to curriculum refinement."
+    profile_bullets: research
+
+  - id: math-tutor
+    category: teaching
+    title:
+      fr: "Tuteur en mathématiques"
+      en: "Mathematics Tutor"
+    org: { fr: "Indépendant", en: "Self-employed" }
+    start_date: "2015-01"
+    research_bullets:
+      - fr: "Accompagnement durable d'élèves aux profils variés : clarification des notions, préparation aux examens et méthodes de résolution de problèmes structurées."
+        en: "Long-term support for students from diverse backgrounds: clarifying concepts, exam preparation and structured problem-solving methods."
+      - fr: "Pédagogie adaptée à chaque élève, centrée sur la rigueur, l'autonomie et la confiance en soi."
+        en: "Teaching adapted to each student, focused on rigor, autonomy and confidence."
+    profile_bullets: research
+
+  - id: masters-research
+    category: research
+    include_in_timeline: false   # same period and substance as the Master's degree
+    title:
+      fr: "Recherche de master"
+      en: "Master's Research"
+    org:
+      fr: "Université des Antilles, département de mathématiques et informatique"
+      en: "Université des Antilles, Department of Mathematics and IT"
     start_date: "2024-09"
     end_date: "2026-06"
-    track: "Department of Mathematics and IT, Specialization: Mathematical Modelling and Decision Support Tools, Focus: Environment & Health"
-    research_topics: "Differential equations for mathematical modelling"
-    supervisor: "Prof. Pascal Poullet"
-    related_link: "/en/research/"
-    related_link_label: "Related research"
+    profile_bullets:
+      - fr: "Recherche de master dans la spécialité Modélisation et outils d'aide à la décision, orientation environnement et santé."
+        en: "Master's research within the Mathematical Modelling and Decision Support Tools specialization, Environment & Health focus."
+      - fr: "Étude des équations différentielles pour la modélisation mathématique de systèmes complexes."
+        en: "Investigate differential equations for mathematical modelling of complex systems."
+      - fr: "Systèmes d'EDO compartimentaux et non autonomes, appliqués à la contamination environnementale."
+        en: "Compartmental and non-autonomous ODE systems, applied to environmental contamination."
+      - fr: "Encadrement : Pr Pascal Poullet."
+        en: "Supervised by Prof. Pascal Poullet."
+    link: /projects/chlordecone/
+    link_label: { fr: "Projet associé", en: "Related project" }
 
-  - degree: "B.S. in Mathematics"
-    institution: "École Normale Supérieure de l'Université d'État d'Haïti"
-    dates: "Nov 2021 – Jul 2022"
+  - id: student-researcher
+    category: research
+    title:
+      fr: "Étudiant chercheur"
+      en: "Student Researcher"
+    org: "Laboratoire de Mathématiques et Applications, Université d'État d'Haïti"
+    start_date: "2017-10"
+    profile_bullets:
+      - fr: "Activité de recherche indépendante et suivie en mathématiques appliquées."
+        en: "Long-running independent research activity in applied mathematics."
+      - fr: "Exploration de questions de modélisation mathématique et de théorie des corps finis en dehors du cursus."
+        en: "Explore mathematical modelling and finite field theory questions outside of formal coursework."
+      - fr: "Travaux théoriques personnels, dont la théorie des caractères sur les corps finis."
+        en: "Independent theoretical work, including character theory over finite fields."
+      - fr: "Socle du fil des mathématiques appliquées qui traverse toutes les recherches ultérieures."
+        en: "Foundation for the applied mathematics thread running through all later research."
+    link: /about/
+    link_label: { fr: "Le parcours complet", en: "The full trajectory" }
+
+# --------------------------------------------------------------------------
+# EDUCATION — shown on every space and on every CV.
+#   degree, detail: { fr, en }; start_date / end_date: "YYYY-MM"
+#   supervisor, research_focus: { fr, en }, shown on the full CV only
+# --------------------------------------------------------------------------
+education:
+  - degree:
+      fr: "Master Mathématiques et applications, parcours MOAD"
+      en: "Master's in Mathematics and Applications, MOAD track"
+    detail:
+      fr: "Modélisation et outils d'aide à la décision, orientation environnement et santé"
+      en: "Mathematical modelling and decision support tools, environment and health focus"
+    institution: "Université des Antilles"
+    start_date: "2024-09"
+    end_date: "2026-06"
+    research_focus:
+      fr: "Équations différentielles pour la modélisation mathématique"
+      en: "Differential equations for mathematical modelling"
+    supervisor: { fr: "Pr Pascal Poullet", en: "Prof. Pascal Poullet" }
+
+  - degree:
+      fr: "MicroMasters Statistics and Data Science"
+      en: "MicroMasters in Statistics and Data Science"
+    detail: { fr: "Parcours Methods", en: "Methods track" }
+    institution: "MIT (MITx)"
+    end_date: "2024-01"
+
+  - degree:
+      fr: "Licence de mathématiques"
+      en: "Bachelor's degree in Mathematics"
+    institution: "École Normale Supérieure, Université d'État d'Haïti"
     start_date: "2021-11"
     end_date: "2022-07"
 
-  - degree: "Engineer's Degree, Civil Engineering"
-    institution: "Faculté des Sciences de l'Université d'État d'Haïti"
-    dates: "Oct 2017 – Jul 2022"
+  - degree:
+      fr: "Diplôme d'ingénieur civil"
+      en: "Civil Engineering degree"
+    institution: "Faculté des Sciences, Université d'État d'Haïti"
     start_date: "2017-10"
     end_date: "2022-07"
 
-  - degree: "MicroMasters in Statistics and Data Science"
-    institution: "MITx"
-    dates: "Jan 2024"
-    start_date: "2024-01"
-    end_date: "2024-01"
-    track: "Methods track"
-
-research_experience:
-  - title: "M2 Research Internship: Ultrasound Propagation Modelling"
-    venue: "LAMIA, Université des Antilles, Guadeloupe"
-    dates: "Jan 2026 – May 2026"
-    start_date: "2026-01"
-    end_date: "2026-05"
-    context: "Mathematical analysis and simulation of ultrasound propagation models."
-    objectives: "Study the Westervelt equation and quasilinear strongly damped wave models."
-    methods: "Python numerical simulations using operator splitting and finite differences."
-    contribution: "Supervised by Prof. Pascal Poullet and Prof. Léa Batteux."
-
-  - title: "Research Internship: Cyclone Flow Modelling"
-    venue: "MEMIAD, Martinique"
-    dates: "Apr 2025 – Jun 2025"
-    start_date: "2025-04"
-    end_date: "2025-06"
-    context: "Mathematical modelling applied to tropical cyclones."
-    objectives: "Develop ODE/PDE-based atmospheric flow models and asymptotic analysis around the cyclone eye."
-    methods: "Numerical simulations in Python using a Lax-Friedrichs scheme."
-    contribution: "Supervised by Prof. Maximilian F. Hasler."
-
-  - title: "Master's Research"
-    venue: "Université des Antilles, Department of Mathematics and IT"
-    dates: "2024 – Jun 2026"
-    start_date: "2024-01"
-    end_date: "2026-06"
-    # Same period/substance as the M.S. education entry; omitted from the
-    # computed timeline to avoid a redundant milestone.
-    include_in_timeline: false
-    context: "Master's research within the Mathematical Modelling and Decision Support Tools specialization, Environment & Health focus."
-    objectives: "Investigate differential equations for mathematical modelling of complex systems."
-    methods: "Compartmental and non-autonomous ODE systems, applied to environmental contamination."
-    contribution: "Supervised by Prof. Pascal Poullet."
-    related_link: "/projects/chlordecone/"
-    related_link_label: "Related project"
-
-  - title: "Student Researcher"
-    venue: "Laboratoire de Mathématiques et Applications, Université d'État d'Haïti"
-    dates: "Oct 2017 – Present"
-    start_date: "2017-10"
-    context: "Long-running independent research activity in applied mathematics."
-    objectives: "Explore mathematical modelling and finite field theory questions outside of formal coursework."
-    methods: "Independent theoretical work, including character theory over finite fields."
-    contribution: "Foundation for the applied mathematics thread running through all later research."
-    related_link: "/about/"
-    related_link_label: "The full trajectory"
-
-experience:
-  - title: "Full-Stack Developer & Data Analyst"
-    venue: "Solutions S.A., Remote"
-    dates: "Jul 2023 – Aug 2026"
-    start_date: "2023-07"
-    end_date: "2026-08"
-    responsibilities: "Contributed to ETL process design and testing, and reporting automation using .NET and Python."
-    contributions: "Supported Power BI dashboard and report maintenance, and RADAR BI application reporting."
-    impact: "Applied mathematical and statistical analysis to support business and operational decision making."
-    technologies: ["Python", ".NET", "Power BI", "SQL"]
-
-  - title: "Lecturer in Mathematics for Computer Science"
-    venue: "Université Quisqueya (UniQ)"
-    dates: "Sept 2025 – Present"
-    start_date: "2025-09"
-    responsibilities: "Core mathematical foundations for computing-oriented programs."
-
-  - title: "Teaching Assistant, Data Science & AI"
-    venue: "Université Quisqueya (UniQ), in partnership with Akademi and the Flatiron immersive track"
-    dates: "May 2025 – Present"
-    start_date: "2025-05"
-    responsibilities: "Supporting the Data Science & AI track delivered in partnership with Akademi and the Flatiron immersive program."
-
+# --------------------------------------------------------------------------
+# SKILLS — categories of badges.
+#   <prefix>_rank: n   the category appears on that page / CV, at rank n
+#   <space>_cv: false  on the space page but not on the space CV
+#   items: a string, { name: { fr, en } } when it translates, and
+#          `spaces: [...]` to restrict an item to some spaces (the full
+#          CV lists every item)
+# --------------------------------------------------------------------------
 skills:
-  - category: "Mathematical Expertise"
-    items: ["Pure Mathematics", "Mathematical Analysis", "Mathematical Statistics", "Group Theory", "Differential Equations"]
+  - category: { fr: "Langages", en: "Languages" }
+    software_rank: 1
+    data_rank: 1
+    research_rank: 2
+    profile_rank: 1
+    items:
+      - { name: "C#", spaces: [software] }
+      - { name: "Java", spaces: [software] }
+      - "Python"
+      - { name: "TypeScript", spaces: [software] }
+      - { name: "SQL", spaces: [software, data] }
+      - { name: "R", spaces: [data, research] }
+      - { name: "C++", spaces: [research] }
 
-  - category: "Data Science & Machine Learning"
-    items: ["Machine Learning", "Deep Learning", "Statistical Analysis", "Predictive Modelling"]
+  - category: { fr: "Back-end et API", en: "Back end & APIs" }
+    software_rank: 2
+    profile_rank: 7
+    items: ["ASP.NET Core", "Blazor", "Spring Boot", { name: { fr: "API REST", en: "REST APIs" } }, "Microservices", "RabbitMQ", "SignalR", "Entity Framework Core"]
 
-  - category: "Programming Languages"
-    items: ["Python", "R", "C++", "SQL", "TypeScript"]
+  - category: { fr: "Front-end", en: "Front end" }
+    software_rank: 3
+    software_cv: false   # off the Software CV, to keep it on one page
+    profile_rank: 8
+    items: ["Next.js", "React"]
 
-  - category: "Data Engineering & Tools"
-    items: ["DuckDB", "Apache Iceberg", "Arrow Flight", "dbt", "Trino", "Shiny"]
+  - category: { fr: "Bases de données", en: "Databases" }
+    software_rank: 4
+    data_rank: 2
+    profile_rank: 5
+    items:
+      - "SQL Server"
+      - "PostgreSQL"
+      - "MySQL"
+      - { name: "Redis", spaces: [software] }
+      - "DuckDB"
 
-  - category: "Scientific Computing"
-    items: ["Numerical Methods", "Symbolic Mathematics", "Mathematical Modelling", "Simulation & Visualization"]
+  - category: { fr: "DevOps et outillage", en: "DevOps & tooling" }
+    software_rank: 5
+    data_rank: 6
+    profile_rank: 9
+    items:
+      - "Docker"
+      - "Linux"
+      - "Git"
+      - { name: "Azure DevOps", spaces: [software] }
+      - { name: "GitHub Actions", spaces: [software] }
+      - { name: "Jenkins", spaces: [software] }
+      - { name: "Grafana", spaces: [software] }
+      - { name: "Scrum", spaces: [software] }
 
-  - category: "Engineering Tools"
-    items: ["Git", "GitHub", "Docker"]
+  - category: { fr: "Data engineering", en: "Data engineering" }
+    data_rank: 3
+    profile_rank: 3
+    items: ["Microsoft Fabric (Lakehouse, Data Warehouse)", "ETL", "dbt", "Apache Iceberg", "Trino", "Arrow Flight", "Spark SQL", "Google Cloud (GCP)"]
 
+  - category: { fr: "BI et visualisation", en: "BI & visualization" }
+    data_rank: 4
+    profile_rank: 6
+    items: ["Power BI", "QGIS", "Shiny"]
+
+  - category: { fr: "Machine learning et IA", en: "Machine learning & AI" }
+    data_rank: 5
+    research_rank: 3
+    profile_rank: 4
+    items:
+      - "Scikit-learn"
+      - "Pandas"
+      - "NumPy"
+      - "RAG"
+      - { name: { fr: "Systèmes multi-agents", en: "Multi-agent systems" } }
+      - { name: { fr: "LLM locaux (Ollama)", en: "Local LLMs (Ollama)" } }
+
+  - category: { fr: "Mathématiques et calcul scientifique", en: "Mathematics & scientific computing" }
+    research_rank: 1
+    data_rank: 7
+    profile_rank: 2
+    items:
+      - { name: { fr: "Statistiques et probabilités", en: "Statistics & probability" } }
+      - { name: { fr: "Équations différentielles (EDO, EDP)", en: "Differential equations (ODE, PDE)" }, spaces: [research] }
+      - { name: { fr: "Analyse numérique", en: "Numerical analysis" }, spaces: [research] }
+      - { name: { fr: "Différences finies, splitting d'opérateurs", en: "Finite differences, operator splitting" }, spaces: [research] }
+      - { name: { fr: "Modélisation compartimentale", en: "Compartmental modelling" } }
+      - { name: { fr: "Calcul symbolique", en: "Symbolic computation" }, spaces: [research] }
+
+# --------------------------------------------------------------------------
+# CERTIFICATIONS — on the full CV, and on the spaces listed in `spaces`.
+#   detail: { fr, en } shown everywhere; description: { fr, en } full CV only
+# Microsoft certifications appear on data and software; Databricks and
+# Google ones on data only. Verification: site.author.credly.
+# --------------------------------------------------------------------------
 certifications:
-  - name: "Microsoft Certified: Fabric Data Engineer Associate"
+  - name: "Microsoft Certified: Fabric Data Engineer Associate (DP-700)"
     issuer: "Microsoft"
-    description: "Designing and implementing data engineering solutions on Microsoft Fabric."
+    spaces: [data, software]
+    description:
+      fr: "Conception et mise en œuvre de solutions de data engineering sur Microsoft Fabric."
+      en: "Designing and implementing data engineering solutions on Microsoft Fabric."
 
-  - name: "Microsoft Certified: Fabric Analytics Engineer Associate"
+  - name: "Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)"
     issuer: "Microsoft"
-    description: "Building analytics solutions and semantic models on Microsoft Fabric."
-
-  - name: "Google Data Analytics Professional Certificate"
-    issuer: "Google"
-    description: "Data cleaning, analysis, and visualization fundamentals for analytics work."
-
-  - name: "Google Business Intelligence Professional Certificate"
-    issuer: "Google"
-    description: "BI processes, dashboarding, and stakeholder reporting."
+    spaces: [data, software]
+    description:
+      fr: "Construction de solutions analytiques et de modèles sémantiques sur Microsoft Fabric."
+      en: "Building analytics solutions and semantic models on Microsoft Fabric."
 
   - name: "Apache Spark SQL for Data Analysts"
     issuer: "Databricks"
-    description: "Querying and analyzing large-scale data with Spark SQL."
+    spaces: [data]
+    description:
+      fr: "Interrogation et analyse de données à grande échelle avec Spark SQL."
+      en: "Querying and analyzing large-scale data with Spark SQL."
+
+  - name: "Google Data Analytics Professional Certificate"
+    issuer: "Google"
+    spaces: [data]
+    description:
+      fr: "Fondamentaux du nettoyage, de l'analyse et de la visualisation de données."
+      en: "Data cleaning, analysis, and visualization fundamentals for analytics work."
+
+  - name: "Google Business Intelligence Professional Certificate"
+    issuer: "Google"
+    spaces: [data]
+    description:
+      fr: "Processus BI, tableaux de bord et reporting aux parties prenantes."
+      en: "BI processes, dashboarding, and stakeholder reporting."
 
   - name: "Data or Specimen Only Research"
-    description: "Research ethics training for studies involving data or specimens only."
+    spaces: [research]
+    detail:
+      fr: "Formation à l'éthique de la recherche sur données ou échantillons"
+      en: "Research ethics training for studies involving data or specimens only"
 
-# Empty for now; the CV page renders a placeholder until entries exist.
+# --------------------------------------------------------------------------
+# Full CV only.
+# --------------------------------------------------------------------------
+languages:
+  - language: { fr: "Français", en: "French" }
+    level: { fr: "Courant", en: "Fluent" }
+  - language: { fr: "Anglais", en: "English" }
+    level: { fr: "Avancé", en: "Proficient" }
+  - language: { fr: "Espagnol", en: "Spanish" }
+    level: { fr: "Conversationnel", en: "Conversational" }
+
+# Empty for now; the full CV shows a placeholder until entries exist.
 awards: []
 
-languages:
-  - language: "French"
-    level: "Fluent"
-
-  - language: "English"
-    level: "Proficient"
-
-  - language: "Spanish"
-    level: "Conversational"
-
-# Empty for now — no interests content exists on the site yet; not fabricated.
+# Empty for now: no interests content exists on the site yet; not fabricated.
 interests: []

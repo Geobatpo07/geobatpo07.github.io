@@ -4,11 +4,12 @@
   Printable CV of a space (/<space>/print/ and /en/<space>/print/), turned
   into files/<cv_file>_<FR|EN>.pdf by scripts/generate-cv-pdf.mjs.
   ATS layout: one column, real text, no icon font, A4.
-  Everything comes from _data (tracks.yml `cv` block, experience, projects,
-  skills, education, certifications, i18n labels) and, when
-  `cv.publications` is true, from the _publications collection. An id in
-  `cv.experience` or `cv.projects` that matches nothing renders a
-  data-cv-missing marker, which fails the PDF step.
+  Everything comes from _data: resume.yml (<space>_headline, <space>_summary,
+  experience with <space>_bullets, skills with <space>_rank, education,
+  certifications), projects.yml (projects whose `cv` lists the space, in
+  the space's order), tracks.yml (`cv`: max_pages, certifications,
+  publications), i18n.yml, and, when `cv.publications` is true, the
+  _publications collection of the page language.
   The page belongs to its space (data-space) and links only outside the site.
   A CV allowed more than one page (Research) gets the airy layout: dates,
   stack and links on their own lines, education with its detail.
@@ -20,16 +21,24 @@
 {% assign track_key = page.space %}
 {% assign track = site.data.tracks[track_key] %}
 {% assign cv = track.cv %}
+{% assign resume = site.data.resume %}
+{% assign headline_key = track_key | append: "_headline" %}
+{% assign summary_key = track_key | append: "_summary" %}
+{% assign headline = resume[headline_key] %}
+{% assign summary = resume[summary_key] %}
 {% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
 {% assign sort_key = "tracks." | append: track_key %}
+{% assign bullets_key = track_key | append: "_bullets" %}
+{% assign rank_key = track_key | append: "_rank" %}
 {% assign airy = false %}{% if cv.max_pages > 1 %}{% assign airy = true %}{% endif %}
 <!doctype html>
 <html lang="{{ lang }}" data-space="{{ track_key }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ display_name }} · {{ cv.headline[lang] }}</title>
+  <title>{{ display_name }} · {{ headline[lang] }}</title>
   <meta name="robots" content="noindex,nofollow">
+  {% include hreflang.html %}
   <meta name="cv-file" content="{{ track.cv_file }}_{{ lang | upcase }}.pdf">
   <meta name="cv-max-pages" content="{{ cv.max_pages }}">
   <link rel="stylesheet" href="{{ '/assets/css/cv-print.css' | relative_url }}">
@@ -39,7 +48,7 @@
 <main class="cv{% if airy %} cv--airy{% endif %}">
   <header class="cv-header">
     <h1>{{ display_name }}</h1>
-    <p class="cv-headline">{{ cv.headline[lang] }}</p>
+    <p class="cv-headline">{{ headline[lang] }}</p>
     <p class="cv-contact">
       <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
       <span class="cv-sep">·</span> <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">linkedin.com/in/{{ site.author.linkedin }}</a>
@@ -50,29 +59,28 @@
 
   <section>
     <h2>{{ t.cv_profile }}</h2>
-    <p>{{ cv.summary[lang] }}</p>
+    <p>{{ summary[lang] }}</p>
   </section>
 
-  {% if cv.experience.size > 0 %}
+  {% assign positions = resume.experience | where_exp: "x", "x.cv_on contains track_key" %}
+  {% if positions.size > 0 %}
   <section>
     <h2>{{ t.experience }}</h2>
-    {% for id in cv.experience %}
-      {% assign position = site.data.experience | where: "id", id | first %}
-      {% unless position %}<p data-cv-missing="experience:{{ id }}">experience: {{ id }}</p>{% continue %}{% endunless %}
+    {% for position in positions %}
     <div class="cv-entry">
       {% capture position_meta %}
-        {%- include tracks/period.html start=position.start end=position.end -%}
+        {{- position.dates[lang] -}}
         {%- if position.location %} · {{ position.location[lang] }}{% endif %}
         {%- if position.sector %} · {{ position.sector[lang] }}{% endif -%}
       {% endcapture %}
       {% if airy %}
-      <h3>{{ position.role[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
+      <h3>{{ position.title[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
       <p class="cv-meta">{{ position_meta }}</p>
       {% else %}
-      <h3>{{ position.role[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
+      <h3>{{ position.title[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
         <span class="cv-meta">— {{ position_meta }}</span></h3>
       {% endif %}
-      {% assign bullets = position.bullets[track_key] | where_exp: "b", "b.cv != false" %}
+      {% assign bullets = position[bullets_key] | where_exp: "b", "b.cv != false" %}
       {% if bullets.size > 0 %}
       <ul>
         {% for bullet in bullets %}<li>{{ bullet[lang] }}</li>{% endfor %}
@@ -83,12 +91,11 @@
   </section>
   {% endif %}
 
-  {% if cv.projects.size > 0 %}
+  {% assign cv_projects = site.data.projects | where_exp: "x", "x.cv contains track_key" | sort: sort_key %}
+  {% if cv_projects.size > 0 %}
   <section>
     <h2>{{ t.projects }}</h2>
-    {% for id in cv.projects %}
-      {% assign p = site.data.projects | where: "id", id | first %}
-      {% unless p %}<p data-cv-missing="project:{{ id }}">project: {{ id }}</p>{% continue %}{% endunless %}
+    {% for p in cv_projects %}
     <div class="cv-entry">
       <h3>{{ p.name }}{% if p.github %} <span class="cv-sep">·</span> <a class="cv-url" href="{{ p.github }}">{{ p.github | remove: "https://" }}</a>{% elsif p.private %} <span class="cv-sep">·</span> <span class="cv-note">{{ t.private_repo }}</span>{% endif %}</h3>
       {% capture project_stack %}{{ t.cv_stack }}{{ t.colon }}{% for s in p.stack %}{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endcapture %}
@@ -109,7 +116,7 @@
   </section>
   {% endif %}
 
-  {% assign categories = site.data.skills | where_exp: "x", "x.tracks contains track_key" | where_exp: "x", "x.cv != false" | sort: sort_key %}
+  {% assign categories = resume.skills | where_exp: "x", "x.cv_on contains track_key" | sort: rank_key %}
   {% if categories.size > 0 %}
   <section>
     <h2>{{ t.skills }}</h2>
@@ -118,7 +125,7 @@
       <li><strong>{{ category.category[lang] }}</strong>{{ t.colon }}
         {%- assign first_item = true -%}
         {%- for item in category.items -%}
-          {%- if item.tracks -%}{%- unless item.tracks contains track_key -%}{%- continue -%}{%- endunless -%}{%- endif -%}
+          {%- if item.spaces -%}{%- unless item.spaces contains track_key -%}{%- continue -%}{%- endunless -%}{%- endif -%}
           {%- if item.name -%}{%- assign item_name = item.name -%}{%- else -%}{%- assign item_name = item -%}{%- endif -%}
           {%- unless first_item %}, {% endunless -%}
           {%- if item_name.fr -%}{{ item_name[lang] }}{%- else -%}{{ item_name }}{%- endif -%}
@@ -132,21 +139,20 @@
 
   <section>
     <h2>{{ t.education }}</h2>
-    {% for entry in site.data.education %}
-      {% if entry.tracks %}{% unless entry.tracks contains track_key %}{% continue %}{% endunless %}{% endif %}
+    {% for entry in resume.education %}
     {% if airy %}
     <div class="cv-entry">
       <h3>{{ entry.degree[lang] }}</h3>
-      <p class="cv-meta">{{ entry.institution }} · {% include tracks/period.html start=entry.start end=entry.end %}{% if entry.detail %} · {{ entry.detail[lang] }}{% endif %}</p>
+      <p class="cv-meta">{{ entry.institution }} · {{ entry.years }}{% if entry.detail %} · {{ entry.detail[lang] }}{% endif %}</p>
     </div>
     {% else %}
-    <p class="cv-entry--compact"><strong>{{ entry.degree[lang] }}</strong> · {{ entry.institution }} · <span class="cv-meta">{% include tracks/period.html start=entry.start end=entry.end %}</span></p>
+    <p class="cv-entry--compact"><strong>{{ entry.degree[lang] }}</strong> · {{ entry.institution }} · <span class="cv-meta">{{ entry.years }}</span></p>
     {% endif %}
     {% endfor %}
   </section>
 
   {% if cv.publications %}
-    {% assign pubs = site.publications | sort: "date" | reverse %}
+    {% assign pubs = site.publications | where: "lang", lang | sort: "date" | reverse %}
     {% assign published = "" | split: "" %}
     {% assign preparing = "" | split: "" %}
     {% for pub in pubs %}
@@ -165,14 +171,14 @@
       <li>{{ pub.title }}. {{ pub.venue }}, {{ pub.date | date: "%Y" }}.{% if pub.doi %} DOI{{ t.colon }}<a class="cv-url" href="https://doi.org/{{ pub.doi }}">{{ pub.doi }}</a>{% endif %}</li>
       {% endfor %}
       {% for pub in preparing %}
-      <li>{{ pub.title | remove: " (In Preparation)" }}. {{ t.in_preparation }}.</li>
+      <li>{{ pub.title | remove: " (In Preparation)" | remove: " (en préparation)" }}. {{ t.in_preparation }}.</li>
       {% endfor %}
     </ul>
   </section>
     {% endif %}
   {% endif %}
 
-  {% assign certs = site.data.certifications | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+  {% assign certs = resume.certifications | where_exp: "x", "x.cv_on contains track_key" %}
   {% if certs.size > 0 %}
     {% if cv.certifications == "line" %}
   <p class="cv-certs-line"><strong>{{ t.certifications }}</strong>{{ t.colon }}{% for cert in certs %}{{ cert.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>

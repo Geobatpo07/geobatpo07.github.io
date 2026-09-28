@@ -5,8 +5,11 @@
 #   tracks:     { <track>: <priority> }  1 = first card on that track page.
 #   status:     active | prototype | completed | presented (labels in i18n.yml)
 #   github:     repository URL; omit for private work and set `private: true`.
-#   case_study: path of the long-form page under /projects/ (neutral layout;
-#               the card adds ?from=<space>).
+#   cv:         CVs listing the project: software, data, research (in the
+#               space's order above) and profile (the complete CV).
+#   case_study: path of the French case study under /projects/ (research
+#               space; the English one is under /en/projects/). Only the
+#               research cards link to it.
 #   stack:      list of strings, or {fr, en} pairs for terms that translate.
 #   links:      extra links, each { label: {fr, en}, url }.
 #   research:   optional research framing shown on the research track only.
@@ -20,6 +23,7 @@
   stack: ["TypeScript", "Next.js", "DuckDB", "Zod", "Vitest", "GitHub Actions"]
   status: active
   tracks: { software: 1 }
+  cv: [software]
   description:
     fr: "Plateforme Next.js qui organise les programmes, hypothèses, expériences et publications d'un laboratoire de recherche dans un modèle de connaissances typé. La publication génère des fichiers MDX et un index DuckDB ; la CI enchaîne typage, lint, tests et build."
     en: "A Next.js platform that organizes a research lab's programs, hypotheses, experiments and publications in a typed knowledge model. Publishing generates MDX files and a DuckDB index; CI runs type-checking, linting, tests and the build."
@@ -30,6 +34,7 @@
   stack: ["Docker Compose", "n8n", "Ollama", "Qdrant", "PostgreSQL", "Open WebUI"]
   status: active
   tracks: { software: 2, data: 3 }
+  cv: [software, data]
   description:
     fr: "Second cerveau IA auto-hébergé sur un serveur privé : sept services Docker Compose (LLM locaux avec Ollama, base vectorielle Qdrant, workflows n8n) reliés à un coffre Obsidian. Construit à partir du self-hosted AI starter kit de n8n."
     en: "A self-hosted AI second brain on a private server: seven Docker Compose services (local LLMs with Ollama, Qdrant vector store, n8n workflows) wired to an Obsidian vault. Built on n8n's self-hosted AI starter kit."
@@ -40,6 +45,7 @@
   stack: [".NET 10", "SignalR", "PostgreSQL", "Redis", "Next.js"]
   status: active
   tracks: { software: 3 }
+  cv: [software]
   description:
     fr: "Plateforme d'orientation qui aide les jeunes à trouver leur voie grâce à des suggestions de parcours par IA et une progression ludique. Back-end .NET en couches (API, Core, Infrastructure, tests), front-end Next.js."
     en: "A career-guidance platform that helps young people find their path through AI-based matching and gamified progression. Layered .NET back end (API, Core, Infrastructure, tests), Next.js front end."
@@ -50,6 +56,7 @@
   stack: ["Java 21", "Groovy", "JavaScript", "Maven", "Jenkins", "SonarQube", "Docker", "Ansible"]
   status: completed
   tracks: { software: 4 }
+  cv: [software]
   description:
     fr: "Passerelle d'API en Java : chaque requête traverse une chaîne de policies (clé d'API, quota, validation en JavaScript, transformation en Groovy via JSR 223, routage) avant d'atteindre le service métier. Pipeline Jenkins, analyse Sonar, Docker et déploiement Ansible."
     en: "A Java API gateway: each request goes through a chain of policies (API key, rate limit, JavaScript validation, Groovy transformation via JSR 223, routing) before reaching the backend service. Jenkins pipeline, Sonar analysis, Docker and Ansible deployment."
@@ -60,6 +67,7 @@
   stack: ["ASP.NET Core 8", "Entity Framework Core", "PostgreSQL", "React", "JWT", "xUnit", "GitHub Actions"]
   status: completed
   tracks: { software: 5 }
+  cv: [software]
   description:
     fr: "Application full-stack en trois couches : API ASP.NET Core 8 (Entity Framework Core, PostgreSQL), authentification Identity/JWT avec rôles, client React. Versionnage d'API, health checks, rate limiting, tests xUnit et CI GitHub Actions."
     en: "A three-layer full-stack application: ASP.NET Core 8 API (Entity Framework Core, PostgreSQL), Identity/JWT authentication with roles, React client. API versioning, health checks, rate limiting, xUnit tests and GitHub Actions CI."
@@ -71,6 +79,7 @@
   stack: ["Python", "DuckDB", "Apache Iceberg", "Arrow Flight", "dbt", "Trino", "MinIO"]
   status: active
   tracks: { data: 1, software: 6, research: 5 }
+  cv: [software, data, profile]
   description:
     fr: "Plateforme analytique multi-tenant, locale ou cloud : ingestion par Arrow Flight, stockage hybride DuckDB et Iceberg (MinIO/S3), transformations dbt et requêtes Trino."
     en: "A multi-tenant analytics platform, local or cloud: Arrow Flight ingestion, hybrid DuckDB and Iceberg storage (MinIO/S3), dbt transformations and Trino queries."
@@ -95,6 +104,7 @@
   stack: ["Python", "LangChain", "Ollama", "ChromaDB", "RAG"]
   status: active
   tracks: { research: 2, data: 4 }
+  cv: [data, research, profile]
   description:
     fr: "Système multi-agents exécuté en local : huit agents spécialisés (planification, mathématiques symboliques, méthodes numériques, statistiques, bibliographie, relecture, rédaction, mémoire) et un RAG hybride vectoriel et lexical. Produit du code Python exécutable et des citations."
     en: "A local multi-agent system: eight specialized agents (planning, symbolic mathematics, numerical methods, statistics, literature, review, writing, memory) and hybrid vector and keyword RAG. Produces executable Python code and citations."
@@ -119,6 +129,7 @@
   stack: ["R", "Shiny", { fr: "EDO non autonomes", en: "Non-autonomous ODEs" }, "renv"]
   status: active
   tracks: { research: 1, data: 5 }
+  cv: [research, profile]
   links:
     - label: { fr: "Application Shiny", en: "Shiny app" }
       url: "https://fsu5hs-geovany0batista0polo-laguerre.shinyapps.io/chlordecone-simulation-app/"
@@ -148,6 +159,7 @@
   stack: ["C++", "Random Forest", "CSV"]
   status: prototype
   tracks: { research: 3, data: 6 }
+  cv: [research, profile]
   description:
     fr: "Application C++ de triage : un modèle Random Forest classe les patients en trois niveaux (critique, modéré, faible) à partir de leurs symptômes et facteurs de risque."
     en: "A C++ triage application: a Random Forest model classifies patients into three levels (critical, moderate, low) from their symptoms and risk factors."
@@ -182,6 +194,7 @@
   stack: [{ fr: "Théorie des groupes", en: "Group theory" }, { fr: "Corps finis", en: "Finite fields" }, { fr: "Théorie des caractères", en: "Character theory" }]
   status: presented
   tracks: { research: 4 }
+  cv: [research]
   links:
     - label: { fr: "Présentation (DOI)", en: "Presentation (DOI)" }
       url: "https://doi.org/10.13140/RG.2.2.13837.45285"

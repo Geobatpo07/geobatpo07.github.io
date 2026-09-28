@@ -10,12 +10,14 @@
 #   cv_file:  base name of the generated CV PDFs: the CI writes
 #             files/<cv_file>_FR.pdf and files/<cv_file>_EN.pdf from the print
 #             pages /<space>/print/ and /en/<space>/print/
-#   cv:       content of the generated CV (see docs/CONTENT.md): max_pages,
-#             headline, summary, experience and projects (ids, in order),
+#   cv:       layout of the generated CV (see docs/CONTENT.md): max_pages,
 #             certifications (block | line), publications (true to list
-#             the _publications collection)
-#   stories:  true to show the Stories blog link in the space menu
-#   extra_nav: additional menu entries, each { label: {fr, en}, url }
+#             the _publications collection). Its content comes from
+#             resume.yml (<space>_ prefixes) and projects.yml (`cv`).
+#   extra_nav: additional menu entries, each { label: {fr, en}, url }; url is
+#             the French path, /en is prepended on English pages
+# The Stories blog link is in the menu of every space (the only link the
+# three spaces share).
 #   contact:  contact page of the space (/<space>/contact/): mail subject,
 #             title, intro, SEO description; optional calendly (booking
 #             embed) and profiles (extra links, keys of site.author)
@@ -28,14 +30,7 @@ software:
   cv_file: CV_Laguerre_Software
   cv:
     max_pages: 1
-    headline: { fr: "Développeur Full-Stack C#/.NET · Java", en: "Full-Stack Developer · C#/.NET · Java" }
-    summary:
-      fr: "Développeur full-stack : applications C#/ASP.NET Core et Java/Spring Boot, API REST et microservices conteneurisés avec Docker. De 2023 à 2026, en équipe Scrum dans le secteur de la santé, de la migration d'applications existantes au déploiement."
-      en: "Full-stack developer: C#/ASP.NET Core and Java/Spring Boot applications, REST APIs and microservices containerized with Docker. From 2023 to 2026, in a Scrum team in the healthcare sector, from legacy application migration to deployment."
-    experience: [solutions-sa, ayitistats]
-    projects: [stories, nyansa, zetwal, mini-api-gateway, mystorywithdata, datahut-duckhouse]
     certifications: line
-  stories: false
   contact:
     subject: "[Software]"
     title: { fr: "Contact : ingénierie logicielle", en: "Contact: software engineering" }
@@ -67,14 +62,7 @@ data:
   cv_file: CV_Laguerre_Data
   cv:
     max_pages: 1
-    headline: { fr: "Data Engineer · Data Analyst", en: "Data Engineer · Data Analyst" }
-    summary:
-      fr: "Data engineer et data analyst certifié Microsoft Fabric (DP-700, DP-600). De 2023 à 2026, pipelines ETL, architectures Lakehouse et tableaux de bord Power BI sur des données de santé, avec une attention constante à leur qualité. Master de mathématiques appliquées."
-      en: "Data engineer and data analyst, Microsoft Fabric certified (DP-700, DP-600). From 2023 to 2026, ETL pipelines, lakehouse architectures and Power BI dashboards on healthcare data, with steady attention to data quality. Master's degree in applied mathematics."
-    experience: [solutions-sa, ayitistats, uniq-lecturer]
-    projects: [datahut-duckhouse, nyansa, scientific-assistant]
     certifications: block
-  stories: false
   contact:
     subject: "[Data]"
     title: { fr: "Contact : data et analytics", en: "Contact: data & analytics" }
@@ -106,15 +94,8 @@ research:
   cv_file: CV_Laguerre_Research
   cv:
     max_pages: 2
-    headline: { fr: "Mathématiques appliquées · Modélisation et calcul scientifique", en: "Applied Mathematics · Modelling and Scientific Computing" }
-    summary:
-      fr: "Master Mathématiques et applications (modélisation et aide à la décision). Modélisation par EDO et EDP, analyse numérique et simulation en Python et R, appliquées à l'environnement et à la santé ; enseignement des mathématiques pour l'informatique."
-      en: "Master's degree in Mathematics and Applications (modelling and decision support). ODE and PDE modelling, numerical analysis and simulation in Python and R, applied to environment and health; teaching mathematics for computer science."
-    experience: [lamia-internship, memiad-internship, uniq-lecturer, uniq-ta, math-tutor]
-    projects: [simulation-chlordecone, scientific-assistant, medical-triage-system, character-theory]
     publications: true
     certifications: block
-  stories: true
   extra_nav:
     - { label: { fr: "Enseignement", en: "Teaching" }, url: /teaching/ }
   contact:

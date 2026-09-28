@@ -1,6 +1,0 @@
-{%- comment -%} Renders "start – end", "start – present" or "end" alone. {%- endcomment -%}
-{%- if include.start -%}
-  {%- include tracks/date.html value=include.start %} – {% if include.end %}{% include tracks/date.html value=include.end %}{% else %}{{ t.present }}{% endif -%}
-{%- else -%}
-  {%- include tracks/date.html value=include.end -%}
-{%- endif -%}

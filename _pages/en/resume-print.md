@@ -1,9 +1,9 @@
 ---
-lang: fr
+lang: en
 ref: resume-print
 layout: resume-print
-permalink: /resume-print/
-title: "CV"
+permalink: /en/resume-print/
+title: "Resume"
 noindex: true
 sitemap: false
 ---

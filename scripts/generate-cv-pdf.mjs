@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Generates the PDF CVs from the built site:
 //
-// - files/Profile.pdf from the dedicated /resume-print/ page (not the
-//   website's /cv/ page — see _pages/resume-print.md / _layouts/resume-print.html);
+// - files/Profile.pdf and files/Profile_EN.pdf, the complete CV, from
+//   /resume-print/ and /en/resume-print/ (_layouts/resume-print.html);
 // - one CV per space and language from the print pages (_layouts/cv-print.html,
 //   /<space>/print/ and /en/<space>/print/), written to the file named by
 //   their <meta name="cv-file">, e.g. files/CV_Laguerre_Data_FR.pdf.
@@ -12,8 +12,8 @@
 // regenerated fresh from _data on every deploy. See .github/workflows/jekyll.yml.
 //
 // Fails (exit 1) when a space CV exceeds its <meta name="cv-max-pages">
-// (tracks.yml `cv.max_pages`), when a print page references an id that
-// matches nothing in _data (data-cv-missing), or when no print page is found.
+// (tracks.yml `cv.max_pages`), when a print page carries a data-cv-missing
+// marker, or when no print page is found.
 //
 // Usage: node scripts/generate-cv-pdf.mjs [siteDir] [port]
 //   siteDir defaults to ./_site (the Jekyll build output)
@@ -76,10 +76,12 @@ async function main() {
   try {
     const page = await browser.newPage();
 
-    await page.goto(`http://localhost:${port}/resume-print/`, { waitUntil: 'networkidle' });
-    const profilePath = path.join(filesDir, 'Profile.pdf');
-    await page.pdf({ path: profilePath, ...pdfOptions });
-    console.log(`Generated ${profilePath}`);
+    for (const [urlPath, file] of [['/resume-print/', 'Profile.pdf'], ['/en/resume-print/', 'Profile_EN.pdf']]) {
+      await page.goto(`http://localhost:${port}${urlPath}`, { waitUntil: 'networkidle' });
+      const profilePath = path.join(filesDir, file);
+      await page.pdf({ path: profilePath, ...pdfOptions });
+      console.log(`Generated ${profilePath}`);
+    }
 
     const printPages = await findPrintPages(siteDir);
     if (printPages.length === 0) failures.push('no CV print page found (<meta name="cv-file">)');

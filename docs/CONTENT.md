@@ -1,42 +1,112 @@
 # Contenu du site : format des données
 
-Tout le contenu du portail et des espaces (`/`, `/software/`, `/data/`, `/research/`, leurs pages contact et leurs versions anglaises `/en/…`) est décrit **une seule fois** dans `_data/`. Les pages ne contiennent pas de texte : elles filtrent ces fichiers au build via Liquid.
-
-Pour ajouter un projet, une expérience ou une compétence, on modifie un fichier YAML. Aucun template n'est à toucher.
+Tout le contenu structuré du site (portail, trois espaces, CV) est décrit **une seule fois** dans `_data/`. Les pages ne contiennent pas ce texte : elles le filtrent au build via Liquid.
 
 | Fichier | Contenu |
 |---|---|
-| `_data/tracks.yml` | Les trois espaces : titre, accroche, icône, CV, menu, textes de la page contact, métadonnées SEO |
-| `_data/experience.yml` | Postes, avec des puces différentes selon le parcours |
-| `_data/projects.yml` | Projets et priorité par espace |
-| `_data/skills.yml` | Compétences par catégorie (badges) |
-| `_data/education.yml` | Formation (affichée sur tous les parcours) |
-| `_data/certifications.yml` | Certifications |
+| `_data/resume.yml` | **Source unique des CV et des espaces** : titres et résumés des CV, expériences, formation, compétences, certifications, langues |
+| `_data/projects.yml` | Projets, rang par espace, CV qui les listent |
+| `_data/tracks.yml` | Les trois espaces : titre, accroche, icône, menu, page contact, SEO, mise en page du CV |
+| `_data/teachingSubjects.yml` | Matières enseignées (`/teaching/`) |
 | `_data/i18n.yml` | Libellés de l'interface (boutons, titres de sections, mois) |
+
+`resume.yml` est préparé par le moteur `_plugins/resume_engine.rb` (libellés de dates, références de puces, frise, années d'expérience) et vérifié en CI par `scripts/validate_resume.rb`, avant le build.
 
 ## Conventions
 
-**Textes bilingues.** Tout texte affiché est une paire `{ fr, en }` :
+**Textes bilingues.** Tout texte affiché est un groupe `{ fr, en }` :
 
 ```yaml
-role:
+title:
   fr: "Développeur Full-Stack & Data Analyst"
   en: "Full-Stack Developer & Data Analyst"
 ```
 
 Les noms propres qui ne se traduisent pas (organisation, nom de projet, technologies) sont de simples chaînes. Le français doit être rédigé, pas traduit mot à mot.
 
-**Parcours et priorité.** Le champ `tracks` est une table `parcours: rang` :
+**Préfixes de `resume.yml`.** Un préfixe par CV :
+
+| Préfixe | Où |
+|---|---|
+| `profile_` | CV complet : `/cv/`, `/en/cv/`, `files/Profile.pdf`, `files/Profile_EN.pdf` |
+| `software_`, `data_`, `research_` | La page de l'espace (`/<espace>/`) et son CV (`files/CV_Laguerre_<Espace>_<FR\|EN>.pdf`) |
+
+**Ordre.** L'ordre du fichier est l'ordre d'affichage partout (sauf compétences : voir `<préfixe>_rank`).
+
+**Dates.** Au format `"YYYY-MM"`. Sans `end_date`, le poste est affiché « – aujourd'hui ». Le moteur calcule les libellés (`dates`, par exemple « juil. 2023 – août 2026 ») dans les deux langues.
+
+## Titre et résumé des CV
 
 ```yaml
-tracks: { data: 1, software: 6 }
+profile_headline: { fr: "…", en: "…" }
+profile_summary:  { fr: "…", en: "…" }    # plusieurs paragraphes possibles (|)
+software_headline: { fr: "…", en: "…" }
+software_summary:  { fr: "…", en: "…" }
+# idem data_ et research_
 ```
 
-- l'élément apparaît sur `/data/` en première position, et sur `/software/` en sixième ;
-- il n'apparaît pas sur `/research/` ;
-- les clés valides sont celles de `tracks.yml` : `software`, `data`, `research`.
+## Ajouter une expérience
 
-**Dates.** Au format `"YYYY-MM"` (expériences) ou `"YYYY"` (formation). Sans `end`, le poste est affiché « – aujourd'hui ».
+```yaml
+experience:
+  - id: acme
+    category: professional        # professional | research | teaching (frise du CV complet)
+    title: { fr: "Data Engineer", en: "Data Engineer" }
+    org: "Acme"                   # ou { fr: "Indépendant", en: "Self-employed" }
+    start_date: "2026-10"
+    # end_date: "2027-06"         # omis = poste en cours
+    location: { fr: "Paris", en: "Paris" }   # facultatif
+    sector: { fr: "Énergie", en: "Energy" }   # facultatif
+    data_bullets:                 # le poste apparaît sur /data/ et sur le CV Data
+      - fr: "Conception des pipelines d'ingestion…"
+        en: "Designed the ingestion pipelines…"
+    software_bullets: []          # sur /software/, sans puce
+    profile_bullets: [data, software]   # CV complet : reprend les puces data puis software
+```
+
+- Un poste apparaît sur une page ou un CV s'il porte la clé `<préfixe>_bullets`.
+- Une valeur de `<préfixe>_bullets` est une liste de `{ fr, en }`, ou le nom d'un autre préfixe (`profile_bullets: research`), ou une liste de noms : le moteur remplace la référence par les puces correspondantes. Une puce n'est ainsi écrite qu'une fois.
+- `<espace>_cv: false` : le poste reste sur la page de l'espace mais sort du CV de l'espace.
+- `cv: false` sur une puce : elle reste sur le site mais sort des CV.
+- `link` et `link_label` (facultatifs) : lien affiché sur le CV complet ; `link` est le chemin français, `/en` est ajouté sur la version anglaise.
+- `include_in_timeline: false` : hors de la frise du CV complet.
+
+## Formation, compétences, certifications, langues
+
+```yaml
+education:                        # affichée partout, dans l'ordre du fichier
+  - degree: { fr: "…", en: "…" }
+    detail: { fr: "…", en: "…" }  # facultatif
+    institution: "Université des Antilles"
+    start_date: "2024-09"
+    end_date: "2026-06"
+    research_focus: { fr: "…", en: "…" }   # facultatif, CV complet seulement
+    supervisor: { fr: "Pr …", en: "Prof. …" }   # facultatif, CV complet seulement
+
+skills:
+  - category: { fr: "Langages", en: "Languages" }
+    software_rank: 1              # présente sur /software/ et son CV, au rang 1
+    data_rank: 1
+    profile_rank: 1
+    # software_cv: false          # sur /software/ mais pas sur le CV Software
+    items:
+      - "Python"
+      - { name: "C#", spaces: [software] }       # limité à certains espaces (le CV complet liste tout)
+      - { name: { fr: "API REST", en: "REST APIs" } }
+
+certifications:                   # toutes sur le CV complet
+  - name: "Microsoft Certified: Fabric Data Engineer Associate (DP-700)"
+    issuer: "Microsoft"
+    spaces: [data, software]      # espaces (page et CV) où elle apparaît
+    detail: { fr: "…", en: "…" }       # facultatif, affiché partout
+    description: { fr: "…", en: "…" }  # facultatif, CV complet seulement
+
+languages:                        # CV complet seulement
+  - language: { fr: "Français", en: "French" }
+    level: { fr: "Courant", en: "Fluent" }
+```
+
+Sur les pages d'espace et les CV d'espace, la formation affiche les années seules (« 2024 – 2026 ») ; le CV complet affiche les mois.
 
 ## Ajouter un projet
 
@@ -47,10 +117,11 @@ Ajoutez une entrée à `_data/projects.yml` :
   name: "Mon projet"
   github: "https://github.com/Geobatpo07/mon-projet"   # facultatif
   # private: true                     # à la place de github pour un dépôt privé
-  case_study: /projects/mon-projet/   # facultatif : étude de cas (layout neutral)
+  case_study: /projects/mon-projet/   # facultatif : étude de cas (espace research)
   stack: ["Python", "DuckDB", { fr: "Séries temporelles", en: "Time series" }]
   status: active                      # active | prototype | completed | presented
-  tracks: { data: 2, research: 6 }
+  tracks: { data: 2, research: 6 }    # espaces et rang (1 = première carte)
+  cv: [data, research, profile]       # CV qui listent le projet, dans l'ordre de l'espace
   description:
     fr: "Une ou deux phrases factuelles : ce que fait le projet, avec quoi."
     en: "One or two factual sentences: what the project does, with what."
@@ -64,47 +135,7 @@ Ajoutez une entrée à `_data/projects.yml` :
     contribution: { fr: "…", en: "…" }
 ```
 
-Si deux projets ont la même priorité sur un parcours, ils gardent l'ordre du fichier. Pensez à décaler les rangs des projets suivants si vous insérez un projet au milieu.
-
-## Ajouter une expérience
-
-Ajoutez une entrée à `_data/experience.yml`. Chaque parcours a sa propre liste de puces : le même poste se raconte différemment à un recruteur software ou data.
-
-```yaml
-- id: acme
-  role:
-    fr: "Data Engineer"
-    en: "Data Engineer"
-  org: "Acme"                         # ou { fr: "Indépendant", en: "Self-employed" }
-  start: "2026-10"
-  # end: "2027-06"                    # omis = poste en cours
-  location: { fr: "Paris", en: "Paris" }   # facultatif
-  sector: { fr: "Énergie", en: "Energy" }   # facultatif
-  tracks: { data: 1, software: 3 }
-  bullets:
-    data:
-      - fr: "Conception des pipelines d'ingestion…"
-        en: "Designed the ingestion pipelines…"
-    software:
-      - fr: "Développement d'une API…"
-        en: "Built an API…"
-```
-
-Un parcours listé dans `tracks` doit avoir ses puces dans `bullets`. Sinon, le poste s'affiche sans détail.
-
-Pour garder une puce sur le site mais l'écarter du CV généré, ajoutez-lui `cv: false` :
-
-```yaml
-      - fr: "…"
-        en: "…"
-        cv: false
-```
-
-## Compétences, formation, certifications
-
-- `skills.yml` : une catégorie porte `tracks: { parcours: rang }`. Un élément est une chaîne, ou `{ name, tracks: [..] }` pour le limiter à certains parcours, ou `{ name: { fr, en } }` s'il se traduit.
-- `education.yml` : sans `tracks`, une formation s'affiche partout (cas actuel).
-- `certifications.yml` : la section n'apparaît que sur les parcours qui ont au moins une certification.
+Si deux projets ont la même priorité sur un espace, ils gardent l'ordre du fichier.
 
 ## Portail, espaces et pages partagées
 
@@ -113,16 +144,21 @@ Le site est un portail et trois espaces cloisonnés. Le layout `default` choisit
 | `data-space` | Pages | En-tête | Pied de page |
 |---|---|---|---|
 | `portal` | `/`, `/en/` | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub |
-| `software`, `data`, `research` | racine, page contact et pages rattachées de l'espace | nom (vers la racine de l'espace), menu de l'espace, FR \| EN dans l'espace, thème | contact de l'espace, e-mail avec objet, LinkedIn, GitHub |
-| `neutral` | études de cas `/projects/*/`, fiches publication et enseignement, 404, `/terms/`, `/cv-json/`, `/resume-print/` | nom sans lien, bouton « Retour », thème | copyright |
+| `software`, `data`, `research` | racine, page contact, pages d'impression du CV et pages rattachées de l'espace ; pour research : `/about/`, `/cv/`, `/teaching/`, `/feedback/` et les études de cas | nom (vers la racine de l'espace), menu de l'espace, FR \| EN dans l'espace, thème | contact de l'espace, e-mail avec objet, LinkedIn, GitHub |
+| `neutral` | fiches publication et enseignement, 404, `/terms/`, `/resume-print/` | nom sans lien, bouton « Retour », thème | copyright |
 
-**Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail liste les trois espaces.
+**Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail liste les trois espaces. Le seul lien que les trois espaces partagent est celui du blog Stories, dans leur menu.
 
-**Langues.** Le français est la langue par défaut : les pages françaises sont à la racine (`/`, `/data/`, `/data/contact/`…), les pages anglaises sous `/en/` (`/en/`, `/en/data/`…). `_config.yml` donne `lang: fr` à toutes les pages ; une page anglaise déclare `lang: en`. Chaque paire FR/EN partage un `ref` : le `<head>` liste les deux versions en `hreflang`, avec `x-default` sur la version française, et le sélecteur FR | EN passe de l'une à l'autre sans quitter l'espace. Il n'existe plus de préfixe `/fr/` (et aucune redirection depuis `/fr/`, qui n'a jamais été en ligne).
+**Études de cas.** Elles appartiennent à l'espace research (`space: research` par défaut dans `_config.yml`, layout `case-study`). Seules les cartes projet de l'espace research y mènent ; les espaces data et software n'y font pas de lien.
 
-**Exception : pages research en anglais seulement.** `/cv/`, `/teaching/`, `/about/`, `/feedback/`, les études de cas et les fiches publication et enseignement restent en anglais, à leur URL actuelle, sans préfixe `/en/` (`lang: en`, sans version française). Leur sélecteur FR | EN renvoie vers la racine de l'espace dans l'autre langue, et leurs liens internes visent les pages anglaises de l'espace (`/en/research/…`).
+**Langues.** Le français est la langue par défaut : toute page française est à la racine, toute page anglaise sous `/en/`, et **toute page anglaise a sa version française**. `_config.yml` donne `lang: fr` à toutes les pages et à tous les documents des collections ; une page anglaise déclare `lang: en`. Chaque paire partage un `ref` : le `<head>` liste les deux versions en `hreflang`, avec `x-default` sur la version française, et le sélecteur FR | EN passe de l'une à l'autre sans quitter l'espace. Il n'existe pas de préfixe `/fr/`.
 
-**Espaces.** Chaque espace existe en deux pages de quelques lignes, par exemple `_pages/software.md` (français, `/software/`) et `_pages/en/software.md` (anglais, `/en/software/`) :
+- Pages : `_pages/x.md` (français) et `_pages/en/x.md` (anglais).
+- Collections : `_projects/x.md` et `_projects/en/x.md` (idem `_publications`, `_teaching`), avec un `permalink` explicite (`/projects/x/` et `/en/projects/x/`).
+- Liens écrits à la main dans une page : chemin français pour la page française, `/en/…` pour l'anglaise, ou l'include `localized-url.html` (`{% raw %}{% include localized-url.html path="/teaching/" %}{% endraw %}`), qui ajoute `/en` sur une page anglaise.
+- Publications : l'article garde son titre original ; la fiche française traduit le résumé et le lieu et donne le titre traduit dans son texte.
+
+**Espaces.** Chaque espace existe en deux pages de quelques lignes, par exemple `_pages/software.md` (`/software/`) et `_pages/en/software.md` (`/en/software/`) :
 
 ```yaml
 ---
@@ -134,60 +170,45 @@ permalink: /en/software/
 ---
 ```
 
-Le titre, la description SEO et le fichier CV viennent de `tracks.yml`. Le contenu écrit sous le front matter est ajouté après les sections générées (c'est le cas de `/research/`).
+Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, Compétences), les entrées `extra_nav`, le CV PDF de la langue affichée, le blog Stories et la page contact.
 
-Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, Compétences), le CV PDF de la langue affichée (voir « CV »), les entrées `extra_nav`, Stories si `stories: true`, et la page contact.
+**Pages contact.** `_pages/<espace>-contact.md` et `_pages/en/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml`.
 
-**Pages contact.** `_pages/<espace>-contact.md` et `_pages/en/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml` : titre, introduction, objet du mail, `calendly` (réservation intégrée) et `profiles` (liens supplémentaires, clés de `site.author`).
-
-**Pages rattachées.** Une page qui appartient à un espace déclare `space: research` (c'est le cas de `/about/`, `/cv/`, `/teaching/`, `/feedback/`). Une page sans équivalent dans l'autre langue renvoie le sélecteur FR | EN vers la racine de l'espace dans l'autre langue.
-
-**Pages partagées.** Les études de cas utilisent le layout `case-study`, qui passe par `neutral` ; les fiches publication et enseignement reçoivent `space: neutral` par défaut (`_config.yml`). Depuis un espace, un lien vers une page partagée ajoute `?from=<espace>` (et `&lang=en` en anglais) : le bouton « Retour » fait `history.back()`, sinon renvoie à la racine indiquée par `from`, sinon reste masqué.
+**Pages neutres.** Les fiches publication et enseignement reçoivent `space: neutral` par défaut. Depuis un espace, un lien vers une fiche ajoute `?from=<espace>` (et `&lang=en` en anglais) : le bouton « Retour » fait `history.back()`, sinon renvoie à la racine indiquée par `from`, sinon reste masqué.
 
 ## CV
 
-Les CV d'espace ne sont pas déposés à la main : la CI les génère à chaque déploiement, uniquement à partir de `_data/` (et de `_publications/` pour Research).
+Aucun CV n'est déposé à la main : la CI les génère à chaque déploiement, à partir de `_data/` (et de `_publications/` pour Research et le CV complet).
 
 | Page d'impression | PDF généré | Limite |
 |---|---|---|
 | `/software/print/`, `/en/software/print/` | `files/CV_Laguerre_Software_FR.pdf`, `_EN.pdf` | 1 page |
 | `/data/print/`, `/en/data/print/` | `files/CV_Laguerre_Data_FR.pdf`, `_EN.pdf` | 1 page |
 | `/research/print/`, `/en/research/print/` | `files/CV_Laguerre_Research_FR.pdf`, `_EN.pdf` | 2 pages |
+| `/resume-print/`, `/en/resume-print/` (CV complet) | `files/Profile.pdf`, `files/Profile_EN.pdf` | — |
 
-Le lien « CV » de l'en-tête, le bouton de la racine et celui de la page contact pointent vers le PDF de la langue affichée (une page anglaise hors `/en/`, comme `/cv/`, pointe vers le PDF anglais).
+Le lien « CV » de l'en-tête, le bouton de la racine et celui de la page contact pointent vers le PDF de l'espace dans la langue affichée. La page `/cv/` (et `/en/cv/`) affiche le CV complet et propose `Profile.pdf` (ou `Profile_EN.pdf`).
 
-**Contenu : bloc `cv` de `tracks.yml`.**
+**Contenu d'un CV d'espace** (`_layouts/cv-print.html`) : `<espace>_headline` et `<espace>_summary`, les postes avec `<espace>_bullets` (sauf `<espace>_cv: false`), les projets dont `cv` contient l'espace, les compétences avec `<espace>_rank` (sauf `<espace>_cv: false`), la formation, les certifications de l'espace et, si `publications: true`, les publications de la langue.
+
+**Mise en page d'un CV d'espace : bloc `cv` de `tracks.yml`.**
 
 ```yaml
 data:
   cv_file: CV_Laguerre_Data     # nom de base des PDF : <cv_file>_FR.pdf et <cv_file>_EN.pdf
   cv:
     max_pages: 1                # contrôlé en CI
-    headline: { fr: "…", en: "…" }
-    summary:  { fr: "…", en: "…" }
-    experience: [solutions-sa, ayitistats]    # id de experience.yml, dans cet ordre
-    projects: [datahut-duckhouse, nyansa]     # id de projects.yml, dans cet ordre
     certifications: block       # block : section dédiée ; line : une ligne compacte en fin de page
     publications: true          # facultatif : liste la collection _publications (Research)
 ```
 
-- Puces : celles de l'espace dans `experience.yml`, sauf celles marquées `cv: false`.
-- Compétences : les catégories de l'espace, sauf celles marquées `cv: false` dans `skills.yml` (la catégorie reste sur le site).
-- Formation et certifications : toutes les entrées de l'espace (mêmes règles que le site).
-- Projets : description, technologies, lien GitHub (ou « Dépôt privé, démo sur demande ») et liens `links`.
-- Publications : les entrées publiées, puis celles « en préparation » (lieu contenant « preparation »).
-- En-tête : nom, `headline`, e-mail, LinkedIn, GitHub (`_config.yml`, `author`) et `cv_location` d'`i18n.yml` (« Île-de-France »). Ni téléphone ni adresse.
-- Libellés des sections : `i18n.yml`.
+- En-tête : nom, titre, e-mail, LinkedIn, GitHub (`_config.yml`, `author`) et `cv_location` d'`i18n.yml` (« Île-de-France »). Ni téléphone ni adresse.
+- Lisible par les ATS : une colonne, texte réel, sans police d'icônes, A4, corps 10 pt, police Arial (Liberation Sans, métriquement identique, sur le runner Ubuntu) ; `assets/css/cv-print.scss`.
+- Un CV limité à 1 page est compact ; un CV autorisé à plus d'une page (Research) prend une mise en page aérée.
+- Les mots à trait d'union (« Scikit-learn », « DP-700 ») ne sont jamais coupés en fin de ligne (filtre `nowrap_hyphens`, `_plugins/nowrap_hyphens.rb`).
+- Si un CV dépasse sa limite, on retire un projet de `cv`, un poste (`<espace>_cv: false`), une puce (`cv: false`) ou une catégorie de compétences (`<espace>_cv: false`) ; la mise en page ne se resserre pas pour compenser.
 
-Mise en page (`_layouts/cv-print.html`, `assets/css/cv-print.scss`) : lisible par les ATS, une colonne, texte réel, sans police d'icônes, A4, corps 10 pt, police Arial (Liberation Sans, métriquement identique, sur le runner Ubuntu).
-
-- Un CV limité à 1 page (Software, Data) est compact : dates sur la ligne du poste, technologies à la suite de la description, un diplôme par ligne. Un CV autorisé à plus d'une page (Research) prend la mise en page aérée : marges plus larges, dates, technologies et liens sur leur propre ligne, formation avec son détail.
-- Les mots à trait d'union (« Scikit-learn », « Lax-Friedrichs », « DP-700 ») ne sont jamais coupés en fin de ligne : le filtre `nowrap_hyphens` (`_plugins/nowrap_hyphens.rb`) les entoure d'un `<span class="nowrap">` (`white-space: nowrap`), avec un trait d'union normal ; les URL affichées sont aussi en `nowrap`. L'extraction de texte du PDF les restitue entiers.
-- Si un CV dépasse sa limite, on retire un élément du bloc `cv` (projet, poste), une puce ou une catégorie de compétences (`cv: false`) ; la mise en page ne se resserre pas pour compenser.
-
-**Génération et contrôle.** `scripts/generate-cv-pdf.mjs` (Playwright) produit `Profile.pdf` depuis `/resume-print/`, puis un PDF par page d'impression, nommé par sa balise `<meta name="cv-file">`. L'étape échoue et bloque le déploiement si un CV dépasse `max_pages`, ou si un id du bloc `cv` ne correspond à rien dans `_data/`.
-
-`files/Profile.pdf` reste généré depuis `/resume-print/` (données de `resume.yml`) pour la page `/cv/`.
+**Génération et contrôle.** `scripts/generate-cv-pdf.mjs` (Playwright) produit `Profile.pdf` et `Profile_EN.pdf`, puis un PDF par page d'impression d'espace, nommé par sa balise `<meta name="cv-file">`. L'étape échoue et bloque le déploiement si un CV d'espace dépasse `max_pages`.
 
 ## Vérifier
 
@@ -195,12 +216,12 @@ Mise en page (`_layouts/cv-print.html`, `assets/css/cv-print.scss`) : lisible pa
 docker compose up --build        # http://localhost:4001
 ```
 
-Contrôlez la page de l'espace concerné, en français et en anglais.
+Contrôlez la page concernée, en français et en anglais.
 
-La CI génère les PDF puis lance html-proofer avec le contrôle d'isolement ; un échec bloque le déploiement. En local, après `bundle exec jekyll build` puis `node scripts/generate-cv-pdf.mjs` (qui affiche le nombre de pages de chaque CV) :
+La CI valide `resume.yml`, construit le site, génère les PDF puis lance html-proofer avec le contrôle d'isolement ; un échec bloque le déploiement. En local, après `ruby scripts/validate_resume.rb`, `bundle exec jekyll build` puis `node scripts/generate-cv-pdf.mjs` (qui affiche le nombre de pages de chaque CV) :
 
 ```bash
-bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts, isolement des espaces
+bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts, isolement, langues
 ```
 
-Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît, si une page sous `/en/` n'est pas en anglais, si une page anglaise qui a une version française n'est pas sous `/en/`, si le `x-default` d'une paire ne vise pas la version française, ou si un lien utilise le préfixe `/fr/`.
+Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît, si une page anglaise n'est pas sous `/en/` ou n'a pas de version française existante, si une page sous `/en/` n'est pas en anglais, si le `x-default` d'une paire ne vise pas la version française, ou si un lien utilise le préfixe `/fr/`.

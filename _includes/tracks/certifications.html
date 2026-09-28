@@ -1,5 +1,5 @@
-{% assign sort_key = "tracks." | append: track_key %}
-{% assign certs = site.data.certifications | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+{% comment %} Certifications of a space, from _data/resume.yml (order of the file, `spaces`). {% endcomment %}
+{% assign certs = site.data.resume.certifications | where_exp: "x", "x.on contains track_key" %}
 {% if certs.size > 0 %}
 <section class="tracks-section" id="certifications" aria-labelledby="certifications-title">
   <h2 id="certifications-title">{{ t.certifications }}</h2>

@@ -1,0 +1,186 @@
+---
+layout: default
+---
+{% comment %}
+  Complete CV of the research space (/cv/ and /en/cv/), generated from
+  _data/resume.yml: profile_ prefix (headline, summary, bullets, skill
+  ranks), education, certifications, languages, the engine's timeline,
+  projects.yml (`cv` contains profile) and the _publications collection of
+  the page language. Labels come from _data/i18n.yml (cv_page).
+{% endcomment %}
+{% include base_path %}
+{% assign lang = page.lang | default: "fr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign c = t.cv_page %}
+{% assign resume = site.data.resume %}
+{% if lang == "en" %}{% assign profile_pdf = "/files/Profile_EN.pdf" %}{% else %}{% assign profile_pdf = "/files/Profile.pdf" %}{% endif %}
+
+<div id="main" role="main">
+<section class="hero hero--centered reveal">
+  <div class="hero__content">
+    <p class="hero__name" style="font-size: clamp(1.9rem, 4vw, 2.9rem); margin-bottom: 0.75rem;">{{ c.title }}</p>
+    <p class="hero__statement">{{ c.statement }}</p>
+    <div class="hero__actions">
+      <a href="{{ base_path }}{{ profile_pdf }}" class="btn btn--large" type="application/pdf">{{ c.download }}</a>
+    </div>
+  </div>
+</section>
+
+<div class="page-prose" style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem;">
+
+<span class="hero__section-label">{{ c.summary_label }}</span>
+<h2>{{ c.summary_title }}</h2>
+{{ resume.profile_summary[lang] | markdownify }}
+<p>{{ c.more }}
+  <a href="{{ base_path }}{% include localized-url.html path="/research/" %}">{{ site.data.tracks.research.title[lang] }}</a>,
+  <a href="{{ base_path }}{% include localized-url.html path="/about/" %}">{{ c.about }}</a>.
+</p>
+
+<hr>
+
+<span class="hero__section-label">{{ c.timeline_label }}</span>
+<h2>{{ c.timeline_title }}</h2>
+<ol class="cv-timeline">
+  {% for item in resume.timeline[lang] %}
+  <li class="cv-timeline__item">
+    <span class="cv-timeline__date">{{ item.date }}</span>
+    <span class="status-badge">{{ item.category }}</span>
+    <h3 class="cv-timeline__title">{{ item.title }}</h3>
+    <p class="cv-timeline__desc">{{ item.description }}</p>
+  </li>
+  {% endfor %}
+</ol>
+
+<hr>
+
+<span class="hero__section-label">{{ c.education_label }}</span>
+<h2>{{ t.education }}</h2>
+<ul class="research-grid">
+  {% for edu in resume.education %}
+  <li class="research-card">
+    <h3 class="research-card__title">{{ edu.degree[lang] }}</h3>
+    <p class="case-study__meta-item">{{ edu.institution }} &middot; {{ edu.dates[lang] }}</p>
+    {% if edu.detail %}<p class="research-card__desc">{{ edu.detail[lang] }}</p>{% endif %}
+    {% if edu.research_focus %}<p class="research-card__desc"><strong>{{ c.research_focus }}</strong> {{ edu.research_focus[lang] }}</p>{% endif %}
+    {% if edu.supervisor %}<p class="research-card__desc"><strong>{{ c.supervisor }}</strong> {{ edu.supervisor[lang] }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+{% assign groups = "research,professional,teaching" | split: "," %}
+{% for group in groups %}
+  {% assign positions = resume.experience | where_exp: "x", "x.on contains 'profile'" | where: "category", group %}
+  {% if positions.size == 0 %}{% continue %}{% endif %}
+<hr>
+
+<span class="hero__section-label">{{ c.experience_label }}</span>
+<h2>{{ c[group] }}</h2>
+<div class="project-teasers reveal">
+  {% for exp in positions %}
+  <div class="project-teaser">
+    <h3>{{ exp.title[lang] }}</h3>
+    <p class="case-study__meta-item" style="margin-bottom: 0.9rem;">{% if exp.org.fr %}{{ exp.org[lang] }}{% else %}{{ exp.org }}{% endif %}{% if exp.location %}, {{ exp.location[lang] }}{% endif %} &middot; {{ exp.dates[lang] }}</p>
+    <ul>
+      {% for bullet in exp.profile_bullets %}<li>{{ bullet[lang] }}</li>{% endfor %}
+    </ul>
+    {% if exp.link %}<a href="{{ base_path }}{% include localized-url.html path=exp.link %}" class="project-teaser__link">{{ exp.link_label[lang] }} &rarr;</a>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+<hr>
+
+<span class="hero__section-label">{{ c.outputs_label }}</span>
+<h2>{{ t.publications }}</h2>
+{% assign pubs = site.publications | where: "lang", lang | sort: "date" | reverse %}
+<ul>
+  {% for pub in pubs %}
+  <li><a href="{{ base_path }}{{ pub.url }}?from=research{% if lang == 'en' %}&amp;lang=en{% endif %}">{{ pub.title }}</a>, <i>{{ pub.venue }}</i>, {{ pub.date | date: "%Y" }}{% if pub.doi %}. DOI{{ t.colon }}<a href="https://doi.org/{{ pub.doi }}">{{ pub.doi }}</a>{% endif %}</li>
+  {% endfor %}
+</ul>
+
+<h3>{{ c.projects }}</h3>
+{% assign cv_projects = site.data.projects | where_exp: "x", "x.cv contains 'profile'" %}
+<ul class="research-grid">
+  {% for p in cv_projects %}
+  <li class="research-card">
+    <h3 class="research-card__title">{{ p.name }}</h3>
+    <p class="research-card__desc">{{ p.description[lang] }}</p>
+    {% if p.case_study %}<a href="{{ base_path }}{% include localized-url.html path=p.case_study %}" class="project-teaser__link">{{ t.case_study }} &rarr;</a>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<h2>{{ c.skills_title }}</h2>
+{% assign categories = resume.skills | where_exp: "x", "x.on contains 'profile'" | sort: "profile_rank" %}
+<ul class="research-grid">
+  {% for skill in categories %}
+  <li class="research-card">
+    <h3 class="research-card__title">{{ skill.category[lang] }}</h3>
+    <ul class="research-card__tech">
+      {% for item in skill.items %}
+        {% if item.name %}{% assign item_name = item.name %}{% else %}{% assign item_name = item %}{% endif %}
+        <li>{% if item_name.fr %}{{ item_name[lang] }}{% else %}{{ item_name }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<h2>{{ t.certifications }}</h2>
+{% if site.author.credly %}<p><a href="{{ site.author.credly }}">{{ c.credly }}</a></p>{% endif %}
+<ul class="research-grid">
+  {% for cert in resume.certifications %}
+  <li class="research-card">
+    <h3 class="research-card__title">{{ cert.name }}</h3>
+    {% if cert.issuer %}<p class="case-study__meta-item">{{ cert.issuer }}</p>{% endif %}
+    {% if cert.description %}<p class="research-card__desc">{{ cert.description[lang] }}</p>{% elsif cert.detail %}<p class="research-card__desc">{{ cert.detail[lang] }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<h2>{{ c.awards }}</h2>
+{% if resume.awards.size > 0 %}
+<ul class="research-grid">
+  {% for award in resume.awards %}
+  <li class="research-card">
+    <h3 class="research-card__title">{{ award.title[lang] }}</h3>
+    <p class="case-study__meta-item">{{ award.issuer }} &middot; {{ award.date }}</p>
+    <p class="research-card__desc">{{ award.description[lang] }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="rdv-panel"><p class="rdv-subtitle">{{ c.awards_empty }}</p></div>
+{% endif %}
+
+<hr>
+
+<h2>{{ c.languages }}</h2>
+<div>
+  {% for item in resume.languages %}
+  <span class="language-card"><strong>{{ item.language[lang] }}</strong> <span class="case-study__meta-item">{{ item.level[lang] }}</span></span>
+  {% endfor %}
+</div>
+
+</div>
+
+<section class="hero hero--centered reveal">
+  <div class="hero__content">
+    <p class="hero__name" style="font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin-bottom: 0.75rem;">{{ c.explore }}</p>
+    <div class="hero__actions">
+      <a href="{{ base_path }}{% include localized-url.html path="/research/" %}" class="btn btn--large">{{ site.data.tracks.research.title[lang] }}</a>
+      <a href="{{ base_path }}{% include localized-url.html path="/teaching/" %}" class="btn btn--large btn--outline">{{ site.data.tracks.research.extra_nav[0].label[lang] }}</a>
+      <a href="{{ site.author.geo_stories }}" class="btn btn--large btn--outline">{{ t.stories }}</a>
+      <a href="{{ base_path }}{% include localized-url.html path="/research/contact/" %}" class="btn btn--large btn--outline">{{ t.contact }}</a>
+    </div>
+  </div>
+</section>
+</div>

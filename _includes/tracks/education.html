@@ -1,11 +1,11 @@
+{% comment %} Education, from _data/resume.yml (shown on every space). {% endcomment %}
 <section class="tracks-section" id="education" aria-labelledby="education-title">
   <h2 id="education-title">{{ t.education }}</h2>
   <ol class="tracks-timeline">
-    {% for entry in site.data.education %}
-      {% if entry.tracks %}{% unless entry.tracks contains track_key %}{% continue %}{% endunless %}{% endif %}
+    {% for entry in site.data.resume.education %}
     <li>
       <h3>{{ entry.degree[lang] }}</h3>
-      <p class="tracks-meta">{{ entry.institution }} · {% include tracks/period.html start=entry.start end=entry.end %}</p>
+      <p class="tracks-meta">{{ entry.institution }} · {{ entry.years }}</p>
       {% if entry.detail %}<p>{{ entry.detail[lang] }}</p>{% endif %}
     </li>
     {% endfor %}
