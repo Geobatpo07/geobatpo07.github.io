@@ -25,9 +25,11 @@
 {% assign seo_image = page.header.image | default: page.header.overlay_image | default: page.image.path | default: page.image | default: site.og_image %}
 {% assign seo_image_url = "" %}
 {% if seo_image %}
+  {% comment %} Filters are not allowed inside a condition: compute the first character first. {% endcomment %}
+  {% assign seo_image_first = seo_image | slice: 0, 1 %}
   {% if seo_image contains "://" %}
     {% assign seo_image_url = seo_image %}
-  {% elsif seo_image | slice: 0, 1 == "/" %}
+  {% elsif seo_image_first == "/" %}
     {% assign seo_image_url = seo_image | absolute_url %}
   {% else %}
     {% assign seo_image_url = seo_image | prepend: "/images/" | absolute_url %}

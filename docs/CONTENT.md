@@ -210,6 +210,15 @@ data:
 
 **Génération et contrôle.** `scripts/generate-cv-pdf.mjs` (Playwright) produit `Profile.pdf` et `Profile_EN.pdf`, puis un PDF par page d'impression d'espace, nommé par sa balise `<meta name="cv-file">`. L'étape échoue et bloque le déploiement si un CV d'espace dépasse `max_pages`.
 
+## Conformité : ce que le site charge et collecte
+
+- **Pages légales** (neutres, FR et EN, liées depuis le pied de page de toutes les pages) : mentions légales (`/mentions-legales/`, `/en/legal-notice/`) et politique de confidentialité (`/confidentialite/`, `/en/privacy/`, qui remplace `/terms/`). Toute modification de ce que le site charge ou collecte doit y être reportée.
+- **Aucun traceur avant action volontaire**, donc aucun bandeau de cookies. Le seul script tiers chargé d'office est GoatCounter (mesure d'audience sans cookie, builds de production seulement, pas sur les pages d'impression des CV ; `analytics` dans `_config.yml`).
+- **Tout le reste est hébergé avec le site** : polices Inter et Fraunces (`assets/fonts/`, `_sass/_fonts.scss`, licences OFL), Font Awesome, Academicons, Chart.js (`assets/js/chart.umd.min.js`). Ne pas réintroduire de ressource chargée depuis Google Fonts ou un CDN.
+- **Calendly** n'est chargé qu'après un clic (`data-click-to-load`, `assets/js/click-to-load.js`) ; le même mécanisme sert pour tout futur contenu tiers intégré.
+- **Accessibilité** : contrastes WCAG AA dans les deux thèmes (couleurs dans `_sass/theme/_default_*.scss`), un `h1` visible par page.
+- **Agents IA** : `/llms.txt` est généré depuis les données ; `robots.txt` autorise tous les robots.
+
 ## Vérifier
 
 ```bash
