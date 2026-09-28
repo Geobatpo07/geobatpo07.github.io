@@ -1,17 +1,19 @@
 # ==========================================================================
 # CERTIFICATIONS — the section only renders on tracks that have at least one.
 #   tracks: { <track>: <priority> }
+# Microsoft certifications appear on the data and software tracks;
+# Databricks and Google ones on data only.
 # Verification links point to the Credly profile (site.author.credly).
 # See docs/CONTENT.md.
 # ==========================================================================
 
 - name: "Microsoft Certified: Fabric Data Engineer Associate (DP-700)"
   issuer: "Microsoft"
-  tracks: { data: 1 }
+  tracks: { data: 1, software: 1 }
 
 - name: "Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)"
   issuer: "Microsoft"
-  tracks: { data: 2 }
+  tracks: { data: 2, software: 2 }
 
 - name: "Apache Spark SQL for Data Analysts"
   issuer: "Databricks"
