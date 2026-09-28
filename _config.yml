@@ -23,7 +23,7 @@ repository               : "Geobatpo07/geobatpo07.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Geo_04.png"
+  avatar           : "Geo_04.jpg"
   name             : "Geovany Batista Polo LAGUERRE"
   pronouns         : "he/him"  
   bio              : "Software & Data Engineer | C#/.NET, Java, Python, TypeScript, SQL | Master's in Mathematics and Applications"
@@ -156,7 +156,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "Geo_04.png" # Social media default site image (stored in /images)
+og_image                 : "og-image.jpg" # Social media default site image (stored in /images)
 og_description           : "Geovany Laguerre, software and data engineer: applications, data pipelines and mathematical modelling, from mathematical model to production system."
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles

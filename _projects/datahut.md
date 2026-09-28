@@ -52,7 +52,7 @@ Obtenir une évolution de schéma Iceberg prévisible à la fois dans DuckDB et 
 
 ## Résultats
 
-La plateforme permet aujourd'hui un flux analytique local fonctionnel (ingestion dans Iceberg, transformation avec dbt, requêtes avec DuckDB ou Trino selon la portée de la requête) et suscite un intérêt open source, avec plus de 12 étoiles sur GitHub. Elle sert de couche de données aux autres travaux de calcul de ce portfolio, dont le travail exploratoire qui a précédé la modélisation du chlordécone.
+La plateforme permet aujourd'hui un flux analytique local fonctionnel (ingestion dans Iceberg, transformation avec dbt, requêtes avec DuckDB ou Trino selon la portée de la requête) et suscite un intérêt open source (une douzaine d'étoiles sur GitHub en septembre 2026). Elle sert de couche de données aux autres travaux de calcul de ce portfolio, dont le travail exploratoire qui a précédé la modélisation du chlordécone.
 
 ## Enseignements
 

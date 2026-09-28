@@ -50,7 +50,7 @@ Getting Iceberg's schema evolution to behave predictably across DuckDB and Trino
 
 ## Results
 
-The platform currently supports a working local-first analytics workflow (ingestion into Iceberg, transformation via dbt, and querying through either DuckDB or Trino depending on the scope of the query) and has attracted open-source interest reflected in its 12+ GitHub stars. It functions as the data layer behind the other computational research in this portfolio, including the exploratory work behind the chlordecone modelling.
+The platform currently supports a working local-first analytics workflow (ingestion into Iceberg, transformation via dbt, and querying through either DuckDB or Trino depending on the scope of the query) and has attracted open-source interest (about a dozen GitHub stars as of September 2026). It functions as the data layer behind the other computational research in this portfolio, including the exploratory work behind the chlordecone modelling.
 
 ## Lessons Learned
 
