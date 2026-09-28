@@ -1,8 +1,9 @@
 {% comment %}
   Page footer. Spaces and the portal show the external contact links
-  (e-mail, LinkedIn, GitHub) and, for a space, its contact page. The neutral
-  footer carries the copyright only. No footer links to the portal or to
-  another space.
+  (e-mail, LinkedIn, GitHub) and, for a space, its contact page. Every
+  footer (portal, spaces, neutral pages) carries the copyright and the links
+  to the legal notice and the privacy policy, which are neutral pages. No
+  footer links to the portal or to another space.
 {% endcomment %}
 {% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
@@ -24,6 +25,11 @@
       </ul>
     </nav>
     {% endif %}
-    <p class="space-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ display_name }}</p>
+    <p class="space-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ display_name }}
+      <span class="space-footer__legal">
+        <a href="{% include ref-url.html ref="legal-notice" lang=lang %}">{{ t.legal_notice }}</a>
+        · <a href="{% include ref-url.html ref="privacy" lang=lang %}">{{ t.privacy_title }}</a>
+      </span>
+    </p>
   </div>
 </footer>

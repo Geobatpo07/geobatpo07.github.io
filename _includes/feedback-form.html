@@ -4,8 +4,10 @@
   <form id="feedback-form" class="feedback-form"
         data-subject="{{ f.mail_subject }}" data-visitor="{{ f.mail_visitor }}"
         data-from="{{ f.mail_from }}" data-anonymous="{{ f.mail_anonymous }}" data-reply-to="{{ f.mail_reply_to }}">
+    <p class="feedback-form__note">{{ f.required_note }}</p>
+
     <div class="feedback-form__field">
-      <label for="feedback-name">{{ f.name }}</label>
+      <label for="feedback-name">{{ f.name }} <span class="feedback-form__required" aria-hidden="true">*</span></label>
       <input type="text" id="feedback-name" name="name" autocomplete="name" required>
     </div>
 
@@ -15,14 +17,14 @@
     </div>
 
     <div class="feedback-form__field">
-      <label for="feedback-message">{{ f.message }}</label>
+      <label for="feedback-message">{{ f.message }} <span class="feedback-form__required" aria-hidden="true">*</span></label>
       <textarea id="feedback-message" name="message" rows="5" required></textarea>
     </div>
 
     <button type="submit" class="btn btn--large">{{ f.submit }}</button>
 
     <p class="feedback-form__note">
-      {{ f.note }}
+      {{ f.note }} {{ f.privacy_before }} <a href="{% include ref-url.html ref="privacy" %}">{{ site.data.i18n[page.lang].privacy }}</a>.
     </p>
   </form>
 </div>

@@ -293,6 +293,23 @@ $tracks-max-width: 1100px;
   font-size: 0.85rem;
 }
 
+.space-footer__legal {
+  margin-left: 0.75rem;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--global-text-color);
+    }
+
+    &:focus-visible {
+      @extend %tracks-focus;
+    }
+  }
+}
+
 /* Page shell shared by the portal, space and contact layouts
    ========================================================================== */
 

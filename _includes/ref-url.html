@@ -1,0 +1,9 @@
+{%- comment -%}
+  Prints the URL of the page with the given `ref` in the current page
+  language, e.g. the privacy policy: /confidentialite/ or /en/privacy/.
+  Usage: <a href="{% include ref-url.html ref="privacy" %}">
+  Params: ref, lang (optional, defaults to page.lang).
+{%- endcomment -%}
+{%- assign ref_lang = include.lang | default: page.lang | default: "fr" -%}
+{%- assign ref_page = site.pages | where: "ref", include.ref | where: "lang", ref_lang | first -%}
+{{- site.baseurl }}{{ ref_page.url -}}
