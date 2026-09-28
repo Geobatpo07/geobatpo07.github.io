@@ -64,6 +64,12 @@ jobs:
         # Renders the built /cv/ page to files/Profile.pdf so the PDF can
         # never drift from the live resume.yml-driven page.
         run: node scripts/generate-cv-pdf.mjs
+      - name: Check links and space isolation
+        # html-proofer (internal links, images, scripts) plus the
+        # SpaceIsolation check: a space page never links to the portal or
+        # to another space. Runs after the PDF step so /files/Profile.pdf
+        # exists; a failure blocks the deployment.
+        run: bundle exec ruby scripts/check-isolation.rb
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3

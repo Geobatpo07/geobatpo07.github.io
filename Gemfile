@@ -11,3 +11,7 @@ end
 
 gem 'github-pages'
 gem 'connection_pool', '2.5.0'
+
+group :test do
+  gem 'html-proofer', '~> 5.0'
+end
