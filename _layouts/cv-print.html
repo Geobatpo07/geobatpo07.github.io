@@ -109,7 +109,7 @@
   </section>
   {% endif %}
 
-  {% assign categories = site.data.skills | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+  {% assign categories = site.data.skills | where_exp: "x", "x.tracks contains track_key" | where_exp: "x", "x.cv != false" | sort: sort_key %}
   {% if categories.size > 0 %}
   <section>
     <h2>{{ t.skills }}</h2>

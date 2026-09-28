@@ -172,7 +172,8 @@ data:
 ```
 
 - Puces : celles de l'espace dans `experience.yml`, sauf celles marquées `cv: false`.
-- Compétences, formation et certifications : toutes les entrées de l'espace (mêmes règles que le site).
+- Compétences : les catégories de l'espace, sauf celles marquées `cv: false` dans `skills.yml` (la catégorie reste sur le site).
+- Formation et certifications : toutes les entrées de l'espace (mêmes règles que le site).
 - Projets : description, technologies, lien GitHub (ou « Dépôt privé, démo sur demande ») et liens `links`.
 - Publications : les entrées publiées, puis celles « en préparation » (lieu contenant « preparation »).
 - En-tête : nom, `headline`, e-mail, LinkedIn, GitHub (`_config.yml`, `author`) et `cv_location` d'`i18n.yml` (« Île-de-France »). Ni téléphone ni adresse.
@@ -182,7 +183,7 @@ Mise en page (`_layouts/cv-print.html`, `assets/css/cv-print.scss`) : lisible pa
 
 - Un CV limité à 1 page (Software, Data) est compact : dates sur la ligne du poste, technologies à la suite de la description, un diplôme par ligne. Un CV autorisé à plus d'une page (Research) prend la mise en page aérée : marges plus larges, dates, technologies et liens sur leur propre ligne, formation avec son détail.
 - Les mots à trait d'union (« Scikit-learn », « Lax-Friedrichs », « DP-700 ») ne sont jamais coupés en fin de ligne : le filtre `nowrap_hyphens` (`_plugins/nowrap_hyphens.rb`) les entoure d'un `<span class="nowrap">` (`white-space: nowrap`), avec un trait d'union normal ; les URL affichées sont aussi en `nowrap`. L'extraction de texte du PDF les restitue entiers.
-- Si un CV dépasse sa limite, on retire un élément du bloc `cv` (projet, poste) ou une puce (`cv: false`) ; la mise en page ne se resserre pas pour compenser.
+- Si un CV dépasse sa limite, on retire un élément du bloc `cv` (projet, poste), une puce ou une catégorie de compétences (`cv: false`) ; la mise en page ne se resserre pas pour compenser.
 
 **Génération et contrôle.** `scripts/generate-cv-pdf.mjs` (Playwright) produit `Profile.pdf` depuis `/resume-print/`, puis un PDF par page d'impression, nommé par sa balise `<meta name="cv-file">`. L'étape échoue et bloque le déploiement si un CV dépasse `max_pages`, ou si un id du bloc `cv` ne correspond à rien dans `_data/`.
 

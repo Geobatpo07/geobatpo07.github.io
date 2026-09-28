@@ -4,6 +4,7 @@
 #   tracks: { <track>: <priority> }  where the category appears, and its rank.
 #   items:  a plain string, or { name, tracks } to restrict one item to some
 #           tracks (a list), or { name: {fr, en} } when the term translates.
+#   cv:     false to keep the category on the site but off the generated CVs.
 #
 # See docs/CONTENT.md.
 # ==========================================================================
@@ -25,6 +26,7 @@
 
 - category: { fr: "Front-end", en: "Front end" }
   tracks: { software: 3 }
+  cv: false   # off the Software CV, to keep it on one page
   items: ["Next.js", "React"]
 
 - category: { fr: "Bases de données", en: "Databases" }

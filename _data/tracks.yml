@@ -71,8 +71,8 @@ data:
     summary:
       fr: "Data engineer et data analyst certifié Microsoft Fabric (DP-700, DP-600). De 2023 à 2026, pipelines ETL, architectures Lakehouse et tableaux de bord Power BI sur des données de santé, avec une attention constante à leur qualité. Master de mathématiques appliquées."
       en: "Data engineer and data analyst, Microsoft Fabric certified (DP-700, DP-600). From 2023 to 2026, ETL pipelines, lakehouse architectures and Power BI dashboards on healthcare data, with steady attention to data quality. Master's degree in applied mathematics."
-    experience: [solutions-sa, ayitistats, uniq-lecturer, uniq-ta]
-    projects: [datahut-duckhouse, nyansa, scientific-assistant, simulation-chlordecone]
+    experience: [solutions-sa, ayitistats, uniq-lecturer]
+    projects: [datahut-duckhouse, nyansa, scientific-assistant]
     certifications: block
   stories: false
   contact:
