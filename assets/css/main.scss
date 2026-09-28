@@ -12,6 +12,7 @@
     "vendor/breakpoint/breakpoint",
 
     "themes",
+    "fonts",
     "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
     "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
 
