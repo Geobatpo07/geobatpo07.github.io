@@ -29,9 +29,6 @@ SPACES = %w[software data research].freeze
 CHROMES = (SPACES + %w[portal neutral]).freeze
 LEGACY_HEADER = ".masthead, .site-header"
 
-# The space CVs are linked before the PDFs are uploaded to files/.
-IGNORED_URLS = [%r{/files/CV_Laguerre[^/]*\.pdf\z}].freeze
-
 # Guard: fail when fewer HTML files than this were actually checked, so a
 # broken build or a silent html-proofer failure cannot pass as a success.
 MIN_CHECKED_FILES = 50
@@ -186,7 +183,6 @@ proofer = HTMLProofer.check_directory(
   checks: %w[Links Images Scripts SpaceIsolation],
   disable_external: true,
   allow_missing_href: true,
-  ignore_urls: IGNORED_URLS,
   swap_urls: { %r{\Ahttps?://(www\.)?geovanylaguerre\.net} => "" }
 )
 proofer.run

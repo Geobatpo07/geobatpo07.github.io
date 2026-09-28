@@ -60,15 +60,18 @@ jobs:
         run: npm install --no-save playwright http-server
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
-      - name: Generate CV PDF
-        # Renders the built /cv/ page to files/Profile.pdf so the PDF can
-        # never drift from the live resume.yml-driven page.
+      - name: Generate CV PDFs and check their length
+        # Renders /resume-print/ to files/Profile.pdf and each space print
+        # page to files/CV_Laguerre_<Space>_<FR|EN>.pdf, from _data, so the
+        # PDFs never drift from the site. Blocking: fails when a Software or
+        # Data CV exceeds 1 page, a Research CV 2 pages (tracks.yml
+        # cv.max_pages), or a cv block references an unknown id.
         run: node scripts/generate-cv-pdf.mjs
       - name: Check links and space isolation
         # html-proofer (internal links, images, scripts) plus the
         # SpaceIsolation check: a space page never links to the portal or
-        # to another space. Runs after the PDF step so /files/Profile.pdf
-        # exists; a failure blocks the deployment.
+        # to another space. Runs after the PDF step so the linked PDFs
+        # exist; a failure blocks the deployment.
         run: bundle exec ruby scripts/check-isolation.rb
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
