@@ -1,0 +1,64 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+{%- comment -%}
+  llms.txt (https://llmstxt.org): a plain description of the site for AI
+  agents, generated from _data and the collections so it stays current.
+{%- endcomment -%}
+{%- assign fr = site.data.i18n.fr -%}
+{%- assign en = site.data.i18n.en -%}
+{%- assign r = site.data.resume -%}
+# {{ r.name }}
+
+> Personal portfolio of {{ r.name }}: software engineering (C#/.NET, Java, TypeScript), data engineering and analytics (Microsoft Fabric, Power BI, SQL, Python), and research in applied mathematics (mathematical modelling, scientific computing) with teaching. The site is in French (at the root) and English (under /en/). Portfolio personnel, en français à la racine et en anglais sous /en/.
+
+The site has three independent spaces, one per career track, each with its experience, projects, skills, education, certifications, a contact page and a generated CV (PDF). The portal at the root lists the three spaces.
+
+## Spaces / Espaces
+{% for entry in site.data.tracks %}{% assign track = entry[1] %}
+- [{{ track.title.en }}]({{ site.url }}/en{{ track.url }}): {{ track.tagline.en }}
+- [{{ track.title.fr }}]({{ site.url }}{{ track.url }}): {{ track.tagline.fr }}
+{%- endfor %}
+
+## CVs (PDF)
+{% for entry in site.data.tracks %}{% assign track = entry[1] %}
+- [{{ track.title.en }} CV (English)]({{ site.url }}/files/{{ track.cv_file }}_EN.pdf)
+- [CV {{ track.title.fr }} (français)]({{ site.url }}/files/{{ track.cv_file }}_FR.pdf)
+{%- endfor %}
+- [Complete CV (English)]({{ site.url }}/files/Profile_EN.pdf), [web version]({{ site.url }}/en/cv/)
+- [CV complet (français)]({{ site.url }}/files/Profile.pdf), [version web]({{ site.url }}/cv/)
+
+## Case studies / Études de cas
+{% assign case_studies = site.projects | where: "lang", "en" | sort: "date" | reverse %}
+{%- for p in case_studies %}
+- [{{ p.title }}]({{ site.url }}{{ p.url }}): {{ p.excerpt | strip_html | strip_newlines }}
+{%- endfor %}
+
+French versions: same paths without /en/ (for example {{ site.url }}/projects/datahut/).
+
+## Publications
+{% assign pubs = site.publications | where: "lang", "en" | sort: "date" | reverse %}
+{%- for pub in pubs %}
+- [{{ pub.title }}]({{ site.url }}{{ pub.url }}): {{ pub.venue }}, {{ pub.date | date: "%Y" }}{% if pub.doi %}, DOI {{ pub.doi }}{% endif %}
+{%- endfor %}
+
+## About / À propos
+
+- [My Scientific Journey]({{ site.url }}/en/about/) / [Mon parcours scientifique]({{ site.url }}/about/)
+- [Teaching]({{ site.url }}/en/teaching/) / [Enseignement]({{ site.url }}/teaching/)
+
+## Contact
+
+- Email: {{ site.author.email }}
+- Contact pages: [software]({{ site.url }}/en/software/contact/), [data]({{ site.url }}/en/data/contact/), [research]({{ site.url }}/en/research/contact/) (French: same paths without /en/)
+- LinkedIn: https://www.linkedin.com/in/{{ site.author.linkedin }}
+- GitHub: https://github.com/{{ site.author.github }}
+- Blog: {{ site.author.geo_stories }}
+
+## Optional
+
+- [Legal notice]({{ site.url }}/en/legal-notice/) / [Mentions légales]({{ site.url }}/mentions-legales/)
+- [Privacy policy]({{ site.url }}/en/privacy/) / [Politique de confidentialité]({{ site.url }}/confidentialite/)
+- [Sitemap]({{ site.url }}/sitemap.xml)
