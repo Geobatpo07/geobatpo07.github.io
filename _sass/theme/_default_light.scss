@@ -5,12 +5,12 @@
 /* Color codes used for the theme */
 $primary-color              : #1D4ED8; // royal blue
 $navy                       : #0B1E36; // deep navy
-$cyan                       : #0891B2; // text-safe cyan
+$cyan                       : #0E7490; // cyan text, 5.4:1 on white (WCAG AA)
 $cyan-soft                  : #22D3EE; // backgrounds/glows only, not text
 $gray                       : #5B6B82; // silver-slate
 $dark-gray                  : #0F1B2D;
 $darker-gray                : #0A1420;
-$light-gray                 : #8593A8;
+$light-gray                 : #5B6B80; // secondary text, 5.2:1 on the footer background (WCAG AA)
 $lighter-gray               : #E2E6ED;
 
 /* Color codes used for the site */

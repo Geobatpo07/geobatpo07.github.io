@@ -11,7 +11,7 @@ author_profile: false
 
 <section class="hero hero--centered reveal">
   <div class="hero__content">
-    <span class="hero__section-label">My Scientific Journey</span>
+    <h1 class="hero__section-label">My Scientific Journey</h1>
 
     <p class="hero__statement">
       Every researcher begins with a question. Mine has always been remarkably simple:

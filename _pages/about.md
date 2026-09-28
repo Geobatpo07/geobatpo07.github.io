@@ -13,7 +13,7 @@ redirect_from:
 
 <section class="hero hero--centered reveal">
   <div class="hero__content">
-    <span class="hero__section-label">Mon parcours scientifique</span>
+    <h1 class="hero__section-label">Mon parcours scientifique</h1>
 
     <p class="hero__statement">
       Tout chercheur part d'une question. La mienne a toujours été remarquablement simple :

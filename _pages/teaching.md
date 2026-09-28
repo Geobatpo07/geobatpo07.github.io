@@ -12,7 +12,7 @@ author_profile: false
 
 <section class="hero hero--centered reveal">
   <div class="hero__content">
-    <p class="hero__name" style="font-size: clamp(2rem, 4.5vw, 3.4rem); margin-bottom: 0.75rem;">Enseignement</p>
+    <h1 class="hero__name" style="font-size: clamp(2rem, 4.5vw, 3.4rem); margin-bottom: 0.75rem;">Enseignement</h1>
     <p class="hero__statement">
       Aider étudiants et professionnels à acquérir des bases solides en mathématiques, en calcul scientifique, en intelligence artificielle et en data science.
     </p>

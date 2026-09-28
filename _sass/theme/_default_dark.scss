@@ -40,7 +40,7 @@ $sidebar-screen-min-width   : 1024px;
 
 /* Dark theme for the site */
 html[data-theme="dark"] {
-    --global-base-color                 : #{$primary-color};
+    --global-base-color                 : #2563EB; // buttons: white text at 5.2:1 (WCAG AA)
     --global-bg-color                   : #{$background};
     --global-footer-bg-color            : #{$darker-gray};
     --global-border-color               : #1E2E45;
@@ -59,7 +59,7 @@ html[data-theme="dark"] {
 
     /* Academic luxury accent tokens */
     --color-navy                        : #{$navy};
-    --color-royal-blue                  : #{$primary-color};
+    --color-royal-blue                  : #{$link}; // blue text on dark backgrounds, 6.6:1
     --color-silver                      : #{$gray};
     --color-cyan                        : #{$cyan};
     --color-cyan-soft                   : #{$cyan-soft};
