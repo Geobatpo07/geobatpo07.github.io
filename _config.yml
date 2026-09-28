@@ -173,7 +173,11 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+  provider               : "goatcounter" # false, "goatcounter", "google", "google-universal", "google-analytics-4", "custom"
+  goatcounter:
+    # Cookieless audience measurement, no consent banner needed. Loaded
+    # only in production builds (JEKYLL_ENV=production).
+    endpoint             : "https://geovanylaguerre.goatcounter.com/count"
   google:
     tracking_id          :
 
