@@ -49,14 +49,16 @@ layout: default
     <h2 id="schedule-title">{{ t.book_heading }}</h2>
     <p>{{ t.book_text }}</p>
     <p>{{ t.book_fallback }} <a href="{{ c.calendly }}">{{ c.calendly | remove: "https://" }}</a></p>
-    <div class="rdv-embed-shell">
-      <iframe
-        class="rdv-embed"
-        src="{{ c.calendly }}?hide_gdpr_banner=1"
-        title="{{ t.book_iframe_title }}"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+    {% comment %}
+      Calendly is loaded only after a click (assets/js/click-to-load.js): it
+      sets cookies and transfers data to the United States, so nothing is
+      requested from calendly.com before the visitor asks for it. Without
+      JavaScript the button stays hidden and the direct link above remains.
+    {% endcomment %}
+    <div class="rdv-embed-shell rdv-embed-shell--consent" data-click-to-load
+         data-src="{{ c.calendly }}" data-title="{{ t.book_iframe_title }}">
+      <p class="rdv-consent">{{ t.book_consent }} <a href="{% include ref-url.html ref="privacy" %}">{{ t.privacy }}</a>.</p>
+      <button type="button" class="btn btn--large" hidden>{{ t.book_show }}</button>
     </div>
   </section>
   {% endif %}
