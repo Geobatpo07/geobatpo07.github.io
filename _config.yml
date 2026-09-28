@@ -196,6 +196,16 @@ exclude:
   - assets/js/vendor
   - CHANGELOG
   - docs
+  - scripts
+  - markdown_generator
+  - talkmap
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
+  - response.html
+  - docker-compose.yaml
+  - CONTRIBUTING.md
+  - README.md
   - Capfile
   - config
   - Dockerfile
