@@ -1,4 +1,5 @@
 ---
+space: research
 layout: single
 permalink: /teaching/
 title: "Teaching"
@@ -228,7 +229,7 @@ Research generates new knowledge. Projects transform ideas into practical soluti
       Private tutoring, research mentoring, academic coaching, data science mentoring, career guidance, or interview preparation.
     </p>
     <div class="hero__actions">
-      <a href="/causerie/" class="btn btn--large">Schedule via Calendly</a>
+      <a href="/research/contact/" class="btn btn--large">Schedule via Calendly</a>
       <a href="https://www.linkedin.com/in/geobatpo07" target="_blank" rel="noopener noreferrer" class="btn btn--large btn--outline">Message on LinkedIn</a>
     </div>
   </div>

@@ -1,4 +1,5 @@
 ---
+space: research
 permalink: /about/
 title: "My Scientific Journey"
 description: "How one question, how can mathematics help us understand complex systems well enough to make better decisions, led from pure mathematics through scientific computing, data, and AI, with healthcare and environmental science as specialization domains."
@@ -189,9 +190,8 @@ I don't think of this as ambition for its own sake. I think of it as the natural
     </p>
     <div class="hero__actions">
       <a href="/research/" class="btn btn--large">Research</a>
-      <a href="/projects/" class="btn btn--large btn--outline">Projects</a>
       <a href="/teaching/" class="btn btn--large btn--outline">Teaching</a>
-      <a href="/causerie/" class="btn btn--large btn--outline">Contact</a>
+      <a href="/research/contact/" class="btn btn--large btn--outline">Contact</a>
     </div>
   </div>
 </section>

@@ -1,4 +1,5 @@
 ---
+space: neutral
 layout: archive
 title: "CV"
 permalink: /cv-json/
@@ -14,6 +15,5 @@ redirect_from:
 {% include cv-template.html %}
 
 <div class="cv-download-links">
-  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Download CV as PDF</a>
-  <a href="{{ base_path }}" class="btn btn--inverse">View Markdown CV</a>
+  <a href="{{ base_path }}/files/Profile.pdf" class="btn btn--primary">Download CV as PDF</a>
 </div>

@@ -1,4 +1,5 @@
 ---
+space: research
 layout: single
 permalink: /cv/
 title: "Curriculum Vitae"
@@ -29,7 +30,7 @@ redirect_from:
 
 {{ site.data.resume.summary | markdownify }}
 
-The [Research](/research/), [Projects](/projects/), and [Scientific Journey](/about/) pages develop this further; what follows here is the evidence.
+The [Research](/research/) and [Scientific Journey](/about/) pages develop this further; what follows here is the evidence.
 
 ---
 
@@ -62,7 +63,7 @@ The [Research](/research/), [Projects](/projects/), and [Scientific Journey](/ab
     {% if edu.track %}<p class="research-card__desc">{{ edu.track }}</p>{% endif %}
     {% if edu.research_topics %}<p class="research-card__desc"><strong>Research focus.</strong> {{ edu.research_topics }}</p>{% endif %}
     {% if edu.supervisor %}<p class="research-card__desc"><strong>Supervisor.</strong> {{ edu.supervisor }}</p>{% endif %}
-    {% if edu.related_link %}<a href="{{ edu.related_link }}" class="project-teaser__link">{{ edu.related_link_label }} &rarr;</a>{% endif %}
+    {% if edu.related_link %}<a href="{{ edu.related_link }}{% if edu.related_link contains '/projects/' %}?from=research{% endif %}" class="project-teaser__link">{{ edu.related_link_label }} &rarr;</a>{% endif %}
   </li>
   {% endfor %}
 </ul>
@@ -82,7 +83,7 @@ The [Research](/research/), [Projects](/projects/), and [Scientific Journey](/ab
     <p><strong>Objectives.</strong> {{ exp.objectives }}</p>
     <p><strong>Methods.</strong> {{ exp.methods }}</p>
     <p><strong>Contribution.</strong> {{ exp.contribution }}</p>
-    {% if exp.related_link %}<a href="{{ exp.related_link }}" class="project-teaser__link">{{ exp.related_link_label }} &rarr;</a>{% endif %}
+    {% if exp.related_link %}<a href="{{ exp.related_link }}{% if exp.related_link contains '/projects/' %}?from=research{% endif %}" class="project-teaser__link">{{ exp.related_link_label }} &rarr;</a>{% endif %}
   </div>
   {% endfor %}
 </div>
@@ -145,7 +146,7 @@ Teaching roles (Lecturer, Teaching Assistant, and Mathematics Tutor) are covered
 <h3>{{ category[1].title }}</h3>
         {% assign title_shown = true %}
       {% endunless %}
-      {% include archive-single-cv.html %}
+      {% include archive-single-cv.html from="?from=research" %}
     {% endfor %}
     {% for post in publications_sorted %}
       {% if post.category != category[0] %}
@@ -164,12 +165,12 @@ Teaching roles (Lecturer, Teaching Assistant, and Mathematics Tutor) are covered
 <h3>{{ category[1].title }}</h3>
         {% assign title_shown = true %}
       {% endunless %}
-      {% include archive-single-cv.html %}
+      {% include archive-single-cv.html from="?from=research" %}
     {% endfor %}
   {% endfor %}
 {% endif %}
 
-Research software and open-source contributions (DataHut-DuckHouse, Scientific Assistant, and others) are documented as full case studies in <a href="/projects/">Projects</a>. My Master's thesis has been completed and will be linked here soon.
+Research software and open-source contributions (DataHut-DuckHouse, Scientific Assistant, and others) are documented as full case studies on the <a href="/research/#projects">Research</a> page. My Master's thesis has been completed and will be linked here soon.
 
 ---
 
@@ -256,7 +257,7 @@ Research software and open-source contributions (DataHut-DuckHouse, Scientific A
   <li class="hero__chip">Scientific Communication</li>
 </ul>
 
-Teaching and mentoring are detailed on the [Teaching](/teaching/) page. Open-source work is documented in [Projects](/projects/) and on <a href="https://github.com/Geobatpo07" target="_blank" rel="noopener noreferrer">GitHub</a> (125+ repositories, 198+ contributions). Scientific communication beyond formal publications continues on <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer">Geo's Stories</a>. No conference presentations to date, noted here rather than omitted.
+Teaching and mentoring are detailed on the [Teaching](/teaching/) page. Open-source work is documented in the [Research projects](/research/#projects) and on <a href="https://github.com/Geobatpo07" target="_blank" rel="noopener noreferrer">GitHub</a> (125+ repositories, 198+ contributions). Scientific communication beyond formal publications continues on <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer">Geo's Stories</a>. No conference presentations to date, noted here rather than omitted.
 
 ---
 
@@ -278,10 +279,9 @@ Teaching and mentoring are detailed on the [Teaching](/teaching/) page. Open-sou
     <p class="hero__name" style="font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin-bottom: 0.75rem;">Continue Exploring</p>
     <div class="hero__actions">
       <a href="/research/" class="btn btn--large">Research</a>
-      <a href="/projects/" class="btn btn--large btn--outline">Projects</a>
       <a href="/teaching/" class="btn btn--large btn--outline">Teaching</a>
       <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer" class="btn btn--large btn--outline">Stories</a>
-      <a href="/causerie/" class="btn btn--large btn--outline">Contact</a>
+      <a href="/research/contact/" class="btn btn--large btn--outline">Contact</a>
     </div>
   </div>
 </section>

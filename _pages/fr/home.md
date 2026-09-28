@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: portal
 lang: fr
 ref: home
 permalink: /fr/

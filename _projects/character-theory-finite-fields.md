@@ -1,6 +1,6 @@
 ---
-layout: case-study
-permalink: /research/character-theory-finite-fields/
+redirect_from:
+  - /research/character-theory-finite-fields/
 title: "Character Theory over Finite Fields"
 excerpt: "A step-by-step account of how additive characters and their orthogonality relations are constructed and presented, from the underlying finite field structure to their applications in discrete mathematics."
 status: "Presented"
@@ -10,11 +10,6 @@ research_theme: "Applied Mathematics"
 technologies: ["Pure Mathematics", "Group Theory", "Character Theory", "Finite Fields"]
 docs: "https://doi.org/10.13140/RG.2.2.13837.45285"
 docs_label: "View DOI Record"
-back_link: "/research/"
-back_link_label: "Back to Research"
-author_profile: false
-full_width: true
-read_time: true
 last_updated: 2025-04-01
 date: 2025-04-01
 ---

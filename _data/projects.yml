@@ -3,10 +3,10 @@
 # repository's README.
 #
 #   tracks:     { <track>: <priority> }  1 = first card on that track page.
-#   featured:   true to show the project on the home page (keep three).
 #   status:     active | prototype | completed | presented (labels in i18n.yml)
 #   github:     repository URL; omit for private work and set `private: true`.
-#   case_study: path of the long-form page under /projects/ or /research/.
+#   case_study: path of the long-form page under /projects/ (neutral layout;
+#               the card adds ?from=<space>).
 #   stack:      list of strings, or {fr, en} pairs for terms that translate.
 #   links:      extra links, each { label: {fr, en}, url }.
 #   research:   optional research framing shown on the research track only.
@@ -19,7 +19,6 @@
   github: "https://github.com/Geobatpo07/stories"
   stack: ["TypeScript", "Next.js", "DuckDB", "Zod", "Vitest", "GitHub Actions"]
   status: active
-  featured: true
   tracks: { software: 1 }
   description:
     fr: "Plateforme Next.js qui organise les programmes, hypothèses, expériences et publications d'un laboratoire de recherche dans un modèle de connaissances typé. La publication génère des fichiers MDX et un index DuckDB ; la CI enchaîne typage, lint, tests et build."
@@ -71,7 +70,6 @@
   case_study: /projects/datahut/
   stack: ["Python", "DuckDB", "Apache Iceberg", "Arrow Flight", "dbt", "Trino", "MinIO"]
   status: active
-  featured: true
   tracks: { data: 1, software: 6, research: 5 }
   description:
     fr: "Plateforme analytique multi-tenant, locale ou cloud : ingestion par Arrow Flight, stockage hybride DuckDB et Iceberg (MinIO/S3), transformations dbt et requêtes Trino."
@@ -120,7 +118,6 @@
   case_study: /projects/chlordecone/
   stack: ["R", "Shiny", { fr: "EDO non autonomes", en: "Non-autonomous ODEs" }, "renv"]
   status: active
-  featured: true
   tracks: { research: 1, data: 5 }
   links:
     - label: { fr: "Application Shiny", en: "Shiny app" }
@@ -181,7 +178,7 @@
 
 - id: character-theory
   name: "Character Theory over Finite Fields"
-  case_study: /research/character-theory-finite-fields/
+  case_study: /projects/character-theory-finite-fields/
   stack: [{ fr: "Théorie des groupes", en: "Group theory" }, { fr: "Corps finis", en: "Finite fields" }, { fr: "Théorie des caractères", en: "Character theory" }]
   status: presented
   tracks: { research: 4 }

@@ -4,6 +4,15 @@
 # Keys (software, data, research) are the identifiers used in the `tracks`
 # field of experience.yml, projects.yml, skills.yml, education.yml and
 # certifications.yml. Every displayed string is a {fr, en} pair.
+#
+# Each track is a self-contained space: its header, footer and contact page
+# never link to the portal or to another space.
+#   cv_url:   target of the "CV" menu entry (defaults to /files/<cv>)
+#   stories:  true to show the Stories blog link in the space menu
+#   extra_nav: additional menu entries, each { label: {fr, en}, url }
+#   contact:  contact page of the space (/<space>/contact/): mail subject,
+#             title, intro, SEO description; optional calendly (booking
+#             embed) and profiles (extra links, keys of site.author)
 # See docs/CONTENT.md.
 # ==========================================================================
 
@@ -11,6 +20,16 @@ software:
   url: /software/
   icon: "fa-solid fa-code"
   cv: CV_Laguerre_Software.pdf
+  stories: false
+  contact:
+    subject: "[Software]"
+    title: { fr: "Contact : ingénierie logicielle", en: "Contact: software engineering" }
+    seo_description:
+      fr: "Contacter Geovany Laguerre pour un poste ou une mission de développement : C#/.NET, Java, TypeScript, API REST, microservices."
+      en: "Contact Geovany Laguerre about a software development role or engagement: C#/.NET, Java, TypeScript, REST APIs, microservices."
+    intro:
+      fr: "Un poste de développeur, une mission sur une application C#/.NET ou Java, une API à concevoir ou à reprendre : écrivez-moi en décrivant le contexte, la stack et le calendrier. Je réponds en général sous quelques jours ouvrés."
+      en: "A developer role, an engagement on a C#/.NET or Java application, an API to design or take over: write to me with the context, the stack and the timeline. I usually reply within a few business days."
   nav: { fr: "Software", en: "Software" }
   card_title: { fr: "Software engineering", en: "Software engineering" }
   card_text:
@@ -31,6 +50,16 @@ data:
   url: /data/
   icon: "fa-solid fa-chart-column"
   cv: CV_Laguerre_Data.pdf
+  stories: false
+  contact:
+    subject: "[Data]"
+    title: { fr: "Contact : data et analytics", en: "Contact: data & analytics" }
+    seo_description:
+      fr: "Contacter Geovany Laguerre pour un poste ou une mission data : pipelines ETL, Microsoft Fabric, Power BI, SQL, qualité des données."
+      en: "Contact Geovany Laguerre about a data role or engagement: ETL pipelines, Microsoft Fabric, Power BI, SQL, data quality."
+    intro:
+      fr: "Un poste de data engineer ou de data analyst, un pipeline à fiabiliser, un Lakehouse Fabric ou un tableau de bord Power BI à construire : écrivez-moi en décrivant les sources, les volumes et l'objectif. Je réponds en général sous quelques jours ouvrés."
+      en: "A data engineer or data analyst role, a pipeline to make reliable, a Fabric lakehouse or a Power BI dashboard to build: write to me with the sources, the volumes and the goal. I usually reply within a few business days."
   nav: { fr: "Data", en: "Data" }
   card_title: { fr: "Data et analytics", en: "Data & analytics" }
   card_text:
@@ -51,6 +80,21 @@ research:
   url: /research/
   icon: "fa-solid fa-square-root-variable"
   cv: CV_Laguerre_Research.pdf
+  cv_url: /cv/
+  stories: true
+  extra_nav:
+    - { label: { fr: "Enseignement", en: "Teaching" }, url: /teaching/ }
+  contact:
+    subject: "[Research]"
+    calendly: "https://calendly.com/geobatpo07/30-minutes-de-causerie"
+    profiles: [orcid, researchgate]   # extra links, keys of site.author
+    title: { fr: "Contact : recherche et enseignement", en: "Contact: research & teaching" }
+    seo_description:
+      fr: "Contacter Geovany Laguerre pour une collaboration de recherche, un projet de modélisation mathématique ou un enseignement, ou réserver un échange de 30 minutes."
+      en: "Contact Geovany Laguerre about a research collaboration, a mathematical modelling project or teaching, or book a 30-minute conversation."
+    intro:
+      fr: "Une idée de recherche, une collaboration avec un laboratoire ou une équipe pluridisciplinaire, un problème de modélisation ou de calcul scientifique, un enseignement ou un encadrement : écrivez-moi, ou réservez directement un échange de 30 minutes en ligne (français, anglais ou espagnol)."
+      en: "A research idea, a collaboration with a laboratory or an interdisciplinary team, a modelling or scientific computing problem, teaching or mentoring: write to me, or book a 30-minute online conversation directly (English, French or Spanish)."
   nav: { fr: "Research", en: "Research" }
   card_title: { fr: "Research et teaching", en: "Research & teaching" }
   card_text:
