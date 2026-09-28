@@ -1,8 +1,8 @@
 ---
 layout: track
 track: software
-lang: fr
+lang: en
 ref: software
-permalink: /fr/software/
+permalink: /en/software/
 author_profile: false
 ---

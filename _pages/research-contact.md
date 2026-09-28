@@ -1,7 +1,7 @@
 ---
 layout: contact
 space: research
-lang: en
+lang: fr
 ref: research-contact
 permalink: /research/contact/
 redirect_from:

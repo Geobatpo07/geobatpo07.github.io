@@ -8,7 +8,12 @@
 #   - no page contains the former global header (.masthead, .site-header);
 #   - a page of a space never links to the portal or to another space.
 #     Links are followed through redirect stubs; links to neutral pages,
-#     to files and to other sites are allowed.
+#     to files and to other sites are allowed;
+#   - languages: French at the root, English under /en/. A page under /en/
+#     is lang="en"; outside /en/ a lang="en" page is only allowed without a
+#     French version (the English-only research pages); a FR/EN pair lists
+#     both hreflang alternates with x-default on the French page; no link
+#     uses the former /fr/ prefix.
 #
 # Usage: bundle exec ruby scripts/check-isolation.rb [site_dir]   (default _site)
 # Exits non-zero when html-proofer reports a failure or when fewer than
@@ -126,9 +131,12 @@ class SpaceIsolation < HTMLProofer::Check
       add_failure("former global header (.#{node["class"].split.first}) still present", line: node.line)
     end
 
+    base_path = SitePages.url_of(@runner.current_filename)
+    check_language(root, base_path)
+    check_no_fr_prefix(base_path)
+
     return unless SPACES.include?(space)
 
-    base_path = SitePages.url_of(@runner.current_filename)
     @html.css("a[href]").each do |node|
       path = SitePages.internal_path(node["href"].strip, base_path)
       next if path.nil?
@@ -138,6 +146,35 @@ class SpaceIsolation < HTMLProofer::Check
 
       add_failure("#{space} page links to the #{target == "portal" ? "portal" : "#{target} space"}: #{node["href"]}",
                   line: node.line, content: node.to_html)
+    end
+  end
+
+  private
+
+  def check_language(root, base_path)
+    lang = root["lang"]
+    alternates = @html.css('link[rel="alternate"][hreflang]').to_h { |l| [l["hreflang"], l["href"]] }
+
+    if base_path.start_with?("/en/")
+      add_failure("page under /en/ has lang=\"#{lang}\"", line: root.line) unless lang == "en"
+    elsif lang == "en" && alternates.key?("fr")
+      add_failure("English page with a French version must live under /en/", line: root.line)
+    elsif !%w[fr en].include?(lang)
+      add_failure("unexpected lang=\"#{lang}\"", line: root.line)
+    end
+
+    return unless alternates.key?("fr") && alternates.key?("en")
+    return if alternates["x-default"] == alternates["fr"]
+
+    add_failure("hreflang x-default must point to the French version (#{alternates["fr"]})", line: root.line)
+  end
+
+  def check_no_fr_prefix(base_path)
+    @html.css("a[href]").each do |node|
+      path = SitePages.internal_path(node["href"].strip, base_path)
+      next unless path&.start_with?("/fr/") || path == "/fr"
+
+      add_failure("link uses the former /fr/ prefix: #{node["href"]}", line: node.line, content: node.to_html)
     end
   end
 end

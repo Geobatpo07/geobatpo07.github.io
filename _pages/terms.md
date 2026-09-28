@@ -1,4 +1,5 @@
 ---
+lang: en
 space: neutral
 permalink: /terms/
 title: "Terms and Privacy Policy"

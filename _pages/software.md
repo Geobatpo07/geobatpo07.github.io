@@ -1,7 +1,7 @@
 ---
 layout: track
 track: software
-lang: en
+lang: fr
 ref: software
 permalink: /software/
 author_profile: false

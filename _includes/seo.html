@@ -3,7 +3,7 @@
 <!-- begin SEO -->
 {% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
 
-{% assign seo_lang = page.lang | default: "en" %}
+{% assign seo_lang = page.lang | default: "fr" %}
 {% assign seo_track = site.data.tracks[page.track] %}
 {% if page.layout == "contact" %}{% assign seo_contact = site.data.tracks[page.space].contact %}{% endif %}
 
@@ -49,15 +49,15 @@
 <meta name="author" content="{{ site.author.name | default: site.name }}">
 
 <link rel="canonical" href="{{ page.canonical_url | default: canonical_url }}">
-{% comment %} Bilingual pages share a `ref`; list every language version. {% endcomment %}
+{% comment %} Bilingual pages share a `ref`; list every language version, x-default is the French one. {% endcomment %}
 {% if page.ref %}
   {% assign seo_versions = site.pages | where: "ref", page.ref %}
   {% for version in seo_versions %}
 <link rel="alternate" hreflang="{{ version.lang }}" href="{{ version.url | absolute_url }}">
-    {% if version.lang == "en" %}<link rel="alternate" hreflang="x-default" href="{{ version.url | absolute_url }}">{% endif %}
+    {% if version.lang == "fr" %}<link rel="alternate" hreflang="x-default" href="{{ version.url | absolute_url }}">{% endif %}
   {% endfor %}
 {% else %}
-<link rel="alternate" hreflang="{{ site.locale | default: 'en-US' }}" href="{{ page.canonical_url | default: canonical_url }}">
+<link rel="alternate" hreflang="{{ seo_lang }}" href="{{ page.canonical_url | default: canonical_url }}">
 <link rel="alternate" hreflang="x-default" href="{{ page.canonical_url | default: canonical_url }}">
 {% endif %}
 
@@ -162,7 +162,7 @@
       "url": {{ site.url | append: "/" | jsonify }},
       "name": {{ site.title | jsonify }},
       "description": {{ site.description | jsonify }},
-      "inLanguage": {{ site.locale | default: 'en-US' | jsonify }}
+      "inLanguage": {{ seo_lang | jsonify }}
     },
     {
       "@type": "Person",
@@ -190,7 +190,7 @@
       "description": {{ seo_description | jsonify }},
       "isPartOf": { "@id": {{ site.url | append: "/#website" | jsonify }} },
       "about": { "@id": {{ site.url | append: "/#person" | jsonify }} },
-      "inLanguage": {{ site.locale | default: 'en-US' | jsonify }}{% if breadcrumb_count > 0 %},
+      "inLanguage": {{ seo_lang | jsonify }}{% if breadcrumb_count > 0 %},
       "breadcrumb": { "@id": {{ canonical_url | append: "#breadcrumb" | jsonify }} }
       {% endif %}
     }{% if breadcrumb_count > 0 %},

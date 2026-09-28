@@ -2,13 +2,13 @@
 layout: default
 ---
 {% comment %}
-  Contact page of a space (/<space>/contact/ and /fr/<space>/contact/).
+  Contact page of a space (/<space>/contact/ and /en/<space>/contact/).
   Every text comes from the `contact` block of _data/tracks.yml for
   `page.space`: introduction, mail subject, optional booking embed and
   extra profiles. Links stay in the space or point outside the site.
 {% endcomment %}
 {% include base_path %}
-{% assign lang = page.lang | default: "en" %}
+{% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign track = site.data.tracks[page.space] %}
 {% assign c = track.contact %}

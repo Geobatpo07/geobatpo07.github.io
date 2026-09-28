@@ -1,6 +1,6 @@
 {% comment %}
   Long-form research content (English only), shown on /research/ and
-  /fr/research/ after the generated track sections. Moved from the former
+  /en/research/ after the generated track sections. Moved from the former
   _pages/research.md; the "Current Research" and "Research Software" cards
   now come from _data/projects.yml (research track, `research` field).
 {% endcomment %}

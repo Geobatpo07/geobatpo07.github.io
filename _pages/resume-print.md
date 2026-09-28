@@ -1,4 +1,5 @@
 ---
+lang: en
 layout: resume-print
 permalink: /resume-print/
 title: "Resume"

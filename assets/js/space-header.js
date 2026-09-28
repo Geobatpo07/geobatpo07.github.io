@@ -23,7 +23,7 @@
 
   // "Back" button of the neutral header: history.back() when there is a
   // page to return to, else the space root given by ?from=<space>
-  // (&lang=fr for the French root). Without either, the button stays hidden,
+  // (&lang=en for the English root). Without either, the button stays hidden,
   // so a neutral page never carries a link to a space in its markup.
   var back = document.querySelector('[data-back]');
   if (!back) return;
@@ -33,7 +33,7 @@
   var from = params.get('from');
   var fallback = null;
   if (from && Object.prototype.hasOwnProperty.call(roots, from)) {
-    fallback = (params.get('lang') === 'fr' ? '/fr' : '') + roots[from];
+    fallback = (params.get('lang') === 'en' ? '/en' : '') + roots[from];
   }
   var hasHistory = window.history.length > 1 && document.referrer !== '';
 

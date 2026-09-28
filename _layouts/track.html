@@ -8,7 +8,7 @@ layout: default
   from the default layout (chrome = page.track).
 {% endcomment %}
 {% include base_path %}
-{% assign lang = page.lang | default: "en" %}
+{% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign track_key = page.track %}
 {% assign track = site.data.tracks[track_key] %}

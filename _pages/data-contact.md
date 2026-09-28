@@ -1,7 +1,7 @@
 ---
 layout: contact
 space: data
-lang: en
+lang: fr
 ref: data-contact
 permalink: /data/contact/
 ---

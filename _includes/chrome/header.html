@@ -8,15 +8,16 @@
   A space header never links to the portal or to another space
   (checked by scripts/check-isolation.rb).
 {% endcomment %}
-{% assign lang = page.lang | default: "en" %}
+{% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
 {% assign space = site.data.tracks[chrome] %}
 
 {% if space %}
-  {% if lang == "fr" %}{% assign space_root = "/fr" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
-  {% assign fr_root = "/fr" | append: space.url %}
-  {% assign en_root = space.url %}
+  {% comment %} French at the root, English under /en/. {% endcomment %}
+  {% if lang == "en" %}{% assign space_root = "/en" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
+  {% assign fr_root = space.url %}
+  {% assign en_root = "/en" | append: space.url %}
 {% elsif chrome == "portal" %}
   {% assign fr_root = site.data.i18n.fr.home_url %}
   {% assign en_root = site.data.i18n.en.home_url %}

@@ -1,7 +1,7 @@
 ---
 layout: contact
 space: research
-lang: fr
+lang: en
 ref: research-contact
-permalink: /fr/research/contact/
+permalink: /en/research/contact/
 ---

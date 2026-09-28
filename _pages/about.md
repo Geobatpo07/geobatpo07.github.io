@@ -1,4 +1,5 @@
 ---
+lang: en
 space: research
 permalink: /about/
 title: "My Scientific Journey"
@@ -189,9 +190,9 @@ I don't think of this as ambition for its own sake. I think of it as the natural
       If our research interests intersect, I would be delighted to exchange ideas.
     </p>
     <div class="hero__actions">
-      <a href="/research/" class="btn btn--large">Research</a>
+      <a href="/en/research/" class="btn btn--large">Research</a>
       <a href="/teaching/" class="btn btn--large btn--outline">Teaching</a>
-      <a href="/research/contact/" class="btn btn--large btn--outline">Contact</a>
+      <a href="/en/research/contact/" class="btn btn--large btn--outline">Contact</a>
     </div>
   </div>
 </section>

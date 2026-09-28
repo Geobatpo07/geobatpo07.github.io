@@ -1,11 +1,12 @@
 # ==========================================================================
 # I18N — interface strings for the bilingual pages (portal, spaces, contact).
+# French is the default language: FR pages at the root, EN pages under /en/.
 # Content text lives in the other _data files; only UI labels live here.
 # ==========================================================================
 
 fr:
   locale: fr_FR
-  home_url: /fr/
+  home_url: /
   skip: "Aller au contenu"
   menu: "Menu"
   nav_label: "Navigation principale"
@@ -53,7 +54,7 @@ fr:
 
 en:
   locale: en_US
-  home_url: /
+  home_url: /en/
   skip: "Skip to content"
   menu: "Menu"
   nav_label: "Main navigation"

@@ -4,7 +4,7 @@
   footer carries the copyright only. No footer links to the portal or to
   another space.
 {% endcomment %}
-{% assign lang = page.lang | default: "en" %}
+{% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign space = site.data.tracks[chrome] %}
 {% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
@@ -15,7 +15,7 @@
     <nav aria-label="{{ t.footer_label }}">
       <ul class="space-footer__links">
         {% if space %}
-          {% if lang == "fr" %}{% assign space_root = "/fr" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
+          {% if lang == "en" %}{% assign space_root = "/en" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
         <li><a href="{{ base_path }}{{ space_root }}contact/">{{ t.contact }}</a></li>
         {% endif %}
         <li><a href="mailto:{{ site.author.email }}{% if space %}?subject={{ space.contact.subject | url_encode }}{% endif %}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ t.email }}</a></li>

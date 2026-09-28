@@ -1,7 +1,7 @@
 ---
 layout: contact
 space: software
-lang: en
+lang: fr
 ref: software-contact
 permalink: /software/contact/
 ---

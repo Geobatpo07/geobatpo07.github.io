@@ -3,12 +3,12 @@ layout: default
 space: portal
 ---
 {% comment %}
-  Portal (/ and /fr/): the only page listing the three spaces. Name,
+  Portal (/ and /en/): the only page listing the three spaces. Name,
   tagline and one card per space; no global menu. The footer carries the
   external contact links.
 {% endcomment %}
 {% include base_path %}
-{% assign lang = page.lang | default: "en" %}
+{% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
 
 <main id="main" class="tracks-main">
@@ -23,7 +23,7 @@ space: portal
     <ul class="tracks-grid">
       {% for entry in site.data.tracks %}
         {% assign track = entry[1] %}
-        {% if lang == "fr" %}{% assign track_url = "/fr" | append: track.url %}{% else %}{% assign track_url = track.url %}{% endif %}
+        {% if lang == "en" %}{% assign track_url = "/en" | append: track.url %}{% else %}{% assign track_url = track.url %}{% endif %}
       <li>
         <a class="tracks-card" href="{{ base_path }}{{ track_url }}">
           <i class="tracks-card__icon {{ track.icon }}" aria-hidden="true"></i>

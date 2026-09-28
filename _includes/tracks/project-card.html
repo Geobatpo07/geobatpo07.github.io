@@ -1,11 +1,11 @@
 {% comment %}
   One project card. Params: project, research (true to show the research framing).
-  The case-study link carries ?from=<space> (and &lang=fr) so the neutral
+  The case-study link carries ?from=<space> (and &lang=en) so the neutral
   page's "Back" button can fall back to this space's root.
 {% endcomment %}
 {% assign p = include.project %}
 {% assign from_query = "?from=" | append: track_key %}
-{% if lang == "fr" %}{% assign from_query = from_query | append: "&amp;lang=fr" %}{% endif %}
+{% if lang == "en" %}{% assign from_query = from_query | append: "&amp;lang=en" %}{% endif %}
 <li>
   <article class="tracks-card">
     <div class="tracks-card__head">

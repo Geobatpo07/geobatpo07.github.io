@@ -1,4 +1,5 @@
 ---
+lang: en
 space: research
 layout: single
 permalink: /cv/
@@ -30,7 +31,7 @@ redirect_from:
 
 {{ site.data.resume.summary | markdownify }}
 
-The [Research](/research/) and [Scientific Journey](/about/) pages develop this further; what follows here is the evidence.
+The [Research](/en/research/) and [Scientific Journey](/about/) pages develop this further; what follows here is the evidence.
 
 ---
 
@@ -170,7 +171,7 @@ Teaching roles (Lecturer, Teaching Assistant, and Mathematics Tutor) are covered
   {% endfor %}
 {% endif %}
 
-Research software and open-source contributions (DataHut-DuckHouse, Scientific Assistant, and others) are documented as full case studies on the <a href="/research/#projects">Research</a> page. My Master's thesis has been completed and will be linked here soon.
+Research software and open-source contributions (DataHut-DuckHouse, Scientific Assistant, and others) are documented as full case studies on the <a href="/en/research/#projects">Research</a> page. My Master's thesis has been completed and will be linked here soon.
 
 ---
 
@@ -257,7 +258,7 @@ Research software and open-source contributions (DataHut-DuckHouse, Scientific A
   <li class="hero__chip">Scientific Communication</li>
 </ul>
 
-Teaching and mentoring are detailed on the [Teaching](/teaching/) page. Open-source work is documented in the [Research projects](/research/#projects) and on <a href="https://github.com/Geobatpo07" target="_blank" rel="noopener noreferrer">GitHub</a> (125+ repositories, 198+ contributions). Scientific communication beyond formal publications continues on <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer">Geo's Stories</a>. No conference presentations to date, noted here rather than omitted.
+Teaching and mentoring are detailed on the [Teaching](/teaching/) page. Open-source work is documented in the [Research projects](/en/research/#projects) and on <a href="https://github.com/Geobatpo07" target="_blank" rel="noopener noreferrer">GitHub</a> (125+ repositories, 198+ contributions). Scientific communication beyond formal publications continues on <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer">Geo's Stories</a>. No conference presentations to date, noted here rather than omitted.
 
 ---
 
@@ -278,10 +279,10 @@ Teaching and mentoring are detailed on the [Teaching](/teaching/) page. Open-sou
   <div class="hero__content">
     <p class="hero__name" style="font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin-bottom: 0.75rem;">Continue Exploring</p>
     <div class="hero__actions">
-      <a href="/research/" class="btn btn--large">Research</a>
+      <a href="/en/research/" class="btn btn--large">Research</a>
       <a href="/teaching/" class="btn btn--large btn--outline">Teaching</a>
       <a href="https://stories.geovanylaguerre.net" target="_blank" rel="noopener noreferrer" class="btn btn--large btn--outline">Stories</a>
-      <a href="/research/contact/" class="btn btn--large btn--outline">Contact</a>
+      <a href="/en/research/contact/" class="btn btn--large btn--outline">Contact</a>
     </div>
   </div>
 </section>

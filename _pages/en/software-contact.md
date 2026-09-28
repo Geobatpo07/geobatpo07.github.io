@@ -1,7 +1,7 @@
 ---
 layout: contact
 space: software
-lang: fr
+lang: en
 ref: software-contact
-permalink: /fr/software/contact/
+permalink: /en/software/contact/
 ---

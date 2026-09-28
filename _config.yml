@@ -7,7 +7,7 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
+locale                   : "en-US" # labels of the legacy AcademicPages templates (English pages); the site language is set per page (`lang`, fr by default)
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Geovany Batista Polo LAGUERRE"
 title_separator          : "-"
@@ -277,12 +277,14 @@ defaults:
       comments: true
       share: true
       related: true
-  # _pages
+  # _pages: French by default (FR at the root, EN under /en/); English-only
+  # pages declare `lang: en`
   - scope:
       path: ""
       type: pages
     values:
       layout: single
+      lang: fr
       author_profile: true
   # _teaching and _publications: detail pages shared by the spaces, with the
   # neutral chrome (no navigation, "Back" button)
@@ -291,6 +293,7 @@ defaults:
       type: teaching
     values:
       layout: single
+      lang: en
       space: neutral
       author_profile: false
   - scope:
@@ -298,6 +301,7 @@ defaults:
       type: publications
     values:
       layout: single
+      lang: en
       space: neutral
       author_profile: false
   # _projects: case studies, neutral chrome through the case-study layout
@@ -306,6 +310,7 @@ defaults:
       type: projects
     values:
       layout: case-study
+      lang: en
       author_profile: false
       full_width: true
       read_time: true

@@ -1,8 +1,8 @@
 ---
 layout: track
 track: data
-lang: fr
+lang: en
 ref: data
-permalink: /fr/data/
+permalink: /en/data/
 author_profile: false
 ---

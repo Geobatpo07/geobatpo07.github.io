@@ -1,6 +1,6 @@
 # Contenu du site : format des données
 
-Tout le contenu du portail et des espaces (`/`, `/software/`, `/data/`, `/research/`, leurs pages contact et leurs versions `/fr/`) est décrit **une seule fois** dans `_data/`. Les pages ne contiennent pas de texte : elles filtrent ces fichiers au build via Liquid.
+Tout le contenu du portail et des espaces (`/`, `/software/`, `/data/`, `/research/`, leurs pages contact et leurs versions anglaises `/en/…`) est décrit **une seule fois** dans `_data/`. Les pages ne contiennent pas de texte : elles filtrent ces fichiers au build via Liquid.
 
 Pour ajouter un projet, une expérience ou une compétence, on modifie un fichier YAML. Aucun template n'est à toucher.
 
@@ -104,21 +104,25 @@ Le site est un portail et trois espaces cloisonnés. Le layout `default` choisit
 
 | `data-space` | Pages | En-tête | Pied de page |
 |---|---|---|---|
-| `portal` | `/`, `/fr/`, 404 | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub |
+| `portal` | `/`, `/en/` | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub |
 | `software`, `data`, `research` | racine, page contact et pages rattachées de l'espace | nom (vers la racine de l'espace), menu de l'espace, FR \| EN dans l'espace, thème | contact de l'espace, e-mail avec objet, LinkedIn, GitHub |
-| `neutral` | études de cas `/projects/*/`, fiches publication et enseignement, `/terms/`, `/cv-json/`, `/resume-print/` | nom sans lien, bouton « Retour », thème | copyright |
+| `neutral` | études de cas `/projects/*/`, fiches publication et enseignement, 404, `/terms/`, `/cv-json/`, `/resume-print/` | nom sans lien, bouton « Retour », thème | copyright |
 
 **Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail liste les trois espaces.
 
-**Espaces.** Chaque espace existe en deux pages de quelques lignes, par exemple `_pages/software.md` et `_pages/fr/software.md` :
+**Langues.** Le français est la langue par défaut : les pages françaises sont à la racine (`/`, `/data/`, `/data/contact/`…), les pages anglaises sous `/en/` (`/en/`, `/en/data/`…). `_config.yml` donne `lang: fr` à toutes les pages ; une page anglaise déclare `lang: en`. Chaque paire FR/EN partage un `ref` : le `<head>` liste les deux versions en `hreflang`, avec `x-default` sur la version française, et le sélecteur FR | EN passe de l'une à l'autre sans quitter l'espace. Il n'existe plus de préfixe `/fr/` (et aucune redirection depuis `/fr/`, qui n'a jamais été en ligne).
+
+**Exception : pages research en anglais seulement.** `/cv/`, `/teaching/`, `/about/`, `/feedback/`, les études de cas et les fiches publication et enseignement restent en anglais, à leur URL actuelle, sans préfixe `/en/` (`lang: en`, sans version française). Leur sélecteur FR | EN renvoie vers la racine de l'espace dans l'autre langue, et leurs liens internes visent les pages anglaises de l'espace (`/en/research/…`).
+
+**Espaces.** Chaque espace existe en deux pages de quelques lignes, par exemple `_pages/software.md` (français, `/software/`) et `_pages/en/software.md` (anglais, `/en/software/`) :
 
 ```yaml
 ---
 layout: track
 track: software      # clé de tracks.yml
-lang: fr
+lang: en
 ref: software        # identifiant commun aux deux langues (sélecteur FR | EN)
-permalink: /fr/software/
+permalink: /en/software/
 ---
 ```
 
@@ -126,11 +130,11 @@ Le titre, la description SEO et le fichier CV viennent de `tracks.yml`. Le conte
 
 Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, Compétences), le CV (`cv_url`, sinon le PDF `cv`), les entrées `extra_nav`, Stories si `stories: true`, et la page contact.
 
-**Pages contact.** `_pages/<espace>-contact.md` et `_pages/fr/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml` : titre, introduction, objet du mail, `calendly` (réservation intégrée) et `profiles` (liens supplémentaires, clés de `site.author`).
+**Pages contact.** `_pages/<espace>-contact.md` et `_pages/en/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml` : titre, introduction, objet du mail, `calendly` (réservation intégrée) et `profiles` (liens supplémentaires, clés de `site.author`).
 
 **Pages rattachées.** Une page qui appartient à un espace déclare `space: research` (c'est le cas de `/about/`, `/cv/`, `/teaching/`, `/feedback/`). Une page sans équivalent dans l'autre langue renvoie le sélecteur FR | EN vers la racine de l'espace dans l'autre langue.
 
-**Pages partagées.** Les études de cas utilisent le layout `case-study`, qui passe par `neutral` ; les fiches publication et enseignement reçoivent `space: neutral` par défaut (`_config.yml`). Depuis un espace, un lien vers une page partagée ajoute `?from=<espace>` (et `&lang=fr` en français) : le bouton « Retour » fait `history.back()`, sinon renvoie à la racine indiquée par `from`, sinon reste masqué.
+**Pages partagées.** Les études de cas utilisent le layout `case-study`, qui passe par `neutral` ; les fiches publication et enseignement reçoivent `space: neutral` par défaut (`_config.yml`). Depuis un espace, un lien vers une page partagée ajoute `?from=<espace>` (et `&lang=en` en anglais) : le bouton « Retour » fait `history.back()`, sinon renvoie à la racine indiquée par `from`, sinon reste masqué.
 
 ## CV
 
@@ -158,4 +162,4 @@ La CI lance ensuite html-proofer avec le contrôle d'isolement ; un échec bloqu
 bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts, isolement des espaces
 ```
 
-Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, ou si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît.
+Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît, si une page sous `/en/` n'est pas en anglais, si une page anglaise qui a une version française n'est pas sous `/en/`, si le `x-default` d'une paire ne vise pas la version française, ou si un lien utilise le préfixe `/fr/`.

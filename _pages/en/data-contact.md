@@ -1,7 +1,7 @@
 ---
 layout: contact
 space: data
-lang: fr
+lang: en
 ref: data-contact
-permalink: /fr/data/contact/
+permalink: /en/data/contact/
 ---
