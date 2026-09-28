@@ -1,61 +1,63 @@
 ---
+lang: fr
+ref: project-datahut
 title: "DataHut-DuckHouse"
-excerpt: "A modular, multi-tenant analytics platform built for reproducibility first: the data infrastructure underneath the rest of this research."
+excerpt: "Une plateforme analytique modulaire et multi-tenant, pensée d'abord pour la reproductibilité : l'infrastructure de données sur laquelle repose le reste de ces travaux."
 permalink: /projects/datahut/
 redirect_from:
   - /portfolio/datahut-duckhouse/
-status: "Active · Open Source"
+status: "En cours · Open source"
 status_key: "Active"
-domain: "Scientific Data Infrastructure"
-research_theme: "Scientific Data Infrastructure"
+domain: "Infrastructure de données scientifiques"
+research_theme: "Infrastructure de données scientifiques"
 technologies: ["DuckDB", "Apache Iceberg", "Arrow Flight", "dbt", "Trino"]
 github: "https://github.com/Geobatpo07/datahut-duckhouse"
 last_updated: 2026-03-05
 date: 2026-03-05
 ---
 
-## Overview
+## Présentation
 
-A modular analytics platform integrating DuckDB, Apache Iceberg, Arrow Flight, dbt, and Trino, designed so that reproducibility, not scale, is the primary constraint the architecture optimizes for.
+Une plateforme analytique modulaire qui associe DuckDB, Apache Iceberg, Arrow Flight, dbt et Trino, conçue pour que la reproductibilité, et non le passage à l'échelle, soit la contrainte principale de l'architecture.
 
-## Scientific Context
+## Contexte scientifique
 
-Most analytics platforms are built for business throughput: more users, more concurrent queries, more dashboards. Research work has a different bottleneck: the same analysis, run again by someone else, with the same data and the same result. That gap between "works for me" and "reproducible for anyone" is what DataHut-DuckHouse is built around.
+La plupart des plateformes analytiques sont conçues pour le débit métier : plus d'utilisateurs, plus de requêtes simultanées, plus de tableaux de bord. La recherche bute sur autre chose : la même analyse, relancée par quelqu'un d'autre, avec les mêmes données et le même résultat. C'est autour de cet écart entre « ça marche chez moi » et « c'est reproductible par tous » que DataHut-DuckHouse est construit.
 
-## Problem Statement
+## Problématique
 
-Assembling a data stack that supports exploratory analysis, transformation, and reporting usually means gluing together tools that weren't designed to work together, with reproducibility as an afterthought. The question here: what does a data platform look like if reproducibility is a first-class design constraint from the start, rather than something bolted on later?
+Monter une chaîne de données qui permette l'analyse exploratoire, la transformation et le reporting revient en général à assembler des outils qui n'ont pas été pensés pour fonctionner ensemble, la reproductibilité venant en dernier. La question posée ici : à quoi ressemble une plateforme de données quand la reproductibilité est une contrainte de conception dès le départ, et non un ajout après coup ?
 
-## Objectives
+## Objectifs
 
-- Provide a lightweight, self-hostable analytics stack that doesn't require heavyweight infrastructure to run.
-- Keep transformations declarative and version-controlled rather than embedded in ad hoc scripts.
-- Support multi-tenant use without each tenant needing a separate deployment.
+- Proposer une pile analytique légère, auto-hébergeable, qui ne demande pas d'infrastructure lourde.
+- Garder des transformations déclaratives et versionnées, plutôt que dispersées dans des scripts ponctuels.
+- Permettre un usage multi-tenant sans déploiement séparé pour chaque tenant.
 
-## Methodology
+## Méthodologie
 
-The platform combines DuckDB as an embedded analytical engine, Apache Iceberg as a table format for versioned, schema-evolving datasets, Arrow Flight for efficient data transport, dbt for declarative, testable transformations, and Trino for federated querying across sources. Each component was chosen for doing one job well rather than for being part of a single vendor's ecosystem.
+La plateforme combine DuckDB comme moteur analytique embarqué, Apache Iceberg comme format de table pour des jeux de données versionnés dont le schéma évolue, Arrow Flight pour un transport de données efficace, dbt pour des transformations déclaratives et testables, et Trino pour interroger plusieurs sources de façon fédérée. Chaque composant a été choisi parce qu'il fait bien une seule chose, pas parce qu'il appartient à l'écosystème d'un même éditeur.
 
 ## Architecture
 
-Data lands in Iceberg tables, which give the platform snapshot isolation and schema evolution without a separate metadata service. DuckDB provides fast local analytical queries directly against those tables; Trino is used when a query needs to span multiple data sources. dbt sits on top as the transformation layer, so every derived table has a version-controlled definition rather than a one-off script. Arrow Flight handles data movement between components without the serialization overhead of row-based formats.
+Les données arrivent dans des tables Iceberg, qui apportent l'isolation par snapshots et l'évolution de schéma sans service de métadonnées séparé. DuckDB exécute des requêtes analytiques locales rapides directement sur ces tables ; Trino prend le relais quand une requête doit couvrir plusieurs sources. dbt constitue la couche de transformation, si bien que chaque table dérivée a une définition versionnée plutôt qu'un script ponctuel. Arrow Flight déplace les données entre composants sans le coût de sérialisation des formats orientés lignes.
 
-## Implementation
+## Mise en œuvre
 
-Multi-tenancy is handled at the table and catalog level rather than through separate infrastructure per tenant, which keeps the operational footprint small. Every transformation is expressed as a dbt model with its own tests, so a broken assumption fails loudly in CI rather than quietly in a downstream report.
+Le multi-tenant est géré au niveau des tables et du catalogue, et non par une infrastructure séparée pour chaque tenant, ce qui garde une empreinte opérationnelle réduite. Chaque transformation est un modèle dbt accompagné de ses propres tests : une hypothèse fausse échoue bruyamment en CI plutôt que silencieusement dans un rapport en aval.
 
-## Challenges Encountered
+## Difficultés rencontrées
 
-Getting Iceberg's schema evolution to behave predictably across DuckDB and Trino simultaneously took real trial and error: the two engines don't always interpret the table format identically, and reconciling that was more about careful configuration than about either tool being wrong. The other recurring challenge was resisting scope creep: it's tempting to keep adding connectors and features, and the harder discipline was deciding what belonged in the reproducibility-first core versus what should stay a separate, optional layer.
+Obtenir une évolution de schéma Iceberg prévisible à la fois dans DuckDB et dans Trino a demandé de vrais tâtonnements : les deux moteurs n'interprètent pas toujours le format de table de la même façon, et les réconcilier relevait davantage d'une configuration soignée que d'un défaut de l'un ou de l'autre. L'autre difficulté récurrente a été de résister à l'élargissement du périmètre : il est tentant d'ajouter sans cesse connecteurs et fonctionnalités, et la vraie discipline a consisté à décider ce qui relevait du cœur centré sur la reproductibilité et ce qui devait rester une couche séparée et facultative.
 
-## Results
+## Résultats
 
-The platform currently supports a working local-first analytics workflow (ingestion into Iceberg, transformation via dbt, and querying through either DuckDB or Trino depending on the scope of the query) and has attracted open-source interest reflected in its 12+ GitHub stars. It functions as the data layer behind the other computational research in this portfolio, including the exploratory work behind the chlordecone modelling.
+La plateforme permet aujourd'hui un flux analytique local fonctionnel (ingestion dans Iceberg, transformation avec dbt, requêtes avec DuckDB ou Trino selon la portée de la requête) et suscite un intérêt open source, avec plus de 12 étoiles sur GitHub. Elle sert de couche de données aux autres travaux de calcul de ce portfolio, dont le travail exploratoire qui a précédé la modélisation du chlordécone.
 
-## Lessons Learned
+## Enseignements
 
-Choosing composable, single-purpose tools over an all-in-one platform made the system easier to reason about, even though it meant more integration work up front. Writing dbt tests alongside transformations, not after them, caught more real data-quality issues than any amount of manual review would have.
+Choisir des outils composables à usage unique plutôt qu'une plateforme tout-en-un a rendu le système plus facile à comprendre, au prix d'un travail d'intégration plus important au départ. Écrire les tests dbt en même temps que les transformations, et non après, a révélé plus de vrais problèmes de qualité des données qu'aucune relecture manuelle ne l'aurait fait.
 
-## Future Improvements
+## Perspectives
 
-Formalizing multi-tenant access control (rather than relying on catalog-level separation alone) and adding first-class data lineage tracking are the two most valuable next steps, both aimed at making the platform trustworthy enough for someone outside the project to adopt with confidence.
+Formaliser le contrôle d'accès multi-tenant (au lieu de s'appuyer seulement sur la séparation au niveau du catalogue) et ajouter un vrai suivi du lignage des données sont les deux prochaines étapes les plus utiles, avec un même but : rendre la plateforme assez fiable pour qu'une personne extérieure au projet puisse l'adopter en confiance.

@@ -1,0 +1,53 @@
+{
+  "type": "radar",
+  "data": {
+    "labels": [
+      "Modélisation mathématique",
+      "Inférence statistique",
+      "Apprentissage automatique",
+      "Calcul scientifique",
+      "Data engineering",
+      "Optimisation et méthodes numériques",
+      "Plans d'expérience",
+      "Communication scientifique"
+    ],
+    "datasets": [
+      {
+        "label": "Profil de compétences",
+        "data": [95, 92, 89, 88, 90, 87, 85, 91],
+        "fill": true,
+        "borderColor": "#0891B2",
+        "backgroundColor": "rgba(8,145,178,0.22)",
+        "borderWidth": 3,
+        "pointRadius": 3
+      }
+    ]
+  },
+  "options": {
+    "responsive": true,
+    "maintainAspectRatio": false,
+    "plugins": {
+      "title": {
+        "display": true,
+        "text": "Radar de compétences - Data scientist"
+      },
+      "legend": {
+        "display": false
+      }
+    },
+    "scales": {
+      "r": {
+        "beginAtZero": true,
+        "max": 100,
+        "ticks": {
+          "showLabelBackdrop": false
+        }
+      }
+    },
+    "elements": {
+      "line": {
+        "tension": 0.15
+      }
+    }
+  }
+}

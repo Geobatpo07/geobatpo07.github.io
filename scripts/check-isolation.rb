@@ -9,11 +9,11 @@
 #   - a page of a space never links to the portal or to another space.
 #     Links are followed through redirect stubs; links to neutral pages,
 #     to files and to other sites are allowed;
-#   - languages: French at the root, English under /en/. A page under /en/
-#     is lang="en"; outside /en/ a lang="en" page is only allowed without a
-#     French version (the English-only research pages); a FR/EN pair lists
-#     both hreflang alternates with x-default on the French page; no link
-#     uses the former /fr/ prefix.
+#   - languages: French at the root, English under /en/. Every English page
+#     lives under /en/ and has a French version (an hreflang="fr"
+#     alternate that exists in the build); a FR/EN pair lists both hreflang
+#     alternates with x-default on the French page; no link uses the former
+#     /fr/ prefix.
 #
 # Usage: bundle exec ruby scripts/check-isolation.rb [site_dir]   (default _site)
 # Exits non-zero when html-proofer reports a failure or when fewer than
@@ -152,11 +152,17 @@ class SpaceIsolation < HTMLProofer::Check
     lang = root["lang"]
     alternates = @html.css('link[rel="alternate"][hreflang]').to_h { |l| [l["hreflang"], l["href"]] }
 
-    if base_path.start_with?("/en/")
-      add_failure("page under /en/ has lang=\"#{lang}\"", line: root.line) unless lang == "en"
-    elsif lang == "en" && alternates.key?("fr")
-      add_failure("English page with a French version must live under /en/", line: root.line)
-    elsif !%w[fr en].include?(lang)
+    if lang == "en"
+      add_failure("English page outside /en/", line: root.line) unless base_path.start_with?("/en/")
+      french = alternates["fr"] && SitePages.internal_path(alternates["fr"], base_path)
+      if french.nil?
+        add_failure("English page without a French version (no hreflang=\"fr\" alternate)", line: root.line)
+      elsif SitePages.index[french].nil?
+        add_failure("French version #{french} does not exist", line: root.line)
+      end
+    elsif base_path.start_with?("/en/")
+      add_failure("page under /en/ has lang=\"#{lang}\"", line: root.line)
+    elsif lang != "fr"
       add_failure("unexpected lang=\"#{lang}\"", line: root.line)
     end
 

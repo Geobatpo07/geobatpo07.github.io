@@ -1,41 +1,42 @@
 ---
-lang: en
+lang: fr
+ref: terms
 space: neutral
 permalink: /terms/
-title: "Terms and Privacy Policy"
+title: "Conditions d'utilisation et politique de confidentialité"
 modified: 2016-06-06
 ---
 
 {% include base_path %}
 {% include toc %}
 
-## Privacy Policy
+## Politique de confidentialité
 
-The privacy of my visitors is extremely important. This Privacy Policy outlines the types of personal information that is received and collected and how it is used.
+La confidentialité de mes visiteurs est extrêmement importante. Cette politique de confidentialité décrit les types de données personnelles reçues et collectées, et la façon dont elles sont utilisées.
 
-First and foremost, I will never share your email address or any other personal information to anyone without your direct consent.
+Avant tout, je ne communiquerai jamais votre adresse e-mail ni aucune autre donnée personnelle à qui que ce soit sans votre consentement explicite.
 
-### Log Files
+### Fichiers journaux
 
-Like many other websites, this site uses log files to help learn about when, from where, and how often traffic flows to this site. The information in these log files include:
+Comme beaucoup d'autres sites, ce site utilise des fichiers journaux pour savoir quand, d'où et à quelle fréquence il est consulté. Ces fichiers journaux contiennent :
 
-* Internet Protocol addresses (IP)
-* Types of browser
-* Internet Service Provider (ISP)
-* Date and time stamp
-* Referring and exit pages
-* Number of clicks
+* les adresses IP (Internet Protocol) ;
+* les types de navigateur ;
+* le fournisseur d'accès à Internet (FAI) ;
+* la date et l'heure ;
+* les pages de provenance et de sortie ;
+* le nombre de clics.
 
-All of this information is not linked to anything that is personally identifiable.
+Aucune de ces informations n'est liée à des données permettant d'identifier une personne.
 
-### Cookies and Web Beacons
+### Cookies et balises web
 
-When you visit this site "convenience" cookies are stored on your computer when you submit a comment to help you log in faster to [Disqus](https://disqus.com) the next time you leave a comment.
+Lorsque vous visitez ce site, des cookies « de confort » sont enregistrés sur votre ordinateur quand vous publiez un commentaire, afin de vous connecter plus vite à [Disqus](https://disqus.com) lors de votre prochain commentaire.
 
-Third-party advertisers may also place and read cookies on your browser and/or use web beacons to collect information. This site has no access or control over these cookies. You should review the respective privacy policies on any and all third-party ad servers for more information regarding their practices and how to opt-out.
+Des annonceurs tiers peuvent aussi déposer et lire des cookies dans votre navigateur et/ou utiliser des balises web pour collecter des informations. Ce site n'a ni accès à ces cookies ni contrôle sur eux. Consultez les politiques de confidentialité des serveurs publicitaires tiers pour en savoir plus sur leurs pratiques et sur la façon de refuser ces cookies.
 
-If you wish to disable cookies, you may do so through your web browser options. Instructions for doing so can be found on the specific web browsers' websites.
+Si vous souhaitez désactiver les cookies, vous pouvez le faire dans les options de votre navigateur. Les instructions se trouvent sur le site de chaque navigateur.
 
 #### Google Analytics
 
-Google Analytics is a web analytics tool I use to help understand how visitors engage with this website. It reports website trends using cookies and web beacons without identifying individual visitors. You can read [Google Analytics Privacy Policy](https://www.google.com/analytics/learn/privacy.html).
+Google Analytics est un outil d'analyse d'audience que j'utilise pour comprendre comment les visiteurs utilisent ce site. Il mesure les tendances de fréquentation au moyen de cookies et de balises web, sans identifier individuellement les visiteurs. Vous pouvez consulter la [politique de confidentialité de Google Analytics](https://www.google.com/analytics/learn/privacy.html).

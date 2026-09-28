@@ -1,64 +1,144 @@
-# Research themes shown on the Research page.
-# Richer than the homepage's research.yml: each theme gets a fuller account
-# of why it matters, its scientific challenge, its current application here,
-# and how it connects to the broader research vision.
+# Research themes shown on the Research page (/research/ and /en/research/).
+# Each theme gets a fuller account of why it matters, its scientific
+# challenge, its current application here, and how it connects to the
+# broader research vision. Every displayed field is a {fr, en} pair.
 
-- title: "Applied Mathematics"
-  why: "Every model in this research program starts as a mathematical object before it becomes anything computational."
-  challenge: "Formalizing a real system precisely enough that the mathematics constrains the model, rather than the other way around."
-  application: "Compartmental ODE systems, group-theoretic structures, differential equations underlying every project below."
-  connection: "The language everything else here is written in."
+- title: { fr: "Mathématiques appliquées", en: "Applied Mathematics" }
+  why:
+    fr: "Chaque modèle de ce programme de recherche commence comme un objet mathématique avant de devenir quoi que ce soit de calculatoire."
+    en: "Every model in this research program starts as a mathematical object before it becomes anything computational."
+  challenge:
+    fr: "Formaliser un système réel assez précisément pour que les mathématiques contraignent le modèle, et non l'inverse."
+    en: "Formalizing a real system precisely enough that the mathematics constrains the model, rather than the other way around."
+  application:
+    fr: "Systèmes d'EDO compartimentaux, structures issues de la théorie des groupes, équations différentielles sous-jacentes à chacun des projets ci-dessous."
+    en: "Compartmental ODE systems, group-theoretic structures, differential equations underlying every project below."
+  connection:
+    fr: "La langue dans laquelle tout le reste est écrit."
+    en: "The language everything else here is written in."
 
-- title: "Scientific Computing"
-  why: "A correct equation with no way to evaluate it is not yet useful."
-  challenge: "Discretizing continuous mathematics without discretizing away the physics it describes."
-  application: "Finite-difference and operator-splitting schemes for wave propagation and atmospheric flow models."
-  connection: "The bridge between a proof and a prediction."
+- title: { fr: "Calcul scientifique", en: "Scientific Computing" }
+  why:
+    fr: "Une équation juste qu'on ne sait pas évaluer n'est pas encore utile."
+    en: "A correct equation with no way to evaluate it is not yet useful."
+  challenge:
+    fr: "Discrétiser des mathématiques continues sans discrétiser la physique qu'elles décrivent."
+    en: "Discretizing continuous mathematics without discretizing away the physics it describes."
+  application:
+    fr: "Schémas aux différences finies et de splitting d'opérateurs pour des modèles de propagation d'ondes et d'écoulement atmosphérique."
+    en: "Finite-difference and operator-splitting schemes for wave propagation and atmospheric flow models."
+  connection:
+    fr: "Le pont entre une preuve et une prédiction."
+    en: "The bridge between a proof and a prediction."
 
-- title: "Numerical Analysis"
-  why: "Simulation results are only as trustworthy as the stability of the scheme producing them."
-  challenge: "Guaranteeing convergence and stability under the specific constraints of the problem, not just in theory."
-  application: "Stability analysis for finite-difference schemes applied to strongly damped wave equations."
-  connection: "The quality control layer beneath scientific computing."
+- title: { fr: "Analyse numérique", en: "Numerical Analysis" }
+  why:
+    fr: "Les résultats d'une simulation ne sont fiables que si le schéma qui les produit est stable."
+    en: "Simulation results are only as trustworthy as the stability of the scheme producing them."
+  challenge:
+    fr: "Garantir convergence et stabilité sous les contraintes précises du problème, pas seulement en théorie."
+    en: "Guaranteeing convergence and stability under the specific constraints of the problem, not just in theory."
+  application:
+    fr: "Analyse de stabilité de schémas aux différences finies appliqués à des équations d'ondes fortement amorties."
+    en: "Stability analysis for finite-difference schemes applied to strongly damped wave equations."
+  connection:
+    fr: "La couche de contrôle qualité sous le calcul scientifique."
+    en: "The quality control layer beneath scientific computing."
 
-- title: "Mathematical Modelling"
-  why: "Complex environmental and health systems rarely have closed-form descriptions; they need models built for them."
-  challenge: "Capturing seasonal, non-autonomous dynamics without overfitting a model to a single dataset."
-  application: "Non-autonomous compartmental modelling of chlordecone environmental transfer and exposure."
-  connection: "Where applied mathematics meets a specific, named scientific question."
+- title: { fr: "Modélisation mathématique", en: "Mathematical Modelling" }
+  why:
+    fr: "Les systèmes environnementaux et de santé complexes ont rarement une description explicite ; il faut leur construire des modèles."
+    en: "Complex environmental and health systems rarely have closed-form descriptions; they need models built for them."
+  challenge:
+    fr: "Capter des dynamiques saisonnières non autonomes sans ajuster excessivement un modèle à un seul jeu de données."
+    en: "Capturing seasonal, non-autonomous dynamics without overfitting a model to a single dataset."
+  application:
+    fr: "Modélisation compartimentale non autonome des transferts environnementaux du chlordécone et de l'exposition humaine."
+    en: "Non-autonomous compartmental modelling of chlordecone environmental transfer and exposure."
+  connection:
+    fr: "Là où les mathématiques appliquées rencontrent une question scientifique précise."
+    en: "Where applied mathematics meets a specific, named scientific question."
 
-- title: "Artificial Intelligence"
-  why: "Some structure in complex systems is easier to learn from data than to derive analytically."
-  challenge: "Keeping learned models transparent and validated rather than treating them as black boxes."
-  application: "A multi-agent research framework combining symbolic reasoning with machine learning."
-  connection: "Another modelling framework, held to the same rigor as the mathematical ones."
+- title: { fr: "Intelligence artificielle", en: "Artificial Intelligence" }
+  why:
+    fr: "Certaines structures des systèmes complexes s'apprennent plus facilement à partir des données qu'elles ne se dérivent analytiquement."
+    en: "Some structure in complex systems is easier to learn from data than to derive analytically."
+  challenge:
+    fr: "Garder des modèles appris transparents et validés, plutôt que de les traiter comme des boîtes noires."
+    en: "Keeping learned models transparent and validated rather than treating them as black boxes."
+  application:
+    fr: "Un cadre de recherche multi-agents qui associe raisonnement symbolique et apprentissage automatique."
+    en: "A multi-agent research framework combining symbolic reasoning with machine learning."
+  connection:
+    fr: "Un autre cadre de modélisation, tenu à la même rigueur que les cadres mathématiques."
+    en: "Another modelling framework, held to the same rigor as the mathematical ones."
 
-- title: "Machine Learning"
-  why: "Classical statistical learning remains the most interpretable way to turn data into a decision signal."
-  challenge: "Choosing models simple enough to explain their own reasoning to a non-specialist."
-  application: "Random Forest-based risk scoring for clinical pre-triage prioritization."
-  connection: "Where AI research becomes a usable decision-support tool."
+- title: { fr: "Apprentissage automatique", en: "Machine Learning" }
+  why:
+    fr: "L'apprentissage statistique classique reste le moyen le plus interprétable de transformer des données en signal de décision."
+    en: "Classical statistical learning remains the most interpretable way to turn data into a decision signal."
+  challenge:
+    fr: "Choisir des modèles assez simples pour expliquer leur raisonnement à un non-spécialiste."
+    en: "Choosing models simple enough to explain their own reasoning to a non-specialist."
+  application:
+    fr: "Score de risque fondé sur un Random Forest pour prioriser les patients au pré-triage."
+    en: "Random Forest-based risk scoring for clinical pre-triage prioritization."
+  connection:
+    fr: "Là où la recherche en IA devient un outil d'aide à la décision utilisable."
+    en: "Where AI research becomes a usable decision-support tool."
 
-- title: "Healthcare Analytics"
-  why: "Health decisions carry real consequences, which makes them the highest-stakes test of whether a model can be trusted."
-  challenge: "Building decision support that is fast and interpretable without oversimplifying the underlying risk."
-  application: "Pre-triage prioritization tooling and public-health exposure modelling."
-  connection: "The destination this entire research program is oriented toward."
+- title: { fr: "Analytique de santé", en: "Healthcare Analytics" }
+  why:
+    fr: "Les décisions de santé ont des conséquences réelles, ce qui en fait le test le plus exigeant de la fiabilité d'un modèle."
+    en: "Health decisions carry real consequences, which makes them the highest-stakes test of whether a model can be trusted."
+  challenge:
+    fr: "Construire une aide à la décision rapide et interprétable sans simplifier à l'excès le risque sous-jacent."
+    en: "Building decision support that is fast and interpretable without oversimplifying the underlying risk."
+  application:
+    fr: "Outils de priorisation au pré-triage et modélisation de l'exposition en santé publique."
+    en: "Pre-triage prioritization tooling and public-health exposure modelling."
+  connection:
+    fr: "La destination vers laquelle tout ce programme de recherche est orienté."
+    en: "The destination this entire research program is oriented toward."
 
-- title: "Biostatistics"
-  why: "Health and environmental data are noisy by nature; statistics is what keeps conclusions honest about that noise."
-  challenge: "Quantifying uncertainty in exposure and outcome estimates without overstating precision."
-  application: "Statistical grounding for exposure modelling and risk estimation work."
-  connection: "The discipline that keeps healthcare-facing models accountable."
+- title: { fr: "Biostatistique", en: "Biostatistics" }
+  why:
+    fr: "Les données de santé et d'environnement sont bruitées par nature ; la statistique garde les conclusions honnêtes face à ce bruit."
+    en: "Health and environmental data are noisy by nature; statistics is what keeps conclusions honest about that noise."
+  challenge:
+    fr: "Quantifier l'incertitude des estimations d'exposition et d'effets sans en surestimer la précision."
+    en: "Quantifying uncertainty in exposure and outcome estimates without overstating precision."
+  application:
+    fr: "Socle statistique des travaux de modélisation de l'exposition et d'estimation des risques."
+    en: "Statistical grounding for exposure modelling and risk estimation work."
+  connection:
+    fr: "La discipline qui garde responsables les modèles tournés vers la santé."
+    en: "The discipline that keeps healthcare-facing models accountable."
 
-- title: "Environmental Modelling"
-  why: "Environmental systems are where seasonal forcing, delayed effects, and human exposure intersect."
-  challenge: "Representing rainfall-driven, seasonal contamination dynamics with a model simple enough to interpret."
-  application: "Chlordecone contamination modelling in tropical ecosystems."
-  connection: "A direct, concrete instance of mathematical modelling applied to public health."
+- title: { fr: "Modélisation environnementale", en: "Environmental Modelling" }
+  why:
+    fr: "Les systèmes environnementaux sont le lieu où se croisent forçage saisonnier, effets différés et exposition humaine."
+    en: "Environmental systems are where seasonal forcing, delayed effects, and human exposure intersect."
+  challenge:
+    fr: "Représenter une dynamique de contamination saisonnière, pilotée par les pluies, avec un modèle assez simple pour être interprété."
+    en: "Representing rainfall-driven, seasonal contamination dynamics with a model simple enough to interpret."
+  application:
+    fr: "Modélisation de la contamination au chlordécone dans les écosystèmes tropicaux."
+    en: "Chlordecone contamination modelling in tropical ecosystems."
+  connection:
+    fr: "Un exemple direct et concret de modélisation mathématique appliquée à la santé publique."
+    en: "A direct, concrete instance of mathematical modelling applied to public health."
 
-- title: "Scientific Data Infrastructure"
-  why: "A research result that can't be reproduced by someone else isn't finished, and reproducibility starts with the data layer."
-  challenge: "Designing infrastructure for reproducibility first, scale second, which most analytics stacks don't optimize for."
-  application: "A multi-tenant analytics platform integrating DuckDB, Apache Iceberg, dbt, and Trino."
-  connection: "The engineering discipline that makes every other theme here reproducible, not just correct."
+- title: { fr: "Infrastructure de données scientifiques", en: "Scientific Data Infrastructure" }
+  why:
+    fr: "Un résultat de recherche que d'autres ne peuvent pas reproduire n'est pas terminé, et la reproductibilité commence par la couche de données."
+    en: "A research result that can't be reproduced by someone else isn't finished, and reproducibility starts with the data layer."
+  challenge:
+    fr: "Concevoir une infrastructure pour la reproductibilité d'abord et le passage à l'échelle ensuite, ce que la plupart des piles analytiques n'optimisent pas."
+    en: "Designing infrastructure for reproducibility first, scale second, which most analytics stacks don't optimize for."
+  application:
+    fr: "Une plateforme analytique multi-tenant associant DuckDB, Apache Iceberg, dbt et Trino."
+    en: "A multi-tenant analytics platform integrating DuckDB, Apache Iceberg, dbt, and Trino."
+  connection:
+    fr: "La discipline d'ingénierie qui rend chacun des autres thèmes reproductible, et pas seulement correct."
+    en: "The engineering discipline that makes every other theme here reproducible, not just correct."

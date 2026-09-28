@@ -1,10 +1,15 @@
 ---
 layout: null
 ---
+// Feedback form (_includes/feedback-form.html): opens the mail client with
+// the message pre-filled. The texts of the mail come from the form's data-*
+// attributes, set from _data/i18n.yml in the page language.
 (function () {
   var FEEDBACK_EMAIL = "{{ site.author.email }}";
   var form = document.getElementById("feedback-form");
   if (!form || !FEEDBACK_EMAIL) return;
+
+  var text = form.dataset;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -13,10 +18,10 @@ layout: null
     var email = form.email.value.trim();
     var message = form.message.value.trim();
 
-    var subject = "Website Feedback from " + (name || "a visitor");
-    var bodyLines = [message, "", "From: " + (name || "Anonymous")];
+    var subject = text.subject + " " + (name || text.visitor);
+    var bodyLines = [message, "", text.from + " " + (name || text.anonymous)];
     if (email) {
-      bodyLines.push("Reply to: " + email);
+      bodyLines.push(text.replyTo + " " + email);
     }
 
     var mailto = "mailto:" + FEEDBACK_EMAIL

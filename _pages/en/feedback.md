@@ -1,20 +1,20 @@
 ---
-lang: fr
+lang: en
 ref: feedback
 space: research
 layout: single
-permalink: /feedback/
-title: "Votre avis"
-description: "Partager un retour sur un enseignement, un encadrement ou une collaboration."
+permalink: /en/feedback/
+title: "Feedback"
+description: "Share feedback on teaching, mentoring, or collaboration experiences."
 full_width: true
 author_profile: false
 ---
 
 <section class="hero hero--centered reveal">
   <div class="hero__content">
-    <p class="hero__name" style="font-size: clamp(1.8rem, 3.8vw, 2.6rem); margin-bottom: 0.75rem;">Votre avis</p>
+    <p class="hero__name" style="font-size: clamp(1.8rem, 3.8vw, 2.6rem); margin-bottom: 0.75rem;">Feedback</p>
     <p class="hero__statement">
-      Une erreur repérée, une suggestion, ou simplement envie de dire bonjour ? Je serai content de vous lire.
+      Spotted an error, have a suggestion, or just want to say hello? I'd like to hear it.
     </p>
   </div>
 </section>

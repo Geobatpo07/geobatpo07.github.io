@@ -11,8 +11,7 @@ redirect_from:
 ---
 
 <h2 id="research-more">Recherche en détail</h2>
-<p class="tracks-note">Cette partie n'est disponible qu'en anglais pour le moment.</p>
 
-{% include research/details-en.md %}
+{% include research/details-fr.md %}
 
 {% include research/conversation.html %}

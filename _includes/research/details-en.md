@@ -1,8 +1,6 @@
 {% comment %}
-  Long-form research content (English only), shown on /research/ and
-  /en/research/ after the generated track sections. Moved from the former
-  _pages/research.md; the "Current Research" and "Research Software" cards
-  now come from _data/projects.yml (research track, `research` field).
+  Long-form research content in English, shown on /en/research/ after the
+  generated track sections. The French version is details-fr.md.
 {% endcomment %}
 <div class="page-prose" markdown="1" lang="en">
 
@@ -55,11 +53,11 @@ Ten perspectives on the same underlying problem, not a checklist of skills.
 <ul class="research-grid">
   {% for theme in site.data.researchThemes %}
   <li class="research-card">
-    <h3 class="research-card__title">{{ theme.title }}</h3>
-    <p class="research-card__desc"><strong>Why it matters.</strong> {{ theme.why }}</p>
-    <p class="research-card__desc"><strong>Scientific challenge.</strong> {{ theme.challenge }}</p>
-    <p class="research-card__desc"><strong>Current application.</strong> {{ theme.application }}</p>
-    <p class="research-card__project">{{ theme.connection }}</p>
+    <h3 class="research-card__title">{{ theme.title.en }}</h3>
+    <p class="research-card__desc"><strong>Why it matters.</strong> {{ theme.why.en }}</p>
+    <p class="research-card__desc"><strong>Scientific challenge.</strong> {{ theme.challenge.en }}</p>
+    <p class="research-card__desc"><strong>Current application.</strong> {{ theme.application.en }}</p>
+    <p class="research-card__project">{{ theme.connection.en }}</p>
   </li>
   {% endfor %}
 </ul>
@@ -72,7 +70,7 @@ Ten perspectives on the same underlying problem, not a checklist of skills.
 
 Read this less as a skills inventory and more as a map of balance. Each axis depends on the others: mathematical modelling means little without the computing to test it, and computing means little without the statistical grounding to trust its output.
 
-{% include chart.html id="radarChart" height="480px" data=site.data.radarChart %}
+{% include chart.html id="radarChart" height="480px" data=site.data.radar.en %}
 
 ---
 
@@ -106,7 +104,7 @@ Publications are one research output among several, alongside software, technica
 {% endif %}
 
 {% include base_path %}
-{% assign publications_sorted = site.publications | sort: 'date' | reverse %}
+{% assign publications_sorted = site.publications | where: "lang", "en" | sort: 'date' | reverse %}
 
 {% if site.publication_category %}
   {% for category in site.publication_category %}
@@ -187,6 +185,6 @@ None of this work is credible to me if it can't be checked. That means code that
   <li class="hero__chip">Mathematical Epidemiology</li>
 </ul>
 
-These are directions I want to grow into, not results I'm claiming. The throughline that got me here (read on the [Scientific Journey](/about/) page) is the same one pointing toward them.
+These are directions I want to grow into, not results I'm claiming. The throughline that got me here (read on the [Scientific Journey](/en/about/) page) is the same one pointing toward them.
 
 </div>

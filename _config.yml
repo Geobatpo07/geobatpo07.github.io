@@ -277,8 +277,8 @@ defaults:
       comments: true
       share: true
       related: true
-  # _pages: French by default (FR at the root, EN under /en/); English-only
-  # pages declare `lang: en`
+  # French by default: every page and document is French at the root and
+  # has an English version under /en/ that declares `lang: en` (same `ref`)
   - scope:
       path: ""
       type: pages
@@ -293,7 +293,7 @@ defaults:
       type: teaching
     values:
       layout: single
-      lang: en
+      lang: fr
       space: neutral
       author_profile: false
   - scope:
@@ -301,16 +301,17 @@ defaults:
       type: publications
     values:
       layout: single
-      lang: en
+      lang: fr
       space: neutral
       author_profile: false
-  # _projects: case studies, neutral chrome through the case-study layout
+  # _projects: case studies, part of the research space
   - scope:
       path: ""
       type: projects
     values:
       layout: case-study
-      lang: en
+      lang: fr
+      space: research
       author_profile: false
       full_width: true
       read_time: true

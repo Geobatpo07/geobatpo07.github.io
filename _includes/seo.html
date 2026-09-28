@@ -49,17 +49,7 @@
 <meta name="author" content="{{ site.author.name | default: site.name }}">
 
 <link rel="canonical" href="{{ page.canonical_url | default: canonical_url }}">
-{% comment %} Bilingual pages share a `ref`; list every language version, x-default is the French one. {% endcomment %}
-{% if page.ref %}
-  {% assign seo_versions = site.pages | where: "ref", page.ref %}
-  {% for version in seo_versions %}
-<link rel="alternate" hreflang="{{ version.lang }}" href="{{ version.url | absolute_url }}">
-    {% if version.lang == "fr" %}<link rel="alternate" hreflang="x-default" href="{{ version.url | absolute_url }}">{% endif %}
-  {% endfor %}
-{% else %}
-<link rel="alternate" hreflang="{{ seo_lang }}" href="{{ page.canonical_url | default: canonical_url }}">
-<link rel="alternate" hreflang="x-default" href="{{ page.canonical_url | default: canonical_url }}">
-{% endif %}
+{% include hreflang.html %}
 
 {% if page.date %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">

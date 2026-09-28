@@ -27,7 +27,7 @@
   {% comment %} The other-language link targets the page sharing the same `ref`, else the other-language root. {% endcomment %}
   {% if lang == "fr" %}{% assign other_lang = "en" %}{% assign alt_url = en_root %}{% else %}{% assign other_lang = "fr" %}{% assign alt_url = fr_root %}{% endif %}
   {% if page.ref %}
-    {% assign alt_pages = site.pages | where: "ref", page.ref | where: "lang", other_lang %}
+    {% assign alt_pages = site.pages | concat: site.documents | where: "ref", page.ref | where: "lang", other_lang %}
     {% if alt_pages.size > 0 %}{% assign alt_url = alt_pages.first.url %}{% endif %}
   {% endif %}
   {% if lang == "fr" %}{% assign fr_url = page.url %}{% assign en_url = alt_url %}{% else %}{% assign fr_url = alt_url %}{% assign en_url = page.url %}{% endif %}
@@ -59,12 +59,11 @@
           <li><a href="{{ base_path }}{{ space_root }}#projects">{{ t.projects }}</a></li>
           <li><a href="{{ base_path }}{{ space_root }}#skills">{{ t.skills }}</a></li>
           {% for item in space.extra_nav %}
-          <li><a href="{{ base_path }}{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}{% if lang != "en" %} hreflang="en"{% endif %}>{{ item.label[lang] }}</a></li>
+            {% if lang == "en" %}{% assign item_url = "/en" | append: item.url %}{% else %}{% assign item_url = item.url %}{% endif %}
+          <li><a href="{{ base_path }}{{ item_url }}"{% if page.url == item_url %} aria-current="page"{% endif %}>{{ item.label[lang] }}</a></li>
           {% endfor %}
           <li><a href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">{{ t.cv }}</a></li>
-          {% if space.stories %}
           <li><a href="{{ site.author.geo_stories }}">{{ t.stories }}</a></li>
-          {% endif %}
           <li><a href="{{ base_path }}{{ contact_url }}"{% if page.url == contact_url %} aria-current="page"{% endif %}>{{ t.contact }}</a></li>
         </ul>
       </nav>

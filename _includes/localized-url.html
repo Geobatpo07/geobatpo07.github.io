@@ -1,0 +1,8 @@
+{%- comment -%}
+  Prints the URL of a page in the current page language: French paths are
+  written as is (the root), /en is prepended on English pages.
+  Usage: <a href="{% include localized-url.html path="/teaching/" %}">
+  Param: path (the French path), lang (optional, defaults to page.lang).
+{%- endcomment -%}
+{%- assign localized_lang = include.lang | default: page.lang | default: "fr" -%}
+{%- if localized_lang == "en" -%}/en{%- endif -%}{{ include.path }}

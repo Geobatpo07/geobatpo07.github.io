@@ -1,61 +1,63 @@
 ---
-title: "Sentiment Analysis Pipeline"
-excerpt: "An NLP pipeline for automated sentiment classification, built as a testbed for text-preprocessing and evaluation methodology."
+lang: fr
+ref: project-sentiment-analysis
+title: "Pipeline d'analyse de sentiment"
+excerpt: "Un pipeline de traitement automatique du langage pour classer automatiquement le sentiment de textes, conçu comme banc d'essai pour le prétraitement et la méthode d'évaluation."
 permalink: /projects/sentiment-analysis/
 redirect_from:
   - /portfolio/sentiment-analysis/
-status: "Completed"
+status: "Terminé"
 status_key: "Completed"
-domain: "Artificial Intelligence"
-research_theme: "Machine Learning"
-technologies: ["Python", "NLP", "Scikit-learn"]
+domain: "Intelligence artificielle"
+research_theme: "Apprentissage automatique"
+technologies: ["Python", "TAL", "Scikit-learn"]
 github: "https://github.com/Geobatpo07/sentiment-analysis"
 last_updated: 2026-03-01
 date: 2026-03-01
 ---
 
-## Overview
+## Présentation
 
-An NLP pipeline for automated sentiment classification of text into positive, neutral, and negative categories, built as a focused exercise in text preprocessing, feature representation, and evaluation methodology.
+Un pipeline de traitement automatique du langage (TAL) qui classe des textes en sentiment positif, neutre ou négatif, conçu comme un exercice ciblé sur le prétraitement des textes, la représentation des caractéristiques et la méthode d'évaluation.
 
-## Scientific Context
+## Contexte scientifique
 
-Sentiment classification is a well-studied problem, which is exactly what makes it useful as a testbed: with the modelling question mostly settled, it becomes a place to be rigorous about the parts that are easy to shortcut: data cleaning, evaluation design, and honestly characterizing where a model fails, rather than just reporting an aggregate accuracy number.
+La classification de sentiment est un problème bien étudié, et c'est justement ce qui en fait un bon banc d'essai : la question de modélisation étant en grande partie réglée, on peut se montrer rigoureux sur ce qu'il est facile de bâcler (nettoyage des données, conception de l'évaluation, description honnête des cas où un modèle échoue) au lieu de ne publier qu'une précision globale.
 
-## Problem Statement
+## Problématique
 
-How much of a sentiment classifier's performance comes from the model versus from the quality of preprocessing and feature representation upstream of it? And where, specifically, does a reasonably simple pipeline still get things wrong?
+Quelle part de la performance d'un classifieur de sentiment vient du modèle, et quelle part de la qualité du prétraitement et de la représentation des caractéristiques en amont ? Et où, précisément, un pipeline assez simple se trompe-t-il encore ?
 
-## Objectives
+## Objectifs
 
-- Build a complete pipeline from raw text to classified sentiment, treating each stage as something to evaluate independently.
-- Compare feature representations rather than assuming one is obviously correct.
-- Characterize failure modes, not just aggregate accuracy.
+- Construire un pipeline complet, du texte brut au sentiment classé, en évaluant chaque étape séparément.
+- Comparer plusieurs représentations des caractéristiques plutôt que d'en supposer une évidemment meilleure.
+- Décrire les modes d'échec, et pas seulement la précision globale.
 
-## Methodology
+## Méthodologie
 
-The pipeline follows a standard structure (preprocessing, vectorization, training, evaluation) with deliberate attention at each stage: text normalization choices were tested for their effect on downstream accuracy rather than applied by default, and multiple vectorization approaches were compared before settling on one.
+Le pipeline suit une structure classique (prétraitement, vectorisation, entraînement, évaluation), avec une attention particulière à chaque étape : les choix de normalisation du texte ont été testés pour leur effet sur la précision en aval plutôt qu'appliqués par défaut, et plusieurs méthodes de vectorisation ont été comparées avant d'en retenir une.
 
 ## Architecture
 
-Raw text moves through a preprocessing stage (normalization, tokenization, noise removal), a vectorization stage that converts cleaned text into numerical features, and a classification stage that assigns a sentiment label. Each stage is a separate, swappable component, which made it straightforward to isolate how much a given preprocessing choice actually mattered.
+Le texte brut passe par une étape de prétraitement (normalisation, tokenisation, suppression du bruit), une étape de vectorisation qui convertit le texte nettoyé en caractéristiques numériques, puis une étape de classification qui attribue une étiquette de sentiment. Chaque étape est un composant séparé et interchangeable, ce qui a permis d'isoler simplement l'effet réel de chaque choix de prétraitement.
 
-## Implementation
+## Mise en œuvre
 
-Evaluation was built around more than a single accuracy number: confusion matrices and per-class performance were used throughout to catch cases where a model looked good in aggregate but was systematically weak on, for instance, neutral-sentiment text, which is typically the hardest class to classify correctly.
+L'évaluation ne se résume pas à un seul chiffre de précision : matrices de confusion et performances par classe ont été utilisées tout au long du travail pour repérer les cas où un modèle semblait bon globalement mais restait systématiquement faible, par exemple sur les textes au sentiment neutre, en général la classe la plus difficile à bien classer.
 
-## Challenges Encountered
+## Difficultés rencontrées
 
-Neutral sentiment was consistently the hardest category, both for the model and for defining ground truth in the first place: human-labeled "neutral" text is often genuinely ambiguous, which puts a ceiling on any model's achievable accuracy that has nothing to do with the model itself. Balancing preprocessing aggressiveness was another tension: more aggressive text cleaning simplified the input but occasionally removed signal that mattered for sentiment.
+Le sentiment neutre a toujours été la catégorie la plus difficile, à la fois pour le modèle et pour définir la vérité de référence : un texte étiqueté « neutre » par un humain est souvent réellement ambigu, ce qui plafonne la précision atteignable par n'importe quel modèle, indépendamment du modèle lui-même. Doser l'intensité du prétraitement a été une autre source de tension : un nettoyage plus agressif simplifiait l'entrée, mais supprimait parfois des indices utiles au sentiment.
 
-## Results
+## Résultats
 
-The pipeline achieves solid separation between clearly positive and clearly negative text, with the expected drop in reliability for neutral and ambiguous cases. Its main value has been as a methodology exercise: a clean, well-evaluated reference pipeline rather than a novel modelling contribution.
+Le pipeline sépare nettement les textes clairement positifs des textes clairement négatifs, avec la baisse de fiabilité attendue sur les cas neutres et ambigus. Son principal intérêt a été méthodologique : un pipeline de référence propre et bien évalué, plutôt qu'une contribution de modélisation nouvelle.
 
-## Lessons Learned
+## Enseignements
 
-Comparing preprocessing and feature-representation choices explicitly, instead of defaulting to whatever's conventional, surfaced real differences in downstream performance that would have otherwise gone unnoticed. Evaluating per-class performance rather than only aggregate accuracy is what actually revealed where the pipeline was weak.
+Comparer explicitement les choix de prétraitement et de représentation, au lieu de s'en tenir aux habitudes, a fait apparaître de vraies différences de performance en aval qui seraient sinon passées inaperçues. C'est l'évaluation par classe, et non la seule précision globale, qui a réellement montré où le pipeline était faible.
 
-## Future Improvements
+## Perspectives
 
-Extending the evaluation to out-of-domain text (text stylistically different from the training data) would be the most informative next step, since that is where preprocessing and feature choices tend to matter most.
+Étendre l'évaluation à des textes hors domaine (stylistiquement différents des données d'entraînement) serait l'étape la plus instructive, car c'est là que les choix de prétraitement et de caractéristiques pèsent le plus.

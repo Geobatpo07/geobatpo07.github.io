@@ -1,61 +1,63 @@
 ---
+lang: fr
+ref: project-medical-triage-system
 title: "Medical Triage System"
-excerpt: "A C++ decision-support tool using a Random Forest model to support pre-triage prioritization in emergency contexts."
+excerpt: "Un outil d'aide à la décision en C++ qui s'appuie sur un modèle Random Forest pour aider à prioriser les patients au pré-triage en contexte d'urgence."
 permalink: /projects/medical-triage-system/
 redirect_from:
   - /portfolio/medical-triage-system/
-status: "Prototype Complete"
+status: "Prototype terminé"
 status_key: "Prototype"
-domain: "Healthcare Analytics"
-research_theme: "Healthcare Analytics"
+domain: "Analytique de santé"
+research_theme: "Analytique de santé"
 technologies: ["C++", "Random Forest", "Python"]
 github: "https://github.com/Geobatpo07/MedicalTriageSystem"
 last_updated: 2026-03-03
 date: 2026-03-03
 ---
 
-## Overview
+## Présentation
 
-A C++ application that uses a Random Forest model, trained in Python, to support pre-triage prioritization of patients in emergency contexts, a decision-support tool, not a diagnostic one.
+Une application C++ qui utilise un modèle Random Forest, entraîné en Python, pour aider à prioriser les patients au pré-triage en contexte d'urgence : un outil d'aide à la décision, pas un outil de diagnostic.
 
-## Scientific Context
+## Contexte scientifique
 
-In emergency and resource-constrained settings, the order in which patients are seen matters as much as the care itself. Triage decisions are usually made quickly and under pressure, which is exactly the situation where a fast, interpretable second opinion can help, provided it's transparent enough that clinical staff can trust or override it, rather than a black box they have to blindly follow.
+Dans les services d'urgence et les contextes aux ressources limitées, l'ordre dans lequel les patients sont vus compte autant que les soins eux-mêmes. Les décisions de triage se prennent en général vite et sous pression : c'est précisément là qu'un second avis rapide et interprétable peut aider, à condition d'être assez transparent pour que le personnel soignant puisse s'y fier ou passer outre, plutôt qu'une boîte noire à suivre aveuglément.
 
-## Problem Statement
+## Problématique
 
-Can a lightweight model give a useful pre-triage risk signal fast enough to be practical in an emergency setting, while staying interpretable enough that a clinician can see why it produced that signal and disagree with it when appropriate?
+Un modèle léger peut-il fournir un signal de risque utile au pré-triage, assez vite pour servir en contexte d'urgence, tout en restant assez interprétable pour qu'un clinicien voie pourquoi il l'a produit et puisse le contredire quand c'est justifié ?
 
-## Objectives
+## Objectifs
 
-- Produce a risk-prioritization score from patient data quickly enough to be usable at intake.
-- Keep the model interpretable rather than treating accuracy as the only metric that matters.
-- Separate the model-training step (Python) from the deployed decision-support application (C++) so the runtime tool stays fast and dependency-light.
+- Produire un score de priorisation à partir des données du patient assez vite pour servir à l'accueil.
+- Garder un modèle interprétable, sans faire de la précision la seule mesure qui compte.
+- Séparer l'entraînement du modèle (Python) de l'application d'aide à la décision déployée (C++), pour que l'outil reste rapide et léger en dépendances.
 
-## Methodology
+## Méthodologie
 
-A Random Forest classifier was trained in Python on patient intake features to produce a prioritization score. Random Forest was chosen specifically because its decision structure (an ensemble of relatively shallow trees) is easier to inspect and explain than deeper or less structured models, which matters more here than squeezing out marginal accuracy gains.
+Un classifieur Random Forest a été entraîné en Python sur les données d'accueil des patients pour produire un score de priorisation. Ce choix tient à sa structure de décision (un ensemble d'arbres relativement peu profonds), plus facile à inspecter et à expliquer que des modèles plus profonds ou moins structurés : c'est ici plus important que de gagner quelques points de précision.
 
 ## Architecture
 
-The trained model is exported and embedded into a C++ application that handles the runtime decision-support logic, keeping the deployed tool free of a Python runtime dependency. The C++ layer handles input validation and score presentation; the model itself remains a separate, versioned artifact that can be retrained and swapped without changing the application code around it.
+Le modèle entraîné est exporté puis intégré dans une application C++ qui gère la logique d'aide à la décision à l'exécution, sans dépendre d'un environnement Python. La couche C++ gère la validation des entrées et la présentation du score ; le modèle reste un artefact séparé et versionné, qu'on peut réentraîner et remplacer sans toucher au code de l'application.
 
-## Implementation
+## Mise en œuvre
 
-Separating training from deployment this way meant the runtime application could stay small and fast, while the model itself could be iterated on independently using the full Python data-science toolchain. Input validation was treated as seriously as the model itself: a fast, wrong answer is worse than a fast, honest "insufficient data" response.
+Séparer ainsi l'entraînement du déploiement a permis de garder une application petite et rapide, tout en faisant évoluer le modèle de façon indépendante avec toute la chaîne d'outils data science de Python. La validation des entrées a été traitée avec autant de sérieux que le modèle : une réponse rapide et fausse est pire qu'une réponse rapide et honnête du type « données insuffisantes ».
 
-## Challenges Encountered
+## Difficultés rencontrées
 
-The main tension was between model complexity and interpretability: more complex models offered marginal accuracy improvements but made it harder to explain why a specific patient received a specific score, which mattered more for this use case than the accuracy gain justified. Porting a Python-trained model into a C++ runtime cleanly, without silently changing its behavior in the process, also required careful attention to how the model's decision logic was serialized and reproduced.
+La principale tension opposait complexité du modèle et interprétabilité : des modèles plus complexes offraient des gains de précision marginaux, mais rendaient plus difficile d'expliquer pourquoi un patient recevait tel score, ce qui comptait davantage ici que le gain de précision. Porter proprement un modèle entraîné en Python dans un environnement C++, sans modifier silencieusement son comportement, a aussi demandé une grande attention à la façon dont sa logique de décision était sérialisée et reproduite.
 
-## Results
+## Résultats
 
-The prototype produces prioritization scores with an inspectable decision path, consistent with the goal of a tool clinicians can question rather than one they have to trust blindly. As a prototype, it has not been deployed or validated in a live clinical setting.
+Le prototype produit des scores de priorisation avec un chemin de décision inspectable, conformément à l'objectif d'un outil que les cliniciens peuvent questionner plutôt que suivre aveuglément. En tant que prototype, il n'a été ni déployé ni validé en situation clinique réelle.
 
-## Lessons Learned
+## Enseignements
 
-For decision-support tools in high-stakes contexts, interpretability is not a nice-to-have secondary property: it's close to the primary requirement, and it's worth choosing a model architecture around it rather than optimizing for accuracy first and explaining the result after. Keeping the model and the application as separate, independently versioned artifacts made iteration substantially easier.
+Pour les outils d'aide à la décision dans des contextes à fort enjeu, l'interprétabilité n'est pas une qualité secondaire : c'est presque l'exigence principale, et il vaut la peine de choisir l'architecture du modèle en fonction d'elle plutôt que d'optimiser d'abord la précision et d'expliquer le résultat ensuite. Garder le modèle et l'application comme deux artefacts séparés et versionnés indépendamment a nettement facilité les itérations.
 
-## Future Improvements
+## Perspectives
 
-Any path toward real clinical use would require formal validation against real-world outcomes and a much more rigorous approach to bias and fairness in the training data than a prototype needs: that validation work, not new features, is the actual next step.
+Toute évolution vers un usage clinique réel exigerait une validation formelle sur des résultats réels et une approche bien plus rigoureuse des biais et de l'équité dans les données d'entraînement qu'un prototype n'en demande : c'est ce travail de validation, et non de nouvelles fonctionnalités, qui constitue la vraie prochaine étape.
