@@ -20,7 +20,7 @@
 }
 
 html {
-  font-size: 9pt;
+  font-size: 10pt;
 }
 
 body {
@@ -112,6 +112,13 @@ h3 {
   font-weight: normal;
 }
 
+/* Hyphenated names (nowrap_hyphens filter) and URLs never break at a
+   hyphen, so the PDF text keeps them whole. */
+.nowrap,
+.cv-url {
+  white-space: nowrap;
+}
+
 ul {
   padding-left: 1.2em;
 }
@@ -127,6 +134,42 @@ li {
 
 .cv-certs-line {
   margin-top: 0.75em;
+}
+
+/* Airy layout, for CVs allowed more than one page (Research), with wider
+   page margins through a named page. */
+@page airy {
+  size: A4;
+  margin: 15mm 17mm;
+}
+
+.cv--airy {
+  page: airy;
+  line-height: 1.4;
+
+  .cv-header {
+    margin-bottom: 0.9em;
+  }
+
+  section {
+    margin-top: 1.1em;
+  }
+
+  h2 {
+    margin-bottom: 0.55em;
+  }
+
+  .cv-entry {
+    margin-bottom: 0.7em;
+  }
+
+  li {
+    margin: 0.15em 0;
+  }
+
+  .cv-lines li {
+    margin: 0.25em 0;
+  }
 }
 
 @media screen {

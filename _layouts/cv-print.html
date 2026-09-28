@@ -10,6 +10,10 @@
   `cv.experience` or `cv.projects` that matches nothing renders a
   data-cv-missing marker, which fails the PDF step.
   The page belongs to its space (data-space) and links only outside the site.
+  A CV allowed more than one page (Research) gets the airy layout: dates,
+  stack and links on their own lines, education with its detail.
+  Hyphenated names never break across lines (nowrap_hyphens filter,
+  _plugins/nowrap_hyphens.rb), so the PDF text keeps them whole.
 {% endcomment %}
 {% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
@@ -18,6 +22,7 @@
 {% assign cv = track.cv %}
 {% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
 {% assign sort_key = "tracks." | append: track_key %}
+{% assign airy = false %}{% if cv.max_pages > 1 %}{% assign airy = true %}{% endif %}
 <!doctype html>
 <html lang="{{ lang }}" data-space="{{ track_key }}">
 <head>
@@ -30,7 +35,8 @@
   <link rel="stylesheet" href="{{ '/assets/css/cv-print.css' | relative_url }}">
 </head>
 <body>
-<main class="cv">
+{% capture cv_body %}
+<main class="cv{% if airy %} cv--airy{% endif %}">
   <header class="cv-header">
     <h1>{{ display_name }}</h1>
     <p class="cv-headline">{{ cv.headline[lang] }}</p>
@@ -54,11 +60,18 @@
       {% assign position = site.data.experience | where: "id", id | first %}
       {% unless position %}<p data-cv-missing="experience:{{ id }}">experience: {{ id }}</p>{% continue %}{% endunless %}
     <div class="cv-entry">
-      <h3>{{ position.role[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
-        <span class="cv-meta">— {% include tracks/period.html start=position.start end=position.end -%}
+      {% capture position_meta %}
+        {%- include tracks/period.html start=position.start end=position.end -%}
         {%- if position.location %} · {{ position.location[lang] }}{% endif %}
         {%- if position.sector %} · {{ position.sector[lang] }}{% endif -%}
-        </span></h3>
+      {% endcapture %}
+      {% if airy %}
+      <h3>{{ position.role[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
+      <p class="cv-meta">{{ position_meta }}</p>
+      {% else %}
+      <h3>{{ position.role[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
+        <span class="cv-meta">— {{ position_meta }}</span></h3>
+      {% endif %}
       {% assign bullets = position.bullets[track_key] | where_exp: "b", "b.cv != false" %}
       {% if bullets.size > 0 %}
       <ul>
@@ -78,9 +91,18 @@
       {% unless p %}<p data-cv-missing="project:{{ id }}">project: {{ id }}</p>{% continue %}{% endunless %}
     <div class="cv-entry">
       <h3>{{ p.name }}{% if p.github %} <span class="cv-sep">·</span> <a class="cv-url" href="{{ p.github }}">{{ p.github | remove: "https://" }}</a>{% elsif p.private %} <span class="cv-sep">·</span> <span class="cv-note">{{ t.private_repo }}</span>{% endif %}</h3>
-      <p>{{ p.description[lang] }} <span class="cv-meta">{{ t.cv_stack }}{{ t.colon }}{% for s in p.stack %}{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}.</span></p>
+      {% capture project_stack %}{{ t.cv_stack }}{{ t.colon }}{% for s in p.stack %}{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endcapture %}
+      {% if airy %}
+      <p>{{ p.description[lang] }}</p>
+      <p class="cv-meta">{{ project_stack }}</p>
+      {% for link in p.links %}
+      <p class="cv-meta">{{ link.label[lang] }}{{ t.colon }}<a class="cv-url" href="{{ link.url }}">{{ link.url | remove: "https://" }}</a></p>
+      {% endfor %}
+      {% else %}
+      <p>{{ p.description[lang] }} <span class="cv-meta">{{ project_stack }}.</span></p>
       {% if p.links.size > 0 %}
       <p class="cv-meta">{% for link in p.links %}{{ link.label[lang] }}{{ t.colon }}<a class="cv-url" href="{{ link.url }}">{{ link.url | remove: "https://" }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+      {% endif %}
       {% endif %}
     </div>
     {% endfor %}
@@ -112,7 +134,14 @@
     <h2>{{ t.education }}</h2>
     {% for entry in site.data.education %}
       {% if entry.tracks %}{% unless entry.tracks contains track_key %}{% continue %}{% endunless %}{% endif %}
+    {% if airy %}
+    <div class="cv-entry">
+      <h3>{{ entry.degree[lang] }}</h3>
+      <p class="cv-meta">{{ entry.institution }} · {% include tracks/period.html start=entry.start end=entry.end %}{% if entry.detail %} · {{ entry.detail[lang] }}{% endif %}</p>
+    </div>
+    {% else %}
     <p class="cv-entry--compact"><strong>{{ entry.degree[lang] }}</strong> · {{ entry.institution }} · <span class="cv-meta">{% include tracks/period.html start=entry.start end=entry.end %}</span></p>
+    {% endif %}
     {% endfor %}
   </section>
 
@@ -159,5 +188,7 @@
     {% endif %}
   {% endif %}
 </main>
+{% endcapture %}
+{{ cv_body | nowrap_hyphens }}
 </body>
 </html>
