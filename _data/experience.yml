@@ -3,9 +3,11 @@
 #
 #   tracks:  { <track>: <priority> }  the tracks the position appears on,
 #            and its rank there (1 = first). Omit a track to hide it there.
+#   org:     a string, or {fr, en} when it translates.
 #   start / end: "YYYY-MM"; omit `end` for an ongoing position.
 #   bullets: { <track>: [ {fr, en}, ... ] }  one list per track, because the
 #            same position is told differently depending on the track.
+#            `cv: false` on a bullet keeps it on the site but off the CV.
 #
 # See docs/CONTENT.md for the full format.
 # ==========================================================================
@@ -33,8 +35,8 @@
     data:
       - fr: "Architecture analytique sur Microsoft Fabric (Lakehouse, Data Warehouse)."
         en: "Analytics architecture on Microsoft Fabric (Lakehouse, Data Warehouse)."
-      - fr: "Tableaux de bord Power BI et suivi des indicateurs (KPI)."
-        en: "Power BI dashboards and KPI tracking."
+      - fr: "Tableaux de bord Power BI et suivi des indicateurs (KPI) ; contribution à la hausse de la part des sites clients au-dessus de 95 % de performance, d'environ 20 % à environ 60 %."
+        en: "Power BI dashboards and KPI tracking; helped raise the share of client sites above 95% performance from about 20% to about 60%."
       - fr: "Pipelines ETL et qualité des données de santé, dont une déduplication par machine learning."
         en: "ETL pipelines and healthcare data quality, including machine-learning-based deduplication."
       - fr: "Cartographie avec QGIS et Power BI."
@@ -48,7 +50,7 @@
     en: "Data Engineer (volunteer)"
   org: "AYITISTATS"
   start: "2026-08"
-  tracks: { data: 2 }
+  tracks: { data: 2, software: 2 }
   bullets:
     data:
       - fr: "Unification de données statistiques pour une instance Google Data Commons sur Google Cloud (GCP)."
@@ -127,3 +129,17 @@
         en: "Numerical simulations in Python with a Lax-Friedrichs scheme."
       - fr: "Encadrement : Pr Maximilian F. Hasler."
         en: "Supervised by Prof. Maximilian F. Hasler."
+
+- id: math-tutor
+  role:
+    fr: "Tuteur en mathématiques"
+    en: "Mathematics Tutor"
+  org: { fr: "Indépendant", en: "Self-employed" }
+  start: "2015-01"
+  tracks: { research: 5 }
+  bullets:
+    research:
+      - fr: "Accompagnement durable d'élèves aux profils variés : clarification des notions, préparation aux examens et méthodes de résolution de problèmes structurées."
+        en: "Long-term support for students from diverse backgrounds: clarifying concepts, exam preparation and structured problem-solving methods."
+      - fr: "Pédagogie adaptée à chaque élève, centrée sur la rigueur, l'autonomie et la confiance en soi."
+        en: "Teaching adapted to each student, focused on rigor, autonomy and confidence."
