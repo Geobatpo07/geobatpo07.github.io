@@ -7,9 +7,9 @@
 #   github:     repository URL; omit for private work and set `private: true`.
 #   cv:         CVs listing the project: software, data, research (in the
 #               space's order above) and profile (the complete CV).
-#   case_study: path of the French case study under /projects/ (research
-#               space; the English one is under /en/projects/). Only the
-#               research cards link to it.
+#   case_study: path of the French case study under /projects/ (a neutral
+#               page; the English one is under /en/projects/). The cards of
+#               every space showing the project link to it, with ?from=.
 #   stack:      list of strings, or {fr, en} pairs for terms that translate.
 #   links:      extra links, each { label: {fr, en}, url }.
 #   research:   optional research framing shown on the research track only.

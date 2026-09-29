@@ -307,14 +307,14 @@ defaults:
       lang: fr
       space: neutral
       author_profile: false
-  # _projects: case studies, part of the research space
+  # _projects: case studies, neutral pages reachable from every space
   - scope:
       path: ""
       type: projects
     values:
       layout: case-study
       lang: fr
-      space: research
+      space: neutral
       author_profile: false
       full_width: true
       read_time: true

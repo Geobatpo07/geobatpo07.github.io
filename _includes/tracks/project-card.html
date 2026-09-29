@@ -1,12 +1,17 @@
 {% comment %}
   One project card. Params: project, research (true to show the research framing).
-  Case studies belong to the research space: the card links to one only on
-  the research track, in the page language (/projects/<x>/ or
-  /en/projects/<x>/). The data and software cards never link to them.
+  Case studies are neutral pages: every space's card links to the case
+  study when the project has one, in the page language (/projects/<x>/ or
+  /en/projects/<x>/), with ?from=<space> (&lang=en in English) so the Back
+  button of the case study returns to that space (assets/js/space-header.js).
 {% endcomment %}
 {% assign p = include.project %}
-{% if p.case_study and track_key == "research" %}
-  {% if lang == "en" %}{% assign case_study_url = "/en" | append: p.case_study %}{% else %}{% assign case_study_url = p.case_study %}{% endif %}
+{% if p.case_study %}
+  {% if lang == "en" %}
+    {% assign case_study_url = "/en" | append: p.case_study | append: "?from=" | append: track_key | append: "&amp;lang=en" %}
+  {% else %}
+    {% assign case_study_url = p.case_study | append: "?from=" | append: track_key %}
+  {% endif %}
 {% else %}
   {% assign case_study_url = nil %}
 {% endif %}

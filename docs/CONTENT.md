@@ -117,7 +117,7 @@ Ajoutez une entrée à `_data/projects.yml` :
   name: "Mon projet"
   github: "https://github.com/Geobatpo07/mon-projet"   # facultatif
   # private: true                     # à la place de github pour un dépôt privé
-  case_study: /projects/mon-projet/   # facultatif : étude de cas (espace research)
+  case_study: /projects/mon-projet/   # facultatif : étude de cas (page neutre)
   stack: ["Python", "DuckDB", { fr: "Séries temporelles", en: "Time series" }]
   status: active                      # active | prototype | completed | presented
   tracks: { data: 2, research: 6 }    # espaces et rang (1 = première carte)
@@ -149,7 +149,7 @@ Le site est un portail et trois espaces cloisonnés. Le layout `default` choisit
 
 **Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail liste les trois espaces. Le seul lien que les trois espaces partagent est celui du blog Stories, dans leur menu.
 
-**Études de cas.** Elles appartiennent à l'espace research (`space: research` par défaut dans `_config.yml`, layout `case-study`). Seules les cartes projet de l'espace research y mènent ; les espaces data et software n'y font pas de lien.
+**Études de cas.** Ce sont des pages neutres (`space: neutral` par défaut dans `_config.yml`, layout `case-study`) : en-tête sans menu avec un bouton Retour, pied de page neutre, aucun lien vers un espace. La carte d'un projet mène à son étude de cas dans chaque espace où elle apparaît, avec `?from=<espace>` (et `&lang=en` en anglais) : le bouton Retour revient à la page précédente, ou à défaut à la racine de cet espace.
 
 **Langues.** Le français est la langue par défaut : toute page française est à la racine, toute page anglaise sous `/en/`, et **toute page anglaise a sa version française**. `_config.yml` donne `lang: fr` à toutes les pages et à tous les documents des collections ; une page anglaise déclare `lang: en`. Chaque paire partage un `ref` : le `<head>` liste les deux versions en `hreflang`, avec `x-default` sur la version française, et le sélecteur FR | EN passe de l'une à l'autre sans quitter l'espace. Il n'existe pas de préfixe `/fr/`.
 

@@ -9,6 +9,9 @@
 #   - a page of a space never links to the portal or to another space.
 #     Links are followed through redirect stubs; links to neutral pages,
 #     to files and to other sites are allowed;
+#   - a case study (neutral page under /projects/ or /en/projects/) never
+#     links to a space or to the portal: its Back button is set by script
+#     from ?from=<space>, never written in the markup;
 #   - languages: French at the root, English under /en/. Every English page
 #     lives under /en/ and has a French version (an hreflang="fr"
 #     alternate that exists in the build); a FR/EN pair lists both hreflang
@@ -132,7 +135,7 @@ class SpaceIsolation < HTMLProofer::Check
     check_language(root, base_path)
     check_no_fr_prefix(base_path)
 
-    return unless SPACES.include?(space)
+    return unless SPACES.include?(space) || (space == "neutral" && case_study?(base_path))
 
     @html.css("a[href]").each do |node|
       path = SitePages.internal_path(node["href"].strip, base_path)
@@ -147,6 +150,10 @@ class SpaceIsolation < HTMLProofer::Check
   end
 
   private
+
+  def case_study?(base_path)
+    base_path.start_with?("/projects/", "/en/projects/")
+  end
 
   def check_language(root, base_path)
     lang = root["lang"]

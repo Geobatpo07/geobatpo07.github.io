@@ -2,8 +2,10 @@
 layout: default
 ---
 {% comment %}
-  Case study (_projects). Case studies belong to the research space
-  (`space: research` in _config.yml): research header, menu and footer.
+  Case study (_projects). Case studies are neutral pages (`space: neutral`
+  in _config.yml), reachable from the project cards of every space: neutral
+  header with a Back button to the space of origin (?from=<space>), neutral
+  footer, and no link to any space (checked by scripts/check-isolation.rb).
   Each exists in French (/projects/<x>/) and English (/en/projects/<x>/),
   paired by `ref`. Front matter strings (status, domain, research_theme,
   technologies, labels) are written in the page language; interface
