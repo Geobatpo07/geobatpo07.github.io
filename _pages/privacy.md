@@ -10,7 +10,7 @@ description: "Données personnelles traitées sur geovanylaguerre.net : héberge
 author_profile: false
 ---
 
-*Dernière mise à jour : 28 septembre 2026.*
+*Dernière mise à jour : 29 septembre 2026.*
 
 Ce site est un portfolio personnel. Il n'a ni compte utilisateur, ni newsletter, ni paiement, et ne stocke lui-même aucune donnée personnelle. Cette page décrit, pour chaque situation, les données qui peuvent être traitées, par qui et pourquoi.
 
@@ -29,7 +29,8 @@ Ce site est un portfolio personnel. Il n'a ni compte utilisateur, ni newsletter,
 - **Données :** page consultée, page de provenance, type de navigateur et de système, taille d'écran, pays déduit de l'adresse IP. L'adresse IP n'est pas conservée et aucun cookie n'est déposé.
 - **Finalité :** statistiques de fréquentation anonymes (pages les plus lues, provenance des visites).
 - **Base légale :** intérêt légitime. Cette mesure, sans cookie, sans suivi d'un site à l'autre et limitée à des statistiques agrégées, ne nécessite pas de consentement.
-- **Destinataire :** GoatCounter ([goatcounter.com](https://www.goatcounter.com/help/privacy)), prestataire de mesure d'audience.
+- **Destinataire :** GoatCounter ([goatcounter.com](https://www.goatcounter.com/help/privacy)), prestataire de mesure d'audience exploité depuis l'Irlande ; les données sont hébergées chez Hetzner, en Finlande et en Allemagne.
+- **Transfert hors UE :** non.
 - **Durée :** statistiques agrégées, conservées tant que le compte de mesure existe.
 
 ## 3. Contact par e-mail et formulaire « Votre avis »

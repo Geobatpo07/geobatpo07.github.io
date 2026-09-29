@@ -10,7 +10,7 @@ description: "Personal data processed on geovanylaguerre.net: hosting, cookieles
 author_profile: false
 ---
 
-*Last updated: 28 September 2026.*
+*Last updated: 29 September 2026.*
 
 This website is a personal portfolio. It has no user accounts, no newsletter and no payments, and it stores no personal data itself. This page describes, for each situation, which data may be processed, by whom and why.
 
@@ -29,7 +29,8 @@ This website is a personal portfolio. It has no user accounts, no newsletter and
 - **Data:** page viewed, referring page, browser and system type, screen size, country derived from the IP address. The IP address is not kept and no cookie is set.
 - **Purpose:** anonymous visit statistics (most read pages, where visits come from).
 - **Legal basis:** legitimate interest. This measurement, without cookies, without cross-site tracking and limited to aggregated statistics, does not require consent.
-- **Recipient:** GoatCounter ([goatcounter.com](https://www.goatcounter.com/help/privacy)), audience measurement provider.
+- **Recipient:** GoatCounter ([goatcounter.com](https://www.goatcounter.com/help/privacy)), audience measurement provider operated from Ireland; the data is hosted by Hetzner, in Finland and Germany.
+- **Transfer outside the EU:** no.
 - **Retention:** aggregated statistics, kept as long as the measurement account exists.
 
 ## 3. Contact by email and the Feedback form
