@@ -206,7 +206,6 @@ exclude:
   - talkmap.py
   - talkmap.ipynb
   - talkmap_out.ipynb
-  - response.html
   - docker-compose.yaml
   - CONTRIBUTING.md
   - README.md
