@@ -86,6 +86,17 @@ jobs:
         env:
           JEKYLL_ENV: production
           BROWSER_PATH: ${{ steps.chrome.outputs.path || steps.setup-chrome.outputs.chrome-path }}
+      - name: Attach the CV PDFs to the run
+        # Pull requests only: the eight PDFs, downloadable from the run page
+        # for review, before anything is deployed. Runs before the checks so
+        # they are available even when a check fails.
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: _site/files/*.pdf
+          if-no-files-found: error
+          retention-days: 7
       - name: Check links and space isolation
         # html-proofer (internal links, images, scripts) plus the
         # SpaceIsolation check: a space page never links to the portal or
