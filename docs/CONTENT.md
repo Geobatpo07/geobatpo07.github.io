@@ -197,18 +197,31 @@ Le lien « CV » de l'en-tête, le bouton de la racine et celui de la page conta
 data:
   cv_file: CV_Laguerre_Data     # nom de base des PDF : <cv_file>_FR.pdf et <cv_file>_EN.pdf
   cv:
-    max_pages: 1                # contrôlé en CI
+    max_pages: 1                # contrôlé à chaque build
     certifications: block       # block : section dédiée ; line : une ligne compacte en fin de page
     publications: true          # facultatif : liste la collection _publications (Research)
 ```
 
 - En-tête : nom, titre, e-mail, LinkedIn, GitHub (`_config.yml`, `author`) et `cv_location` d'`i18n.yml` (« Île-de-France »). Ni téléphone ni adresse.
-- Lisible par les ATS : une colonne, texte réel, sans police d'icônes, A4, corps 10 pt, police Arial (Liberation Sans, métriquement identique, sur le runner Ubuntu) ; `assets/css/cv-print.scss`.
+- Lisible par les ATS : une colonne, texte réel, sans police d'icônes, A4, corps 10 pt, police Arial (Liberation Sans, métriquement identique, installée dans l'image Docker et sur le runner) ; `assets/css/cv-print.scss`.
 - Un CV limité à 1 page est compact ; un CV autorisé à plus d'une page (Research) prend une mise en page aérée.
 - Les mots à trait d'union (« Scikit-learn », « DP-700 ») ne sont jamais coupés en fin de ligne (filtre `nowrap_hyphens`, `_plugins/nowrap_hyphens.rb`).
 - Si un CV dépasse sa limite, on retire un projet de `cv`, un poste (`<espace>_cv: false`), une puce (`cv: false`) ou une catégorie de compétences (`<espace>_cv: false`) ; la mise en page ne se resserre pas pour compenser.
 
-**Génération et contrôle.** `scripts/generate-cv-pdf.mjs` (Playwright) produit `Profile.pdf` et `Profile_EN.pdf`, puis un PDF par page d'impression d'espace, nommé par sa balise `<meta name="cv-file">`. L'étape échoue et bloque le déploiement si un CV d'espace dépasse `max_pages`.
+**Génération et contrôle.** Jekyll génère lui-même les huit PDF, à la fin de chaque build : le plugin `_plugins/cv_pdf.rb` (hook `:site, :post_write`) ouvre les pages d'impression dans Chrome headless, piloté par la gem Ferrum, et écrit dans `_site/files/` :
+
+| Page d'impression | PDF |
+|---|---|
+| `/resume-print/`, `/en/resume-print/` | `Profile.pdf`, `Profile_EN.pdf` |
+| `/<espace>/print/`, `/en/<espace>/print/` | `<cv_file>_FR.pdf`, `<cv_file>_EN.pdf` (`cv_file` dans `tracks.yml`) |
+
+Les marges et le format viennent de la règle `@page` de chaque feuille d'impression. Le build échoue, avec un message qui nomme le fichier, si :
+
+- un CV d'espace dépasse `cv.max_pages` de `tracks.yml` (pages comptées par la gem pdf-reader) : le message donne le fichier, le nombre de pages obtenu et la limite. Raccourcissez alors le CV comme indiqué ci-dessus, puis relancez le build ;
+- Chrome ou Chromium est introuvable : installez-le, ou indiquez son exécutable dans la variable `BROWSER_PATH` ;
+- une des huit pages d'impression manque, ou un bloc `cv` de `tracks.yml` cite un identifiant inconnu.
+
+**Sauter la génération en local.** Pendant `jekyll serve`, `CV_PDF=0 bundle exec jekyll serve`, ou `cv_pdf: false` dans un fichier de configuration local (`--config _config.yml,_config_local.yml`). Ce réglage est ignoré en production (`JEKYLL_ENV=production`) et en CI (`CI=true`) : les PDF y sont toujours générés. L'image Docker contient Chromium et les polices Liberation, donc `docker compose up --build` génère aussi les PDF.
 
 ## Conformité : ce que le site charge et collecte
 
@@ -227,7 +240,7 @@ docker compose up --build        # http://localhost:4001
 
 Contrôlez la page concernée, en français et en anglais.
 
-La CI valide `resume.yml`, construit le site, génère les PDF puis lance html-proofer avec le contrôle d'isolement ; un échec bloque le déploiement. En local, après `ruby scripts/validate_resume.rb`, `bundle exec jekyll build` puis `node scripts/generate-cv-pdf.mjs` (qui affiche le nombre de pages de chaque CV) :
+La CI (`.github/workflows/jekyll.yml`) valide `resume.yml`, construit le site (ce qui génère et contrôle les PDF), puis lance html-proofer avec le contrôle d'isolement, qui vérifie aussi que les liens vers les huit PDF aboutissent. Sur une pull request, tout est exécuté sauf le déploiement, réservé aux push sur master ; un échec bloque le déploiement. En local, après `ruby scripts/validate_resume.rb` puis `JEKYLL_ENV=production bundle exec jekyll build` (qui affiche le nombre de pages de chaque CV) :
 
 ```bash
 bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts, isolement, langues

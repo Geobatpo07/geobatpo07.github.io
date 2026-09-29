@@ -11,8 +11,8 @@ on:
   push:
     branches: ["master"]
 
-  # Pull requests into master: build, generate the CVs and run the
-  # checks, without uploading or deploying anything.
+  # Pull requests into master (and manual runs): build, generate the CVs
+  # and run the checks, without uploading or deploying anything.
   pull_request:
     branches: ["master"]
 
@@ -51,38 +51,50 @@ jobs:
         if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v5
+      - name: Chrome for the CV PDFs
+        # The build renders the CV PDFs with Chrome headless
+        # (_plugins/cv_pdf.rb, through Ferrum). GitHub's Ubuntu runners ship
+        # Google Chrome; install it only when it is missing.
+        id: chrome
+        run: |
+          for bin in google-chrome google-chrome-stable chromium chromium-browser; do
+            if path="$(command -v "$bin")"; then
+              echo "Chrome found: $path ($("$path" --version))"
+              echo "path=$path" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "Chrome not found on the runner, installing it."
+      - name: Install Chrome
+        if: steps.chrome.outputs.path == ''
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+      - name: Liberation fonts
+        # Fonts of the print stylesheets (Arial and Times fallbacks), as in
+        # the Docker image, for the same rendering everywhere.
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-liberation
       - name: Validate resume.yml
         # Resume Loader validation — fails the build with a clear error
         # list if _data/resume.yml is missing required fields.
         run: ruby scripts/validate_resume.rb
-      - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
+      - name: Build with Jekyll and generate the CV PDFs
+        # Outputs to './_site'. _plugins/cv_pdf.rb then renders the eight
+        # PDF CVs to _site/files/ from the print pages, and fails the build
+        # when Chrome is missing or a CV exceeds tracks.yml cv.max_pages
+        # (1 page for Software and Data, 2 for Research).
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install PDF generation dependencies
-        run: npm install --no-save playwright http-server
-      - name: Install Chromium for Playwright
-        run: npx playwright install --with-deps chromium
-      - name: Generate CV PDFs and check their length
-        # Renders /resume-print/ to files/Profile.pdf and each space print
-        # page to files/CV_Laguerre_<Space>_<FR|EN>.pdf, from _data, so the
-        # PDFs never drift from the site. Blocking: fails when a Software or
-        # Data CV exceeds 1 page, a Research CV 2 pages (tracks.yml
-        # cv.max_pages), or a cv block references an unknown id.
-        run: node scripts/generate-cv-pdf.mjs
+          BROWSER_PATH: ${{ steps.chrome.outputs.path || steps.setup-chrome.outputs.chrome-path }}
       - name: Check links and space isolation
         # html-proofer (internal links, images, scripts) plus the
         # SpaceIsolation check: a space page never links to the portal or
-        # to another space. Runs after the PDF step so the linked PDFs
-        # exist; a failure blocks the deployment.
+        # to another space. Runs after the build, so the links to the eight
+        # PDFs are checked like any other; a failure blocks the deployment.
         run: bundle exec ruby scripts/check-isolation.rb
       - name: Upload artifact
-        if: github.event_name != 'pull_request'
+        # Only a push to master is deployed.
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
 
@@ -91,7 +103,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: build
     steps:

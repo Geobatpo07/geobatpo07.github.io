@@ -24,3 +24,6 @@ package-lock.json
 
 # Claude Code local settings
 .claude/
+
+# Local Jekyll overrides (e.g. cv_pdf: false)
+_config_local.yml
