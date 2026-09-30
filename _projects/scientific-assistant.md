@@ -1,61 +1,63 @@
 ---
+lang: fr
+ref: project-scientific-assistant
 title: "Scientific Assistant"
-excerpt: "A local-first, multi-agent framework combining symbolic mathematics, numerical methods, and document intelligence for reproducible research."
+excerpt: "Un cadre multi-agents qui fonctionne en local et associe mathématiques symboliques, méthodes numériques et analyse documentaire au service d'une recherche reproductible."
 permalink: /projects/scientific-assistant/
 redirect_from:
   - /portfolio/scientific-assistant/
-status: "Active Development"
+status: "Développement en cours"
 status_key: "Active"
-domain: "Artificial Intelligence"
-research_theme: "Artificial Intelligence"
-technologies: ["Python", "Multi-agent Systems", "RAG", "Symbolic Computation"]
+domain: "Intelligence artificielle"
+research_theme: "Intelligence artificielle"
+technologies: ["Python", "Systèmes multi-agents", "RAG", "Calcul symbolique"]
 github: "https://github.com/Geobatpo07/scientific-assistant"
 last_updated: 2026-03-04
 date: 2026-03-04
 ---
 
-## Overview
+## Présentation
 
-A local-first, multi-agent AI framework that combines symbolic mathematics, numerical methods, and retrieval-augmented document intelligence to support reproducible scientific research workflows.
+Un cadre d'IA multi-agents qui fonctionne en local et associe mathématiques symboliques, méthodes numériques et analyse documentaire augmentée par la recherche (RAG), pour soutenir des flux de travail de recherche scientifique reproductibles.
 
-## Scientific Context
+## Contexte scientifique
 
-General-purpose AI assistants are convenient but opaque: it's often unclear how they reached an answer, and reproducing that answer later isn't guaranteed. Scientific work needs something different: a system that can help with derivations, numerical experiments, and literature review, but whose reasoning stays inspectable and whose results can be reproduced independently of the specific run.
+Les assistants d'IA généralistes sont pratiques mais opaques : on ne sait souvent pas comment ils sont parvenus à une réponse, et rien ne garantit qu'on pourra la reproduire plus tard. Le travail scientifique demande autre chose : un système qui aide aux calculs, aux expériences numériques et à la revue de littérature, mais dont le raisonnement reste inspectable et dont les résultats se reproduisent indépendamment d'une exécution particulière.
 
-## Problem Statement
+## Problématique
 
-Can a multi-agent system combine symbolic reasoning, numerical computation, and literature retrieval into a single workflow without collapsing into the same opacity that makes general-purpose AI tools unsuitable for rigorous research?
+Un système multi-agents peut-il réunir raisonnement symbolique, calcul numérique et recherche bibliographique dans un même flux de travail, sans retomber dans l'opacité qui rend les outils d'IA généralistes inadaptés à une recherche rigoureuse ?
 
-## Objectives
+## Objectifs
 
-- Keep symbolic and numerical reasoning separate from language-model-based components, so each does what it's actually reliable at.
-- Make every agent's intermediate steps inspectable rather than hidden inside a single opaque response.
-- Run entirely locally, so reproducibility doesn't depend on a third-party API's availability or version.
+- Séparer le raisonnement symbolique et numérique des composants fondés sur un modèle de langage, pour que chacun fasse ce qu'il fait de façon fiable.
+- Rendre inspectables les étapes intermédiaires de chaque agent, au lieu de les cacher dans une réponse unique et opaque.
+- Tout exécuter en local, pour que la reproductibilité ne dépende ni de la disponibilité ni de la version d'une API tierce.
 
-## Methodology
+## Méthodologie
 
-The framework is structured as a set of cooperating agents with distinct responsibilities: a symbolic-computation agent for exact derivations, a numerical-methods agent for simulation and computation, and a retrieval-augmented-generation agent for grounding responses in actual source documents rather than model memory alone. A coordinating layer routes a given task to the appropriate agent (or sequence of agents) based on what kind of reasoning it requires.
+Le cadre est organisé en agents coopérants aux responsabilités distinctes : un agent de calcul symbolique pour les dérivations exactes, un agent de méthodes numériques pour la simulation et le calcul, et un agent de génération augmentée par la recherche qui ancre les réponses dans de vrais documents sources plutôt que dans la seule mémoire du modèle. Une couche de coordination oriente chaque tâche vers l'agent (ou la suite d'agents) adapté au type de raisonnement qu'elle demande.
 
 ## Architecture
 
-Each agent wraps a specific tool or library appropriate to its task (symbolic computation libraries for exact mathematics, numerical solvers for simulation, and a document index for retrieval) behind a common interface the coordinator can call. Because the agents are modular, a given task's execution trace shows which agent handled which step, rather than a single undifferentiated response.
+Chaque agent encapsule l'outil ou la bibliothèque adaptés à sa tâche (bibliothèques de calcul symbolique pour les mathématiques exactes, solveurs numériques pour la simulation, index documentaire pour la recherche) derrière une interface commune que le coordinateur peut appeler. Comme les agents sont modulaires, la trace d'exécution d'une tâche montre quel agent a traité quelle étape, au lieu d'une réponse unique et indifférenciée.
 
-## Implementation
+## Mise en œuvre
 
-Running everything locally was a deliberate constraint, not just a convenience: it means an experiment run today produces the same result when re-run later, independent of an external API's model version changing underneath it. Document retrieval is grounded against a locally indexed set of sources rather than an open-ended web search, which keeps the provenance of any retrieved claim traceable.
+Tout exécuter en local était une contrainte délibérée, pas une simple commodité : une expérience lancée aujourd'hui donne le même résultat quand on la relance plus tard, même si la version du modèle d'une API externe change entre-temps. La recherche documentaire s'appuie sur un ensemble de sources indexées localement plutôt que sur une recherche web ouverte, ce qui garde traçable l'origine de toute affirmation retrouvée.
 
-## Challenges Encountered
+## Difficultés rencontrées
 
-The hardest part was deciding where to draw the line between agents: too fine-grained, and the coordination overhead outweighs the benefit; too coarse, and you're back to one opaque system that happens to be organized differently. Getting the symbolic and numerical agents to hand off cleanly to each other, so a symbolic result could be evaluated numerically without a manual translation step, took several iterations to get right.
+Le plus difficile a été de décider où tracer la frontière entre les agents : trop fine, et le coût de coordination dépasse le bénéfice ; trop grossière, et l'on revient à un système opaque unique, simplement organisé autrement. Obtenir un passage de relais propre entre les agents symbolique et numérique, pour qu'un résultat symbolique puisse être évalué numériquement sans étape de traduction manuelle, a demandé plusieurs itérations.
 
-## Results
+## Résultats
 
-The framework currently supports end-to-end workflows that combine a symbolic derivation, a numerical evaluation of that derivation, and a retrieval step to check it against source material, all with an inspectable trace of which agent did what. It is still under active development rather than a finished tool.
+Le cadre permet aujourd'hui des flux de travail complets qui enchaînent une dérivation symbolique, l'évaluation numérique de cette dérivation et une étape de recherche pour la confronter aux sources, avec une trace inspectable de ce que chaque agent a fait. Il reste en développement actif et n'est pas un outil terminé.
 
-## Lessons Learned
+## Enseignements
 
-Modularity that makes a system's reasoning inspectable is worth more, for scientific use, than raw capability that hides its steps. Building the retrieval agent to cite specific source passages, rather than summarizing freely, made it much easier to catch when a response was subtly unsupported by its sources.
+Pour un usage scientifique, une modularité qui rend le raisonnement d'un système inspectable vaut davantage qu'une capacité brute qui cache ses étapes. Concevoir l'agent de recherche pour qu'il cite des passages précis des sources, plutôt que de résumer librement, a rendu bien plus facile le repérage des réponses que les sources ne soutenaient qu'à moitié.
 
-## Future Improvements
+## Perspectives
 
-Expanding the symbolic-numerical handoff to cover a wider range of problem types, and adding a persistent record of past runs so results can be directly compared over time, are the next priorities.
+Étendre le passage de relais entre symbolique et numérique à davantage de types de problèmes, et conserver un historique des exécutions passées pour comparer directement les résultats dans le temps, sont les prochaines priorités.

@@ -1,0 +1,216 @@
+# ==========================================================================
+# PROJECTS — every project, described once. Descriptions follow each
+# repository's README.
+#
+#   tracks:     { <track>: <priority> }  1 = first card on that track page.
+#   status:     active | prototype | completed | presented (labels in i18n.yml)
+#   github:     repository URL; omit for private work and set `private: true`.
+#   cv:         CVs listing the project: software, data, research (in the
+#               space's order above) and profile (the complete CV).
+#   case_study: path of the French case study under /projects/ (a neutral
+#               page; the English one is under /en/projects/). The cards of
+#               every space showing the project link to it, with ?from=.
+#   stack:      list of strings, or {fr, en} pairs for terms that translate.
+#   links:      extra links, each { label: {fr, en}, url }.
+#   research:   optional research framing shown on the research track only.
+#
+# See docs/CONTENT.md for the full format and an example.
+# ==========================================================================
+
+- id: stories
+  name: "Stories"
+  github: "https://github.com/Geobatpo07/stories"
+  stack: ["TypeScript", "Next.js", "DuckDB", "Zod", "Vitest", "GitHub Actions"]
+  status: active
+  tracks: { software: 1 }
+  cv: [software]
+  description:
+    fr: "Plateforme Next.js qui organise les programmes, hypothèses, expériences et publications d'un laboratoire de recherche dans un modèle de connaissances typé. La publication génère des fichiers MDX et un index DuckDB ; la CI enchaîne typage, lint, tests et build."
+    en: "A Next.js platform that organizes a research lab's programs, hypotheses, experiments and publications in a typed knowledge model. Publishing generates MDX files and a DuckDB index; CI runs type-checking, linting, tests and the build."
+
+- id: nyansa
+  name: "Nyansa"
+  github: "https://github.com/Geobatpo07/nyansa"
+  stack: ["Docker Compose", "n8n", "Ollama", "Qdrant", "PostgreSQL", "Open WebUI"]
+  status: active
+  tracks: { software: 2, data: 3 }
+  cv: [software, data]
+  description:
+    fr: "Second cerveau IA auto-hébergé sur un serveur privé : sept services Docker Compose (LLM locaux avec Ollama, base vectorielle Qdrant, workflows n8n) reliés à un coffre Obsidian. Construit à partir du self-hosted AI starter kit de n8n."
+    en: "A self-hosted AI second brain on a private server: seven Docker Compose services (local LLMs with Ollama, Qdrant vector store, n8n workflows) wired to an Obsidian vault. Built on n8n's self-hosted AI starter kit."
+
+- id: zetwal
+  name: "Zétwal"
+  private: true
+  stack: [".NET 10", "SignalR", "PostgreSQL", "Redis", "Next.js"]
+  status: active
+  tracks: { software: 3 }
+  cv: [software]
+  description:
+    fr: "Plateforme d'orientation qui aide les jeunes à trouver leur voie grâce à des suggestions de parcours par IA et une progression ludique. Back-end .NET en couches (API, Core, Infrastructure, tests), front-end Next.js."
+    en: "A career-guidance platform that helps young people find their path through AI-based matching and gamified progression. Layered .NET back end (API, Core, Infrastructure, tests), Next.js front end."
+
+- id: mini-api-gateway
+  name: "Mini API Gateway"
+  github: "https://github.com/Geobatpo07/mini-api-gateway"
+  stack: ["Java 21", "Groovy", "JavaScript", "Maven", "Jenkins", "SonarQube", "Docker", "Ansible"]
+  status: completed
+  tracks: { software: 4 }
+  cv: [software]
+  description:
+    fr: "Passerelle d'API en Java : chaque requête traverse une chaîne de policies (clé d'API, quota, validation en JavaScript, transformation en Groovy via JSR 223, routage) avant d'atteindre le service métier. Pipeline Jenkins, analyse Sonar, Docker et déploiement Ansible."
+    en: "A Java API gateway: each request goes through a chain of policies (API key, rate limit, JavaScript validation, Groovy transformation via JSR 223, routing) before reaching the backend service. Jenkins pipeline, Sonar analysis, Docker and Ansible deployment."
+
+- id: mystorywithdata
+  name: "MyStoryWithData"
+  github: "https://github.com/Geobatpo07/mystorywithdata-v2"
+  stack: ["ASP.NET Core 8", "Entity Framework Core", "PostgreSQL", "React", "JWT", "xUnit", "GitHub Actions"]
+  status: completed
+  tracks: { software: 5 }
+  cv: [software]
+  description:
+    fr: "Application full-stack en trois couches : API ASP.NET Core 8 (Entity Framework Core, PostgreSQL), authentification Identity/JWT avec rôles, client React. Versionnage d'API, health checks, rate limiting, tests xUnit et CI GitHub Actions."
+    en: "A three-layer full-stack application: ASP.NET Core 8 API (Entity Framework Core, PostgreSQL), Identity/JWT authentication with roles, React client. API versioning, health checks, rate limiting, xUnit tests and GitHub Actions CI."
+
+- id: datahut-duckhouse
+  name: "DataHut-DuckHouse"
+  github: "https://github.com/Geobatpo07/datahut-duckhouse"
+  case_study: /projects/datahut/
+  stack: ["Python", "DuckDB", "Apache Iceberg", "Arrow Flight", "dbt", "Trino", "MinIO"]
+  status: active
+  tracks: { data: 1, software: 6, research: 5 }
+  cv: [software, data, profile]
+  description:
+    fr: "Plateforme analytique multi-tenant, locale ou cloud : ingestion par Arrow Flight, stockage hybride DuckDB et Iceberg (MinIO/S3), transformations dbt et requêtes Trino."
+    en: "A multi-tenant analytics platform, local or cloud: Arrow Flight ingestion, hybrid DuckDB and Iceberg storage (MinIO/S3), dbt transformations and Trino queries."
+  research:
+    question:
+      fr: "À quoi ressemble une infrastructure de données de recherche quand la reproductibilité, et non le volume, est la contrainte principale ?"
+      en: "What does research-grade data infrastructure look like when reproducibility, not scale, is the primary constraint?"
+    motivation:
+      fr: "La plupart des stacks analytiques sont optimisées pour le volume de l'entreprise, pas pour la reproductibilité scientifique."
+      en: "Most analytics stacks optimize for business scale, not scientific reproducibility."
+    methodology:
+      fr: "Une plateforme multi-tenant qui combine DuckDB, Apache Iceberg, Arrow Flight, dbt et Trino."
+      en: "A multi-tenant analytics platform integrating DuckDB, Apache Iceberg, Arrow Flight, dbt, and Trino."
+    contribution:
+      fr: "Une architecture de référence open source pour une infrastructure de données de recherche modulaire et reproductible."
+      en: "An open-source reference architecture for reproducible, modular research data infrastructure."
+
+- id: scientific-assistant
+  name: "Scientific Assistant"
+  github: "https://github.com/Geobatpo07/scientific-assistant"
+  case_study: /projects/scientific-assistant/
+  stack: ["Python", "LangChain", "Ollama", "ChromaDB", "RAG"]
+  status: active
+  tracks: { research: 2, data: 4 }
+  cv: [data, research, profile]
+  description:
+    fr: "Système multi-agents exécuté en local : huit agents spécialisés (planification, mathématiques symboliques, méthodes numériques, statistiques, bibliographie, relecture, rédaction, mémoire) et un RAG hybride vectoriel et lexical. Produit du code Python exécutable et des citations."
+    en: "A local multi-agent system: eight specialized agents (planning, symbolic mathematics, numerical methods, statistics, literature, review, writing, memory) and hybrid vector and keyword RAG. Produces executable Python code and citations."
+  research:
+    question:
+      fr: "Un système d'IA multi-agents peut-il combiner mathématiques symboliques, méthodes numériques et recherche bibliographique sans sacrifier la reproductibilité ?"
+      en: "Can a multi-agent AI system combine symbolic mathematics, numerical methods, and literature retrieval without sacrificing reproducibility?"
+    motivation:
+      fr: "La recherche reproductible a besoin d'outils qui ne délèguent pas le jugement à un modèle opaque."
+      en: "Reproducible research needs tooling that doesn't outsource judgment to an opaque model."
+    methodology:
+      fr: "Une architecture multi-agents locale qui associe raisonnement symbolique, méthodes numériques et analyse documentaire par RAG."
+      en: "A local-first, multi-agent architecture combining symbolic reasoning, numerical methods, and RAG-based document intelligence."
+    contribution:
+      fr: "Un cadre d'assistant de recherche transparent, que d'autres chercheurs peuvent adapter."
+      en: "A transparent AI research assistant framework other researchers could adapt."
+
+- id: simulation-chlordecone
+  name: "Simulation chlordécone"
+  github: "https://github.com/Geobatpo07/simulation-chlordecone"
+  case_study: /projects/chlordecone/
+  stack: ["R", "Shiny", { fr: "EDO non autonomes", en: "Non-autonomous ODEs" }, "renv"]
+  status: active
+  tracks: { research: 1, data: 5 }
+  cv: [research, profile]
+  links:
+    - label: { fr: "Application Shiny", en: "Shiny app" }
+      url: "https://fsu5hs-geovany0batista0polo-laguerre.shinyapps.io/chlordecone-simulation-app/"
+    - label: { fr: "Prépublication (DOI)", en: "Preprint (DOI)" }
+      url: "https://doi.org/10.13140/RG.2.2.36238.01607"
+  description:
+    fr: "Modèle compartimental d'EDO non autonome de la contamination au chlordécone sous forçage saisonnier des pluies, avec une application Shiny pour simuler l'exposition humaine et des stratégies d'intervention. Code associé à une prépublication."
+    en: "A non-autonomous compartmental ODE model of chlordecone contamination under seasonal rainfall forcing, with a Shiny app to simulate human exposure and intervention strategies. Code accompanying a preprint."
+  research:
+    question:
+      fr: "Un modèle compartimental peut-il décrire l'exposition saisonnière au chlordécone, pilotée par les pluies, assez finement pour éclairer des seuils de santé publique ?"
+      en: "Can a compartmental model capture seasonal, rainfall-driven chlordecone exposure precisely enough to inform public-health thresholds?"
+    motivation:
+      fr: "La contamination chronique des sols et de la chaîne alimentaire en Guadeloupe appelle des estimations quantitatives de l'exposition, pas seulement des catégories de risque."
+      en: "Chronic soil and food-chain contamination in Guadeloupe needs quantitative exposure estimates, not just qualitative risk categories."
+    methodology:
+      fr: "Systèmes d'EDO compartimentaux non autonomes avec forçage saisonnier, explorés par simulation interactive."
+      en: "Non-autonomous compartmental ODE systems with seasonal forcing, explored through interactive simulation."
+    contribution:
+      fr: "Un cadre de modélisation réutilisable pour l'exposition environnementale saisonnière, au-delà du seul chlordécone."
+      en: "A reusable modelling framework for seasonal environmental exposure that could generalize beyond chlordecone."
+
+- id: medical-triage-system
+  name: "Medical Triage System"
+  github: "https://github.com/Geobatpo07/MedicalTriageSystem"
+  case_study: /projects/medical-triage-system/
+  stack: ["C++", "Random Forest", "CSV"]
+  status: prototype
+  tracks: { research: 3, data: 6 }
+  cv: [research, profile]
+  description:
+    fr: "Application C++ de triage : un modèle Random Forest classe les patients en trois niveaux (critique, modéré, faible) à partir de leurs symptômes et facteurs de risque."
+    en: "A C++ triage application: a Random Forest model classifies patients into three levels (critical, moderate, low) from their symptoms and risk factors."
+  research:
+    question:
+      fr: "Un modèle léger et interprétable peut-il fournir aux soignants un signal de pré-triage fiable sans se substituer à leur jugement ?"
+      en: "Can a lightweight, interpretable model give clinicians a trustworthy pre-triage signal without replacing their judgment?"
+    motivation:
+      fr: "Les contextes d'urgence et de santé publique demandent une aide à la décision rapide, interprétable et honnête sur sa propre incertitude."
+      en: "Emergency and public-health contexts need decision support that is fast, interpretable, and honest about its own uncertainty."
+    methodology:
+      fr: "Un outil de priorisation fondé sur un Random Forest, second angle sur la même question que le travail sur le chlordécone : des modèles dignes de confiance pour les décisions de santé."
+      en: "A Random Forest-based triage prioritization tool, developed as a second angle on the same underlying question as the chlordecone work: trustworthy models for health decisions."
+    contribution:
+      fr: "Un modèle d'outil d'aide à la décision interprétable et validé pour des contextes cliniques aux ressources limitées."
+      en: "A template for interpretable, validated decision-support tools in resource-constrained clinical settings."
+
+- id: sentiment-analysis
+  name: "Freudz, analyse de sentiment"
+  github: "https://github.com/Geobatpo07/sentiment-analysis"
+  case_study: /projects/sentiment-analysis/
+  stack: ["Python", "NumPy", "Streamlit"]
+  status: completed
+  tracks: { data: 7 }
+  description:
+    fr: "Classification du sentiment d'avis en représentation bag-of-words, avec des implémentations du Perceptron, de l'Average Perceptron et de Pegasos, un réglage des hyperparamètres et une interface Streamlit."
+    en: "Review sentiment classification on a bag-of-words representation, with implementations of Perceptron, Average Perceptron and Pegasos, hyperparameter tuning and a Streamlit interface."
+
+- id: character-theory
+  name: "Character Theory over Finite Fields"
+  case_study: /projects/character-theory-finite-fields/
+  stack: [{ fr: "Théorie des groupes", en: "Group theory" }, { fr: "Corps finis", en: "Finite fields" }, { fr: "Théorie des caractères", en: "Character theory" }]
+  status: presented
+  tracks: { research: 4 }
+  cv: [research]
+  links:
+    - label: { fr: "Présentation (DOI)", en: "Presentation (DOI)" }
+      url: "https://doi.org/10.13140/RG.2.2.13837.45285"
+  description:
+    fr: "Construction des caractères additifs d'un corps fini et de leurs relations d'orthogonalité, avec leurs applications en mathématiques discrètes."
+    en: "Construction of the additive characters of a finite field and their orthogonality relations, with applications in discrete mathematics."
+  research:
+    question:
+      fr: "Que révèlent les relations d'orthogonalité des caractères additifs sur la structure des corps finis ?"
+      en: "What do the orthogonality relations of additive characters reveal about structure in finite fields?"
+    motivation:
+      fr: "Un fil théorique qui entretient les fondations mathématiques : de la structure pure, sans contrainte d'application."
+      en: "A theoretical thread that keeps the mathematical foundation sharp: pure structure, no application pressure."
+    methodology:
+      fr: "Construction formelle des caractères additifs et de leurs relations d'orthogonalité, développée pas à pas."
+      en: "Formal construction of additive characters and their orthogonality relations, worked through directly."
+    contribution:
+      fr: "Un exposé clair et présentable d'un résultat fondamental de la théorie des corps finis."
+      en: "A clear, presentable account of a foundational result in finite field theory."

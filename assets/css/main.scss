@@ -12,6 +12,7 @@
     "vendor/breakpoint/breakpoint",
 
     "themes",
+    "fonts",
     "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
     "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
 
@@ -41,6 +42,7 @@
     "layout/cards",
     "layout/motion",
     "layout/contact",
+    "tracks",
 
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",

@@ -1,0 +1,22 @@
+---
+lang: en
+ref: pub-chlordecone-preprint
+title: "Modélisation de l'exposition humaine au chlordécone"
+collection: publications
+category: manuscripts
+permalink: /en/publication/2026-02-01-modelisation-exposition-chlordecone
+excerpt: "Preprint on compartmental modeling of human exposure to chlordecone in tropical environments."
+date: 2026-02-01
+venue: 'ResearchGate (Preprint)'
+paperurl: 'https://www.researchgate.net/publication/400336573_Modelisation_de_l''exposition_humaine_au_chlordecone'
+doi: '10.13140/RG.2.2.36238.01607'
+citation: "Geovany B. P., Laguerre (2026). &quot;Modélisation de l'exposition humaine au chlordécone.&quot; <i>ResearchGate Preprint</i>."
+---
+
+*English title: Modelling human exposure to chlordecone. The preprint itself is written in French.*
+
+This work proposes a continuous-time compartmental model to study environmental transfer and human exposure pathways for chlordecone.
+
+The model includes seasonal effects (rainfall variation) to better represent contamination dynamics in tropical environments.
+
+This publication is currently available as a preprint.

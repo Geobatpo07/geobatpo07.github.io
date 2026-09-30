@@ -1,3 +1,13 @@
 <script type="module" src="{{ base_path }}/assets/js/main.min.js"></script>
+<script src="{{ base_path }}/assets/js/space-header.js" defer></script>
+
+<!-- Scroll-reveal micro-interactions (respects prefers-reduced-motion) -->
+<script defer src="{{ base_path }}/assets/js/reveal.js"></script>
+
+<!-- Third-party embeds loaded only after a click (Calendly on /research/contact/) -->
+<script defer src="{{ base_path }}/assets/js/click-to-load.js"></script>
+
+<!-- Feedback form (Feedback page, or wherever the include is embedded) -->
+<script defer src="{{ base_path }}/assets/js/feedback-form.js"></script>
 
 {% include analytics.html %}

@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{% comment %}
+  Root page of a space (software, data, research). Everything is generated
+  from _data/*.yml filtered on `page.track`; the page body, if any, is
+  appended after the generated sections. The space header and footer come
+  from the default layout (chrome = page.track).
+{% endcomment %}
+{% include base_path %}
+{% assign lang = page.lang | default: "fr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign track_key = page.track %}
+{% assign track = site.data.tracks[track_key] %}
+
+<main id="main" class="tracks-main">
+  <header class="track-header">
+    <div>
+      <h1>{{ track.title[lang] }}</h1>
+      <p>{{ track.tagline[lang] }}</p>
+    </div>
+    {% include tracks/cv-pdf-url.html space=track lang=lang %}
+    <a class="btn btn--large" href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">
+      <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> {{ t.cv_track }}
+    </a>
+  </header>
+
+  {% include tracks/experience.html %}
+  {% include tracks/projects.html %}
+  {% include tracks/skills.html %}
+  {% include tracks/education.html %}
+  {% include tracks/certifications.html %}
+
+  {{ content }}
+</main>

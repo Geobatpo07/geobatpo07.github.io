@@ -1,17 +1,140 @@
 ---
 ---
+{% comment %}
+  Printable complete CV (/resume-print/ and /en/resume-print/), rendered by
+  _plugins/cv_pdf.rb to files/Profile.pdf (French) and
+  files/Profile_EN.pdf (English). Generated from _data/resume.yml
+  (profile_ prefix), projects.yml (`cv` contains profile) and the
+  _publications collection of the page language; labels from i18n.yml.
+  Styles: assets/css/resume.scss.
+{% endcomment %}
+{% assign lang = page.lang | default: "fr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign c = t.cv_page %}
+{% assign r = site.data.resume %}
+{% capture newline %}
+{% endcapture %}
 <!doctype html>
-<html lang="en">
+<html lang="{{ lang }}" data-space="neutral">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.data.resume.name }}</title>
-  {% if page.noindex %}
+  <title>{{ r.name }} · {{ r.profile_headline[lang] }}</title>
   <meta name="robots" content="noindex,nofollow">
-  {% endif %}
+  {% include hreflang.html %}
   <link rel="stylesheet" href="{{ '/assets/css/resume.css' | relative_url }}">
 </head>
 <body>
-{{ content }}
+<div class="resume">
+
+  <header class="resume__header">
+    <p class="resume__name">{{ r.name }}</p>
+    <p class="resume__title">{{ r.profile_headline[lang] }}</p>
+    <p class="resume__contact">
+      {% if r.location %}<span>{{ r.location }}</span>{% endif %}
+      {% if r.email %}<span><a href="{{ r.email }}">{{ r.email | remove: "mailto:" }}</a></span>{% endif %}
+      {% if site.url %}<span><a href="{{ site.url }}">{{ site.url | remove: "https://" | remove: "http://" }}</a></span>{% endif %}
+      {% if r.github %}<span><a href="{{ r.github }}">{{ r.github | remove: "https://" }}</a></span>{% endif %}
+      {% if r.linkedin %}<span><a href="{{ r.linkedin }}">{{ r.linkedin | remove: "https://www." | remove: "https://" }}</a></span>{% endif %}
+      {% if site.author.orcid %}<span><a href="{{ site.author.orcid }}">{{ site.author.orcid | remove: "https://" }}</a></span>{% endif %}
+    </p>
+  </header>
+
+  {% assign summary_intro = r.profile_summary[lang] | split: newline | first %}
+  <section class="section">
+    <h2 class="section__title">{{ c.summary_label }}</h2>
+    <p class="section__summary">{{ summary_intro | strip }}</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">{{ t.education }}</h2>
+    {% for edu in r.education %}
+    <div class="entry">
+      <div class="entry__row">
+        <span class="entry__title">{{ edu.degree[lang] }}</span>
+        <span class="entry__dates">{{ edu.dates[lang] }}</span>
+      </div>
+      <p class="entry__subtitle">{{ edu.institution }}</p>
+      {% if edu.detail %}<p class="entry__meta">{{ edu.detail[lang] }}</p>{% endif %}
+      {% if edu.supervisor %}<p class="entry__meta">{{ c.supervisor }} {{ edu.supervisor[lang] }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+
+  {% assign groups = "professional,research,teaching" | split: "," %}
+  {% for group in groups %}
+    {% assign positions = r.experience | where_exp: "x", "x.on contains 'profile'" | where: "category", group %}
+    {% if positions.size == 0 %}{% continue %}{% endif %}
+  <section class="section">
+    <h2 class="section__title">{{ c[group] }}</h2>
+    {% for exp in positions %}
+    <div class="entry">
+      <div class="entry__row">
+        <span class="entry__title">{{ exp.title[lang] }}</span>
+        <span class="entry__dates">{{ exp.dates[lang] }}</span>
+      </div>
+      <p class="entry__subtitle">{% if exp.org.fr %}{{ exp.org[lang] }}{% else %}{{ exp.org }}{% endif %}{% if exp.location %}, {{ exp.location[lang] }}{% endif %}</p>
+      <ul class="entry__bullets">
+        {% for bullet in exp.profile_bullets %}{% unless bullet.cv == false %}<li>{{ bullet[lang] }}</li>{% endunless %}{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </section>
+  {% endfor %}
+
+  <section class="section">
+    <h2 class="section__title">{{ c.projects }}</h2>
+    {% assign cv_projects = site.data.projects | where_exp: "x", "x.cv contains 'profile'" %}
+    {% for p in cv_projects %}
+    <div class="entry">
+      <div class="entry__row">
+        <span class="entry__title">{{ p.name }}</span>
+      </div>
+      <p class="entry__desc">{{ p.description[lang] }}</p>
+      <p class="entry__meta">{% for s in p.stack %}{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+      {% if p.github %}<p class="entry__meta">{{ p.github | remove: "https://" }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">{{ t.publications }}</h2>
+    {% assign pubs = site.publications | where: "lang", lang | sort: "date" | reverse %}
+    <ul class="compact-list">
+      {% for pub in pubs %}
+        {% assign venue_down = pub.venue | default: "" | downcase %}
+        {% if venue_down contains "preparation" or venue_down contains "préparation" %}{% continue %}{% endif %}
+        <li>{{ pub.citation }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">{{ c.skills_title }}</h2>
+    {% assign categories = r.skills | where_exp: "x", "x.on contains 'profile'" | sort: "profile_rank" %}
+    <ul class="compact-list">
+      {% for skill in categories %}
+      <li><span class="label">{{ skill.category[lang] }}{{ t.colon | strip }}</span> {% for item in skill.items %}{% if item.name %}{% assign item_name = item.name %}{% else %}{% assign item_name = item %}{% endif %}{% if item_name.fr %}{{ item_name[lang] }}{% else %}{{ item_name }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">{{ t.certifications }}</h2>
+    <ul class="compact-list">
+      {% for cert in r.certifications %}
+      <li>{{ cert.name }}{% if cert.issuer %}{% unless cert.name contains cert.issuer %}, {{ cert.issuer }}{% endunless %}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">{{ c.languages }}</h2>
+    <p class="lang-line">
+      {% for item in r.languages %}{{ item.language[lang] }} ({{ item.level[lang] }}){% unless forloop.last %} &middot; {% endunless %}{% endfor %}
+    </p>
+  </section>
+
+</div>
 </body>
 </html>

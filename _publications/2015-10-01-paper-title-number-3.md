@@ -1,13 +1,17 @@
 ---
-title: "Differential Equation Models for Environmental Risk (In Preparation)"
+lang: fr
+ref: pub-environmental-risk
+title: "Differential Equation Models for Environmental Risk (en préparation)"
 collection: publications
 category: manuscripts
 permalink: /publication/in-preparation-environmental-risk-models
-excerpt: 'Work in preparation on ODE-based modeling for environmental risk and decision support.'
+excerpt: "Travail en préparation sur la modélisation par EDO du risque environnemental et de l'aide à la décision."
 date: 2026-03-01
-venue: 'Manuscript in preparation'
+venue: 'Manuscrit en préparation'
 ---
 
-This in-preparation manuscript extends my work on non-autonomous dynamical systems applied to environmental challenges.
+*Titre en français : Modèles d'équations différentielles pour le risque environnemental.*
 
-The goal is to propose interpretable models that are practical for simulation and decision-making.
+Ce manuscrit en préparation prolonge mes travaux sur les systèmes dynamiques non autonomes appliqués aux enjeux environnementaux.
+
+L'objectif est de proposer des modèles interprétables, utilisables en pratique pour la simulation et la décision.

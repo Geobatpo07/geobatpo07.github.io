@@ -1,0 +1,35 @@
+{% comment %}
+  Page footer. Spaces and the portal show the external contact links
+  (e-mail, LinkedIn, GitHub) and, for a space, its contact page. Every
+  footer (portal, spaces, neutral pages) carries the copyright and the links
+  to the legal notice and the privacy policy, which are neutral pages. No
+  footer links to the portal or to another space.
+{% endcomment %}
+{% assign lang = page.lang | default: "fr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign space = site.data.tracks[chrome] %}
+{% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
+
+<footer class="space-footer">
+  <div class="space-footer__inner">
+    {% if space or chrome == "portal" %}
+    <nav aria-label="{{ t.footer_label }}">
+      <ul class="space-footer__links">
+        {% if space %}
+          {% if lang == "en" %}{% assign space_root = "/en" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
+        <li><a href="{{ base_path }}{{ space_root }}contact/">{{ t.contact }}</a></li>
+        {% endif %}
+        <li><a href="mailto:{{ site.author.email }}{% if space %}?subject={{ space.contact.subject | url_encode }}{% endif %}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ t.email }}</a></li>
+        <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        <li><a href="https://github.com/{{ site.author.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></li>
+      </ul>
+    </nav>
+    {% endif %}
+    <p class="space-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ display_name }}
+      <span class="space-footer__legal">
+        <a href="{% include ref-url.html ref="legal-notice" lang=lang %}">{{ t.legal_notice }}</a>
+        · <a href="{% include ref-url.html ref="privacy" lang=lang %}">{{ t.privacy_title }}</a>
+      </span>
+    </p>
+  </div>
+</footer>

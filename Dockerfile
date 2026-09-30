@@ -1,11 +1,16 @@
 # Base image: Ruby with necessary dependencies for Jekyll
 FROM ruby:3.2
 
-# Install dependencies
+# Install dependencies. Chromium renders the CV PDFs during the build
+# (_plugins/cv_pdf.rb, through Ferrum); Liberation Sans and Serif are the
+# fonts of the print stylesheets, for the same rendering as in CI.
 RUN apt-get update && apt-get install -y \
     build-essential \
     nodejs \
+    chromium \
+    fonts-liberation \
     && rm -rf /var/lib/apt/lists/*
+ENV BROWSER_PATH=/usr/bin/chromium
 
 
 # Create a non-root user with UID 1000
@@ -21,8 +26,9 @@ RUN chown -R vscode:vscode /usr/src/app
 # Switch to the non-root user
 USER vscode
 
-# Copy Gemfile into the container (necessary for `bundle install`)
-COPY Gemfile Gemfile.lock ./
+# Copy Gemfile (and Gemfile.lock if present) owned by the non-root user, so
+# `bundle install` can write the lock file
+COPY --chown=vscode:vscode Gemfile Gemfile.lock* ./
 
 
 

@@ -1,0 +1,29 @@
+{% comment %}
+  Experience of a space, from _data/resume.yml (order of the file): every
+  position with a <space>_bullets key, prepared by _plugins/resume_engine.rb.
+{% endcomment %}
+{% assign positions = site.data.resume.experience | where_exp: "x", "x.on contains track_key" %}
+{% assign bullets_key = track_key | append: "_bullets" %}
+{% if positions.size > 0 %}
+<section class="tracks-section" id="experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">{{ t.experience }}</h2>
+  <ol class="tracks-timeline">
+    {% for position in positions %}
+    <li>
+      <h3>{{ position.titles[track_key][lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
+      <p class="tracks-meta">
+        {{ position.dates[lang] }}
+        {%- if position.location %} · {{ position.location[lang] }}{% endif %}
+        {%- if position.sector %} · {{ position.sector[lang] }}{% endif %}
+      </p>
+      {% assign bullets = position[bullets_key] %}
+      {% if bullets.size > 0 %}
+      <ul>
+        {% for bullet in bullets %}<li>{{ bullet[lang] }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}

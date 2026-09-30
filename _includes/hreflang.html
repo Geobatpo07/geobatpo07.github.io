@@ -1,0 +1,17 @@
+{% comment %}
+  hreflang alternates. Bilingual pages and documents share a `ref`: list
+  every language version, x-default on the French one. Used by seo.html
+  and by the print layouts (cv-print, resume-print), which have no seo.html.
+{% endcomment %}
+{%- assign hreflang_lang = page.lang | default: "fr" -%}
+{%- assign hreflang_self = page.url | replace: "index.html", "" | absolute_url -%}
+{% if page.ref %}
+  {% assign hreflang_versions = site.pages | concat: site.documents | where: "ref", page.ref %}
+  {% for version in hreflang_versions %}
+<link rel="alternate" hreflang="{{ version.lang }}" href="{{ version.url | absolute_url }}">
+    {% if version.lang == "fr" %}<link rel="alternate" hreflang="x-default" href="{{ version.url | absolute_url }}">{% endif %}
+  {% endfor %}
+{% else %}
+<link rel="alternate" hreflang="{{ hreflang_lang }}" href="{{ page.canonical_url | default: hreflang_self }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.canonical_url | default: hreflang_self }}">
+{% endif %}

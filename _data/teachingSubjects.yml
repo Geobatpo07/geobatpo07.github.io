@@ -1,50 +1,115 @@
 # Subjects taught, grouped into coherent units rather than one card per
 # narrow topic. Each maps to real teaching or professional experience.
+# Every displayed field is a {fr, en} pair (/teaching/ and /en/teaching/).
 
-- title: "Applied Mathematics & Calculus"
-  description: "Logic, algebra, calculus, and discrete structures, taught with a practical bridge to computing and data science rather than as abstract exercises."
-  level: "Foundational"
-  audience: "Undergraduate students, career changers"
-  applications: "Software engineering, data science, computational thinking"
+- title:
+    fr: "Mathématiques appliquées et analyse"
+    en: "Applied Mathematics & Calculus"
+  description:
+    fr: "Logique, algèbre, analyse et structures discrètes, enseignées avec un lien concret vers l'informatique et la data science plutôt que comme des exercices abstraits."
+    en: "Logic, algebra, calculus, and discrete structures, taught with a practical bridge to computing and data science rather than as abstract exercises."
+  level: { fr: "Fondamental", en: "Foundational" }
+  audience:
+    fr: "Étudiants de licence, personnes en reconversion"
+    en: "Undergraduate students, career changers"
+  applications:
+    fr: "Génie logiciel, data science, pensée computationnelle"
+    en: "Software engineering, data science, computational thinking"
 
-- title: "Linear Algebra & Probability"
-  description: "The two pillars underneath most of modern data science and machine learning, built from geometric and probabilistic intuition rather than memorized formulas."
-  level: "Foundational to Intermediate"
-  audience: "Undergraduate and Master's students"
-  applications: "Machine learning, statistics, numerical methods"
+- title:
+    fr: "Algèbre linéaire et probabilités"
+    en: "Linear Algebra & Probability"
+  description:
+    fr: "Les deux piliers de l'essentiel de la data science et de l'apprentissage automatique modernes, construits à partir de l'intuition géométrique et probabiliste plutôt que de formules apprises par cœur."
+    en: "The two pillars underneath most of modern data science and machine learning, built from geometric and probabilistic intuition rather than memorized formulas."
+  level: { fr: "Fondamental à intermédiaire", en: "Foundational to Intermediate" }
+  audience:
+    fr: "Étudiants de licence et de master"
+    en: "Undergraduate and Master's students"
+  applications:
+    fr: "Apprentissage automatique, statistique, méthodes numériques"
+    en: "Machine learning, statistics, numerical methods"
 
-- title: "Statistics & Numerical Analysis"
-  description: "Statistical inference and the numerical methods that make mathematical models computable, with an emphasis on stability and honest uncertainty."
-  level: "Intermediate"
-  audience: "Master's students, researchers"
-  applications: "Data analysis, scientific computing, simulation"
+- title:
+    fr: "Statistique et analyse numérique"
+    en: "Statistics & Numerical Analysis"
+  description:
+    fr: "L'inférence statistique et les méthodes numériques qui rendent les modèles mathématiques calculables, en insistant sur la stabilité et sur une incertitude assumée."
+    en: "Statistical inference and the numerical methods that make mathematical models computable, with an emphasis on stability and honest uncertainty."
+  level: { fr: "Intermédiaire", en: "Intermediate" }
+  audience:
+    fr: "Étudiants de master, chercheurs"
+    en: "Master's students, researchers"
+  applications:
+    fr: "Analyse de données, calcul scientifique, simulation"
+    en: "Data analysis, scientific computing, simulation"
 
-- title: "Scientific Computing"
-  description: "Translating mathematical models into working numerical code: finite differences, stability, and the gap between a correct equation and a correct simulation."
-  level: "Intermediate to Advanced"
-  audience: "Master's students, PhD applicants, researchers"
-  applications: "Simulation, applied research, computational modelling"
+- title:
+    fr: "Calcul scientifique"
+    en: "Scientific Computing"
+  description:
+    fr: "Traduire des modèles mathématiques en code numérique qui fonctionne : différences finies, stabilité, et l'écart entre une équation juste et une simulation juste."
+    en: "Translating mathematical models into working numerical code: finite differences, stability, and the gap between a correct equation and a correct simulation."
+  level: { fr: "Intermédiaire à avancé", en: "Intermediate to Advanced" }
+  audience:
+    fr: "Étudiants de master, candidats au doctorat, chercheurs"
+    en: "Master's students, PhD applicants, researchers"
+  applications:
+    fr: "Simulation, recherche appliquée, modélisation numérique"
+    en: "Simulation, applied research, computational modelling"
 
-- title: "Python for Data Science"
-  description: "Data wrangling, exploratory analysis, and model building with Pandas, NumPy, and Scikit-learn, grounded in real workflows rather than isolated syntax."
-  level: "Foundational to Intermediate"
-  audience: "Career changers, professionals, undergraduate students"
-  applications: "Data analysis, machine learning pipelines, automation"
+- title:
+    fr: "Python pour la data science"
+    en: "Python for Data Science"
+  description:
+    fr: "Préparation des données, analyse exploratoire et construction de modèles avec Pandas, NumPy et Scikit-learn, ancrées dans de vrais flux de travail plutôt que dans une syntaxe isolée."
+    en: "Data wrangling, exploratory analysis, and model building with Pandas, NumPy, and Scikit-learn, grounded in real workflows rather than isolated syntax."
+  level: { fr: "Fondamental à intermédiaire", en: "Foundational to Intermediate" }
+  audience:
+    fr: "Personnes en reconversion, professionnels, étudiants de licence"
+    en: "Career changers, professionals, undergraduate students"
+  applications:
+    fr: "Analyse de données, pipelines d'apprentissage automatique, automatisation"
+    en: "Data analysis, machine learning pipelines, automation"
 
-- title: "SQL, Data Analysis & Business Intelligence"
-  description: "Querying, reporting, and dashboarding with SQL and Power BI, drawn directly from real analytics and reporting work rather than textbook examples."
-  level: "Foundational to Intermediate"
-  audience: "Professionals, career changers"
-  applications: "Reporting, dashboards, business analytics"
+- title:
+    fr: "SQL, analyse de données et informatique décisionnelle"
+    en: "SQL, Data Analysis & Business Intelligence"
+  description:
+    fr: "Requêtes, reporting et tableaux de bord avec SQL et Power BI, tirés directement d'un vrai travail d'analyse et de reporting plutôt que d'exemples de manuel."
+    en: "Querying, reporting, and dashboarding with SQL and Power BI, drawn directly from real analytics and reporting work rather than textbook examples."
+  level: { fr: "Fondamental à intermédiaire", en: "Foundational to Intermediate" }
+  audience:
+    fr: "Professionnels, personnes en reconversion"
+    en: "Professionals, career changers"
+  applications:
+    fr: "Reporting, tableaux de bord, analyse métier"
+    en: "Reporting, dashboards, business analytics"
 
-- title: "Machine Learning & Artificial Intelligence"
-  description: "Classical machine learning and applied AI, taught with an emphasis on interpretability and validation over treating models as black boxes."
-  level: "Intermediate to Advanced"
-  audience: "Master's students, professionals, researchers"
-  applications: "Predictive modelling, decision support, applied AI"
+- title:
+    fr: "Apprentissage automatique et intelligence artificielle"
+    en: "Machine Learning & Artificial Intelligence"
+  description:
+    fr: "L'apprentissage automatique classique et l'IA appliquée, enseignés en privilégiant l'interprétabilité et la validation plutôt que de traiter les modèles comme des boîtes noires."
+    en: "Classical machine learning and applied AI, taught with an emphasis on interpretability and validation over treating models as black boxes."
+  level: { fr: "Intermédiaire à avancé", en: "Intermediate to Advanced" }
+  audience:
+    fr: "Étudiants de master, professionnels, chercheurs"
+    en: "Master's students, professionals, researchers"
+  applications:
+    fr: "Modélisation prédictive, aide à la décision, IA appliquée"
+    en: "Predictive modelling, decision support, applied AI"
 
-- title: "Data Engineering & Analytics Engineering"
-  description: "Building the pipelines and infrastructure that make analysis reproducible: the less visible discipline underneath every data science result."
-  level: "Intermediate to Advanced"
-  audience: "Professionals, career changers"
-  applications: "Data pipelines, analytics platforms, reproducible workflows"
+- title:
+    fr: "Data engineering et analytics engineering"
+    en: "Data Engineering & Analytics Engineering"
+  description:
+    fr: "Construire les pipelines et l'infrastructure qui rendent l'analyse reproductible : la discipline moins visible qui sous-tend tout résultat de data science."
+    en: "Building the pipelines and infrastructure that make analysis reproducible: the less visible discipline underneath every data science result."
+  level: { fr: "Intermédiaire à avancé", en: "Intermediate to Advanced" }
+  audience:
+    fr: "Professionnels, personnes en reconversion"
+    en: "Professionals, career changers"
+  applications:
+    fr: "Pipelines de données, plateformes analytiques, flux reproductibles"
+    en: "Data pipelines, analytics platforms, reproducible workflows"

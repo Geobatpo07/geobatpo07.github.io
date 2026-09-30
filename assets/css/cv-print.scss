@@ -1,0 +1,179 @@
+---
+---
+/* ==========================================================================
+   CV PRINT PAGES (_layouts/cv-print.html)
+   ATS-oriented: one column, real text, no icon font, no web font, A4.
+   Self-contained like resume.scss: nothing from the site's theme.
+
+   Font: Arial, with Liberation Sans (metric-compatible, installed on the
+   Ubuntu CI runner) as fallback, so the page count is the same locally
+   and in CI.
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 9mm 12mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10pt;
+}
+
+body {
+  margin: 0;
+  color: #111;
+  background: #fff;
+  font-family: Arial, "Liberation Sans", Helvetica, sans-serif;
+  line-height: 1.22;
+}
+
+.cv {
+  max-width: 184mm;
+  margin: 0 auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+.cv-header {
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 1.85em;
+  line-height: 1.1;
+}
+
+.cv-headline {
+  margin-top: 0.15em;
+  font-size: 1.15em;
+  font-weight: bold;
+}
+
+.cv-contact {
+  margin-top: 0.3em;
+}
+
+.cv-sep {
+  color: #666;
+}
+
+section {
+  margin-top: 0.5em;
+}
+
+h2 {
+  margin-bottom: 0.3em;
+  padding-bottom: 0.1em;
+  border-bottom: 0.6pt solid #444;
+  font-size: 1.05em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+.cv-entry {
+  margin-bottom: 0.3em;
+  break-inside: avoid;
+}
+
+.cv-entry--compact {
+  margin-bottom: 0.1em;
+}
+
+.cv-meta {
+  color: #333;
+  font-weight: normal;
+}
+
+.cv-note {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.cv-url {
+  font-weight: normal;
+}
+
+/* Hyphenated names (nowrap_hyphens filter) and URLs never break at a
+   hyphen, so the PDF text keeps them whole. */
+.nowrap,
+.cv-url {
+  white-space: nowrap;
+}
+
+ul {
+  padding-left: 1.2em;
+}
+
+li {
+  margin: 0.05em 0;
+}
+
+.cv-lines {
+  padding-left: 0;
+  list-style: none;
+}
+
+.cv-certs-line {
+  margin-top: 0.75em;
+}
+
+/* Airy layout, for CVs allowed more than one page (Research), with wider
+   page margins through a named page. */
+@page airy {
+  size: A4;
+  margin: 15mm 17mm;
+}
+
+.cv--airy {
+  page: airy;
+  line-height: 1.4;
+
+  .cv-header {
+    margin-bottom: 0.9em;
+  }
+
+  section {
+    margin-top: 1.1em;
+  }
+
+  h2 {
+    margin-bottom: 0.55em;
+  }
+
+  .cv-entry {
+    margin-bottom: 0.7em;
+  }
+
+  li {
+    margin: 0.15em 0;
+  }
+
+  .cv-lines li {
+    margin: 0.25em 0;
+  }
+}
+
+@media screen {
+  body {
+    padding: 12mm 0;
+  }
+}

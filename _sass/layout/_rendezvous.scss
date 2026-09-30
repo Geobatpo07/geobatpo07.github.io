@@ -57,6 +57,20 @@
   border: 0;
 }
 
+/* Before the click: what will load, and the button (click-to-load.js). */
+.rdv-embed-shell--consent {
+  padding: 1.5rem;
+
+  .rdv-consent {
+    max-width: 44rem;
+    margin: 0 0 1rem;
+  }
+
+  .btn {
+    margin: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .rdv-panel {
     padding: 1rem;

@@ -1,0 +1,67 @@
+---
+layout: default
+---
+{% comment %}
+  Contact page of a space (/<space>/contact/ and /en/<space>/contact/).
+  Every text comes from the `contact` block of _data/tracks.yml for
+  `page.space`: introduction, mail subject, optional booking embed and
+  extra profiles. Links stay in the space or point outside the site.
+{% endcomment %}
+{% include base_path %}
+{% assign lang = page.lang | default: "fr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign track = site.data.tracks[page.space] %}
+{% assign c = track.contact %}
+{% assign profile_names = "orcid:ORCID,researchgate:ResearchGate" | split: "," %}
+
+<main id="main" class="tracks-main">
+  <header class="track-header">
+    <div>
+      <h1>{{ c.title[lang] }}</h1>
+      <p class="contact-intro">{{ c.intro[lang] }}</p>
+      <div class="contact-actions">
+        <a class="btn btn--large" href="mailto:{{ site.author.email }}?subject={{ c.subject | url_encode }}">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ t.send_email }}
+        </a>
+        {% include tracks/cv-pdf-url.html space=track lang=lang %}
+        <a class="btn btn--large btn--outline" href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">
+          <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> {{ t.cv_track }}
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="tracks-section" aria-labelledby="elsewhere-title">
+    <h2 id="elsewhere-title">{{ t.elsewhere }}</h2>
+    <ul class="contact-links">
+      <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      <li><a href="https://github.com/{{ site.author.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></li>
+      {% for key in c.profiles %}
+        {% assign label = key %}
+        {% for pair in profile_names %}{% assign kv = pair | split: ":" %}{% if kv[0] == key %}{% assign label = kv[1] %}{% endif %}{% endfor %}
+      <li><a href="{{ site.author[key] }}"><i class="fa-brands fa-{{ key }}" aria-hidden="true"></i> {{ label }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% if c.calendly %}
+  <section class="tracks-section" id="schedule" aria-labelledby="schedule-title">
+    <h2 id="schedule-title">{{ t.book_heading }}</h2>
+    <p>{{ t.book_text }}</p>
+    <p>{{ t.book_fallback }} <a href="{{ c.calendly }}">{{ c.calendly | remove: "https://" }}</a></p>
+    {% comment %}
+      Calendly is loaded only after a click (assets/js/click-to-load.js): it
+      sets cookies and transfers data to the United States, so nothing is
+      requested from calendly.com before the visitor asks for it. Without
+      JavaScript the button stays hidden and the direct link above remains.
+    {% endcomment %}
+    <div class="rdv-embed-shell rdv-embed-shell--consent" data-click-to-load
+         data-src="{{ c.calendly }}" data-title="{{ t.book_iframe_title }}">
+      <p class="rdv-consent">{{ t.book_consent }} <a href="{% include ref-url.html ref="privacy" %}">{{ t.privacy }}</a>.</p>
+      <button type="button" class="btn btn--large" hidden>{{ t.book_show }}</button>
+    </div>
+  </section>
+  {% endif %}
+
+  {{ content }}
+</main>

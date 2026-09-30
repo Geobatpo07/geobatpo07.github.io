@@ -7,12 +7,12 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
+locale                   : "en-US" # labels of the legacy AcademicPages templates (English pages); the site language is set per page (`lang`, fr by default)
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Geovany Batista Polo LAGUERRE"
 title_separator          : "-"
 name                     : &name "Geovany Batista Polo LAGUERRE"
-description              : &description "Applied Mathematics, Scientific Computing, Data Science & AI Researcher | Master's in Mathematics and Applications"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Software & Data Engineer: C#/.NET, Java, Python, TypeScript, SQL. From mathematical model to production system."
 url                      : https://geovanylaguerre.net # Canonical base URL used for sitemaps, canonical links, and structured data
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -23,10 +23,10 @@ repository               : "Geobatpo07/geobatpo07.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Geo_04.png"
+  avatar           : "Geo_04.jpg"
   name             : "Geovany Batista Polo LAGUERRE"
   pronouns         : "he/him"  
-  bio              : "Master's in Mathematics and Applications, Mathematical Modelling and Decision Support Tools (Environment & Health) | Applied Mathematics, Scientific Computing & AI"
+  bio              : "Software & Data Engineer | C#/.NET, Java, Python, TypeScript, SQL | Master's in Mathematics and Applications"
   location         : "Paris, France"
   employer         : "Université des Antilles"
   uri              : # URL
@@ -156,8 +156,8 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "Geo_04.png" # Social media default site image (stored in /images)
-og_description           : "Research and applied work in applied mathematics, scientific computing, data science, and artificial intelligence, in service of real-world decision support."
+og_image                 : "og-image.jpg" # Social media default site image (stored in /images)
+og_description           : "Geovany Laguerre, software and data engineer: applications, data pipelines and mathematical modelling, from mathematical model to production system."
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -173,7 +173,11 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+  provider               : "goatcounter" # false, "goatcounter", "google", "google-universal", "google-analytics-4", "custom"
+  goatcounter:
+    # Cookieless audience measurement, no consent banner needed. Loaded
+    # only in production builds (JEKYLL_ENV=production).
+    endpoint             : "https://geovanylaguerre.goatcounter.com/count"
   google:
     tracking_id          :
 
@@ -195,6 +199,16 @@ exclude:
   - assets/js/plugins
   - assets/js/vendor
   - CHANGELOG
+  - docs
+  - scripts
+  - markdown_generator
+  - talkmap
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
+  - docker-compose.yaml
+  - CONTRIBUTING.md
+  - README.md
   - Capfile
   - config
   - Dockerfile
@@ -266,37 +280,41 @@ defaults:
       comments: true
       share: true
       related: true
-  # _pages
+  # French by default: every page and document is French at the root and
+  # has an English version under /en/ that declares `lang: en` (same `ref`)
   - scope:
       path: ""
       type: pages
     values:
       layout: single
+      lang: fr
       author_profile: true
-  # _teaching
+  # _teaching and _publications: detail pages shared by the spaces, with the
+  # neutral chrome (no navigation, "Back" button)
   - scope:
       path: ""
       type: teaching
     values:
       layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
+      lang: fr
+      space: neutral
+      author_profile: false
   - scope:
       path: ""
       type: publications
     values:
       layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _projects
+      lang: fr
+      space: neutral
+      author_profile: false
+  # _projects: case studies, neutral pages reachable from every space
   - scope:
       path: ""
       type: projects
     values:
       layout: case-study
+      lang: fr
+      space: neutral
       author_profile: false
       full_width: true
       read_time: true

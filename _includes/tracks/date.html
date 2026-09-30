@@ -1,0 +1,8 @@
+{%- comment -%} Formats "YYYY-MM" or "YYYY" in the page language. Needs `t` (i18n strings). {%- endcomment -%}
+{%- assign date_parts = include.value | split: "-" -%}
+{%- if date_parts.size > 1 -%}
+  {%- assign month_index = date_parts[1] | plus: 0 | minus: 1 -%}
+  {{- t.months[month_index] }} {{ date_parts[0] -}}
+{%- else -%}
+  {{- date_parts[0] -}}
+{%- endif -%}

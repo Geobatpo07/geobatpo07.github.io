@@ -1,0 +1,16 @@
+{% assign sort_key = "tracks." | append: track_key %}
+{% assign track_projects = site.data.projects | where_exp: "x", "x.tracks contains track_key" | sort: sort_key %}
+{% if track_projects.size > 0 %}
+<section class="tracks-section" id="projects" aria-labelledby="projects-title">
+  <h2 id="projects-title">{{ t.projects }}</h2>
+  <ul class="tracks-grid">
+    {% for project in track_projects %}
+      {% if track_key == "research" %}
+        {% include tracks/project-card.html project=project research=true %}
+      {% else %}
+        {% include tracks/project-card.html project=project %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

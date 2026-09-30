@@ -1,3 +1,6 @@
+# Every crawler, including AI search and assistant crawlers, may read and
+# cite this site. A plain description for AI agents: /llms.txt
 User-agent: *
 Allow: /
+
 Sitemap: https://geovanylaguerre.net/sitemap.xml

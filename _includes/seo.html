@@ -3,21 +3,33 @@
 <!-- begin SEO -->
 {% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
 
+{% assign seo_lang = page.lang | default: "fr" %}
+{% assign seo_track = site.data.tracks[page.track] %}
+{% if page.layout == "contact" %}{% assign seo_contact = site.data.tracks[page.space].contact %}{% endif %}
+
 {% assign seo_title = site.title %}
-{% if page.title %}
+{% if seo_track %}
+  {% assign seo_title = seo_track.seo_title[seo_lang] | append: " " | append: site.title_separator | append: " " | append: site.title %}
+{% elsif seo_contact %}
+  {% assign seo_title = seo_contact.title[seo_lang] | append: " " | append: site.title_separator | append: " " | append: site.title %}
+{% elsif page.title %}
   {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
 {% endif %}
 {% assign seo_title = seo_title | markdownify | strip_html | strip_newlines | escape_once %}
 
 {% assign seo_description = page.description | default: page.excerpt | default: site.og_description | default: site.description %}
+{% if seo_track %}{% assign seo_description = seo_track.seo_description[seo_lang] %}{% endif %}
+{% if seo_contact %}{% assign seo_description = seo_contact.seo_description[seo_lang] %}{% endif %}
 {% assign seo_description = seo_description | markdownify | strip_html | strip_newlines | escape_once %}
 
 {% assign seo_image = page.header.image | default: page.header.overlay_image | default: page.image.path | default: page.image | default: site.og_image %}
 {% assign seo_image_url = "" %}
 {% if seo_image %}
+  {% comment %} Filters are not allowed inside a condition: compute the first character first. {% endcomment %}
+  {% assign seo_image_first = seo_image | slice: 0, 1 %}
   {% if seo_image contains "://" %}
     {% assign seo_image_url = seo_image %}
-  {% elsif seo_image | slice: 0, 1 == "/" %}
+  {% elsif seo_image_first == "/" %}
     {% assign seo_image_url = seo_image | absolute_url %}
   {% else %}
     {% assign seo_image_url = seo_image | prepend: "/images/" | absolute_url %}
@@ -39,8 +51,7 @@
 <meta name="author" content="{{ site.author.name | default: site.name }}">
 
 <link rel="canonical" href="{{ page.canonical_url | default: canonical_url }}">
-<link rel="alternate" hreflang="{{ site.locale | default: 'en-US' }}" href="{{ page.canonical_url | default: canonical_url }}">
-<link rel="alternate" hreflang="x-default" href="{{ page.canonical_url | default: canonical_url }}">
+{% include hreflang.html %}
 
 {% if page.date %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
@@ -54,7 +65,7 @@
   <meta property="fb:app_id" content="{{ site.facebook.app_id }}">
 {% endif %}
 
-<meta property="og:locale" content="{{ site.locale | default: 'en-US' }}">
+<meta property="og:locale" content="{{ site.data.i18n[seo_lang].locale | default: 'en_US' }}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{{ seo_title }}">
 <meta property="og:description" content="{{ seo_description }}">
@@ -143,14 +154,14 @@
       "url": {{ site.url | append: "/" | jsonify }},
       "name": {{ site.title | jsonify }},
       "description": {{ site.description | jsonify }},
-      "inLanguage": {{ site.locale | default: 'en-US' | jsonify }}
+      "inLanguage": {{ seo_lang | jsonify }}
     },
     {
       "@type": "Person",
       "@id": {{ site.url | append: "/#person" | jsonify }},
       "name": {{ site.author.name | default: site.name | jsonify }},
       "url": {{ site.url | append: "/" | jsonify }},
-      "jobTitle": "Applied Mathematics, Scientific Computing & AI Researcher",
+      "jobTitle": "Software & Data Engineer",
       "affiliation": {
         "@type": "Organization",
         "name": {{ site.author.employer | jsonify }}
@@ -160,7 +171,7 @@
         { "@type": "CollegeOrUniversity", "name": "Faculté des Sciences de l'Université d'État d'Haïti" },
         { "@type": "EducationalOrganization", "name": "MITx" }
       ],
-      "knowsAbout": ["Applied Mathematics", "Mathematical Modelling", "Scientific Computing", "Data Science", "Artificial Intelligence", "Healthcare Analytics"],
+      "knowsAbout": ["Software Engineering", "Data Engineering", "Data Analytics", "C#/.NET", "Java", "Python", "TypeScript", "SQL", "Microsoft Fabric", "Power BI", "Applied Mathematics", "Mathematical Modelling", "Scientific Computing"],
       "sameAs": {{ site.social.links | jsonify }}
     },
     {
@@ -171,7 +182,7 @@
       "description": {{ seo_description | jsonify }},
       "isPartOf": { "@id": {{ site.url | append: "/#website" | jsonify }} },
       "about": { "@id": {{ site.url | append: "/#person" | jsonify }} },
-      "inLanguage": {{ site.locale | default: 'en-US' | jsonify }}{% if breadcrumb_count > 0 %},
+      "inLanguage": {{ seo_lang | jsonify }}{% if breadcrumb_count > 0 %},
       "breadcrumb": { "@id": {{ canonical_url | append: "#breadcrumb" | jsonify }} }
       {% endif %}
     }{% if breadcrumb_count > 0 %},
