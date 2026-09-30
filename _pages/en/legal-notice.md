@@ -24,7 +24,7 @@ The website is hosted by **GitHub Pages**, a service of:
 GitHub, Inc.<br>
 88 Colin P. Kelly Jr. Street<br>
 San Francisco, CA 94107, United States<br>
-Phone: [TO BE COMPLETED: host's phone number]<br>
+Phone: +1 (415) 448-6673<br>
 [https://github.com](https://github.com)
 
 The domain name is registered with GoDaddy.com, LLC.

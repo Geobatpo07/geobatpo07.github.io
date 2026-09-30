@@ -24,7 +24,7 @@ Le site est hébergé par **GitHub Pages**, service de :
 GitHub, Inc.<br>
 88 Colin P. Kelly Jr. Street<br>
 San Francisco, CA 94107, États-Unis<br>
-Téléphone : [À COMPLÉTER : téléphone de l'hébergeur]<br>
+Téléphone : +1 (415) 448-6673<br>
 [https://github.com](https://github.com)
 
 Le nom de domaine est enregistré auprès de GoDaddy.com, LLC.
