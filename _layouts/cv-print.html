@@ -74,10 +74,10 @@
         {%- if position.sector %} · {{ position.sector[lang] }}{% endif -%}
       {% endcapture %}
       {% if airy %}
-      <h3>{{ position.title[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
+      <h3>{{ position.titles[track_key][lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
       <p class="cv-meta">{{ position_meta }}</p>
       {% else %}
-      <h3>{{ position.title[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
+      <h3>{{ position.titles[track_key][lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}
         <span class="cv-meta">— {{ position_meta }}</span></h3>
       {% endif %}
       {% assign bullets = position[bullets_key] | where_exp: "b", "b.cv != false" %}

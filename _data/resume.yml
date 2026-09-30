@@ -63,6 +63,8 @@ research_summary:
 # EXPERIENCE — every position.
 #   category:   professional | research | teaching (timeline of the full CV)
 #   title, org, location, sector: { fr, en } (org may be a plain string)
+#   <prefix>_title: { fr, en }, optional: the job title on that page / CV
+#       instead of `title` (e.g. a shorter one for one space)
 #   start_date / end_date: "YYYY-MM"; omit end_date for an ongoing position
 #   <prefix>_bullets: the position appears on that page / CV with these
 #       bullets: a list of { fr, en }, or the name of another prefix
@@ -78,6 +80,7 @@ experience:
     title:
       fr: "Développeur Full-Stack & Data Analyst"
       en: "Full-Stack Developer & Data Analyst"
+    data_title: { fr: "Data Analyst", en: "Data Analyst" }
     org: "Solutions S.A."
     start_date: "2023-07"
     end_date: "2026-08"

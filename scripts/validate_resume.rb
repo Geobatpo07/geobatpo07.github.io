@@ -85,6 +85,9 @@ list.call('experience').each_with_index do |entry, i|
   errors << "#{where}.id is missing" if entry['id'].to_s.strip.empty?
   errors << "#{where}.category must be one of #{CATEGORIES.join(', ')}" unless CATEGORIES.include?(entry['category'])
   bilingual.call(entry['title'], "#{where}.title")
+  PREFIXES.each { |prefix| bilingual.call(entry["#{prefix}_title"], "#{where}.#{prefix}_title", required: false) }
+  titles = entry.keys.filter_map { |key| key.delete_suffix('_title') if key.end_with?('_title') }
+  (titles - PREFIXES).each { |unknown| errors << "#{where}: unknown prefix `#{unknown}_title`" }
   text_or_bilingual.call(entry['org'], "#{where}.org")
   %w[location sector link_label].each { |key| bilingual.call(entry[key], "#{where}.#{key}", required: false) }
   errors << "#{where}.start_date is missing" if entry['start_date'].nil?

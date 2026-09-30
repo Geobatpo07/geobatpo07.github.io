@@ -12,6 +12,9 @@
 #                     key, skills with a <prefix>_rank, certifications in
 #                     `spaces` (plus profile), education everywhere
 #   entry['cv_on']    the same, minus the spaces marked <space>_cv: false
+#   entry['titles']   experience: { prefix => { fr, en } }, the job title
+#                     shown for each prefix: <prefix>_title when set,
+#                     else title
 #   entry['<prefix>_bullets']  resolved: a reference to another prefix
 #                     (`profile_bullets: research` or [data, software])
 #                     is replaced by that prefix's bullets
@@ -63,6 +66,7 @@ module ResumeEngine
       end
       entry['on'] = on
       entry['cv_on'] = on.reject { |prefix| entry["#{prefix}_cv"] == false }
+      entry['titles'] = PREFIXES.to_h { |prefix| [prefix, entry["#{prefix}_title"] || entry['title']] }
       entry['dates'] = date_labels(entry)
     end
 

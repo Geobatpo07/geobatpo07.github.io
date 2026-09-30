@@ -10,7 +10,7 @@
   <ol class="tracks-timeline">
     {% for position in positions %}
     <li>
-      <h3>{{ position.title[lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
+      <h3>{{ position.titles[track_key][lang] }} · {% if position.org.fr %}{{ position.org[lang] }}{% else %}{{ position.org }}{% endif %}</h3>
       <p class="tracks-meta">
         {{ position.dates[lang] }}
         {%- if position.location %} · {{ position.location[lang] }}{% endif %}
