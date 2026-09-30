@@ -1,6 +1,6 @@
 # Geovany Batista Polo LAGUERRE — Personal Academic Website
 
-[![Website](https://img.shields.io/badge/Website-geobatpo.github.io-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://geobatpo.github.io)
+[![Website](https://img.shields.io/badge/Website-geovanylaguerre.net-0A66C2?style=for-the-badge&logo=google-chrome&logoColor=white)](https://geovanylaguerre.net)
 [![GitHub Pages](https://img.shields.io/github/actions/workflow/status/Geobatpo07/geobatpo.github.io/jekyll.yml?branch=main&style=for-the-badge&label=GitHub%20Pages)](https://github.com/Geobatpo07/geobatpo.github.io/actions/workflows/jekyll.yml)
 [![Scrape Talks](https://img.shields.io/github/actions/workflow/status/Geobatpo07/geobatpo.github.io/scrape_talks.yml?branch=main&style=for-the-badge&label=Scrape%20Talks)](https://github.com/Geobatpo07/geobatpo.github.io/actions/workflows/scrape_talks.yml)
 [![Jekyll](https://img.shields.io/badge/Jekyll-Static%20Site-CC0000?style=for-the-badge&logo=jekyll&logoColor=white)](https://jekyllrb.com)
