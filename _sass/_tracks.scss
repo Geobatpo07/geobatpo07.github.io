@@ -246,6 +246,29 @@ $space-header-burger: 1100px;
 /* Page footer (_includes/chrome/footer.html)
    ========================================================================== */
 
+/* Sticky footer: on a page shorter than the window, the content (#main)
+   grows so the footer sits at the bottom of the window; on a longer page
+   it follows the content. Replaces the theme's 9em bottom padding. The
+   header is fixed, so it is not part of this column. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 0;
+}
+
+body > #main {
+  flex: 1 0 auto;
+  /* #main is centred with auto margins, which would otherwise shrink it
+     to its content in a flex column. */
+  width: 100%;
+}
+
+body > .page__footer {
+  flex-shrink: 0;
+}
+
 .page__footer .space-footer {
   max-width: none;
   margin: 0;
