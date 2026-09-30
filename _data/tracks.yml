@@ -62,7 +62,7 @@ data:
   cv_file: CV_Laguerre_Data
   cv:
     max_pages: 1
-    certifications: block
+    certifications: line
   contact:
     subject: "[Data]"
     title: { fr: "Contact : data et analytics", en: "Contact: data & analytics" }

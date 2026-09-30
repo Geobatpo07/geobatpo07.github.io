@@ -185,7 +185,6 @@ experience:
         en: "Data wrangling, exploratory analysis, model building and deployment with Python, Pandas, NumPy, Scikit-learn and Jupyter."
       - fr: "Revues de code, séances de questions-réponses et contribution à l'amélioration du programme."
         en: "Code reviews, Q&A sessions and contributions to curriculum refinement."
-    data_cv: false   # on the data page, off the Data CV (one page)
     research_bullets:
       - fr: "Encadrement pratique d'étudiants en data science et IA, en partenariat avec Akademi et la Flatiron School."
         en: "Hands-on support for Data Science & AI students, in partnership with Akademi and the Flatiron School."
