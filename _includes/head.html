@@ -10,6 +10,8 @@
 
 <script>
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  // Dark by default; only an explicit "light" choice overrides it (no flash)
+  try { if (localStorage.getItem('theme') === 'light') document.documentElement.removeAttribute('data-theme'); } catch (e) {}
 </script>
 
 <!-- For all browsers -->
