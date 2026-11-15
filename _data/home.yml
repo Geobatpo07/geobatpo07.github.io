@@ -43,7 +43,7 @@ skills:
 contact:
   reasons:
     - label: { fr: "Un poste de développeur ou d'ingénieur data", en: "A software or data engineering role" }
-      hint:  { fr: "CDI, CDD ou mission longue", en: "Permanent, fixed-term or long engagement" }
+      hint:  { fr: "Disponible pour des missions", en: "Available for engagements" }
       subject: { fr: "Poste : Software / Data Engineer", en: "Role: Software / Data Engineer" }
     - label: { fr: "Une mission ou un projet à cadrer", en: "An engagement or a project to scope" }
       hint:  { fr: "Application, API, pipeline de données, tableaux de bord Power BI", en: "Application, API, data pipeline, Power BI dashboards" }
