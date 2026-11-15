@@ -1,0 +1,431 @@
+/* ==========================================================================
+   HOME — portfolio page (_layouts/portal.html), at / and /en/
+   Same tokens as the rest of the site (_sass/theme/*): light and dark modes,
+   Fraunces for the display text, Inter for the body. One distinctive element,
+   the damped curve under the introduction; everything else stays quiet.
+   ========================================================================== */
+
+#main.home {
+  max-width: $tracks-max-width;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+  animation: none;
+
+  a:focus-visible {
+    @extend %tracks-focus;
+  }
+
+  h2 {
+    margin: 0 0 1.5rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    margin: 0;
+  }
+}
+
+/* Introduction
+   ========================================================================== */
+
+.home-hero {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.5rem 0 9rem;
+  isolation: isolate;
+
+  @media (min-width: $medium) {
+    grid-template-columns: minmax(0, 1fr) 17.5rem;
+    gap: 3.5rem;
+    padding: 4.5rem 0 10rem;
+  }
+}
+
+.home-hero__text {
+  order: 2;
+
+  @media (min-width: $medium) {
+    order: 1;
+  }
+}
+
+.home-hero__title {
+  margin: 0 0 0.9rem;
+  font-family: $display-font;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+
+.home-hero__tagline {
+  margin: 0 0 1.25rem;
+  color: var(--color-cyan);
+  font-family: $display-font;
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.home-hero__lead {
+  max-width: 34rem;
+  margin: 0 0 1.75rem;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+
+  .btn {
+    margin: 0;
+    padding: 0.75em 1.4em;
+    font-size: 0.95rem;
+  }
+}
+
+.home-hero__link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Portrait: the photo sits in front of an outline offset from its corner. */
+.home-hero__portrait {
+  position: relative;
+  order: 1;
+  width: 9.5rem;
+  margin: 0;
+
+  @media (min-width: $medium) {
+    order: 2;
+    width: 100%;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border: 2px solid var(--global-base-color);
+    border-radius: 14px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+}
+
+/* The curve: a model whose oscillations die out on its asymptote. Drawn once. */
+.home-hero__wave {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 8.5rem;
+  overflow: visible;
+  pointer-events: none;
+
+  @media (min-width: $medium) {
+    height: 9.5rem;
+  }
+}
+
+.home-wave__stop--start {
+  stop-color: var(--color-royal-blue);
+}
+
+.home-wave__stop--end {
+  stop-color: var(--color-cyan);
+}
+
+.home-wave__axis {
+  stroke: var(--global-border-color);
+  stroke-dasharray: 4 7;
+  stroke-width: 1.5;
+}
+
+.home-wave__curve {
+  fill: none;
+  stroke: url(#home-wave-gradient);
+  stroke-dasharray: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  animation: home-wave-draw 2.8s cubic-bezier(0.3, 0.6, 0.25, 1) 0.2s both;
+}
+
+.home-wave__end {
+  fill: var(--color-cyan);
+  animation: home-wave-dot 0.4s ease-out 2.8s both;
+}
+
+@keyframes home-wave-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes home-wave-dot {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-wave__curve,
+  .home-wave__end {
+    animation: none;
+  }
+}
+
+/* Results
+   ========================================================================== */
+
+.home-proof {
+  display: grid;
+  gap: 1.75rem 0;
+  margin: 0;
+  padding: 2rem 0 0;
+  list-style: none;
+  border-top: 1px solid var(--global-border-color);
+
+  @media (min-width: $medium) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 0;
+
+    @media (min-width: $medium) {
+      padding-right: 2rem;
+
+      + li {
+        padding-left: 2rem;
+        border-left: 1px solid var(--global-border-color);
+      }
+    }
+  }
+}
+
+.home-proof__value {
+  font-family: $display-font;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.home-proof__label {
+  max-width: 24rem;
+  color: var(--global-text-color-light);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* Sections
+   ========================================================================== */
+
+.home-section {
+  margin-top: 5rem;
+  scroll-margin-top: $masthead-height + 16px;
+}
+
+/* Projects: rows, not cards. Name and status, description and stack, links. */
+.home-project {
+  display: grid;
+  gap: 0.9rem 2.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--global-border-color);
+
+  &:last-child {
+    border-bottom: 1px solid var(--global-border-color);
+  }
+
+  @media (min-width: $medium) {
+    grid-template-columns: 13rem minmax(0, 1fr) 9.5rem;
+  }
+
+  h3 {
+    font-family: $display-font;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.home-project__status {
+  margin-top: 0.3rem !important;
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+}
+
+.home-project__body {
+  max-width: 40rem;
+  line-height: 1.65;
+}
+
+.home-project__stack {
+  margin-top: 0.6rem !important;
+  color: var(--global-text-color-light);
+  font-size: 0.88rem;
+}
+
+.home-project__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92rem;
+
+  li {
+    margin: 0;
+  }
+}
+
+.home-project__private {
+  color: var(--global-text-color-light);
+  font-style: italic;
+}
+
+/* Skills: plain lists, one group per column */
+.home-skills {
+  display: grid;
+  gap: 1.5rem 3rem;
+  margin: 0;
+
+  @media (min-width: $medium) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  dt {
+    margin: 0 0 0.4rem;
+    font-family: $display-font;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    line-height: 1.7;
+  }
+}
+
+/* Testimonials (shown only when _data/testimonials.yml has entries) */
+.home-quotes {
+  display: grid;
+  gap: 2rem 3rem;
+
+  @media (min-width: $medium) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.home-quote {
+  margin: 0;
+
+  blockquote {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border: 0;
+    font-family: $display-font;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  figcaption {
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+}
+
+/* Contact */
+.home-contact {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--global-border-color);
+}
+
+.home-contact__lead {
+  max-width: 34rem;
+  margin: 0 0 1.5rem;
+  font-family: $display-font;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.home-contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.home-contact__mail {
+  font-size: 1.1rem;
+}
+
+/* Footer: hidden links to the three spaces, for the owner only.
+   Shown by assets/js/owner-links.js; [hidden] must win over the flex rules. */
+.space-footer__owner {
+  width: 100%;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--global-border-color);
+
+  &[hidden] {
+    display: none;
+  }
+}
