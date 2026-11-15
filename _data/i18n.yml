@@ -145,7 +145,10 @@ fr:
     stack_label: "Technologies :"
     testimonials_heading: "Témoignages"
     contact_heading: "Contact"
-    contact_lead: "Un poste, une mission, un projet à cadrer : écrivez-moi en décrivant le contexte. Je réponds en général sous quelques jours ouvrés."
+    contact_lead: "Parlons de votre besoin."
+    contact_text: "Écrivez-moi en deux ou trois phrases : le contexte, ce que vous cherchez, vos délais. Choisissez le sujet qui vous correspond, il pré-remplit l'objet du message."
+    contact_location: "Basé en Île-de-France."
+    contact_other: "Ailleurs"
     owner_label: "Espaces"
 
 en:
@@ -279,5 +282,8 @@ en:
     stack_label: "Technologies:"
     testimonials_heading: "Testimonials"
     contact_heading: "Contact"
-    contact_lead: "A role, an engagement, a project to scope: write to me with the context. I usually reply within a few business days."
+    contact_lead: "Let's talk about what you need."
+    contact_text: "Write me two or three sentences: the context, what you are looking for, your timeline. Pick the subject that fits; it fills in the message subject."
+    contact_location: "Based in the Île-de-France region."
+    contact_other: "Elsewhere"
     owner_label: "Spaces"

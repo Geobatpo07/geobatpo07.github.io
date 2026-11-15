@@ -37,3 +37,17 @@ skills:
     items: ["SQL", "Python", "Microsoft Fabric", "Power BI", "ETL", "PostgreSQL", "SQL Server", "DuckDB"]
   - title: { fr: "Livraison", en: "Delivery" }
     items: ["Docker", "GitHub Actions", "Jenkins", "RabbitMQ", "CI/CD"]
+
+# Contact section: each reason opens a mail with its own subject, so the
+# request is sorted before it is read. No form, nothing is collected.
+contact:
+  reasons:
+    - label: { fr: "Un poste de développeur ou d'ingénieur data", en: "A software or data engineering role" }
+      hint:  { fr: "CDI, CDD ou mission longue", en: "Permanent, fixed-term or long engagement" }
+      subject: { fr: "Poste : Software / Data Engineer", en: "Role: Software / Data Engineer" }
+    - label: { fr: "Une mission ou un projet à cadrer", en: "An engagement or a project to scope" }
+      hint:  { fr: "Application, API, pipeline de données, tableaux de bord Power BI", en: "Application, API, data pipeline, Power BI dashboards" }
+      subject: { fr: "Mission : projet à cadrer", en: "Engagement: project to scope" }
+    - label: { fr: "Enseignement ou recherche", en: "Teaching or research" }
+      hint:  { fr: "Cours, encadrement, collaboration scientifique", en: "Courses, supervision, scientific collaboration" }
+      subject: { fr: "Enseignement / recherche", en: "Teaching / research" }
