@@ -3,7 +3,10 @@
   (e-mail, LinkedIn, GitHub) and, for a space, its contact page. Every
   footer (portal, spaces, neutral pages) carries the copyright and the links
   to the legal notice and the privacy policy, which are neutral pages. No
-  footer links to the portal or to another space.
+  space or neutral footer links to the portal or to another space. The home
+  page footer also holds hidden links to the three spaces, for the owner
+  only: they stay hidden until the owner switches them on in the browser
+  (assets/js/owner-links.js); the spaces remain reachable by their URL.
 {% endcomment %}
 {% assign lang = page.lang | default: "fr" %}
 {% assign t = site.data.i18n[lang] %}
@@ -22,6 +25,17 @@
         <li><a href="mailto:{{ site.author.email }}{% if space %}?subject={{ space.contact.subject | url_encode }}{% endif %}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ t.email }}</a></li>
         <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
         <li><a href="https://github.com/{{ site.author.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></li>
+      </ul>
+    </nav>
+    {% endif %}
+    {% if chrome == "portal" %}
+    <nav class="space-footer__owner" aria-label="{{ t.home.owner_label }}" data-owner-links hidden>
+      <ul class="space-footer__links">
+        {% for entry in site.data.tracks %}
+          {% assign track = entry[1] %}
+          {% if lang == "en" %}{% assign track_url = "/en" | append: track.url %}{% else %}{% assign track_url = track.url %}{% endif %}
+        <li><a href="{{ base_path }}{{ track_url }}">{{ track.nav[lang] }}</a></li>
+        {% endfor %}
       </ul>
     </nav>
     {% endif %}

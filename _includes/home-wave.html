@@ -1,0 +1,17 @@
+{% comment %}
+  Decorative curve of the home hero: a damped oscillation that settles on its
+  asymptote, the mathematical model that ends up as a stable system. Drawn
+  once when the page loads (styles: _sass/_home.scss); static when the
+  visitor prefers reduced motion. Purely decorative: aria-hidden.
+{% endcomment %}
+<svg class="home-hero__wave" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="home-wave-gradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" class="home-wave__stop home-wave__stop--start"/>
+      <stop offset="1" class="home-wave__stop home-wave__stop--end"/>
+    </linearGradient>
+  </defs>
+  <line class="home-wave__axis" x1="0" y1="150" x2="1200" y2="150"/>
+  <path class="home-wave__curve" pathLength="1" d="M0 150.0 L10 133.7 L20 119.1 L30 106.8 L40 97.2 L50 90.7 L60 87.3 L70 87.0 L80 89.7 L90 95.0 L100 102.6 L110 111.9 L120 122.5 L130 133.7 L140 145.0 L150 155.9 L160 165.9 L170 174.5 L180 181.5 L190 186.6 L200 189.8 L210 190.8 L220 189.9 L230 187.3 L240 183.0 L250 177.4 L260 170.9 L270 163.8 L280 156.5 L290 149.3 L300 142.6 L310 136.6 L320 131.6 L330 127.7 L340 125.1 L350 123.8 L360 123.8 L370 125.0 L380 127.4 L390 130.6 L400 134.5 L410 139.0 L420 143.7 L430 148.4 L440 152.9 L450 157.0 L460 160.5 L470 163.4 L480 165.4 L490 166.6 L500 167.0 L510 166.6 L520 165.4 L530 163.5 L540 161.2 L550 158.4 L560 155.5 L570 152.4 L580 149.4 L590 146.6 L600 144.2 L610 142.1 L620 140.6 L630 139.5 L640 139.1 L650 139.1 L660 139.7 L670 140.7 L680 142.1 L690 143.7 L700 145.6 L710 147.6 L720 149.5 L730 151.4 L740 153.1 L750 154.5 L760 155.7 L770 156.5 L780 157.0 L790 157.1 L800 156.9 L810 156.3 L820 155.6 L830 154.6 L840 153.4 L850 152.2 L860 150.9 L870 149.6 L880 148.5 L890 147.5 L900 146.7 L910 146.0 L920 145.6 L930 145.4 L940 145.5 L950 145.7 L960 146.2 L970 146.8 L980 147.5 L990 148.2 L1000 149.1 L1010 149.9 L1020 150.6 L1030 151.3 L1040 151.9 L1050 152.4 L1060 152.7 L1070 152.9 L1080 152.9 L1090 152.8 L1100 152.6 L1110 152.3 L1120 151.9 L1130 151.4 L1140 150.8 L1150 150.3 L1160 149.8 L1170 149.3 L1180 148.9 L1190 148.6 L1200 148.3"/>
+  <circle class="home-wave__end" cx="1200" cy="150" r="4"/>
+</svg>
