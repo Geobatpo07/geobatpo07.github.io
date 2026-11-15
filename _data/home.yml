@@ -36,4 +36,4 @@ skills:
   - title: { fr: "Data", en: "Data" }
     items: ["SQL", "Python", "Microsoft Fabric", "Power BI", "ETL", "PostgreSQL", "SQL Server", "DuckDB"]
   - title: { fr: "Livraison", en: "Delivery" }
-    items: ["Docker", "GitHub Actions", "Jenkins", "RabbitMQ", "tests automatisés"]
+    items: ["Docker", "GitHub Actions", "Jenkins", "RabbitMQ", "CI/CD"]
