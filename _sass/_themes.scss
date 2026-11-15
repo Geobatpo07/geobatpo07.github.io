@@ -16,11 +16,11 @@ $indent-var                 : 1.3em;
 /* System typefaces (fallback stack if webfonts fail to load) */
 $system-serif                : Georgia, Times, serif;
 $system-sans-serif           : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : "SFMono-Regular", Consolas, Monaco, "Lucida Console", monospace;
+$monospace                  : "Geist Mono", "SFMono-Regular", Consolas, Monaco, "Lucida Console", monospace;
 
 /* Academic luxury typefaces */
-$body-font                   : "Inter", $system-sans-serif;
-$display-font                : "Inter", $system-sans-serif; // next-forge look: one sans family
+$body-font                   : "Geist", "Inter", $system-sans-serif;
+$display-font                : "Geist", "Inter", $system-sans-serif; // next-forge look: one sans family
 
 /* Sans serif typefaces */
 $sans-serif                 : $body-font;
