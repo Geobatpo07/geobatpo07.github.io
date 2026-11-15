@@ -250,7 +250,7 @@ input[type="search"].project-filters__search {
   }
 
   &.is-active {
-    color: #fff;
+    color: var(--global-on-base-color);
     background: var(--color-royal-blue);
     border-color: var(--color-royal-blue);
   }
