@@ -381,32 +381,112 @@
   }
 }
 
-/* Contact */
+/* Contact: the request is sorted by subject, each row opens a mail */
 .home-contact {
   padding-top: 2.5rem;
   border-top: 1px solid var(--global-border-color);
 }
 
-.home-contact__lead {
-  max-width: 34rem;
-  margin: 0 0 1.5rem;
-  font-family: $display-font;
-  font-size: clamp(1.4rem, 3vw, 1.85rem);
-  font-weight: 600;
-  line-height: 1.35;
+.home-contact__grid {
+  display: grid;
+  gap: 2rem 4rem;
+
+  @media (min-width: $medium) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
 }
 
-.home-contact__links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.6rem 1.75rem;
+.home-contact__lead {
+  margin: 0 0 0.75rem;
+  font-family: $display-font;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.home-contact__intro p {
+  max-width: 30rem;
+  line-height: 1.65;
+}
+
+.home-contact__mail-line {
+  margin: 1.25rem 0 0.25rem;
+}
+
+.home-contact__mail {
+  font-size: 1.15rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.home-contact__location {
+  margin: 0;
+  color: var(--global-text-color-light);
+  font-size: 0.92rem;
+}
+
+.home-contact__reasons {
   margin: 0;
   padding: 0;
   list-style: none;
 
   li {
     margin: 0;
+    border-top: 1px solid var(--global-border-color);
+
+    &:last-child {
+      border-bottom: 1px solid var(--global-border-color);
+    }
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1.1rem 2.25rem 1.1rem 0;
+    color: var(--global-text-color);
+    text-decoration: none;
+    position: relative;
+    transition: padding-left 0.2s ease;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0.25rem;
+      content: "\2192";
+      color: var(--global-link-color);
+      transform: translateY(-50%);
+    }
+
+    &:hover,
+    &:focus-visible {
+      padding-left: 0.5rem;
+    }
+  }
+}
+
+.home-contact__reason {
+  font-family: $display-font;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.home-contact__hint {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
+
+.home-contact__other {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 2rem 0 0;
+  font-size: 0.95rem;
+
+  span {
+    color: var(--global-text-color-light);
   }
 
   a {
@@ -414,8 +494,10 @@
   }
 }
 
-.home-contact__mail {
-  font-size: 1.1rem;
+@media (prefers-reduced-motion: reduce) {
+  .home-contact__reasons a {
+    transition: none;
+  }
 }
 
 /* Footer: hidden links to the three spaces, for the owner only.
