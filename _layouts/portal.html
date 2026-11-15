@@ -97,13 +97,30 @@ space: portal
 
   <section class="home-section home-contact" id="contact" aria-labelledby="contact-title">
     <h2 id="contact-title">{{ h.contact_heading }}</h2>
-    <p class="home-contact__lead">{{ h.contact_lead }}</p>
-    <ul class="home-contact__links">
-      <li><a class="home-contact__mail" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
-      <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>
-      <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
-      <li><a href="{{ site.author.geo_stories }}">{{ t.stories }}</a></li>
-    </ul>
+    <div class="home-contact__grid">
+      <div class="home-contact__intro">
+        <p class="home-contact__lead">{{ h.contact_lead }}</p>
+        <p>{{ h.contact_text }}</p>
+        <p class="home-contact__mail-line"><a class="home-contact__mail" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+        <p class="home-contact__location">{{ h.contact_location }}</p>
+      </div>
+      <ul class="home-contact__reasons">
+        {% for r in site.data.home.contact.reasons %}
+        <li>
+          <a href="mailto:{{ site.author.email }}?subject={{ r.subject[lang] | url_encode }}">
+            <span class="home-contact__reason">{{ r.label[lang] }}</span>
+            <span class="home-contact__hint">{{ r.hint[lang] }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <p class="home-contact__other">
+      <span>{{ h.contact_other }}</span>
+      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a>
+      <a href="https://github.com/{{ site.author.github }}">GitHub</a>
+      <a href="{{ site.author.geo_stories }}">{{ t.stories }}</a>
+    </p>
   </section>
 
   {{ content }}
