@@ -143,11 +143,11 @@ Le site est un portail et trois espaces cloisonnés. Le layout `default` choisit
 
 | `data-space` | Pages | En-tête | Pied de page |
 |---|---|---|---|
-| `portal` | `/`, `/en/` | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub |
+| `portal` | `/`, `/en/` | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub, et liens cachés vers les espaces (voir ci-dessous) |
 | `software`, `data`, `research` | racine, page contact, pages d'impression du CV et pages rattachées de l'espace ; pour research : `/about/`, `/cv/`, `/teaching/`, `/feedback/` et les études de cas | nom (vers la racine de l'espace), menu de l'espace, FR \| EN dans l'espace, thème | contact de l'espace, e-mail avec objet, LinkedIn, GitHub |
 | `neutral` | fiches publication et enseignement, 404, `/terms/`, `/resume-print/` | nom sans lien, bouton « Retour », thème | copyright |
 
-**Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail liste les trois espaces. Le seul lien que les trois espaces partagent est celui du blog Stories, dans leur menu.
+**Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail pointe vers les trois espaces, par des liens cachés dans son pied de page (`data-owner-links`, attribut `hidden`) que `assets/js/owner-links.js` affiche dans le navigateur du propriétaire après `/?owner=1` (`/?owner=0` les recache). Ce n'est pas un contrôle d'accès : les espaces restent joignables par leur URL. Le seul lien que les trois espaces partagent est celui du blog Stories, dans leur menu.
 
 **Études de cas.** Ce sont des pages neutres (`space: neutral` par défaut dans `_config.yml`, layout `case-study`) : en-tête sans menu avec un bouton Retour, pied de page neutre, aucun lien vers un espace. La carte d'un projet mène à son étude de cas dans chaque espace où elle apparaît, avec `?from=<espace>` (et `&lang=en` en anglais) : le bouton Retour revient à la page précédente, ou à défaut à la racine de cet espace.
 
@@ -247,3 +247,7 @@ bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts,
 ```
 
 Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît, si une page anglaise n'est pas sous `/en/` ou n'a pas de version française existante, si une page sous `/en/` n'est pas en anglais, si le `x-default` d'une paire ne vise pas la version française, ou si un lien utilise le préfixe `/fr/`.
+
+## Page d'accueil (portfolio)
+
+`/` et `/en/` utilisent le layout `portal` : présentation avec portrait, résultats, projets en vedette, compétences, témoignages (seulement si `_data/testimonials.yml` n'est pas vide) et contact. Le contenu est dans `_data/home.yml` (`proof`, `featured` = identifiants de `_data/projects.yml`, `skills`) et dans le bloc `home` de `_data/i18n.yml`. Les styles sont dans `_sass/_home.scss`.
