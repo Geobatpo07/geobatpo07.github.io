@@ -136,6 +136,18 @@ fr:
     presented: "Présenté"
   months: ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
 
+  home:
+    lead: "Je développe des applications C#/.NET et Java, des API REST et des pipelines de données sur Microsoft Fabric. Formé en mathématiques appliquées, je pars du problème à modéliser pour aboutir à un système fiable, testé et déployable."
+    cta_contact: "Me contacter"
+    cta_projects: "Voir les projets"
+    portrait_alt: "Portrait de Geovany Laguerre"
+    proof_label: "Quelques résultats"
+    stack_label: "Technologies :"
+    testimonials_heading: "Témoignages"
+    contact_heading: "Contact"
+    contact_lead: "Un poste, une mission, un projet à cadrer : écrivez-moi en décrivant le contexte. Je réponds en général sous quelques jours ouvrés."
+    owner_label: "Espaces"
+
 en:
   locale: en_US
   home_url: /en/
@@ -258,3 +270,14 @@ en:
     completed: "Completed"
     presented: "Presented"
   months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  home:
+    lead: "I build C#/.NET and Java applications, REST APIs and data pipelines on Microsoft Fabric. Trained in applied mathematics, I start from the problem to model and end with a system that is reliable, tested and deployable."
+    cta_contact: "Get in touch"
+    cta_projects: "See the projects"
+    portrait_alt: "Portrait of Geovany Laguerre"
+    proof_label: "Selected results"
+    stack_label: "Technologies:"
+    testimonials_heading: "Testimonials"
+    contact_heading: "Contact"
+    contact_lead: "A role, an engagement, a project to scope: write to me with the context. I usually reply within a few business days."
+    owner_label: "Spaces"

@@ -1,0 +1,39 @@
+# ==========================================================================
+# HOME — content of the portfolio home page (/ and /en/).
+#
+# Layout: _layouts/portal.html. Every displayed text is a {fr, en} pair.
+#   proof:      results shown under the introduction, in this order
+#               (value is shown large; label says what it counts)
+#   featured:   ids of the projects of _data/projects.yml shown on the home
+#               page, in this order
+#   skills:     groups of tools, shown as plain lists
+# Testimonials come from _data/testimonials.yml; the section is hidden
+# while that file is empty.
+# ==========================================================================
+
+proof:
+  - value: { fr: "~180", en: "~180" }
+    label:
+      fr: "sites hospitaliers et cliniques sur l'application migrée de PHP vers Java EE, sans interruption de service."
+      en: "hospital and clinic sites on the application migrated from PHP to Java EE, with no service interruption."
+  - value: { fr: "20 % → 60 %", en: "20% → 60%" }
+    label:
+      fr: "des sites clients au-dessus de 95 % de performance, avec des tableaux de bord KPI Power BI à l'appui."
+      en: "of client sites above 95% performance, supported by Power BI KPI dashboards."
+  - value: { fr: "DP-700 · DP-600", en: "DP-700 · DP-600" }
+    label:
+      fr: "certifications Microsoft Fabric : data engineer et analytics engineer."
+      en: "Microsoft Fabric certifications: data engineer and analytics engineer."
+
+featured:
+  - nyansa
+  - stories
+  - datahut-duckhouse
+
+skills:
+  - title: { fr: "Développement", en: "Development" }
+    items: ["C#/.NET", "ASP.NET Core", "Java", "Spring Boot", "TypeScript", "Next.js", "API REST", "microservices"]
+  - title: { fr: "Data", en: "Data" }
+    items: ["SQL", "Python", "Microsoft Fabric", "Power BI", "ETL", "PostgreSQL", "SQL Server", "DuckDB"]
+  - title: { fr: "Livraison", en: "Delivery" }
+    items: ["Docker", "GitHub Actions", "Jenkins", "RabbitMQ", "tests automatisés"]
