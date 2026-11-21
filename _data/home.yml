@@ -1,5 +1,5 @@
 # ==========================================================================
-# HOME — content of the portfolio home page (/ and /en/).
+# HOME — content of the portfolio home page (/ and /fr/).
 #
 # Layout: _layouts/portal.html. Every displayed text is a {fr, en} pair.
 #   proof:      results shown under the introduction, in this order

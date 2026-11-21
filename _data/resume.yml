@@ -7,7 +7,7 @@
 # scripts/validate_resume.rb. See docs/CONTENT.md.
 #
 # Prefixes, one per CV:
-#   profile_   the complete CV: /cv/, /en/cv/, files/Profile.pdf, Profile_EN.pdf
+#   profile_   the complete CV: /cv/, /fr/cv/, files/Profile.pdf, Profile_EN.pdf
 #   software_, data_, research_   a space: its page (/<space>/) and its CV
 #                                 (files/CV_Laguerre_<Space>_<FR|EN>.pdf)
 # Language: every displayed text is a { fr, en } group.
