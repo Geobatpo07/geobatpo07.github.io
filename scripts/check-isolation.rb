@@ -9,14 +9,14 @@
 #   - a page of a space never links to the portal or to another space.
 #     Links are followed through redirect stubs; links to neutral pages,
 #     to files and to other sites are allowed;
-#   - a case study (neutral page under /projects/ or /en/projects/) never
+#   - a case study (neutral page under /projects/ or /fr/projects/) never
 #     links to a space or to the portal: its Back button is set by script
 #     from ?from=<space>, never written in the markup;
-#   - languages: French at the root, English under /en/. Every English page
-#     lives under /en/ and has a French version (an hreflang="fr"
+#   - languages: English at the root, French under /fr/. Every French page
+#     lives under /fr/ and has an English version (an hreflang="en"
 #     alternate that exists in the build); a FR/EN pair lists both hreflang
-#     alternates with x-default on the French page; no link uses the former
-#     /fr/ prefix.
+#     alternates with x-default on the English page; no link uses the former
+#     /en/ prefix.
 #
 # Usage: bundle exec ruby scripts/check-isolation.rb [site_dir]   (default _site)
 # Exits non-zero when html-proofer reports a failure or when fewer than
@@ -133,7 +133,7 @@ class SpaceIsolation < HTMLProofer::Check
 
     base_path = SitePages.url_of(@runner.current_filename)
     check_language(root, base_path)
-    check_no_fr_prefix(base_path)
+    check_no_en_prefix(base_path)
 
     return unless SPACES.include?(space) || (space == "neutral" && case_study?(base_path))
 
@@ -152,39 +152,39 @@ class SpaceIsolation < HTMLProofer::Check
   private
 
   def case_study?(base_path)
-    base_path.start_with?("/projects/", "/en/projects/")
+    base_path.start_with?("/projects/", "/fr/projects/")
   end
 
   def check_language(root, base_path)
     lang = root["lang"]
     alternates = @html.css('link[rel="alternate"][hreflang]').to_h { |l| [l["hreflang"], l["href"]] }
 
-    if lang == "en"
-      add_failure("English page outside /en/", line: root.line) unless base_path.start_with?("/en/")
-      french = alternates["fr"] && SitePages.internal_path(alternates["fr"], base_path)
-      if french.nil?
-        add_failure("English page without a French version (no hreflang=\"fr\" alternate)", line: root.line)
-      elsif SitePages.index[french].nil?
-        add_failure("French version #{french} does not exist", line: root.line)
+    if lang == "fr"
+      add_failure("French page outside /fr/", line: root.line) unless base_path.start_with?("/fr/")
+      english = alternates["en"] && SitePages.internal_path(alternates["en"], base_path)
+      if english.nil?
+        add_failure("French page without an English version (no hreflang=\"en\" alternate)", line: root.line)
+      elsif SitePages.index[english].nil?
+        add_failure("English version #{english} does not exist", line: root.line)
       end
-    elsif base_path.start_with?("/en/")
-      add_failure("page under /en/ has lang=\"#{lang}\"", line: root.line)
-    elsif lang != "fr"
+    elsif base_path.start_with?("/fr/")
+      add_failure("page under /fr/ has lang=\"#{lang}\"", line: root.line)
+    elsif lang != "en"
       add_failure("unexpected lang=\"#{lang}\"", line: root.line)
     end
 
     return unless alternates.key?("fr") && alternates.key?("en")
-    return if alternates["x-default"] == alternates["fr"]
+    return if alternates["x-default"] == alternates["en"]
 
-    add_failure("hreflang x-default must point to the French version (#{alternates["fr"]})", line: root.line)
+    add_failure("hreflang x-default must point to the English version (#{alternates["en"]})", line: root.line)
   end
 
-  def check_no_fr_prefix(base_path)
+  def check_no_en_prefix(base_path)
     @html.css("a[href]").each do |node|
       path = SitePages.internal_path(node["href"].strip, base_path)
-      next unless path&.start_with?("/fr/") || path == "/fr"
+      next unless path&.start_with?("/en/") || path == "/en"
 
-      add_failure("link uses the former /fr/ prefix: #{node["href"]}", line: node.line, content: node.to_html)
+      add_failure("link uses the former /en/ prefix: #{node["href"]}", line: node.line, content: node.to_html)
     end
   end
 end
