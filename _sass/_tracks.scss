@@ -560,9 +560,17 @@ a.tracks-card {
 /* Track page header
    ========================================================================== */
 
-.track-proof {
+/* Same look as the home results, but the columns follow the item count
+   (the home rule is a fixed 3-column grid). */
+.home-proof.track-proof {
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   margin-bottom: 2.5rem;
   padding-top: 1.5rem;
+
+  /* A single figure would stretch over the whole width */
+  li:only-child {
+    max-width: 32rem;
+  }
 }
 
 .track-header {
