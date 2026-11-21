@@ -512,6 +512,31 @@
   }
 }
 
+/* The links are separated by dots: Software · Data · Research */
+.space-footer__owner-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+
+  li {
+    margin: 0;
+
+    + li::before {
+      margin: 0 0.6rem;
+      color: var(--global-text-color-light);
+      content: "\00b7" / "";
+    }
+  }
+
+  a {
+    color: var(--global-text-color-light);
+  }
+}
+
 /* next-forge touch: faint grid fading out behind the introduction
    ========================================================================== */
 
