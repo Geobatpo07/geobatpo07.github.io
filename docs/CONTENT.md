@@ -251,3 +251,7 @@ Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autr
 ## Page d'accueil (portfolio)
 
 `/` et `/fr/` utilisent le layout `portal` : présentation avec portrait, résultats, projets en vedette, compétences, témoignages (seulement si `_data/testimonials.yml` n'est pas vide) et contact. Le contenu est dans `_data/home.yml` (`proof`, `featured` = identifiants de `_data/projects.yml`, `skills`) et dans le bloc `home` de `_data/i18n.yml`. Les styles sont dans `_sass/_home.scss`.
+
+**Chiffres clés des espaces.** Chaque élément de `proof` (`_data/home.yml`) a un champ `spaces` (liste de `software`, `data`, `research`) : les éléments dont la liste contient l'espace courant s'affichent sous l'en-tête de sa page (`_layouts/track.html`, même style que l'accueil). Un espace sans élément (research) n'affiche rien. Les valeurs restent des paires `{fr, en}`.
+
+**Cartes de projets.** Les descriptions de plus de 4 lignes sont tronquées par `assets/js/card-clamp.js`, qui ajoute un bouton « Lire la suite » / « Réduire » (textes `read_more` et `read_less` de `_data/i18n.yml`, `aria-expanded`). Sans JavaScript, la description complète reste affichée.

@@ -3,7 +3,9 @@
 #
 # Layout: _layouts/portal.html. Every displayed text is a {fr, en} pair.
 #   proof:      results shown under the introduction, in this order
-#               (value is shown large; label says what it counts)
+#               (value is shown large; label says what it counts).
+#               `spaces` lists the spaces (software, data, research) that
+#               also show the result under their header; none for research.
 #   featured:   ids of the projects of _data/projects.yml shown on the home
 #               page, in this order
 #   skills:     groups of tools, shown as plain lists
@@ -12,15 +14,18 @@
 # ==========================================================================
 
 proof:
-  - value: { fr: "~180", en: "~180" }
+  - spaces: [software]
+    value: { fr: "~180", en: "~180" }
     label:
       fr: "sites hospitaliers et cliniques sur l'application migrée de PHP vers Java EE, sans interruption de service."
       en: "hospital and clinic sites on the application migrated from PHP to Java EE, with no service interruption."
-  - value: { fr: "20 % → 60 %", en: "20% → 60%" }
+  - spaces: [data]
+    value: { fr: "20 % → 60 %", en: "20% → 60%" }
     label:
       fr: "des sites clients au-dessus de 95 % de performance, avec des tableaux de bord KPI Power BI à l'appui."
       en: "of client sites above 95% performance, supported by Power BI KPI dashboards."
-  - value: { fr: "DP-700 · DP-600", en: "DP-700 · DP-600" }
+  - spaces: [data]
+    value: { fr: "DP-700 · DP-600", en: "DP-700 · DP-600" }
     label:
       fr: "certifications Microsoft Fabric : data engineer et analytics engineer."
       en: "Microsoft Fabric certifications: data engineer and analytics engineer."

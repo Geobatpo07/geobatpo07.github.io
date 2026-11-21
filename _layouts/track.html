@@ -25,6 +25,18 @@ layout: default
     </a>
   </header>
 
+  {% assign track_proof = site.data.home.proof | where_exp: "x", "x.spaces contains track_key" %}
+  {% if track_proof.size > 0 %}
+  <ul class="home-proof track-proof" aria-label="{{ t.home.proof_label }}">
+    {% for item in track_proof %}
+    <li>
+      <span class="home-proof__value">{{ item.value[lang] }}</span>
+      <span class="home-proof__label">{{ item.label[lang] }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
   {% include tracks/experience.html %}
   {% include tracks/projects.html %}
   {% include tracks/skills.html %}
