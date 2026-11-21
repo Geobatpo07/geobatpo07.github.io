@@ -113,7 +113,7 @@ module CvPdf
     def print_page(layout, lang, space = nil)
       @site.pages.find do |page|
         page.data['layout'] == layout &&
-          (page.data['lang'] || 'fr') == lang &&
+          (page.data['lang'] || 'en') == lang &&
           (space.nil? || page.data['space'] == space)
       end
     end

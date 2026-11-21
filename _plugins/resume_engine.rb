@@ -170,7 +170,7 @@ module ResumeEngine
       end
 
       publications.each do |pub|
-        next unless (pub.data['lang'] || 'fr') == lang
+        next unless (pub.data['lang'] || 'en') == lang
         next if in_preparation?(pub)
 
         entries << {

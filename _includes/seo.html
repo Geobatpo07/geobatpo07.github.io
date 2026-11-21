@@ -3,7 +3,7 @@
 <!-- begin SEO -->
 {% assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
 
-{% assign seo_lang = page.lang | default: "fr" %}
+{% assign seo_lang = page.lang | default: "en" %}
 {% assign seo_track = site.data.tracks[page.track] %}
 {% if page.layout == "contact" %}{% assign seo_contact = site.data.tracks[page.space].contact %}{% endif %}
 

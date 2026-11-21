@@ -3,5 +3,5 @@
   /files/<cv_file>_<FR|EN>.pdf, generated at build time from the print pages
   (_plugins/cv_pdf.rb). Params: space (a tracks.yml entry), lang.
 {%- endcomment -%}
-{%- assign cv_lang = include.lang | default: "fr" | upcase -%}
+{%- assign cv_lang = include.lang | default: "en" | upcase -%}
 {%- assign cv_pdf_url = "/files/" | append: include.space.cv_file | append: "_" | append: cv_lang | append: ".pdf" -%}

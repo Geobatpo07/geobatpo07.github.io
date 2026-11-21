@@ -187,6 +187,6 @@ Aucun de ces travaux n'est crédible à mes yeux s'il ne peut pas être vérifi�
   <li class="hero__chip">Épidémiologie mathématique</li>
 </ul>
 
-Ce sont des directions dans lesquelles je veux grandir, pas des résultats que je revendique. Le fil qui m'a mené jusqu'ici (à lire sur la page [Mon parcours scientifique](/about/)) est le même qui pointe vers elles.
+Ce sont des directions dans lesquelles je veux grandir, pas des résultats que je revendique. Le fil qui m'a mené jusqu'ici (à lire sur la page [Mon parcours scientifique](/fr/about/)) est le même qui pointe vers elles.
 
 </div>

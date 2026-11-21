@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% include base_path %}
-{% assign single_lang = page.lang | default: "fr" %}
+{% assign single_lang = page.lang | default: "en" %}
 {% assign single_t = site.data.i18n[single_lang] %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
