@@ -566,6 +566,13 @@ a.tracks-card {
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   margin-bottom: 2.5rem;
   padding-top: 1.5rem;
+  gap: 1.75rem 2.5rem;
+
+  /* No vertical rules: the gap separates the figures, whatever the count or wrapping */
+  li {
+    padding: 0;
+    border-left: 0;
+  }
 
   /* A single figure would stretch over the whole width */
   li:only-child {
