@@ -30,7 +30,7 @@
     {% endif %}
     {% if chrome == "portal" %}
     <nav class="space-footer__owner" aria-label="{{ t.home.owner_label }}" data-owner-links hidden>
-      <ul class="space-footer__links">
+      <ul class="space-footer__owner-links">
         {% for entry in site.data.tracks %}
           {% assign track = entry[1] %}
           {% if lang == "fr" %}{% assign track_url = "/fr" | append: track.url %}{% else %}{% assign track_url = track.url %}{% endif %}
