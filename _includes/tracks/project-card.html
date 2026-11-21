@@ -21,7 +21,7 @@
       <h3>{{ p.name }}</h3>
       {% if p.status %}<span class="tracks-status">{{ t.status[p.status] }}</span>{% endif %}
     </div>
-    <p>{{ p.description[lang] }}</p>
+    <p class="tracks-card__desc" data-more="{{ t.read_more }}" data-less="{{ t.read_less }}">{{ p.description[lang] }}</p>
     <ul class="tracks-badges" aria-label="Stack">
       {% for s in p.stack %}<li>{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}</li>{% endfor %}
     </ul>
