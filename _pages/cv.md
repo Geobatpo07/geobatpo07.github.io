@@ -1,15 +1,13 @@
 ---
-lang: fr
+lang: en
 ref: cv
 space: research
 layout: cv-full
 permalink: /cv/
 title: "Curriculum Vitae"
-description: "Parcours académique et professionnel : formation, recherche, enseignement, compétences techniques, certifications et publications en mathématiques appliquées et data science."
+description: "Academic and professional background: education, research experience, teaching, technical skills, certifications, and publications in applied mathematics and data science."
 full_width: true
 author_profile: false
 redirect_from:
-  - /resume
-  - /cv-json/
-  - /resume-json
+  - /en/cv/
 ---

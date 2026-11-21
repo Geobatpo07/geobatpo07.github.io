@@ -1,13 +1,11 @@
 ---
 layout: portal
-lang: fr
+lang: en
 ref: home
 permalink: /
 title: "Software & Data Engineer"
-description: "Geovany Laguerre, ingénieur logiciel et data : C#/.NET, Java, Python, TypeScript, SQL. Du modèle mathématique au système en production."
+description: "Geovany Laguerre, software and data engineer: C#/.NET, Java, Python, TypeScript, SQL. From mathematical model to production system."
 author_profile: false
 redirect_from:
-  - /projects/
-  - /portfolio/
-  - /portfolio.html
+  - /en/
 ---

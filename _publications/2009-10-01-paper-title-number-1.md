@@ -1,17 +1,17 @@
 ---
-lang: fr
+lang: en
 ref: pub-analytics-engineering
-title: "Modern Analytics Engineering for Scientific Workflows (en préparation)"
+title: "Modern Analytics Engineering for Scientific Workflows (In Preparation)"
 collection: publications
 category: manuscripts
 permalink: /publication/in-preparation-analytics-engineering-science
-excerpt: "Travail en préparation sur une architecture analytique moderne au service de flux de travail scientifiques reproductibles."
+excerpt: 'Work in preparation on a modern analytics architecture for reproducible scientific workflows.'
 date: 2026-01-20
-venue: 'Manuscrit en préparation'
+venue: 'Manuscript in preparation'
+redirect_from:
+  - /en/publication/in-preparation-analytics-engineering-science
 ---
 
-*Titre en français : L'analytics engineering moderne au service des flux de travail scientifiques.*
+This manuscript presents an analytics engineering framework focused on reproducibility, combining data modeling, compute, and observability.
 
-Ce manuscrit présente un cadre d'analytics engineering centré sur la reproductibilité, qui associe modélisation des données, calcul et observabilité.
-
-Il s'inscrit dans la continuité de mon travail pratique sur des piles modernes (DuckDB, Iceberg, dbt, Trino) pour la recherche et l'analytique avancée.
+It is aligned with my practical work on modern stacks (DuckDB, Iceberg, dbt, Trino) for research and advanced analytics.

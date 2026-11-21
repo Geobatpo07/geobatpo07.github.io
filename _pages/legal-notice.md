@@ -1,40 +1,42 @@
 ---
-lang: fr
+lang: en
 ref: legal-notice
 space: neutral
-permalink: /mentions-legales/
-title: "Mentions légales"
-description: "Éditeur, directeur de la publication et hébergeur du site geovanylaguerre.net."
+permalink: /legal-notice/
+title: "Legal notice"
+description: "Publisher, publication director and host of the geovanylaguerre.net website."
 author_profile: false
+redirect_from:
+  - /en/legal-notice/
 ---
 
-*Dernière mise à jour : 28 septembre 2026.*
+*Last updated: 28 September 2026.*
 
-## Éditeur du site
+## Publisher
 
-Le site geovanylaguerre.net est un site personnel, non commercial, édité par un particulier :
+geovanylaguerre.net is a personal, non-commercial website published by a private individual:
 
-- **Éditeur et directeur de la publication :** Geovany Batista Polo Laguerre
-- **Contact :** [{{ site.author.email }}](mailto:{{ site.author.email }})
+- **Publisher and publication director:** Geovany Batista Polo Laguerre
+- **Contact:** [{{ site.author.email }}](mailto:{{ site.author.email }})
 
-## Hébergement
+## Hosting
 
-Le site est hébergé par **GitHub Pages**, service de :
+The website is hosted by **GitHub Pages**, a service of:
 
 GitHub, Inc.<br>
 88 Colin P. Kelly Jr. Street<br>
-San Francisco, CA 94107, États-Unis<br>
-Téléphone : +1 (415) 448-6673<br>
+San Francisco, CA 94107, United States<br>
+Phone: +1 (415) 448-6673<br>
 [https://github.com](https://github.com)
 
-Le nom de domaine est enregistré auprès de GoDaddy.com, LLC.
+The domain name is registered with GoDaddy.com, LLC.
 
-## Propriété intellectuelle
+## Intellectual property
 
-Les textes, les études de cas et les CV publiés sur ce site sont la propriété de leur auteur. Toute reproduction substantielle sans autorisation est interdite ; les courtes citations avec mention de la source sont les bienvenues.
+The texts, case studies and CVs published on this website belong to their author. Substantial reproduction without permission is prohibited; short quotations with a mention of the source are welcome.
 
-Le site utilise des éléments tiers sous licence libre, hébergés avec le site : les polices Inter et Fraunces (SIL Open Font License), Font Awesome Free (icônes sous licence CC BY 4.0, polices sous SIL OFL, code sous MIT), Academicons (SIL OFL) et la bibliothèque Chart.js (licence MIT).
+The website uses third-party components under free licenses, hosted with the site: the Inter and Fraunces fonts (SIL Open Font License), Font Awesome Free (icons under CC BY 4.0, fonts under SIL OFL, code under MIT), Academicons (SIL OFL) and the Chart.js library (MIT license).
 
-## Données personnelles
+## Personal data
 
-Le traitement des données personnelles est décrit dans la [politique de confidentialité]({% include ref-url.html ref="privacy" %}).
+The processing of personal data is described in the [privacy policy]({% include ref-url.html ref="privacy" %}).

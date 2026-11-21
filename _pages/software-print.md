@@ -1,8 +1,10 @@
 ---
 layout: cv-print
 space: software
-lang: fr
+lang: en
 ref: software-print
 permalink: /software/print/
 sitemap: false
+redirect_from:
+  - /en/software/print/
 ---
