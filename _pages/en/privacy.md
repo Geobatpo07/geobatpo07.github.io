@@ -40,7 +40,7 @@ The "Send an email" links and the [Feedback]({% include localized-url.html path=
 - **Data:** your email address, your name if it appears in the message, the content of the message.
 - **Purpose:** replying to you.
 - **Legal basis:** legitimate interest (replying to your request), or pre-contractual measures if the message is about a position or an engagement.
-- **Recipient:** me only; messages are hosted by my email provider, Google (Gmail), in the United States, under the EU–US Data Privacy Framework.
+- **Recipient:** me only; messages are hosted by my email provider, Proton (Proton Mail), in Switzerland, a country the European Union recognises as providing an adequate level of protection.
 - **Retention:** for the duration of the exchange, then at most three years after the last contact.
 
 ## 4. Meeting booking (Calendly)
@@ -69,7 +69,7 @@ The fonts, icons and scripts are hosted with the website: no resource is request
 
 You have the right of access, rectification, erasure, objection, restriction of processing and portability of your data. To exercise them, write to [{{ site.author.email }}](mailto:{{ site.author.email }}); I reply within one month.
 
-For the data kept by GitHub, GoatCounter, Google or Calendly, you can also contact these services directly.
+For the data kept by GitHub, GoatCounter, Proton or Calendly, you can also contact these services directly.
 
 If you consider that your rights are not respected, you can lodge a complaint with the CNIL (the French data protection authority): [www.cnil.fr](https://www.cnil.fr), 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, France.
 

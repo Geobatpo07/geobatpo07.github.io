@@ -40,7 +40,7 @@ Les liens « Écrire un e-mail » et le formulaire [Votre avis]({% include local
 - **Données :** votre adresse e-mail, votre nom s'il figure dans le message, le contenu du message.
 - **Finalité :** vous répondre.
 - **Base légale :** intérêt légitime (répondre à votre demande), ou mesures précontractuelles si le message porte sur un poste ou une mission.
-- **Destinataire :** moi seul ; les messages sont hébergés par mon fournisseur de messagerie, Google (Gmail), aux États-Unis, dans le cadre du Data Privacy Framework UE–États-Unis.
+- **Destinataire :** moi seul ; les messages sont hébergés par mon fournisseur de messagerie, Proton (Proton Mail), en Suisse, pays reconnu par l'Union européenne comme offrant un niveau de protection adéquat.
 - **Durée :** le temps de l'échange, puis au plus trois ans après le dernier contact.
 
 ## 4. Prise de rendez-vous (Calendly)
@@ -69,7 +69,7 @@ Les polices, les icônes et les scripts du site sont hébergés avec lui : aucun
 
 Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de limitation du traitement et de portabilité de vos données. Pour les exercer, écrivez à [{{ site.author.email }}](mailto:{{ site.author.email }}) ; je réponds dans un délai d'un mois.
 
-Pour les données tenues par GitHub, GoatCounter, Google ou Calendly, vous pouvez aussi vous adresser directement à ces services.
+Pour les données tenues par GitHub, GoatCounter, Proton ou Calendly, vous pouvez aussi vous adresser directement à ces services.
 
 Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL : [www.cnil.fr](https://www.cnil.fr), 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07.
 
