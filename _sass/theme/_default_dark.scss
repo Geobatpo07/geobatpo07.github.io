@@ -38,6 +38,7 @@ $sidebar-screen-min-width   : 1024px;
 html[data-theme="dark"] {
     --global-base-color                 : #fafafa;
     --global-on-base-color              : #09090b;
+    --global-base-color-hover           : #d4d4d8;
     --global-bg-color                   : #{$background};
     --global-footer-bg-color            : #{$background};
     --global-border-color               : #27272a;

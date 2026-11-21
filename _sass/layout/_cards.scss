@@ -472,7 +472,7 @@ input[type="search"].project-filters__search {
   align-self: flex-start;
 
   &:hover {
-    color: var(--color-navy) !important;
+    color: var(--global-link-color-hover) !important;
     text-decoration: underline !important;
   }
 }

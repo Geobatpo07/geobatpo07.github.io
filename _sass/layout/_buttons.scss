@@ -24,9 +24,9 @@
   transition: $global-transition, transform 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
-    background-color: var(--color-navy);
+    background-color: var(--global-base-color-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(11, 30, 54, 0.18);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
   }
 
   .icon {
