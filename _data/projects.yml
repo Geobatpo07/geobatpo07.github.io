@@ -8,7 +8,7 @@
 #   cv:         CVs listing the project: software, data, research (in the
 #               space's order above) and profile (the complete CV).
 #   case_study: path of the French case study under /projects/ (a neutral
-#               page; the English one is under /en/projects/). The cards of
+#               page; the French one is under /fr/projects/). The cards of
 #               every space showing the project link to it, with ?from=.
 #   stack:      list of strings, or {fr, en} pairs for terms that translate.
 #   links:      extra links, each { label: {fr, en}, url }.
@@ -214,3 +214,16 @@
     contribution:
       fr: "Un exposé clair et présentable d'un résultat fondamental de la théorie des corps finis."
       en: "A clear, presentable account of a foundational result in finite field theory."
+
+- id: keemboll-bi
+  name: "Keemboll BI"
+  github: "https://github.com/Keemboll/keemboll-bi"
+  stack: ["Power BI", "Microsoft Fabric", "Python", "GitHub Actions", "Claude Code"]
+  status: active
+  tracks: { software: 1, data: 1 }
+  description:
+    fr: "Collection open source de skills Claude Code pour Power BI et Microsoft Fabric, pensée pour les équipes BI. Inclut une veille mensuelle automatisée qui ouvre une issue quand de nouvelles fonctionnalités de la plateforme apparaissent."
+    en: "Open-source collection of Claude Code skills for Power BI and Microsoft Fabric, built for BI teams. Includes a monthly automated watch that opens an issue when new platform features appear."
+  links:
+    - label: { fr: "Présentation", en: "Overview" }
+      url: "https://keemboll.com/keemboll-bi/"

@@ -13,7 +13,7 @@ layout: compress
 {% assign chrome = page.space | default: page.track | default: layout.space | default: "neutral" %}
 
 <!doctype html>
-<html lang="{{ page.lang | default: site.locale | slice: 0,2 }}" class="no-js" data-space="{{ chrome }}"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ page.lang | default: site.locale | slice: 0,2 }}" class="no-js" data-space="{{ chrome }}" data-theme="dark">
   <head>
     {% include head.html %}
     {% include head/custom.html %}

@@ -12,14 +12,14 @@ sitemap: false
 {%- assign r = site.data.resume -%}
 # {{ r.name }}
 
-> Personal portfolio of {{ r.name }}: software engineering (C#/.NET, Java, TypeScript), data engineering and analytics (Microsoft Fabric, Power BI, SQL, Python), and research in applied mathematics (mathematical modelling, scientific computing) with teaching. The site is in French (at the root) and English (under /en/). Portfolio personnel, en français à la racine et en anglais sous /en/.
+> Personal portfolio of {{ r.name }}: software engineering (C#/.NET, Java, TypeScript), data engineering and analytics (Microsoft Fabric, Power BI, SQL, Python), and research in applied mathematics (mathematical modelling, scientific computing) with teaching. The site is in English (at the root) and French (under /fr/). Portfolio personnel, en anglais à la racine et en français sous /fr/.
 
 The site has three independent spaces, one per career track, each with its experience, projects, skills, education, certifications, a contact page and a generated CV (PDF). The portal at the root lists the three spaces.
 
 ## Spaces / Espaces
 {% for entry in site.data.tracks %}{% assign track = entry[1] %}
-- [{{ track.title.en }}]({{ site.url }}/en{{ track.url }}): {{ track.tagline.en }}
-- [{{ track.title.fr }}]({{ site.url }}{{ track.url }}): {{ track.tagline.fr }}
+- [{{ track.title.en }}]({{ site.url }}{{ track.url }}): {{ track.tagline.en }}
+- [{{ track.title.fr }}]({{ site.url }}/fr{{ track.url }}): {{ track.tagline.fr }}
 {%- endfor %}
 
 ## CVs (PDF)
@@ -27,8 +27,8 @@ The site has three independent spaces, one per career track, each with its exper
 - [{{ track.title.en }} CV (English)]({{ site.url }}/files/{{ track.cv_file }}_EN.pdf)
 - [CV {{ track.title.fr }} (français)]({{ site.url }}/files/{{ track.cv_file }}_FR.pdf)
 {%- endfor %}
-- [Complete CV (English)]({{ site.url }}/files/Profile_EN.pdf), [web version]({{ site.url }}/en/cv/)
-- [CV complet (français)]({{ site.url }}/files/Profile.pdf), [version web]({{ site.url }}/cv/)
+- [Complete CV (English)]({{ site.url }}/files/Profile_EN.pdf), [web version]({{ site.url }}/cv/)
+- [CV complet (français)]({{ site.url }}/files/Profile.pdf), [version web]({{ site.url }}/fr/cv/)
 
 ## Case studies / Études de cas
 {% assign case_studies = site.projects | where: "lang", "en" | sort: "date" | reverse %}
@@ -36,7 +36,7 @@ The site has three independent spaces, one per career track, each with its exper
 - [{{ p.title }}]({{ site.url }}{{ p.url }}): {{ p.excerpt | strip_html | strip_newlines }}
 {%- endfor %}
 
-French versions: same paths without /en/ (for example {{ site.url }}/projects/datahut/).
+French versions: same paths under /fr/ (for example {{ site.url }}/fr/projects/datahut/).
 
 ## Publications
 {% assign pubs = site.publications | where: "lang", "en" | sort: "date" | reverse %}
@@ -46,19 +46,19 @@ French versions: same paths without /en/ (for example {{ site.url }}/projects/da
 
 ## About / À propos
 
-- [My Scientific Journey]({{ site.url }}/en/about/) / [Mon parcours scientifique]({{ site.url }}/about/)
-- [Teaching]({{ site.url }}/en/teaching/) / [Enseignement]({{ site.url }}/teaching/)
+- [My Scientific Journey]({{ site.url }}/about/) / [Mon parcours scientifique]({{ site.url }}/fr/about/)
+- [Teaching]({{ site.url }}/teaching/) / [Enseignement]({{ site.url }}/fr/teaching/)
 
 ## Contact
 
 - Email: {{ site.author.email }}
-- Contact pages: [software]({{ site.url }}/en/software/contact/), [data]({{ site.url }}/en/data/contact/), [research]({{ site.url }}/en/research/contact/) (French: same paths without /en/)
+- Contact pages: [software]({{ site.url }}/software/contact/), [data]({{ site.url }}/data/contact/), [research]({{ site.url }}/research/contact/) (French: same paths under /fr/)
 - LinkedIn: https://www.linkedin.com/in/{{ site.author.linkedin }}
 - GitHub: https://github.com/{{ site.author.github }}
 - Blog: {{ site.author.geo_stories }}
 
 ## Optional
 
-- [Legal notice]({{ site.url }}/en/legal-notice/) / [Mentions légales]({{ site.url }}/mentions-legales/)
-- [Privacy policy]({{ site.url }}/en/privacy/) / [Politique de confidentialité]({{ site.url }}/confidentialite/)
+- [Legal notice]({{ site.url }}/legal-notice/) / [Mentions légales]({{ site.url }}/fr/mentions-legales/)
+- [Privacy policy]({{ site.url }}/privacy/) / [Politique de confidentialité]({{ site.url }}/fr/confidentialite/)
 - [Sitemap]({{ site.url }}/sitemap.xml)

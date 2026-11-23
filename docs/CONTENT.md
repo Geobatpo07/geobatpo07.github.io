@@ -28,7 +28,7 @@ Les noms propres qui ne se traduisent pas (organisation, nom de projet, technolo
 
 | Préfixe | Où |
 |---|---|
-| `profile_` | CV complet : `/cv/`, `/en/cv/`, `files/Profile.pdf`, `files/Profile_EN.pdf` |
+| `profile_` | CV complet : `/cv/`, `/fr/cv/`, `files/Profile.pdf`, `files/Profile_EN.pdf` |
 | `software_`, `data_`, `research_` | La page de l'espace (`/<espace>/`) et son CV (`files/CV_Laguerre_<Espace>_<FR\|EN>.pdf`) |
 
 **Ordre.** L'ordre du fichier est l'ordre d'affichage partout (sauf compétences : voir `<préfixe>_rank`).
@@ -68,7 +68,7 @@ experience:
 - Une valeur de `<préfixe>_bullets` est une liste de `{ fr, en }`, ou le nom d'un autre préfixe (`profile_bullets: research`), ou une liste de noms : le moteur remplace la référence par les puces correspondantes. Une puce n'est ainsi écrite qu'une fois.
 - `<espace>_cv: false` : le poste reste sur la page de l'espace mais sort du CV de l'espace.
 - `cv: false` sur une puce : elle reste sur le site mais sort des CV.
-- `link` et `link_label` (facultatifs) : lien affiché sur le CV complet ; `link` est le chemin français, `/en` est ajouté sur la version anglaise.
+- `link` et `link_label` (facultatifs) : lien affiché sur le CV complet ; `link` est le chemin anglais, `/fr` est ajouté sur la version française.
 - `include_in_timeline: false` : hors de la frise du CV complet.
 
 ## Formation, compétences, certifications, langues
@@ -143,38 +143,38 @@ Le site est un portail et trois espaces cloisonnés. Le layout `default` choisit
 
 | `data-space` | Pages | En-tête | Pied de page |
 |---|---|---|---|
-| `portal` | `/`, `/en/` | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub |
+| `portal` | `/`, `/fr/` | nom, FR \| EN, thème | e-mail, LinkedIn, GitHub, et liens cachés vers les espaces (voir ci-dessous) |
 | `software`, `data`, `research` | racine, page contact, pages d'impression du CV et pages rattachées de l'espace ; pour research : `/about/`, `/cv/`, `/teaching/`, `/feedback/` et les études de cas | nom (vers la racine de l'espace), menu de l'espace, FR \| EN dans l'espace, thème | contact de l'espace, e-mail avec objet, LinkedIn, GitHub |
 | `neutral` | fiches publication et enseignement, 404, `/terms/`, `/resume-print/` | nom sans lien, bouton « Retour », thème | copyright |
 
-**Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail liste les trois espaces. Le seul lien que les trois espaces partagent est celui du blog Stories, dans leur menu.
+**Règle d'isolement.** Une page d'espace ne contient aucun lien vers le portail ni vers un autre espace (en-tête, pied de page et contenu). Seul le portail pointe vers les trois espaces, par des liens cachés dans son pied de page (`data-owner-links`, attribut `hidden`) que `assets/js/owner-links.js` affiche dans le navigateur du propriétaire après `/?owner=1` (`/?owner=0` les recache). Ce n'est pas un contrôle d'accès : les espaces restent joignables par leur URL. Le seul lien que les trois espaces partagent est celui du blog Stories, dans leur menu.
 
-**Études de cas.** Ce sont des pages neutres (`space: neutral` par défaut dans `_config.yml`, layout `case-study`) : en-tête sans menu avec un bouton Retour, pied de page neutre, aucun lien vers un espace. La carte d'un projet mène à son étude de cas dans chaque espace où elle apparaît, avec `?from=<espace>` (et `&lang=en` en anglais) : le bouton Retour revient à la page précédente, ou à défaut à la racine de cet espace.
+**Études de cas.** Ce sont des pages neutres (`space: neutral` par défaut dans `_config.yml`, layout `case-study`) : en-tête sans menu avec un bouton Retour, pied de page neutre, aucun lien vers un espace. La carte d'un projet mène à son étude de cas dans chaque espace où elle apparaît, avec `?from=<espace>` (et `&lang=fr` en français) : le bouton Retour revient à la page précédente, ou à défaut à la racine de cet espace.
 
-**Langues.** Le français est la langue par défaut : toute page française est à la racine, toute page anglaise sous `/en/`, et **toute page anglaise a sa version française**. `_config.yml` donne `lang: fr` à toutes les pages et à tous les documents des collections ; une page anglaise déclare `lang: en`. Chaque paire partage un `ref` : le `<head>` liste les deux versions en `hreflang`, avec `x-default` sur la version française, et le sélecteur FR | EN passe de l'une à l'autre sans quitter l'espace. Il n'existe pas de préfixe `/fr/`.
+**Langues.** L'anglais est la langue par défaut : toute page anglaise est à la racine, toute page française sous `/fr/`, et **toute page française a sa version anglaise**. `_config.yml` donne `lang: en` à toutes les pages et à tous les documents des collections ; une page française déclare `lang: fr`. Chaque paire partage un `ref` : le `<head>` liste les deux versions en `hreflang`, avec `x-default` sur la version anglaise, et le sélecteur EN | FR passe de l'une à l'autre sans quitter l'espace. Il n'existe plus de préfixe `/en/` : les anciennes URL `/en/…` redirigent vers l'équivalent à la racine (`redirect_from`), tandis que les anciennes URL françaises à la racine (par exemple `/software/`) sont maintenant en anglais ; les pages françaises uniques `/mentions-legales/` et `/confidentialite/` redirigent vers `/fr/…`.
 
-- Pages : `_pages/x.md` (français) et `_pages/en/x.md` (anglais).
-- Collections : `_projects/x.md` et `_projects/en/x.md` (idem `_publications`, `_teaching`), avec un `permalink` explicite (`/projects/x/` et `/en/projects/x/`).
-- Liens écrits à la main dans une page : chemin français pour la page française, `/en/…` pour l'anglaise, ou l'include `localized-url.html` (`{% raw %}{% include localized-url.html path="/teaching/" %}{% endraw %}`), qui ajoute `/en` sur une page anglaise.
+- Pages : `_pages/x.md` (anglais) et `_pages/fr/x.md` (français).
+- Collections : `_projects/x.md` et `_projects/fr/x.md` (idem `_publications`, `_teaching`), avec un `permalink` explicite (`/projects/x/` et `/fr/projects/x/`).
+- Liens écrits à la main dans une page : chemin à la racine pour la page anglaise, `/fr/…` pour la française, ou l'include `localized-url.html` (`{% raw %}{% include localized-url.html path="/teaching/" %}{% endraw %}`), qui ajoute `/fr` sur une page française.
 - Publications : l'article garde son titre original ; la fiche française traduit le résumé et le lieu et donne le titre traduit dans son texte.
 
-**Espaces.** Chaque espace existe en deux pages de quelques lignes, par exemple `_pages/software.md` (`/software/`) et `_pages/en/software.md` (`/en/software/`) :
+**Espaces.** Chaque espace existe en deux pages de quelques lignes, par exemple `_pages/software.md` (`/software/`) et `_pages/fr/software.md` (`/fr/software/`) :
 
 ```yaml
 ---
 layout: track
 track: software      # clé de tracks.yml
 lang: en
-ref: software        # identifiant commun aux deux langues (sélecteur FR | EN)
-permalink: /en/software/
+ref: software        # identifiant commun aux deux langues (sélecteur EN | FR)
+permalink: /software/
 ---
 ```
 
 Le menu de l'espace pointe vers les ancres de la racine (Expérience, Projets, Compétences), les entrées `extra_nav`, le CV PDF de la langue affichée, le blog Stories et la page contact.
 
-**Pages contact.** `_pages/<espace>-contact.md` et `_pages/en/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml`.
+**Pages contact.** `_pages/<espace>-contact.md` et `_pages/fr/<espace>-contact.md` (layout `contact`, `space: <espace>`) ; tous les textes viennent du bloc `contact` de `tracks.yml`.
 
-**Pages neutres.** Les fiches publication et enseignement reçoivent `space: neutral` par défaut. Depuis un espace, un lien vers une fiche ajoute `?from=<espace>` (et `&lang=en` en anglais) : le bouton « Retour » fait `history.back()`, sinon renvoie à la racine indiquée par `from`, sinon reste masqué.
+**Pages neutres.** Les fiches publication et enseignement reçoivent `space: neutral` par défaut. Depuis un espace, un lien vers une fiche ajoute `?from=<espace>` (et `&lang=fr` en français) : le bouton « Retour » fait `history.back()`, sinon renvoie à la racine indiquée par `from`, sinon reste masqué.
 
 ## CV
 
@@ -182,12 +182,12 @@ Aucun CV n'est déposé à la main : la CI les génère à chaque déploiement, 
 
 | Page d'impression | PDF généré | Limite |
 |---|---|---|
-| `/software/print/`, `/en/software/print/` | `files/CV_Laguerre_Software_FR.pdf`, `_EN.pdf` | 1 page |
-| `/data/print/`, `/en/data/print/` | `files/CV_Laguerre_Data_FR.pdf`, `_EN.pdf` | 1 page |
-| `/research/print/`, `/en/research/print/` | `files/CV_Laguerre_Research_FR.pdf`, `_EN.pdf` | 2 pages |
-| `/resume-print/`, `/en/resume-print/` (CV complet) | `files/Profile.pdf`, `files/Profile_EN.pdf` | — |
+| `/software/print/`, `/fr/software/print/` | `files/CV_Laguerre_Software_FR.pdf`, `_EN.pdf` | 1 page |
+| `/data/print/`, `/fr/data/print/` | `files/CV_Laguerre_Data_FR.pdf`, `_EN.pdf` | 1 page |
+| `/research/print/`, `/fr/research/print/` | `files/CV_Laguerre_Research_FR.pdf`, `_EN.pdf` | 2 pages |
+| `/resume-print/`, `/fr/resume-print/` (CV complet) | `files/Profile.pdf`, `files/Profile_EN.pdf` | — |
 
-Le lien « CV » de l'en-tête, le bouton de la racine et celui de la page contact pointent vers le PDF de l'espace dans la langue affichée. La page `/cv/` (et `/en/cv/`) affiche le CV complet et propose `Profile.pdf` (ou `Profile_EN.pdf`).
+Le lien « CV » de l'en-tête, le bouton de la racine et celui de la page contact pointent vers le PDF de l'espace dans la langue affichée. La page `/cv/` (et `/fr/cv/`) affiche le CV complet et propose `Profile_EN.pdf` (ou `Profile.pdf` en français).
 
 **Contenu d'un CV d'espace** (`_layouts/cv-print.html`) : `<espace>_headline` et `<espace>_summary`, les postes avec `<espace>_bullets` (sauf `<espace>_cv: false`), les projets dont `cv` contient l'espace, les compétences avec `<espace>_rank` (sauf `<espace>_cv: false`), la formation, les certifications de l'espace et, si `publications: true`, les publications de la langue.
 
@@ -212,8 +212,8 @@ data:
 
 | Page d'impression | PDF |
 |---|---|
-| `/resume-print/`, `/en/resume-print/` | `Profile.pdf`, `Profile_EN.pdf` |
-| `/<espace>/print/`, `/en/<espace>/print/` | `<cv_file>_FR.pdf`, `<cv_file>_EN.pdf` (`cv_file` dans `tracks.yml`) |
+| `/resume-print/`, `/fr/resume-print/` | `Profile_EN.pdf`, `Profile.pdf` |
+| `/<espace>/print/`, `/fr/<espace>/print/` | `<cv_file>_EN.pdf`, `<cv_file>_FR.pdf` (`cv_file` dans `tracks.yml`) |
 
 Les marges et le format viennent de la règle `@page` de chaque feuille d'impression. Le build échoue, avec un message qui nomme le fichier, si :
 
@@ -225,7 +225,7 @@ Les marges et le format viennent de la règle `@page` de chaque feuille d'impres
 
 ## Conformité : ce que le site charge et collecte
 
-- **Pages légales** (neutres, FR et EN, liées depuis le pied de page de toutes les pages) : mentions légales (`/mentions-legales/`, `/en/legal-notice/`) et politique de confidentialité (`/confidentialite/`, `/en/privacy/`, qui remplace `/terms/`). Toute modification de ce que le site charge ou collecte doit y être reportée.
+- **Pages légales** (neutres, FR et EN, liées depuis le pied de page de toutes les pages) : mentions légales (`/legal-notice/`, `/fr/mentions-legales/`) et politique de confidentialité (`/privacy/`, `/fr/confidentialite/`, qui remplace `/terms/`). Toute modification de ce que le site charge ou collecte doit y être reportée.
 - **Aucun traceur avant action volontaire**, donc aucun bandeau de cookies. Le seul script tiers chargé d'office est GoatCounter (mesure d'audience sans cookie, builds de production seulement, pas sur les pages d'impression des CV ; `analytics` dans `_config.yml`).
 - **Tout le reste est hébergé avec le site** : polices Inter et Fraunces (`assets/fonts/`, `_sass/_fonts.scss`, licences OFL), Font Awesome, Academicons, Chart.js (`assets/js/chart.umd.min.js`). Ne pas réintroduire de ressource chargée depuis Google Fonts ou un CDN.
 - **Calendly** n'est chargé qu'après un clic (`data-click-to-load`, `assets/js/click-to-load.js`) ; le même mécanisme sert pour tout futur contenu tiers intégré.
@@ -246,4 +246,12 @@ La CI (`.github/workflows/jekyll.yml`) valide `resume.yml`, construit le site (c
 bundle exec ruby scripts/check-isolation.rb   # liens internes, images, scripts, isolement, langues
 ```
 
-Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît, si une page anglaise n'est pas sous `/en/` ou n'a pas de version française existante, si une page sous `/en/` n'est pas en anglais, si le `x-default` d'une paire ne vise pas la version française, ou si un lien utilise le préfixe `/fr/`.
+Le contrôle échoue si une page d'espace pointe vers le portail ou vers un autre espace (redirections suivies), si une page n'a pas de `data-space`, si l'ancien en-tête global (`.masthead`, `.site-header`) réapparaît, si une page française n'est pas sous `/fr/` ou n'a pas de version anglaise existante, si une page sous `/fr/` n'est pas en français, si le `x-default` d'une paire ne vise pas la version anglaise, ou si un lien utilise l'ancien préfixe `/en/`.
+
+## Page d'accueil (portfolio)
+
+`/` et `/fr/` utilisent le layout `portal` : présentation avec portrait, résultats, projets en vedette, compétences, témoignages (seulement si `_data/testimonials.yml` n'est pas vide) et contact. Le contenu est dans `_data/home.yml` (`proof`, `featured` = identifiants de `_data/projects.yml`, `skills`) et dans le bloc `home` de `_data/i18n.yml`. Les styles sont dans `_sass/_home.scss`.
+
+**Chiffres clés des espaces.** Chaque élément de `proof` (`_data/home.yml`) a un champ `spaces` (liste de `software`, `data`, `research`) : les éléments dont la liste contient l'espace courant s'affichent sous l'en-tête de sa page (`_layouts/track.html`, même style que l'accueil). Un espace sans élément (research) n'affiche rien. Les valeurs restent des paires `{fr, en}`.
+
+**Cartes de projets.** Les descriptions de plus de 4 lignes sont tronquées par `assets/js/card-clamp.js`, qui ajoute un bouton « Lire la suite » / « Réduire » (textes `read_more` et `read_less` de `_data/i18n.yml`, `aria-expanded`). Sans JavaScript, la description complète reste affichée.

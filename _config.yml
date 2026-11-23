@@ -7,7 +7,7 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US" # labels of the legacy AcademicPages templates (English pages); the site language is set per page (`lang`, fr by default)
+locale                   : "en-US" # labels of the legacy AcademicPages templates (English pages); the site language is set per page (`lang`, en by default)
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Geovany Batista Polo LAGUERRE"
 title_separator          : "-"
@@ -30,7 +30,7 @@ author:
   location         : "Paris, France"
   employer         : "Université des Antilles"
   uri              : # URL
-  email            : "lgeobatpo98@gmail.com"
+  email            : "geovanylaguerre@proton.me"
   geo_stories      : "https://stories.geovanylaguerre.net/"
   superprof        : "https://www.superprof.fr/data-scientist-mathematicien-applique-enseigne-maths-statistiques-physique-algorithmique-pedagogie-adaptee.html"
 
@@ -280,14 +280,14 @@ defaults:
       comments: true
       share: true
       related: true
-  # French by default: every page and document is French at the root and
-  # has an English version under /en/ that declares `lang: en` (same `ref`)
+  # English by default: every page and document is English at the root and
+  # has a French version under /fr/ that declares `lang: fr` (same `ref`)
   - scope:
       path: ""
       type: pages
     values:
       layout: single
-      lang: fr
+      lang: en
       author_profile: true
   # _teaching and _publications: detail pages shared by the spaces, with the
   # neutral chrome (no navigation, "Back" button)
@@ -296,7 +296,7 @@ defaults:
       type: teaching
     values:
       layout: single
-      lang: fr
+      lang: en
       space: neutral
       author_profile: false
   - scope:
@@ -304,7 +304,7 @@ defaults:
       type: publications
     values:
       layout: single
-      lang: fr
+      lang: en
       space: neutral
       author_profile: false
   # _projects: case studies, neutral pages reachable from every space
@@ -313,7 +313,7 @@ defaults:
       type: projects
     values:
       layout: case-study
-      lang: fr
+      lang: en
       space: neutral
       author_profile: false
       full_width: true

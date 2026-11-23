@@ -1,8 +1,10 @@
 ---
 layout: track
 track: software
-lang: fr
+lang: en
 ref: software
 permalink: /software/
 author_profile: false
+redirect_from:
+  - /en/software/
 ---

@@ -1,17 +1,19 @@
 ---
-lang: fr
+lang: en
 ref: teaching-math-tutor
-title: "Tuteur en mathématiques"
+title: "Mathematics Tutor"
 collection: teaching
-type: "Cours particuliers"
+type: "Private Tutoring"
 permalink: /teaching/mathematics-tutor
-venue: "Indépendant"
+venue: "Self-Employed"
 date: 2015-01-01
-location: "Port-au-Prince, Haïti"
+location: "Port-au-Prince, Haiti"
+redirect_from:
+  - /en/teaching/mathematics-tutor
 ---
 
-En tant que tuteur indépendant en mathématiques, j'accompagne dans la durée des élèves aux parcours variés.
+As a self-employed Mathematics Tutor, I have provided long-term academic support to students from diverse backgrounds.
 
-Mon travail consiste à clarifier les notions difficiles, à préparer les élèves aux examens et à leur transmettre des méthodes structurées de résolution de problèmes.
+My work includes clarifying complex concepts, preparing students for exams, and teaching structured problem-solving strategies.
 
-J'adapte mes méthodes au profil de chaque élève, en misant sur la confiance en soi, la rigueur et l'autonomie en mathématiques.
+I adapt methods to each student profile and focus on confidence building, rigor, and autonomy in mathematics.

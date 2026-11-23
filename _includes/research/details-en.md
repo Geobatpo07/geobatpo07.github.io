@@ -185,6 +185,6 @@ None of this work is credible to me if it can't be checked. That means code that
   <li class="hero__chip">Mathematical Epidemiology</li>
 </ul>
 
-These are directions I want to grow into, not results I'm claiming. The throughline that got me here (read on the [Scientific Journey](/en/about/) page) is the same one pointing toward them.
+These are directions I want to grow into, not results I'm claiming. The throughline that got me here (read on the [Scientific Journey](/about/) page) is the same one pointing toward them.
 
 </div>

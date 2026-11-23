@@ -1,11 +1,9 @@
 ---
 layout: contact
 space: research
-lang: fr
+lang: en
 ref: research-contact
 permalink: /research/contact/
 redirect_from:
-  - /causerie/
-  - /contact
-  - /contact/
+  - /en/research/contact/
 ---

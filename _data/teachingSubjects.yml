@@ -1,6 +1,6 @@
 # Subjects taught, grouped into coherent units rather than one card per
 # narrow topic. Each maps to real teaching or professional experience.
-# Every displayed field is a {fr, en} pair (/teaching/ and /en/teaching/).
+# Every displayed field is a {fr, en} pair (/teaching/ and /fr/teaching/).
 
 - title:
     fr: "Mathématiques appliquées et analyse"

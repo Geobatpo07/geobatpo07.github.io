@@ -3,36 +3,125 @@ layout: default
 space: portal
 ---
 {% comment %}
-  Portal (/ and /en/): the only page listing the three spaces. Name,
-  tagline and one card per space; no global menu. The footer carries the
-  external contact links.
+  Home (/ and /en/): the portfolio page. Introduction with portrait, results,
+  featured projects, skills, testimonials (only when there are some) and
+  contact. The content comes from _data/home.yml, projects.yml and
+  testimonials.yml. The three spaces (/software/, /data/, /research/) are
+  not presented here: the footer carries hidden links to them, shown only to
+  the owner (assets/js/owner-links.js).
 {% endcomment %}
 {% include base_path %}
-{% assign lang = page.lang | default: "fr" %}
+{% assign lang = page.lang | default: "en" %}
 {% assign t = site.data.i18n[lang] %}
+{% assign h = t.home %}
+{% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
 
-<main id="main" class="tracks-main">
+<main id="main" class="home">
   <section class="home-hero" aria-labelledby="home-title">
-    <p class="home-hero__eyebrow">{{ t.eyebrow }}</p>
-    <h1 class="home-hero__title" id="home-title">{{ t.headline }}</h1>
-    <p class="home-hero__stack"><span class="visually-hidden">{{ t.stack_label }} </span>C#/.NET · Java · Python · TypeScript · SQL</p>
+    {% include home-wave.html %}
+    <div class="home-hero__text">
+      <h1 class="home-hero__title" id="home-title">{{ t.headline }}</h1>
+      <p class="home-hero__tagline">{{ t.eyebrow }}</p>
+      <p class="home-hero__lead">{{ h.lead }}</p>
+      <div class="home-hero__actions">
+        <a class="btn" href="#contact">{{ h.cta_contact }}</a>
+        <a class="home-hero__link" href="#projects">{{ h.cta_projects }}</a>
+      </div>
+    </div>
+    <figure class="home-hero__portrait">
+      <img src="{{ base_path }}/images/Geo_04.jpg" width="400" height="400" alt="{{ h.portrait_alt }}" fetchpriority="high">
+    </figure>
   </section>
 
-  <section class="tracks-section" aria-labelledby="tracks-title">
-    <h2 id="tracks-title">{{ t.tracks_heading }}</h2>
-    <ul class="tracks-grid">
-      {% for entry in site.data.tracks %}
-        {% assign track = entry[1] %}
-        {% if lang == "en" %}{% assign track_url = "/en" | append: track.url %}{% else %}{% assign track_url = track.url %}{% endif %}
-      <li>
-        <a class="tracks-card" href="{{ base_path }}{{ track_url }}">
-          <i class="tracks-card__icon {{ track.icon }}" aria-hidden="true"></i>
-          <h3>{{ track.card_title[lang] }}</h3>
-          <p>{{ track.card_text[lang] }}</p>
-        </a>
-      </li>
+  <ul class="home-proof" aria-label="{{ h.proof_label }}">
+    {% for item in site.data.home.proof %}
+    <li>
+      <span class="home-proof__value">{{ item.value[lang] }}</span>
+      <span class="home-proof__label">{{ item.label[lang] }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <section class="home-section" id="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">{{ t.projects }}</h2>
+    <div class="home-projects">
+      {% for id in site.data.home.featured %}
+        {% assign p = site.data.projects | where: "id", id | first %}
+        {% if p %}
+          {% if lang == "fr" and p.case_study %}{% assign case_study_url = "/fr" | append: p.case_study %}{% else %}{% assign case_study_url = p.case_study %}{% endif %}
+      <article class="home-project">
+        <header class="home-project__head">
+          <h3>{{ p.name }}</h3>
+          {% if p.status %}<p class="home-project__status">{{ t.status[p.status] }}</p>{% endif %}
+        </header>
+        <div class="home-project__body">
+          <p>{{ p.description[lang] }}</p>
+          <p class="home-project__stack"><span class="visually-hidden">{{ h.stack_label }} </span>{% for s in p.stack %}{% if s.fr %}{{ s[lang] }}{% else %}{{ s }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+        </div>
+        <ul class="home-project__links">
+          {% if case_study_url %}<li><a href="{{ base_path }}{{ case_study_url }}">{{ t.case_study }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
+          {% if p.github %}<li><a href="{{ p.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> {{ t.source }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
+          {% if p.private %}<li class="home-project__private">{{ t.private_repo }}</li>{% endif %}
+          {% for link in p.links %}<li><a href="{{ link.url }}">{{ link.label[lang] }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endfor %}
+        </ul>
+      </article>
+        {% endif %}
       {% endfor %}
-    </ul>
+    </div>
+  </section>
+
+  <section class="home-section" id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">{{ t.skills }}</h2>
+    <dl class="home-skills">
+      {% for group in site.data.home.skills %}
+      <div>
+        <dt>{{ group.title[lang] }}</dt>
+        <dd>{{ group.items | join: ", " }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </section>
+
+  {% if site.data.testimonials.size > 0 %}
+  <section class="home-section" id="testimonials" aria-labelledby="testimonials-title">
+    <h2 id="testimonials-title">{{ h.testimonials_heading }}</h2>
+    <div class="home-quotes">
+      {% for item in site.data.testimonials %}
+      <figure class="home-quote">
+        <blockquote><p>{{ item.quote }}</p></blockquote>
+        <figcaption>{{ item.name }}{% if item.role %}, {{ item.role }}{% endif %}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="home-section home-contact" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">{{ h.contact_heading }}</h2>
+    <div class="home-contact__grid">
+      <div class="home-contact__intro">
+        <p class="home-contact__lead">{{ h.contact_lead }}</p>
+        <p>{{ h.contact_text }}</p>
+        <p class="home-contact__mail-line"><a class="home-contact__mail" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+        <p class="home-contact__location">{{ h.contact_location }}</p>
+      </div>
+      <ul class="home-contact__reasons">
+        {% for r in site.data.home.contact.reasons %}
+        <li>
+          <a href="mailto:{{ site.author.email }}?subject={{ r.subject[lang] | url_encode }}">
+            <span class="home-contact__reason">{{ r.label[lang] }}</span>
+            <span class="home-contact__hint">{{ r.hint[lang] }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <p class="home-contact__other">
+      <span>{{ h.contact_other }}</span>
+      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a>
+      <a href="https://github.com/{{ site.author.github }}">GitHub</a>
+      <a href="{{ site.author.geo_stories }}">{{ t.stories }}</a>
+    </p>
   </section>
 
   {{ content }}

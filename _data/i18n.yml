@@ -1,12 +1,12 @@
 # ==========================================================================
 # I18N — interface strings for the bilingual pages (portal, spaces, contact).
-# French is the default language: FR pages at the root, EN pages under /en/.
+# English is the default language: EN pages at the root, FR pages under /fr/.
 # Content text lives in the other _data files; only UI labels live here.
 # ==========================================================================
 
 fr:
   locale: fr_FR
-  home_url: /
+  home_url: /fr/
   skip: "Aller au contenu"
   menu: "Menu"
   nav_label: "Navigation principale"
@@ -31,6 +31,8 @@ fr:
   source: "Code source"
   case_study: "Étude de cas"
   research_details: "Question, motivation, méthode"
+  read_more: "Lire la suite"
+  read_less: "Réduire"
   question: "Question"
   motivation: "Motivation"
   methodology: "Méthode"
@@ -136,9 +138,24 @@ fr:
     presented: "Présenté"
   months: ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
 
+  home:
+    lead: "Je développe des applications C#/.NET et Java, des API REST et des pipelines de données sur Microsoft Fabric. Formé en mathématiques appliquées, je pars du problème à modéliser pour aboutir à un système fiable, testé et déployable."
+    cta_contact: "Me contacter"
+    cta_projects: "Voir les projets"
+    portrait_alt: "Portrait de Geovany Laguerre"
+    proof_label: "Quelques résultats"
+    stack_label: "Technologies :"
+    testimonials_heading: "Témoignages"
+    contact_heading: "Contact"
+    contact_lead: "Parlons de votre besoin."
+    contact_text: "Écrivez-moi en deux ou trois phrases : le contexte, ce que vous cherchez, vos délais. Choisissez le sujet qui vous correspond, il pré-remplit l'objet du message."
+    contact_location: "Basé en Île-de-France."
+    contact_other: "Ailleurs"
+    owner_label: "Espaces"
+
 en:
   locale: en_US
-  home_url: /en/
+  home_url: /
   skip: "Skip to content"
   menu: "Menu"
   nav_label: "Main navigation"
@@ -163,6 +180,8 @@ en:
   source: "Source code"
   case_study: "Case study"
   research_details: "Question, motivation, method"
+  read_more: "Read more"
+  read_less: "Show less"
   question: "Question"
   motivation: "Motivation"
   methodology: "Methodology"
@@ -258,3 +277,17 @@ en:
     completed: "Completed"
     presented: "Presented"
   months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  home:
+    lead: "I build C#/.NET and Java applications, REST APIs and data pipelines on Microsoft Fabric. Trained in applied mathematics, I start from the problem to model and end with a system that is reliable, tested and deployable."
+    cta_contact: "Get in touch"
+    cta_projects: "See the projects"
+    portrait_alt: "Portrait of Geovany Laguerre"
+    proof_label: "Selected results"
+    stack_label: "Technologies:"
+    testimonials_heading: "Testimonials"
+    contact_heading: "Contact"
+    contact_lead: "Let's talk about what you need."
+    contact_text: "Write me two or three sentences: the context, what you are looking for, your timeline. Pick the subject that fits; it fills in the message subject."
+    contact_location: "Based in the Île-de-France region."
+    contact_other: "Elsewhere"
+    owner_label: "Spaces"

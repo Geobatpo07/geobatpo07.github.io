@@ -9,13 +9,13 @@
 # never link to the portal or to another space.
 #   cv_file:  base name of the generated CV PDFs: the CI writes
 #             files/<cv_file>_FR.pdf and files/<cv_file>_EN.pdf from the print
-#             pages /<space>/print/ and /en/<space>/print/
+#             pages /<space>/print/ and /fr/<space>/print/
 #   cv:       layout of the generated CV (see docs/CONTENT.md): max_pages,
 #             certifications (block | line), publications (true to list
 #             the _publications collection). Its content comes from
 #             resume.yml (<space>_ prefixes) and projects.yml (`cv`).
 #   extra_nav: additional menu entries, each { label: {fr, en}, url }; url is
-#             the French path, /en is prepended on English pages
+#             the English path, /fr is prepended on French pages
 # The Stories blog link is in the menu of every space (the only link the
 # three spaces share).
 #   contact:  contact page of the space (/<space>/contact/): mail subject,

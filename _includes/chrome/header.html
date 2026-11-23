@@ -8,16 +8,16 @@
   A space header never links to the portal or to another space
   (checked by scripts/check-isolation.rb).
 {% endcomment %}
-{% assign lang = page.lang | default: "fr" %}
+{% assign lang = page.lang | default: "en" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign display_name = site.author.name | replace: "LAGUERRE", "Laguerre" %}
 {% assign space = site.data.tracks[chrome] %}
 
 {% if space %}
-  {% comment %} French at the root, English under /en/. {% endcomment %}
-  {% if lang == "en" %}{% assign space_root = "/en" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
-  {% assign fr_root = space.url %}
-  {% assign en_root = "/en" | append: space.url %}
+  {% comment %} English at the root, French under /fr/. {% endcomment %}
+  {% if lang == "fr" %}{% assign space_root = "/fr" | append: space.url %}{% else %}{% assign space_root = space.url %}{% endif %}
+  {% assign en_root = space.url %}
+  {% assign fr_root = "/fr" | append: space.url %}
 {% elsif chrome == "portal" %}
   {% assign fr_root = site.data.i18n.fr.home_url %}
   {% assign en_root = site.data.i18n.en.home_url %}
@@ -59,7 +59,7 @@
           <li><a href="{{ base_path }}{{ space_root }}#projects">{{ t.projects }}</a></li>
           <li><a href="{{ base_path }}{{ space_root }}#skills">{{ t.skills }}</a></li>
           {% for item in space.extra_nav %}
-            {% if lang == "en" %}{% assign item_url = "/en" | append: item.url %}{% else %}{% assign item_url = item.url %}{% endif %}
+            {% if lang == "fr" %}{% assign item_url = "/fr" | append: item.url %}{% else %}{% assign item_url = item.url %}{% endif %}
           <li><a href="{{ base_path }}{{ item_url }}"{% if page.url == item_url %} aria-current="page"{% endif %}>{{ item.label[lang] }}</a></li>
           {% endfor %}
           <li><a href="{{ base_path }}{{ cv_pdf_url }}" type="application/pdf">{{ t.cv }}</a></li>
@@ -76,8 +76,8 @@
       <div class="space-header__tools">
         {% if space or chrome == "portal" %}
         <ul class="lang-switch" aria-label="{{ t.lang_label }}">
-          <li><a href="{{ base_path }}{{ fr_url }}" lang="fr" hreflang="fr"{% if lang == "fr" %} aria-current="true"{% endif %}>FR</a></li>
           <li><a href="{{ base_path }}{{ en_url }}" lang="en" hreflang="en"{% if lang == "en" %} aria-current="true"{% endif %}>EN</a></li>
+          <li><a href="{{ base_path }}{{ fr_url }}" lang="fr" hreflang="fr"{% if lang == "fr" %} aria-current="true"{% endif %}>FR</a></li>
         </ul>
         {% endif %}
         <button id="theme-toggle" class="space-header__theme" type="button" aria-label="{{ t.theme_toggle }}">

@@ -2,62 +2,59 @@
     ACADEMIC LUXURY THEME - LIGHT VERSION
     Deep Navy / Royal Blue / White / Silver / Soft Cyan
     ========================================================================== */
-/* Color codes used for the theme */
-$primary-color              : #1D4ED8; // royal blue
-$navy                       : #0B1E36; // deep navy
-$cyan                       : #0E7490; // cyan text, 5.4:1 on white (WCAG AA)
-$cyan-soft                  : #22D3EE; // backgrounds/glows only, not text
-$gray                       : #5B6B82; // silver-slate
-$dark-gray                  : #0F1B2D;
-$darker-gray                : #0A1420;
-$light-gray                 : #5B6B80; // secondary text, 5.2:1 on the footer background (WCAG AA)
-$lighter-gray               : #E2E6ED;
+/* Color codes used for the theme — next-forge-like zinc */
+$primary-color              : #18181b;
+$navy                       : #09090b;
+$cyan                       : #52525b;
+$cyan-soft                  : #a1a1aa;
+$gray                       : #71717a;
+$dark-gray                  : #09090b;
+$darker-gray                : #09090b;
+$light-gray                 : #52525b;
+$lighter-gray               : #e4e4e7;
 
-/* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #1D4ED8;
-$notice-color               : #5B6B82;
-$success-color              : #62c462;
-$warning-color              : #f89406;
+$danger-color               : #dc2626;
+$info-color                 : #18181b;
+$notice-color               : #52525b;
+$success-color              : #16a34a;
+$warning-color              : #d97706;
 
-/* Other basic settings for the template */
-$border-radius              : 10px;
-$box-shadow                 : 0 1px 2px rgba(11, 30, 54, 0.06);
-$global-transition          : all 0.2s ease-in-out;
+$border-radius              : 8px;
+$box-shadow                 : none;
+$global-transition          : all 0.15s ease-in-out;
 $masthead-height            : 70px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Default light theme for the site */
 :root {
-    --global-base-color                 : #{$primary-color};
+    --global-base-color                 : #18181b;
+    --global-on-base-color              : #fafafa;
+    --global-base-color-hover           : #3f3f46;
     --global-bg-color                   : #fff;
-    --global-footer-bg-color            : #F7F9FC;
-    --global-border-color               : #{$lighter-gray};
-    --global-dark-border-color          : #C7CEDA;
-    --global-code-background-color      : #F3F5F9;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : #{$light-gray};
-    --global-link-color                 : #1E40AF;
-    --global-link-color-hover           : #{$navy};
-    --global-link-color-visited         : #3B5FCB;
-    --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : #{$primary-color};
-    --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+    --global-footer-bg-color            : #fff;
+    --global-border-color               : #e4e4e7;
+    --global-dark-border-color          : #d4d4d8;
+    --global-code-background-color      : #f4f4f5;
+    --global-code-text-color            : #18181b;
+    --global-fig-caption-color          : #52525b;
+    --global-link-color                 : #09090b;
+    --global-link-color-hover           : #52525b;
+    --global-link-color-visited         : #3f3f46;
+    --global-masthead-link-color        : #09090b;
+    --global-masthead-link-color-hover  : #52525b;
+    --global-text-color                 : #09090b;
+    --global-text-color-light           : #52525b;
+    --global-thead-color                : #f4f4f5;
 
-    /* Academic luxury accent tokens */
-    --color-navy                        : #{$navy};
-    --color-royal-blue                  : #{$primary-color};
-    --color-silver                      : #{$light-gray};
-    --color-cyan                        : #{$cyan};
-    --color-cyan-soft                   : #{$cyan-soft};
+    --color-navy                        : #09090b;
+    --color-royal-blue                  : #18181b;
+    --color-silver                      : #52525b;
+    --color-cyan                        : #52525b;
+    --color-cyan-soft                   : #a1a1aa;
     --card-bg-color                     : #fff;
-    --card-shadow                       : 0 1px 2px rgba(11, 30, 54, 0.05), 0 12px 32px rgba(11, 30, 54, 0.06);
-    --card-shadow-hover                 : 0 4px 10px rgba(11, 30, 54, 0.07), 0 20px 44px rgba(11, 30, 54, 0.10);
-    --glass-bg-color                    : rgba(255, 255, 255, 0.72);
+    --card-shadow                       : none;
+    --card-shadow-hover                 : 0 0 0 1px #d4d4d8;
+    --glass-bg-color                    : rgba(255, 255, 255, 0.8);
 }
-

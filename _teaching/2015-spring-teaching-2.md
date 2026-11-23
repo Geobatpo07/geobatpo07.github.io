@@ -1,17 +1,19 @@
 ---
-lang: fr
+lang: en
 ref: teaching-ta-uniq
-title: "Assistant d'enseignement en data science et IA"
+title: "Teaching Assistant in Data Science & AI"
 collection: teaching
-type: "Assistant d'enseignement"
+type: "Teaching Assistant"
 permalink: /teaching/ta-data-science-ai-uniq
 venue: "Université Quisqueya (UniQ)"
 date: 2025-05-01
-location: "Haïti"
+location: "Haiti"
+redirect_from:
+  - /en/teaching/ta-data-science-ai-uniq
 ---
 
-En tant qu'assistant d'enseignement en data science et IA, j'accompagne un cursus pratique mené en partenariat avec Akademi et aligné sur le programme intensif de la Flatiron School.
+As a Teaching Assistant in Data Science & AI, I support a hands-on curriculum delivered in partnership with Akademi and aligned with the Flatiron School immersive track.
 
-J'aide les étudiants à maîtriser la préparation des données, l'analyse exploratoire, la construction de modèles et leur déploiement.
+I help students master data wrangling, exploratory analysis, model building, and deployment workflows.
 
-Mes outils d'enseignement sont Python, Pandas, NumPy, Scikit-learn, Matplotlib et les notebooks Jupyter. Je contribue aussi à l'amélioration du programme, aux revues de code et aux séances de questions-réponses.
+My teaching stack includes Python, Pandas, NumPy, Scikit-learn, Matplotlib, and Jupyter Notebooks. I also contribute to curriculum refinement, code reviews, and Q&A sessions.

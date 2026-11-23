@@ -9,7 +9,7 @@ layout: default
   the page language. Labels come from _data/i18n.yml (cv_page).
 {% endcomment %}
 {% include base_path %}
-{% assign lang = page.lang | default: "fr" %}
+{% assign lang = page.lang | default: "en" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign c = t.cv_page %}
 {% assign resume = site.data.resume %}
@@ -96,7 +96,7 @@ layout: default
 {% assign pubs = site.publications | where: "lang", lang | sort: "date" | reverse %}
 <ul>
   {% for pub in pubs %}
-  <li><a href="{{ base_path }}{{ pub.url }}?from=research{% if lang == 'en' %}&amp;lang=en{% endif %}">{{ pub.title }}</a>, <i>{{ pub.venue }}</i>, {{ pub.date | date: "%Y" }}{% if pub.doi %}. DOI{{ t.colon }}<a href="https://doi.org/{{ pub.doi }}">{{ pub.doi }}</a>{% endif %}</li>
+  <li><a href="{{ base_path }}{{ pub.url }}?from=research{% if lang == 'fr' %}&amp;lang=fr{% endif %}">{{ pub.title }}</a>, <i>{{ pub.venue }}</i>, {{ pub.date | date: "%Y" }}{% if pub.doi %}. DOI{{ t.colon }}<a href="https://doi.org/{{ pub.doi }}">{{ pub.doi }}</a>{% endif %}</li>
   {% endfor %}
 </ul>
 

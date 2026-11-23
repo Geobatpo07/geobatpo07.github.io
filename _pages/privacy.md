@@ -1,76 +1,78 @@
 ---
-lang: fr
+lang: en
 ref: privacy
 space: neutral
-permalink: /confidentialite/
+permalink: /privacy/
 redirect_from:
+  - /en/terms/
+  - /en/privacy/
   - /terms/
-title: "Politique de confidentialité"
-description: "Données personnelles traitées sur geovanylaguerre.net : hébergement, mesure d'audience sans cookie, contact par e-mail, prise de rendez-vous, et vos droits."
+title: "Privacy policy"
+description: "Personal data processed on geovanylaguerre.net: hosting, cookieless audience measurement, contact by email, meeting booking, and your rights."
 author_profile: false
 ---
 
-*Dernière mise à jour : 29 septembre 2026.*
+*Last updated: 29 September 2026.*
 
-Ce site est un portfolio personnel. Il n'a ni compte utilisateur, ni newsletter, ni paiement, et ne stocke lui-même aucune donnée personnelle. Cette page décrit, pour chaque situation, les données qui peuvent être traitées, par qui et pourquoi.
+This website is a personal portfolio. It has no user accounts, no newsletter and no payments, and it stores no personal data itself. This page describes, for each situation, which data may be processed, by whom and why.
 
-**Responsable du traitement :** Geovany Batista Polo Laguerre, [{{ site.author.email }}](mailto:{{ site.author.email }}).
+**Controller:** Geovany Batista Polo Laguerre, [{{ site.author.email }}](mailto:{{ site.author.email }}).
 
-## 1. Consultation du site (hébergement)
+## 1. Visiting the website (hosting)
 
-- **Données :** adresse IP, date et heure, page demandée, navigateur (journaux techniques du serveur).
-- **Finalité :** faire fonctionner le site et le protéger (sécurité, lutte contre les abus).
-- **Base légale :** intérêt légitime.
-- **Destinataire :** l'hébergeur, GitHub, Inc. (GitHub Pages), aux États-Unis. Ces journaux sont tenus par GitHub selon sa [déclaration de confidentialité](https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement) ; je n'y ai pas accès.
-- **Transfert hors UE :** oui, vers les États-Unis, dans le cadre du Data Privacy Framework UE–États-Unis.
+- **Data:** IP address, date and time, requested page, browser (technical server logs).
+- **Purpose:** running and protecting the website (security, abuse prevention).
+- **Legal basis:** legitimate interest.
+- **Recipient:** the host, GitHub, Inc. (GitHub Pages), in the United States. These logs are kept by GitHub under its [privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement); I have no access to them.
+- **Transfer outside the EU:** yes, to the United States, under the EU–US Data Privacy Framework.
 
-## 2. Mesure d'audience (GoatCounter)
+## 2. Audience measurement (GoatCounter)
 
-- **Données :** page consultée, page de provenance, type de navigateur et de système, taille d'écran, pays déduit de l'adresse IP. L'adresse IP n'est pas conservée et aucun cookie n'est déposé.
-- **Finalité :** statistiques de fréquentation anonymes (pages les plus lues, provenance des visites).
-- **Base légale :** intérêt légitime. Cette mesure, sans cookie, sans suivi d'un site à l'autre et limitée à des statistiques agrégées, ne nécessite pas de consentement.
-- **Destinataire :** GoatCounter ([goatcounter.com](https://www.goatcounter.com/help/privacy)), prestataire de mesure d'audience exploité depuis l'Irlande ; les données sont hébergées chez Hetzner, en Finlande et en Allemagne.
-- **Transfert hors UE :** non.
-- **Durée :** statistiques agrégées, conservées tant que le compte de mesure existe.
+- **Data:** page viewed, referring page, browser and system type, screen size, country derived from the IP address. The IP address is not kept and no cookie is set.
+- **Purpose:** anonymous visit statistics (most read pages, where visits come from).
+- **Legal basis:** legitimate interest. This measurement, without cookies, without cross-site tracking and limited to aggregated statistics, does not require consent.
+- **Recipient:** GoatCounter ([goatcounter.com](https://www.goatcounter.com/help/privacy)), audience measurement provider operated from Ireland; the data is hosted by Hetzner, in Finland and Germany.
+- **Transfer outside the EU:** no.
+- **Retention:** aggregated statistics, kept as long as the measurement account exists.
 
-## 3. Contact par e-mail et formulaire « Votre avis »
+## 3. Contact by email and the Feedback form
 
-Les liens « Écrire un e-mail » et le formulaire [Votre avis]({% include localized-url.html path="/feedback/" %}) ouvrent votre propre messagerie : rien ne transite par le site. Si vous envoyez le message :
+The "Send an email" links and the [Feedback]({% include localized-url.html path="/feedback/" %}) form open your own email client: nothing goes through the website. If you send the message:
 
-- **Données :** votre adresse e-mail, votre nom s'il figure dans le message, le contenu du message.
-- **Finalité :** vous répondre.
-- **Base légale :** intérêt légitime (répondre à votre demande), ou mesures précontractuelles si le message porte sur un poste ou une mission.
-- **Destinataire :** moi seul ; les messages sont hébergés par mon fournisseur de messagerie, Google (Gmail), aux États-Unis, dans le cadre du Data Privacy Framework UE–États-Unis.
-- **Durée :** le temps de l'échange, puis au plus trois ans après le dernier contact.
+- **Data:** your email address, your name if it appears in the message, the content of the message.
+- **Purpose:** replying to you.
+- **Legal basis:** legitimate interest (replying to your request), or pre-contractual measures if the message is about a position or an engagement.
+- **Recipient:** me only; messages are hosted by my email provider, Proton (Proton Mail), in Switzerland, a country the European Union recognises as providing an adequate level of protection.
+- **Retention:** for the duration of the exchange, then at most three years after the last contact.
 
-## 4. Prise de rendez-vous (Calendly)
+## 4. Meeting booking (Calendly)
 
-La page contact de l'espace recherche propose un calendrier Calendly. Il n'est chargé que si vous cliquez sur « Afficher le calendrier » ; un lien direct vers calendly.com reste disponible.
+The contact page of the research space offers a Calendly scheduler. It loads only if you click "Show the Calendly scheduler"; a direct link to calendly.com remains available.
 
-- **Données :** une fois le calendrier chargé, Calendly reçoit votre adresse IP et peut déposer des cookies ; si vous réservez, il reçoit le nom, l'adresse e-mail et les informations que vous saisissez.
-- **Finalité :** organiser un échange de 30 minutes.
-- **Base légale :** votre consentement (le clic) pour le chargement ; mesures précontractuelles pour la réservation.
-- **Destinataires :** Calendly LLC, aux États-Unis, selon sa [politique de confidentialité](https://calendly.com/legal/privacy-notice) ; moi, pour la réservation.
-- **Transfert hors UE :** oui, vers les États-Unis, dans le cadre du Data Privacy Framework UE–États-Unis.
-- **Durée :** les informations de réservation sont conservées comme les e-mails (point 3).
+- **Data:** once the scheduler is loaded, Calendly receives your IP address and may set cookies; if you book, it receives the name, email address and information you enter.
+- **Purpose:** organizing a 30-minute conversation.
+- **Legal basis:** your consent (the click) for loading it; pre-contractual measures for the booking.
+- **Recipients:** Calendly LLC, in the United States, under its [privacy notice](https://calendly.com/legal/privacy-notice); me, for the booking.
+- **Transfer outside the EU:** yes, to the United States, under the EU–US Data Privacy Framework.
+- **Retention:** booking information is kept like emails (section 3).
 
-## 5. Cookies et stockage local
+## 5. Cookies and local storage
 
-Le site ne dépose **aucun cookie** et **aucun traceur** avant une action volontaire de votre part : aucun bandeau de consentement n'est donc nécessaire.
+The website sets **no cookie** and **no tracker** before an action of yours: no consent banner is therefore needed.
 
-| Élément | Émetteur | Finalité | Durée |
+| Item | Issuer | Purpose | Duration |
 |---|---|---|---|
-| `theme` (stockage local du navigateur) | ce site | retenir le thème clair ou sombre choisi avec le bouton de l'en-tête | jusqu'à ce que vous effaciez les données du site dans votre navigateur |
-| cookies Calendly | Calendly | fonctionnement du calendrier | uniquement après le clic sur « Afficher le calendrier » ; voir la politique de Calendly |
+| `theme` (browser local storage) | this website | remembering the light or dark theme chosen with the header button | until you clear the site data in your browser |
+| Calendly cookies | Calendly | running the scheduler | only after clicking "Show the Calendly scheduler"; see Calendly's policy |
 
-Les polices, les icônes et les scripts du site sont hébergés avec lui : aucune ressource n'est demandée à Google ou à un autre service à l'affichage des pages, hormis le script de mesure GoatCounter (point 2). Les liens vers LinkedIn, GitHub, ResearchGate, ORCID, Credly ou le blog ne transmettent rien tant que vous ne les suivez pas.
+The fonts, icons and scripts are hosted with the website: no resource is requested from Google or any other service when pages are displayed, apart from the GoatCounter measurement script (section 2). Links to LinkedIn, GitHub, ResearchGate, ORCID, Credly or the blog transmit nothing until you follow them.
 
-## 6. Vos droits
+## 6. Your rights
 
-Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de limitation du traitement et de portabilité de vos données. Pour les exercer, écrivez à [{{ site.author.email }}](mailto:{{ site.author.email }}) ; je réponds dans un délai d'un mois.
+You have the right of access, rectification, erasure, objection, restriction of processing and portability of your data. To exercise them, write to [{{ site.author.email }}](mailto:{{ site.author.email }}); I reply within one month.
 
-Pour les données tenues par GitHub, GoatCounter, Google ou Calendly, vous pouvez aussi vous adresser directement à ces services.
+For the data kept by GitHub, GoatCounter, Proton or Calendly, you can also contact these services directly.
 
-Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL : [www.cnil.fr](https://www.cnil.fr), 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07.
+If you consider that your rights are not respected, you can lodge a complaint with the CNIL (the French data protection authority): [www.cnil.fr](https://www.cnil.fr), 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, France.
 
-Voir aussi les [mentions légales]({% include ref-url.html ref="legal-notice" %}).
+See also the [legal notice]({% include ref-url.html ref="legal-notice" %}).

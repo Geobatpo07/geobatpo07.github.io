@@ -12,7 +12,7 @@ layout: default
   labels come from _data/i18n.yml.
 {% endcomment %}
 {% include base_path %}
-{% assign lang = page.lang | default: "fr" %}
+{% assign lang = page.lang | default: "en" %}
 {% assign t = site.data.i18n[lang] %}
 {% assign words = content | strip_html | number_of_words %}
 {% assign read_minutes = words | divided_by: site.words_per_minute | at_least: 1 %}

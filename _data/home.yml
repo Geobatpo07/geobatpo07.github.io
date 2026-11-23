@@ -1,0 +1,59 @@
+# ==========================================================================
+# HOME — content of the portfolio home page (/ and /fr/).
+#
+# Layout: _layouts/portal.html. Every displayed text is a {fr, en} pair.
+#   proof:      results shown under the introduction, in this order
+#               (value is shown large; label says what it counts).
+#               `spaces` lists the spaces (software, data, research) that
+#               also show the result under their header; none for research.
+#   featured:   ids of the projects of _data/projects.yml shown on the home
+#               page, in this order
+#   skills:     groups of tools, shown as plain lists
+# Testimonials come from _data/testimonials.yml; the section is hidden
+# while that file is empty.
+# ==========================================================================
+
+proof:
+  - spaces: [software]
+    value: { fr: "~180", en: "~180" }
+    label:
+      fr: "sites desservis par une application que j'ai modernisée sur Java EE, déployée progressivement sans interruption de service."
+      en: "sites served by an application I modernized on Java EE, rolled out progressively with no service interruption."
+  - spaces: [data]
+    value: { fr: "20 % → 60 %", en: "20% → 60%" }
+    label:
+      fr: "des sites clients au-dessus de 95 % de performance, avec des tableaux de bord KPI Power BI à l'appui."
+      en: "of client sites above 95% performance, supported by Power BI KPI dashboards."
+  - spaces: [data]
+    value: { fr: "DP-700 · DP-600", en: "DP-700 · DP-600" }
+    label:
+      fr: "certifications Microsoft Fabric : data engineer et analytics engineer."
+      en: "Microsoft Fabric certifications: data engineer and analytics engineer."
+
+featured:
+  - keemboll-bi
+  - nyansa
+  - stories
+  - datahut-duckhouse
+
+skills:
+  - title: { fr: "Développement", en: "Development" }
+    items: ["C#/.NET", "ASP.NET Core", "Java", "Spring Boot", "TypeScript", "Next.js", "API REST", "microservices"]
+  - title: { fr: "Data", en: "Data" }
+    items: ["SQL", "Python", "Microsoft Fabric", "Power BI", "ETL", "PostgreSQL", "SQL Server", "DuckDB"]
+  - title: { fr: "Livraison", en: "Delivery" }
+    items: ["Docker", "GitHub Actions", "Jenkins", "RabbitMQ", "CI/CD"]
+
+# Contact section: each reason opens a mail with its own subject, so the
+# request is sorted before it is read. No form, nothing is collected.
+contact:
+  reasons:
+    - label: { fr: "Un poste de développeur ou d'ingénieur data", en: "A software or data engineering role" }
+      hint:  { fr: "Disponible pour des missions", en: "Available for engagements" }
+      subject: { fr: "Poste : Software / Data Engineer", en: "Role: Software / Data Engineer" }
+    - label: { fr: "Une mission ou un projet à cadrer", en: "An engagement or a project to scope" }
+      hint:  { fr: "Application, API, pipeline de données, tableaux de bord Power BI", en: "Application, API, data pipeline, Power BI dashboards" }
+      subject: { fr: "Mission : projet à cadrer", en: "Engagement: project to scope" }
+    - label: { fr: "Enseignement ou recherche", en: "Teaching or research" }
+      hint:  { fr: "Cours, encadrement, collaboration scientifique", en: "Courses, supervision, scientific collaboration" }
+      subject: { fr: "Enseignement / recherche", en: "Teaching / research" }
