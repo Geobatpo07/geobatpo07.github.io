@@ -17,8 +17,8 @@ proof:
   - spaces: [software]
     value: { fr: "~180", en: "~180" }
     label:
-      fr: "sites hospitaliers et cliniques sur l'application migrée de PHP vers Java EE, sans interruption de service."
-      en: "hospital and clinic sites on the application migrated from PHP to Java EE, with no service interruption."
+      fr: "sites desservis par une application que j'ai modernisée sur Java EE, déployée progressivement sans interruption de service."
+      en: "sites served by an application I modernized on Java EE, rolled out progressively with no service interruption."
   - spaces: [data]
     value: { fr: "20 % → 60 %", en: "20% → 60%" }
     label:
