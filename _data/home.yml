@@ -31,10 +31,10 @@ proof:
       en: "Microsoft Fabric certifications: data engineer and analytics engineer."
 
 featured:
+  - keemboll-bi
   - nyansa
   - stories
   - datahut-duckhouse
-  - keemboll-bi
 
 skills:
   - title: { fr: "Développement", en: "Development" }
