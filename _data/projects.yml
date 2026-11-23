@@ -214,3 +214,13 @@
     contribution:
       fr: "Un exposé clair et présentable d'un résultat fondamental de la théorie des corps finis."
       en: "A clear, presentable account of a foundational result in finite field theory."
+
+- id: keemboll-bi
+  name: "Keemboll BI"
+  github: "https://github.com/Keemboll/keemboll-bi"
+  stack: ["Power BI", "Microsoft Fabric", "Python", "GitHub Actions", "Claude Code"]
+  status: active
+  tracks: { software: 1, data: 1 }
+  description:
+    fr: "Collection open source de skills Claude Code pour Power BI et Microsoft Fabric, pensée pour les équipes BI. Inclut une veille mensuelle automatisée qui ouvre une issue quand de nouvelles fonctionnalités de la plateforme apparaissent."
+    en: "Open-source collection of Claude Code skills for Power BI and Microsoft Fabric, built for BI teams. Includes a monthly automated watch that opens an issue when new platform features appear."
