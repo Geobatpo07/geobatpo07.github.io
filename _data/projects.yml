@@ -224,3 +224,6 @@
   description:
     fr: "Collection open source de skills Claude Code pour Power BI et Microsoft Fabric, pensée pour les équipes BI. Inclut une veille mensuelle automatisée qui ouvre une issue quand de nouvelles fonctionnalités de la plateforme apparaissent."
     en: "Open-source collection of Claude Code skills for Power BI and Microsoft Fabric, built for BI teams. Includes a monthly automated watch that opens an issue when new platform features appear."
+  links:
+    - label: { fr: "Présentation", en: "Overview" }
+      url: "https://keemboll.com/keemboll-bi/"

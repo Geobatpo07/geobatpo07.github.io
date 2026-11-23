@@ -62,6 +62,7 @@ space: portal
           {% if case_study_url %}<li><a href="{{ base_path }}{{ case_study_url }}">{{ t.case_study }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
           {% if p.github %}<li><a href="{{ p.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> {{ t.source }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endif %}
           {% if p.private %}<li class="home-project__private">{{ t.private_repo }}</li>{% endif %}
+          {% for link in p.links %}<li><a href="{{ link.url }}">{{ link.label[lang] }}<span class="visually-hidden">: {{ p.name }}</span></a></li>{% endfor %}
         </ul>
       </article>
         {% endif %}
